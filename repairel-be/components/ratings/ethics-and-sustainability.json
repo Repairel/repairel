@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_ratings_ethics_and_sustainabilities",
+  "info": {
+    "name": "ethics_and_sustainability",
+    "icon": "expand"
+  },
+  "options": {},
+  "attributes": {
+    "material": {
+      "type": "integer",
+      "required": true,
+      "max": 5,
+      "min": 1
+    },
+    "material_processing": {
+      "type": "integer",
+      "private": false,
+      "required": true,
+      "max": 5,
+      "min": 1
+    },
+    "manufacturing": {
+      "type": "integer",
+      "required": true,
+      "max": 5,
+      "min": 1
+    },
+    "assembly": {
+      "type": "integer",
+      "required": true,
+      "max": 5,
+      "min": 1
+    },
+    "use": {
+      "type": "integer",
+      "required": true,
+      "max": 5,
+      "min": 1
+    },
+    "disposal": {
+      "type": "integer",
+      "required": true,
+      "max": 5,
+      "min": 1
+    }
+  }
+}

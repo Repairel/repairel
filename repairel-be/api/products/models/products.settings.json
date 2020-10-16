@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "Products"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "rating": {
+      "type": "integer",
+      "required": true
+    },
+    "new": {
+      "type": "boolean",
+      "required": true
+    },
+    "Size": {
+      "type": "decimal",
+      "required": true,
+      "min": 3,
+      "max": 12
+    },
+    "stock": {
+      "type": "boolean",
+      "required": true
+    },
+    "ethics_and_sustainability": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ratings.ethics-and-sustainability",
+      "required": true
+    }
+  }
+}
