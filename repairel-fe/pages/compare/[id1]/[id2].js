@@ -18,9 +18,8 @@ const Comparison = ({ products }) => {
 export async function getServerSideProps(context) {
   const product1 = context.params.id1;
   const product2 = context.params.id2;
-  const res = await fetch(
-    `http://35.178.141.40:1337/products/?id_in=${product1}&id_in=${product2}`
-  );
+  // const res = await fetch(`http://35.178.141.40:1337/products/?id_in=${product1}&id_in=${product2}`);
+  const res = await fetch(`http://localhost:1337/products/?id_in=${product1}&id_in=${product2}`);
   const json = await res.json();
   return { props: { products: json } };
 }

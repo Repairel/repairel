@@ -30,7 +30,8 @@ const About = ({ content }) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://35.178.141.40:1337/abouts`);
+  // const res = await fetch(`http://35.178.141.40:1337/abouts`);
+  const res = await fetch(`http://localhost:1337/abouts`);
   const json = await res.json();
   return { props: { content: json } };
 }

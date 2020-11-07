@@ -22,7 +22,8 @@ const ProductPage = ({ product }) => {
 
 export async function getServerSideProps(context) {
   const id = context.params.id;
-  const res = await fetch(`http://35.178.141.40:1337/products/${id}`);
+  // const res = await fetch(`http://35.178.141.40:1337/products/${id}`);
+  const res = await fetch(`http://localhost:1337/products/${id}`);
   const json = await res.json();
   return { props: { product: json } };
 }
