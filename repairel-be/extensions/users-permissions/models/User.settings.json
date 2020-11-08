@@ -52,6 +52,12 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
+    },
+    "billing_address": {
+      "model": "address"
+    },
+    "address": {
+      "model": "address"
     }
   }
 }
