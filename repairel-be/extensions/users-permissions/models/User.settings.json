@@ -53,11 +53,11 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "billing_address": {
-      "model": "address"
+    "first_name": {
+      "type": "string"
     },
-    "address": {
-      "model": "address"
+    "second_name": {
+      "type": "string"
     }
   }
 }

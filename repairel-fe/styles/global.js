@@ -37,4 +37,21 @@ const StyledLink = styled.a`
   }
 `;
 
-export { LinedHeading, StyledSection, StyledLink };
+const StyledTitle = styled.h2`
+  color: black;
+  text-transform: uppercase;
+  padding-bottom: 0;
+  margin-bottom: 0;
+`;
+
+const Row = styled.div`
+  display: flex;
+  padding-bottom: 1em;
+`;
+
+const Column = styled.div`
+  flex: 50%;
+  padding: 0 0.5em 0 0.5em;
+`;
+
+export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column };

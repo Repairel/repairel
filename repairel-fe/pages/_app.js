@@ -2,7 +2,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    margin: 0 auto;
+    margin: 0 auto !important;
     padding: 0;
     font-family: 'Work Sans', sans-serif;
     max-width: 1250px;
