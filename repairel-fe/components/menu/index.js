@@ -41,7 +41,7 @@ const Menu = ({ open, setOpen }) => {
 
   function hasLogout() {
     if (user) {
-      return <Logout onClick={() => {logout()}}>logout</Logout>
+      return <Logout onClick={() => {logout(); setUser(null);}}>logout</Logout>
     }
   }
 

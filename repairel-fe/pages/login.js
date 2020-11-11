@@ -2,7 +2,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
 import AppContext from "../context/AppContext";
-import { StyledTitle, Row, Column } from '../styles/global';
+import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel } from '../styles/global';
 import React, { useState, useEffect, useContext } from "react";
 import { login } from "../lib/auth"
 import { useRouter } from "next/router";
@@ -43,9 +43,9 @@ export default function Login() {
               );
             })}
           <Row>
-            <Column style={{ textAlign: 'right' }}>Email Address *</Column>
+            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Email Address *</StyledFormLabel></Column>
             <Column style={{ textAlign: 'left' }}>
-              <input
+              <StyledInput
                 required
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 value={data.email}
@@ -55,9 +55,9 @@ export default function Login() {
             </Column>
           </Row>
           <Row>
-            <Column style={{ textAlign: 'right' }}>Password *</Column>
+            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Password *</StyledFormLabel></Column>
             <Column style={{ textAlign: 'left' }}>
-              <input
+              <StyledInput
                 required
                 onChange={(e) => setData({ ...data, password: e.target.value })}
                 value={data.password}
@@ -66,18 +66,20 @@ export default function Login() {
               />
             </Column>
           </Row>
-          <button
+          <StyledButton
             onClick={() => {
               login(data.email, data.password)
               .then((res) => {
                 console.log(res);
+                appContext.setUser(res.data.user);
               })
               .catch((error) => {
                 console.log(error);
+                setError(error.response.data);
               });
             }}>
-            Submit
-          </button>
+            Click here to Login!
+          </StyledButton>
         </div>
       </main>
     </div>

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
 import AppContext from "../context/AppContext";
-import { StyledTitle, Row, Column } from '../styles/global';
+import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel } from '../styles/global';
 import React, { useState, useEffect, useContext } from "react";
 import { register } from "../lib/auth"
 import { useRouter } from "next/router";
@@ -43,9 +43,9 @@ export default function Register() {
               );
             })}
           <Row>
-            <Column style={{ textAlign: 'right' }}>First Name *</Column>
+            <Column style={{ textAlign: 'right' }}><StyledFormLabel>First Name *</StyledFormLabel></Column>
             <Column style={{ textAlign: 'left' }}>
-              <input
+              <StyledInput
                 required
                 onChange={(e) => setData({ ...data, forename: e.target.value })}
                 value={data.forename}
@@ -55,9 +55,9 @@ export default function Register() {
             </Column>
           </Row>
           <Row>
-            <Column style={{ textAlign: 'right' }}>Second Name *</Column>
+            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Second Name *</StyledFormLabel></Column>
             <Column style={{ textAlign: 'left' }}>
-              <input
+              <StyledInput
                 required
                 onChange={(e) => setData({ ...data, surname: e.target.value })}
                 value={data.surname}
@@ -67,9 +67,9 @@ export default function Register() {
             </Column>
           </Row>
           <Row>
-            <Column style={{ textAlign: 'right' }}>Email Address *</Column>
+            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Email Address *</StyledFormLabel></Column>
             <Column style={{ textAlign: 'left' }}>
-              <input
+              <StyledInput
                 required
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 value={data.email}
@@ -79,9 +79,9 @@ export default function Register() {
             </Column>
           </Row>
           <Row>
-            <Column style={{ textAlign: 'right' }}>Password *</Column>
+            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Password *</StyledFormLabel></Column>
             <Column style={{ textAlign: 'left' }}>
-              <input
+              <StyledInput
                 required
                 onChange={(e) => setData({ ...data, password: e.target.value })}
                 value={data.password}
@@ -90,18 +90,20 @@ export default function Register() {
               />
             </Column>
           </Row>
-          <button
+          <StyledButton
             onClick={() => {
               register(data.forename, data.surname, data.email, data.password)
               .then((res) => {
                 console.log(res);
+                appContext.setUser(res.data.user);
               })
               .catch((error) => {
                 console.log(error);
+                setError(error.response.data);
               });
             }}>
-            Submit
-          </button>
+            Click here to register!
+          </StyledButton>
         </div>
       </main>
     </div>

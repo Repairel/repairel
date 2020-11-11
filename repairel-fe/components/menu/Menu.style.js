@@ -39,6 +39,12 @@ const MenuLogo = styled.img`
 
 const Logout = styled.a`
   font-weight: bold;
+  font-size: 1.25em;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+  }
 `;
 
 export { Wrapper, MenuListItem, MenuList, MenuLogo , WelcomeUser, Logout };

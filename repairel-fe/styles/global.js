@@ -54,4 +54,23 @@ const Column = styled.div`
   padding: 0 0.5em 0 0.5em;
 `;
 
-export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column };
+const StyledButton = styled.button`
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 0.5em;
+  background-color: white;
+  border: 1px solid grey;
+`;
+
+const StyledInput = styled.input`
+  font-size: 1.25em;
+  border-radius: 0.25em
+  background-color: white;
+  border: 1px solid grey;
+`;
+
+const StyledFormLabel = styled.span`
+  font-size: 1.25em;
+`;
+
+export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel };
