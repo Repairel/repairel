@@ -28,8 +28,13 @@ const MenuListItem = styled.li`
   font-size: 1.75rem;
 `;
 
+const WelcomeUser = styled.span`
+  padding:0.5rem;
+  font-size: 2rem;
+`;
+
 const MenuLogo = styled.img`
   /* cursor: pointer; */
 `;
 
-export { Wrapper, MenuListItem, MenuList, MenuLogo };
+export { Wrapper, MenuListItem, MenuList, MenuLogo , WelcomeUser };

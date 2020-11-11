@@ -1,4 +1,7 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import App from "next/app";
+import AppContext from "../context/AppContext";
+import Cookie from "js-cookie";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -23,16 +26,54 @@ const theme = {
   },
 };
 
-// eslint-disable-next-line react/prop-types
-export default function App({ Component, pageProps }) {
-  return (
-    <>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </>
-  );
+class MyApp extends App {
+  state = {
+    user: null
+  };
+
+  componentDidMount() {
+    const token = Cookie.get("token");
+
+    if (token) {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }).then(async (res) => {
+        if (!res.ok) {
+          Cookie.remove("token");
+          this.setState({ user: null });
+          return null;
+        }
+        const user = await res.json();
+        this.setUser(user);
+      });
+    }
+  }
+
+  setUser = (user) => {
+    this.setState({ user });
+  };
+
+  render() {
+    const { Component, pageProps } = this.props;
+    return (
+      <AppContext.Provider
+        value={{
+          user: this.state.user,
+          isAuthenticated: !!this.state.user,
+          setUser: this.setUser,
+        }}
+      >
+        <>
+          <GlobalStyle />
+          <ThemeProvider theme={theme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </>
+      </AppContext.Provider>
+    );
+  }
 }
 
-// Docs: https://nextjs.org/docs/advanced-features/custom-app
+export default MyApp;

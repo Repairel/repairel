@@ -28,7 +28,7 @@ const FAQ = ({ content }) => {
 
 export async function getServerSideProps() {
   // const res = await fetch(`http://35.178.141.40:1337/faqs`);
-  const res = await fetch(`http://localhost:1337/faqs`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/faqs`);
   const json = await res.json();
   return { props: { content: json } };
 }

@@ -2,16 +2,25 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Logo from '../../public/repairel-logo.svg';
 
-import { Wrapper, MenuList, MenuListItem, MenuLogo } from './Menu.style';
+import { Wrapper, MenuList, MenuListItem, MenuLogo, WelcomeUser } from './Menu.style';
 import { StyledLink } from '../../styles/global';
 import Socials from '@components/socials';
+import AppContext from "../../context/AppContext";
+import { useContext } from "react";
 
 const Menu = ({ open, setOpen }) => {
   const handleLinkClick = () => {
     setOpen(!open);
   };
 
-  const menu = ['shop', 'about', 'faq'];
+  const { user, setUser } = useContext(AppContext);
+  let menu = ['login', 'register', 'shop', 'about', 'faq'];
+  let welcomeMessage = '';
+  if (user) {
+    menu = ['shop', 'about', 'faq'];
+    welcomeMessage = `Hey ${user.first_name}!`;
+  }
+
   const menuItems = menu.map((item, index) => {
     return (
       <MenuListItem key={index}>
@@ -22,10 +31,21 @@ const Menu = ({ open, setOpen }) => {
     );
   });
 
+  function hasDivider() {
+    if (user) {
+      return <hr />
+    }
+    return
+  }
+
   return (
     <Wrapper open={open}>
       <MenuLogo src={Logo}></MenuLogo>
-      <MenuList>{menuItems}</MenuList>
+      <MenuList>
+        <WelcomeUser>{welcomeMessage}</WelcomeUser>
+        {hasDivider()}
+        {menuItems}
+      </MenuList>
       <Socials />
     </Wrapper>
   );

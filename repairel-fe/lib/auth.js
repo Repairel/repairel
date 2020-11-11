@@ -3,29 +3,10 @@ import Router from "next/router";
 import Cookie from "js-cookie";
 import axios from "axios";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
-
-export const checkStatus = () => {
-  const token = Cookie.get("token");
-  if (token) {
-    fetch(`${API_URL}/users/me`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }
-    }).then(async (res) => {
-      if (!res.ok) {
-        Cookie.remove("token");
-      } else {
-        Router.push("/");
-      }
-    })
-  }
-}
-
 export const register = (forename, surname, email, password) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(`${API_URL}/auth/local/register`, {
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/auth/local/register`, {
         username: email,
         email: email,
         password: password,
@@ -47,7 +28,7 @@ export const register = (forename, surname, email, password) => {
 export const login = (email, password) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(`${API_URL}/auth/local/`, { identifier: email, password: password })
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/auth/local/`, { identifier: email, password: password })
       .then((res) => {
         Cookie.set("token", res.data.jwt);
         resolve(res);
@@ -59,3 +40,4 @@ export const login = (email, password) => {
       });
   });
 };
+76

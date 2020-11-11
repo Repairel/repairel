@@ -1,20 +1,21 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
+import AppContext from "../context/AppContext";
 import { StyledTitle, Row, Column } from '../styles/global';
-import React, { useState } from "react";
-import { login, checkStatus } from "../lib/auth"
-import Router from "next/router";
-import Cookie from "js-cookie";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+import React, { useState, useEffect, useContext } from "react";
+import { login } from "../lib/auth"
+import { useRouter } from "next/router";
 
 export default function Login() {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState({});
+  const router = useRouter();
+  const appContext = useContext(AppContext);
 
-  // checks to see if user is already logged in
-  checkStatus();
+  if (appContext.isAuthenticated) {
+    router.push("/"); // redirect if you're already logged in
+  }
 
   return (
     <div>
@@ -24,7 +25,7 @@ export default function Login() {
       <main>
         <Header />
         <div style={{ textAlign: 'center', padding: '0 5em 0 5em'}}>
-          <StyledTitle>Registration</StyledTitle>
+          <StyledTitle>Login</StyledTitle>
           <hr />
 
           {Object.entries(error).length !== 0 &&

@@ -1,16 +1,21 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
+import AppContext from "../context/AppContext";
 import { StyledTitle, Row, Column } from '../styles/global';
-import React, { useState } from "react";
-import { register, checkStatus } from "../lib/auth"
+import React, { useState, useEffect, useContext } from "react";
+import { register } from "../lib/auth"
+import { useRouter } from "next/router";
 
 export default function Register() {
   const [data, setData] = useState({ email: "", password: "", forename: "", surname: "" });
   const [error, setError] = useState({});
+  const router = useRouter();
+  const appContext = useContext(AppContext);
 
-  // checks to see if user is already logged in
-  checkStatus();
+  if (appContext.isAuthenticated) {
+    router.push("/"); // redirect if you're already logged in
+  }
 
   return (
     <div>
