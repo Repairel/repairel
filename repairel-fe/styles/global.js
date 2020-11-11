@@ -37,4 +37,40 @@ const StyledLink = styled.a`
   }
 `;
 
-export { LinedHeading, StyledSection, StyledLink };
+const StyledTitle = styled.h2`
+  color: black;
+  text-transform: uppercase;
+  padding-bottom: 0;
+  margin-bottom: 0;
+`;
+
+const Row = styled.div`
+  display: flex;
+  padding-bottom: 1em;
+`;
+
+const Column = styled.div`
+  flex: 50%;
+  padding: 0 0.5em 0 0.5em;
+`;
+
+const StyledButton = styled.button`
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 0.5em;
+  background-color: white;
+  border: 1px solid grey;
+`;
+
+const StyledInput = styled.input`
+  font-size: 1.25em;
+  border-radius: 0.25em
+  background-color: white;
+  border: 1px solid grey;
+`;
+
+const StyledFormLabel = styled.span`
+  font-size: 1.25em;
+`;
+
+export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel };

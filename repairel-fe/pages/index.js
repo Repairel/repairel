@@ -2,8 +2,13 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
 import ProductList from '@components/productList';
+import AppContext from "../context/AppContext";
+import { useContext } from "react";
+
+import { isLogged } from "../lib/auth"
 
 export default function Home({ list }) {
+  const { user, setUser } = useContext(AppContext);
   return (
     <div>
       <Head>
@@ -18,8 +23,7 @@ export default function Home({ list }) {
 }
 
 export async function getServerSideProps() {
-  // const res = await fetch(`http://35.178.141.40:1337/products`);
-  const res = await fetch(`http://localhost:1337/products`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
   const json = await res.json();
   return { props: { list: json } };
 }
