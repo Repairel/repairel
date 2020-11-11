@@ -37,4 +37,8 @@ const MenuLogo = styled.img`
   /* cursor: pointer; */
 `;
 
-export { Wrapper, MenuListItem, MenuList, MenuLogo , WelcomeUser };
+const Logout = styled.a`
+  font-weight: bold;
+`;
+
+export { Wrapper, MenuListItem, MenuList, MenuLogo , WelcomeUser, Logout };

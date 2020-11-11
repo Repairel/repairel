@@ -25,9 +25,6 @@ export default function Home({ list }) {
 export async function getServerSideProps() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
   const json = await res.json();
-
-  console.log(res)
-
   return { props: { list: json } };
 }
 

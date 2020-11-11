@@ -2,11 +2,12 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Logo from '../../public/repairel-logo.svg';
 
-import { Wrapper, MenuList, MenuListItem, MenuLogo, WelcomeUser } from './Menu.style';
+import { Wrapper, MenuList, MenuListItem, MenuLogo, WelcomeUser, Logout } from './Menu.style';
 import { StyledLink } from '../../styles/global';
 import Socials from '@components/socials';
 import AppContext from "../../context/AppContext";
 import { useContext } from "react";
+import { logout } from "../../lib/auth"
 
 const Menu = ({ open, setOpen }) => {
   const handleLinkClick = () => {
@@ -38,6 +39,12 @@ const Menu = ({ open, setOpen }) => {
     return
   }
 
+  function hasLogout() {
+    if (user) {
+      return <Logout onClick={() => {logout()}}>logout</Logout>
+    }
+  }
+
   return (
     <Wrapper open={open}>
       <MenuLogo src={Logo}></MenuLogo>
@@ -46,6 +53,7 @@ const Menu = ({ open, setOpen }) => {
         {hasDivider()}
         {menuItems}
       </MenuList>
+      {hasLogout()}
       <Socials />
     </Wrapper>
   );

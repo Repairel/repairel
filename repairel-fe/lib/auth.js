@@ -17,6 +17,7 @@ export const register = (forename, surname, email, password) => {
         Cookie.set("token", res.data.jwt);
         resolve(res);
         Router.push("/");
+        Router.reload(window.location.pathname);
       })
       .catch((error) => {
         // sends the error back to the form
@@ -33,6 +34,7 @@ export const login = (email, password) => {
         Cookie.set("token", res.data.jwt);
         resolve(res);
         Router.push("/");
+        Router.reload(window.location.pathname);
       })
       .catch((error) => {
         // sends the error back to the form
@@ -40,4 +42,13 @@ export const login = (email, password) => {
       });
   });
 };
-76
+
+export const logout = () => {
+  const token = Cookie.get("token");
+
+  if (token) {
+    Cookie.remove("token");
+    Router.push("/");
+    Router.reload(window.location.pathname);
+  }
+}
