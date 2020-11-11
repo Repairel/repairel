@@ -8,7 +8,7 @@ import { register } from "../lib/auth"
 import { useRouter } from "next/router";
 
 export default function Register() {
-  const [data, setData] = useState({ email: "", password: "", forename: "", surname: "" });
+  const [data, setData] = useState({ email: "", password: "", forename: "", surname: "" , phone: ""});
   const [error, setError] = useState({});
   const router = useRouter();
   const appContext = useContext(AppContext);
@@ -67,6 +67,18 @@ export default function Register() {
             </Column>
           </Row>
           <Row>
+            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Phone Number</StyledFormLabel></Column>
+            <Column style={{ textAlign: 'left' }}>
+              <StyledInput
+                required
+                onChange={(e) => setData({ ...data, phone: e.target.value })}
+                value={data.phone}
+                type="text"
+                name="phone"
+              />
+            </Column>
+          </Row>
+          <Row>
             <Column style={{ textAlign: 'right' }}><StyledFormLabel>Email Address *</StyledFormLabel></Column>
             <Column style={{ textAlign: 'left' }}>
               <StyledInput
@@ -90,9 +102,10 @@ export default function Register() {
               />
             </Column>
           </Row>
+          <p>* required fields</p>
           <StyledButton
             onClick={() => {
-              register(data.forename, data.surname, data.email, data.password)
+              register(data.forename, data.surname, data.email, data.password, data.phone)
               .then((res) => {
                 console.log(res);
                 appContext.setUser(res.data.user);
