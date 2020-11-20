@@ -18,14 +18,24 @@ const Menu = ({ open, setOpen }) => {
   let menu = ['login', 'register', 'shop', 'about', 'faq'];
   let welcomeMessage = '';
   if (user) {
-    menu = ['shop', 'about', 'faq'];
+    menu = ['edit details', 'shop', 'about', 'faq'];
     welcomeMessage = `Hey ${user.first_name}!`;
+  }
+
+  function linkDecider(item) {
+    if (item === 'shop') {
+      return `/`;
+    } else if (item === 'edit details') {
+      return `/edit`;
+    } else {
+      return `/${item}`
+    }
   }
 
   const menuItems = menu.map((item, index) => {
     return (
       <MenuListItem key={index}>
-        <Link key={index} href={item === 'shop' ? '/' : `/${item}`}>
+        <Link key={index} href={linkDecider(item)}>
           <StyledLink onClick={() => handleLinkClick()}>{item}</StyledLink>
         </Link>
       </MenuListItem>
