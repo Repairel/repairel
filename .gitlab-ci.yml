@@ -3,9 +3,6 @@ image: node:latest
 before_script:
     - yum update -qy
     - yum install -y ruby-dev
-    - yum remove git*
-    - yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
-    - yum install git
     - gem install dpl
 
 stages:
@@ -16,8 +13,6 @@ staging:
     type: deploy
     stage: staging
     image: ruby:latest
-    tags:
-        - shell
     script:
         - cd repairel-be
         - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
@@ -28,8 +23,6 @@ production:
     type: deploy
     stage: production
     image: ruby:latest
-    tags:
-        - shell
     script:
         - cd repairel-be
         - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
