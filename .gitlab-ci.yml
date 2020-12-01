@@ -13,7 +13,8 @@ staging:
     type: deploy
     stage: staging
     image: ruby:latest
-    tags: shell
+    tags:
+        - shell
     script:
         - cd repairel-be
         - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
@@ -24,7 +25,8 @@ production:
     type: deploy
     stage: production
     image: ruby:latest
-    tags: shell
+    tags:
+        - shell
     script:
         - cd repairel-be
         - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
