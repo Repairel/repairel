@@ -50,3 +50,11 @@ export const logout = () => {
     Router.push("/");
   }
 }
+
+
+export const edit_details = (items) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .put(`${process.env.NEXT_PUBLIC_API_URL}/users/`)
+  });
+}

@@ -5,8 +5,7 @@ module.exports = {
       secretAccessKey: process.env.AWSSecretKey,
       region: "eu-west-2",
       params: {
-        Bucket: "repairel-images",
+        Bucket: process.env.AWSBucketName,
       },
     },
 };
-
