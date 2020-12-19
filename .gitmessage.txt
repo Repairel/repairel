@@ -1,0 +1,5 @@
+# Subject line (try to keep under 50 characters)
+
+# Multi-line description of commit
+
+# Tickets closed eg. Closes: #123 #45
