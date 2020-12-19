@@ -65,6 +65,13 @@ const Product = ({ product, url }) => {
     });
   };
 
+  function hasStock() {
+    if (product.stock) {
+      return <span>{product.stock} currently in stock</span>
+    }
+    return <span>Fill in this form and be the first to know when we have stock <a href="#">here</a></span>;
+  }
+
   return (
     <>
       <Slider images={product.images} />
@@ -97,9 +104,11 @@ const Product = ({ product, url }) => {
             >
               Add to cart
             </AddToCart>
+
           ) : (
             <SoldOut>Sold Out</SoldOut>
           )}
+          {hasStock()}
           <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
           <Wishlist>Add to wishlist</Wishlist>
           </a>
