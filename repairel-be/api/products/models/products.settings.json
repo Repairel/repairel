@@ -46,15 +46,17 @@
       "min": 3,
       "max": 12
     },
-    "stock": {
-      "type": "boolean",
-      "required": true
-    },
     "ethics_and_sustainability": {
       "type": "component",
       "repeatable": false,
       "component": "ratings.ethics-and-sustainability",
       "required": true
+    },
+    "stock": {
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     }
   }
 }
