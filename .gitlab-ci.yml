@@ -1,30 +1,68 @@
 image: node:latest
 
+# script to be run before each job
 before_script:
-    - yum update -qy
-    - yum install -y ruby-dev
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
     - gem install dpl
 
+# stages in the pipeline
 stages:
-    - staging
-    - production
+    # Testing
+    - Testing
+    # Development Deployment
+    - Deploy-Development
+    # Production Deployment
+    - Deploy-Production
 
-staging:
-    type: deploy
-    stage: staging
+
+# testing will run every time there is a change to the codebase (ie a push to the repo)
+backend-testing:
+    stage: Testing
+    script:
+        - echo 'testing script for the backend to go here'
+
+frontend-testing:
+    stage: Testing
+    script:
+        - echo 'testing script for the frontend to go here'
+
+
+# deploys the code to the development servers
+backend-dev-deploy:
+    stage: Deploy-Development
     image: ruby:latest
     script:
         - cd repairel-be
-        - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+        - dpl --provider=heroku --app=$HEROKU_BE_DEV --api-key=$HEROKU_API_KEY
     only:
-        - staging
+        - develop
 
-production:
-    type: deploy
-    stage: production
+frontend-dev-deploy:
+    stage: Deploy-Development
+    image: ruby:latest
+    script:
+        - cd repairel-fe
+        - dpl --provider=heroku --app=$HEROKU_FE_DEV --api-key=$HEROKU_API_KEY
+    only:
+        - develop
+
+
+# will basically be identical to the dev jobs but will deploy to the production servers
+backend-prod-deploy:
+    stage: Deploy-Production
     image: ruby:latest
     script:
         - cd repairel-be
-        - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
+        - dpl --provider=heroku --app=$HEROKU_BE_PROD --api-key=$HEROKU_API_KEY
+    only:
+        - master
+
+frontend-prod-deploy:
+    stage: Deploy-Production
+    image: ruby:latest
+    script:
+        - cd repairel-fe
+        - dpl --provider=heroku --app=$HEROKU_FE_PROD --api-key=$HEROKU_API_KEY
     only:
         - master
