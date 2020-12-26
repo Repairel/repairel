@@ -1,68 +1,44 @@
 # Repairel
-
 An MVP for Repairel CIC. An e-commerce site dedicated to selling refurbished shoes, with a focus on the ethics and sustainability of the products.
 
-See it [live](https://repairel-fe.vercel.app/).
-
+## Live Demo
+Development website (most up to date): [here](https://dev-repairel-fe.herokuapp.com/)
+Production website (most stable): [here](https://repairel-fe.herokuapp.com/)
 
 ## Installation
+- Clone the repository using `git clone https://stgit.dcs.gla.ac.uk/tp3-2020-SE04/se04-main.git`
+- Navigate to the project folder using `cd`
+- Setup the backend:
+  * Go to the backend folder `cd repairel-be`
+  * Install the dependencies `npm i`
+  * Create a file called `.env` using `touch .env` (\*)
+    - Inside of file specify these variables:
+      * `AWSAccessKeyId={keyid}`
+      * `AWSSecretKey={secret key}`
+      * `AWSBucketName={bucket name}`
+  * Run the server `npm run develop`
+  * (\*) **Note**: [AWS S3](https://aws.amazon.com/s3/) bucket is required for static content delivery (media)
+- Setup the frontend:
+  * From project folder go to front end folder `cd repairel-fe`
+  * Install dependencies `npm i`
+  * Create a file called `.env` using `touch .env`
+    - Inside of file specify the API URL: `NEXT_PUBLIC_API_URL={url}`
+  * Run the server `npm run dev`
 
-- Navigate to [repo](https://github.com/Repairel/repairel-fe)
-- Clone it with `git clone https://github.com/Repairel/repairel-fe.git` and `cd` into the project folder
-- `npm i` to install all dependencies
-- use `npm run dev` to start the server in the browser.
+## Technology Used
+- [NextJS](https://nextjs.org/) frontend deployed to [Heroku](https://heroku.com/)
+- [Strapi](https://strapi.io/) CMS backend deployed to [Heroku](https://heroku.com/)
+- [Snipcart](https://snipcart.com/) integration for checkout (_subject to change_)
 
-## Tech used
+## Current Developer Team (**SE04**)
+| Name     | Student #     | Email    | Customer Meeting Role    |   Scrum Roles     
+| :------------- | :----------: | -----------: |-----------: | -----------: |
+|  Declan Davidson | 2038796   | 2038796D@student.gla.ac.uk    | Contact    | Product Owner |
+|  Luke Holland  | 2342915   | 2342915H@student.gla.ac.uk    |Lead Demonstrator    | Developer |
+|  Wafa Khan Tareen | 2366702   | 2366702T@student.gla.ac.uk    |Checker    | Quality Assurance |
+|  Fraser Dempster  | 2331229   | 2331229D@student.gla.ac.uk    |Meeting Chair    | Scrum Master |
+|  Ewan Hempsey  | 2038796   | 2038796D@student.gla.ac.uk    |Note Taker    | Toolsmith |
+|  Ivo de Vero  | 2310555   | 2310555D@student.gla.ac.uk   |Team Coach    |               |\
 
-- NextJS frontend deplyed to Vercel
-- Strapi CMS backend deployed to AWS
-- Snipcart integration for checkout
-
-## Admin
-
-Project duration: 21st September to 15th October 2020.
-
-- Design week: ideation to prototyping.
-- Two 6-day build sprints:
-  - First focused on building the database and skeleton of the platform.
-  - Second focused on the intricate functionalities - filter and compare - and overall styling.
-
-## Design process
-
-- Dicovery and definition workshops on [Miro board](https://www.notion.so/Design-sprint-7a365225caeb4a8582eef7e07ce6eb50#7efaade41cbb4e8e83cc69cd9671af60).
-- Prototype on Figma available [here](https://www.figma.com/file/aq6IV6GlsPQyv7F0VdyMen/Repairel?node-id=0%3A1).
-
-### User stories
-
-**Acceptance criteria**
-
-- [x] As a user I can filter products
-- [x] As a user I can compare products
-- [x] As a user I can identify how ethical a product is
-- [x] As a user I can add shoes to the checkout basket
-- [x] As a user I can find out information about Repairel and it's policies.
-
-**Nice-to-haves: user features**
-
-- [ ] Accessibility
-- [ ] As a user I can learn how to engage with the community
-- [ ] As a user I can know what impact my purchase is having
-- [ ] Marketplace
-- [x] As a user I can add products to a wishlist
-
-## Future development
-
-- Recongifuration of the filter and how it relates to the infinite scroll as this is currently dysfunctional.
-- The wishlist feature could be more automated - post to database as opposed to an email.
-
-## Developers
-
-- Campbel Docherty [/CampbellDocherty](https://github.com/CampbellDocherty)
-- Giovanna Aveiro [/glrta](https://github.com/glrta)
-- With thanks to Oliver Phillips [/oliverjam](https://github.com/oliverjam)
-
-Any issues or bugs, please contact the developers.
-
----
-
-Hosted on GitHub, deployed to Vercel.
+## Previous Developers
+Project has been forked on behalf of the client Repairel CIC from a [Code for Good](https://www.foundersandcoders.com/tech-for-better/) developer team. Original codebase completed by Code for Good developers is [here](https://github.com/Repairel).
