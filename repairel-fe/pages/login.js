@@ -2,7 +2,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
 import AppContext from "../context/AppContext";
-import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel } from '../styles/global';
+import { StyledTitle,StyledLink, Row, Column, StyledButton, StyledInput, StyledFormLabel } from '../styles/global';
 import React, { useState, useEffect, useContext } from "react";
 import { login } from "../lib/auth"
 import { useRouter } from "next/router";
@@ -42,31 +42,38 @@ export default function Login() {
                 </div>
               );
             })}
-          <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Email Address *</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
+			
+			<Row style={{ textAlign: 'center', paddingTop:'5em' }}>
+			
+			<Column style={{ marginLeft: -90 }}><StyledFormLabel  >Email Address <b>*</b></StyledFormLabel></Column>
+			
+			</Row>
+			<Row>
+			<StyledInput
                 required
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 value={data.email}
                 type="email"
                 name="email"
               />
-            </Column>
-          </Row>
-          <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Password *</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
+			</Row>
+			<Row>
+			<StyledFormLabel style={{ marginLeft: -135 }}>Password <b>*</b></StyledFormLabel>
+			</Row>
+			<Row >
+			<StyledInput
                 required
                 onChange={(e) => setData({ ...data, password: e.target.value })}
                 value={data.password}
                 type="password"
                 name="password"
+				
               />
-            </Column>
-          </Row>
-          <StyledButton
+			</Row>
+			
+			
+			
+          <StyledButton 
             onClick={() => {
               login(data.email, data.password)
               .then((res) => {
@@ -78,8 +85,11 @@ export default function Login() {
                 setError(error.response.data);
               });
             }}>
-            Click here to Login!
+            LOGIN
           </StyledButton>
+		  <div>
+		   Don't have an account?  <StyledLink><a  href='/register'>Register </a></StyledLink>
+		  </div>
         </div>
       </main>
     </div>
