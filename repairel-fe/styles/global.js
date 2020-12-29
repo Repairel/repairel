@@ -1,5 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 
+
+
+
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -39,7 +42,7 @@ const StyledLink = styled.a`
 
 const StyledTitle = styled.h2`
   color: black;
-  text-transform: uppercase;
+  text-transform: sentence;
   padding-bottom: 0;
   margin-bottom: 0;
 `;
@@ -47,30 +50,39 @@ const StyledTitle = styled.h2`
 const Row = styled.div`
   display: flex;
   padding-bottom: 1em;
+	justify-content: center;
+  
 `;
 
 const Column = styled.div`
   flex: 50%;
   padding: 0 0.5em 0 0.5em;
+  justify-content: center;
 `;
 
 const StyledButton = styled.button`
   padding: 0.5em;
   font-size: 1em;
-  border-radius: 0.5em;
+  border-radius: 0.0em;
   background-color: white;
-  border: 1px solid grey;
+  border: 2px solid grey;
+  
 `;
 
 const StyledInput = styled.input`
   font-size: 1.25em;
-  border-radius: 0.25em
+  border-radius: 0em
   background-color: white;
-  border: 1px solid grey;
+  border: 0px solid grey;
+  border-bottom: 2px solid grey;
 `;
 
 const StyledFormLabel = styled.span`
   font-size: 1.25em;
+  marginLeft: -125;
+  
+  
+ 
 `;
 
 export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel };

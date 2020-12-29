@@ -2,7 +2,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
 import AppContext from "../context/AppContext";
-import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel } from '../styles/global';
+import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel,StyledSection,StyledLink } from '../styles/global';
 import React, { useState, useEffect, useContext } from "react";
 import { register } from "../lib/auth"
 import { useRouter } from "next/router";
@@ -24,7 +24,7 @@ export default function Register() {
       </Head>
       <main>
         <Header />
-        <div style={{ textAlign: 'center', padding: '0 5em 0 5em'}}>
+        <div style={{ textAlign: 'left', padding: '0 5em 0 5em'}}>
           <StyledTitle>Registration</StyledTitle>
           <hr />
 
@@ -42,67 +42,75 @@ export default function Register() {
                 </div>
               );
             })}
-          <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>First Name *</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
+			<center>
+			
+			
+			<Row style={{ textAlign: 'center', paddingTop:'5em' }}>
+			
+			<Column style={{ marginLeft: -125 }}><StyledFormLabel  >First Name <b>*</b></StyledFormLabel></Column>
+			
+			</Row>
+			<Row>
+			<StyledInput
                 required
                 onChange={(e) => setData({ ...data, forename: e.target.value })}
                 value={data.forename}
                 type="text"
                 name="forename"
               />
-            </Column>
-          </Row>
-          <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Second Name *</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
+			</Row>
+			<Row>
+			<StyledFormLabel style={{ marginLeft: -145 }}>Surname <b>*</b></StyledFormLabel>
+			</Row>
+			<Row>
+			<StyledInput
                 required
                 onChange={(e) => setData({ ...data, surname: e.target.value })}
                 value={data.surname}
                 type="text"
-                name="surname"
-              />
-            </Column>
-          </Row>
-          <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Phone Number</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
+                name="surname" 
+           />
+			</Row>
+			<Row>
+			<StyledFormLabel style={{ marginLeft: -105 }}>Phone Number </StyledFormLabel>
+			</Row>
+			<Row>
+			<StyledInput
                 required
                 onChange={(e) => setData({ ...data, phone: e.target.value })}
                 value={data.phone}
                 type="text"
                 name="phone"
               />
-            </Column>
-          </Row>
-          <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Email Address *</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
+			</Row>
+			<Row>
+			<StyledFormLabel style={{ marginLeft: -99 }}>Email Address <b>*</b></StyledFormLabel>
+			</Row>
+			<Row>
+			<StyledInput
                 required
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 value={data.email}
                 type="email"
                 name="email"
               />
-            </Column>
-          </Row>
-          <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Password *</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
-                required
-                onChange={(e) => setData({ ...data, password: e.target.value })}
-                value={data.password}
-                type="password"
-                name="password"
-              />
-            </Column>
-          </Row>
+			</Row>
+			<Row>
+			<StyledFormLabel style={{ marginLeft: -139 }}>Password <b>*</b></StyledFormLabel>
+			</Row>
+		    <Row>
+			<StyledInput
+				required
+				onChange={(e) => setData({ ...data, password: e.target.value })}
+				value={data.password}
+				type="password"
+				name="password"
+			  />
+		    </Row>
+			
+		  
           <p>* required fields</p>
+		  
           <StyledButton
             onClick={() => {
               register(data.forename, data.surname, data.email, data.password, data.phone)
@@ -115,8 +123,12 @@ export default function Register() {
                 setError(error.response.data);
               });
             }}>
-            Click here to register!
+              REGISTER  
           </StyledButton>
+		  <div>
+		   Already have an account?  <StyledLink><a  href='/login'>Log In </a></StyledLink>
+		  </div>
+		  </center>
         </div>
       </main>
     </div>
