@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "clean": "rm -rf node_modules", 
     "start": "next start -p $PORT"
   },
   "dependencies": {
