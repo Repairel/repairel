@@ -2,8 +2,8 @@
 An MVP for Repairel CIC. An e-commerce site dedicated to selling refurbished shoes, with a focus on the ethics and sustainability of the products.
 
 ## Live Demo
-Development website (most up to date): [here](https://dev-repairel-fe.herokuapp.com/)
-Production website (most stable): [here](https://repairel-fe.herokuapp.com/)
+* Development website (most up to date, based on develop branch): [here](https://dev-repairel-fe.herokuapp.com/)
+* Production website (most stable, based on master branch): [here](https://repairel-fe.herokuapp.com/)
 
 ## Installation
 - Clone the repository using `git clone https://stgit.dcs.gla.ac.uk/tp3-2020-SE04/se04-main.git`
@@ -23,11 +23,14 @@ Production website (most stable): [here](https://repairel-fe.herokuapp.com/)
   * Install dependencies `npm i`
   * Create a file called `.env` using `touch .env`
     - Inside of file specify the API URL: `NEXT_PUBLIC_API_URL={url}`
+    - `{url}` is the url of your API in our case for develop branch it is `https://dev-repairel.herokuapp.com/`
+    - `{url}` will be `http://localhost:1337` if developing a new feature which requires updates to backend
   * Run the server `npm run dev`
 
 ## Technology Used
 - [NextJS](https://nextjs.org/) frontend deployed to [Heroku](https://heroku.com/)
 - [Strapi](https://strapi.io/) CMS backend deployed to [Heroku](https://heroku.com/)
+  * [AWS S3](https://aws.amazon.com/s3/) bucket to host static content for [Strapi](https://strapi.io/)
 - [Snipcart](https://snipcart.com/) integration for checkout (_subject to change_)
 
 ## Current Developer Team (**SE04**)
