@@ -54,10 +54,12 @@
       "configurable": false
     },
     "first_name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "second_name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "phone_number": {
       "type": "string"
