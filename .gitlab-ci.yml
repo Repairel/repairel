@@ -2,14 +2,15 @@ image: node:latest
 
 # script to be run before each job
 before_script:
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
+    - apt-get -qq update -qy
+    - apt-get -qq install -y ruby-dev
+    - gem install -q dpl
+    - apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
 
 # stages in the pipeline
 stages:
     # Testing
-    - Testing
+    - Integration-Testing
     # Development Deployment
     - Deploy-Development
     # Production Deployment
@@ -17,15 +18,15 @@ stages:
 
 
 # testing will run every time there is a change to the codebase (ie a push to the repo)
-backend-testing:
-    stage: Testing
+cypress-testing:
+    stage: Integration-Testing
+    image: cypress/base:10
     script:
-        - echo 'testing script for the backend to go here'
-
-frontend-testing:
-    stage: Testing
-    script:
-        - echo 'testing script for the frontend to go here'
+        - cd repairel-fe
+        - npm --quiet i
+        - npm install cypress --save-dev
+        - export NEXT_PUBLIC_API_URL=https://dev-repairel.herokuapp.com
+        - npm run dev & ./node_modules/.bin/cypress run --quiet
 
 
 # deploys the code to the development servers
