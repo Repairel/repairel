@@ -1,0 +1,69 @@
+image: node:latest
+
+# script to be run before each job
+before_script:
+    - apt-get -qq update -qy
+    - apt-get -qq install -y ruby-dev
+    - gem install -q dpl
+    - apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+
+# stages in the pipeline
+stages:
+    # Testing
+    - Integration-Testing
+    # Development Deployment
+    - Deploy-Development
+    # Production Deployment
+    - Deploy-Production
+
+
+# testing will run every time there is a change to the codebase (ie a push to the repo)
+cypress-testing:
+    stage: Integration-Testing
+    image: cypress/base:10
+    script:
+        - cd repairel-fe
+        - npm --quiet i
+        - npm install cypress --save-dev
+        - export NEXT_PUBLIC_API_URL=https://dev-repairel.herokuapp.com
+        - npm run dev & ./node_modules/.bin/cypress run --quiet
+
+
+# deploys the code to the development servers
+backend-dev-deploy:
+    stage: Deploy-Development
+    image: ruby:latest
+    script:
+        - cd repairel-be
+        - dpl --provider=heroku --app=$HEROKU_BE_DEV --api-key=$HEROKU_API_KEY
+    only:
+        - develop
+
+frontend-dev-deploy:
+    stage: Deploy-Development
+    image: ruby:latest
+    script:
+        - cd repairel-fe
+        - dpl --provider=heroku --app=$HEROKU_FE_DEV --api-key=$HEROKU_API_KEY
+    only:
+        - develop
+
+
+# will basically be identical to the dev jobs but will deploy to the production servers
+backend-prod-deploy:
+    stage: Deploy-Production
+    image: ruby:latest
+    script:
+        - cd repairel-be
+        - dpl --provider=heroku --app=$HEROKU_BE_PROD --api-key=$HEROKU_API_KEY
+    only:
+        - master
+
+frontend-prod-deploy:
+    stage: Deploy-Production
+    image: ruby:latest
+    script:
+        - cd repairel-fe
+        - dpl --provider=heroku --app=$HEROKU_FE_PROD --api-key=$HEROKU_API_KEY
+    only:
+        - master

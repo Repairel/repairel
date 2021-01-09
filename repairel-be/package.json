@@ -7,14 +7,16 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
+    "clean": "rm -rf node_modules", 
     "strapi": "strapi"
   },
   "devDependencies": {},
   "dependencies": {
+    "axios": "^0.21.0",
     "dotenv": "^8.2.0",
     "knex": "<0.20.0",
-    "pg": "^8.3.3",
-    "sqlite3": "latest",
+    "pg": "^8.5.0",
+    "sqlite3": "^5.0.0",
     "strapi": "3.1.6",
     "strapi-admin": "3.1.6",
     "strapi-connector-bookshelf": "3.1.6",

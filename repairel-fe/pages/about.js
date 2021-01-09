@@ -30,7 +30,7 @@ const About = ({ content }) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://35.178.141.40:1337/abouts`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/abouts`);
   const json = await res.json();
   return { props: { content: json } };
 }
