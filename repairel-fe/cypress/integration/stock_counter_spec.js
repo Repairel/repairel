@@ -7,7 +7,9 @@ describe ('The Stock Counter',() => {
         cy.visit('/product/1')
         cy.get('button').then(($btn) => {
             if ($btn.hasClass('active')){
-                cy.contains('currently in stock')
+                if($btn.contains('ADD TO CART')){
+                    cy.contains('currently in stock')
+                }
             }
         })
     }) 
@@ -15,8 +17,14 @@ describe ('The Stock Counter',() => {
     it ('If the product is not in stock then the text asking the user to submit a product request is shown',() => {
         cy.visit('/product/1')
         cy.get('button').then(($btn) => {
-            if (!$btn.hasClass('active')){
-                cy.contains('Fill in this form and be the first to know when we have stock here')            }
+            if($btn.hasClass('active')){
+                if($btn.contains('ADD TO CART')){
+                    cy.contains('currently in stock')
+                }
+                else{
+                    cy.contains('Fill in this form and be the first to know when we have stock here')  
+                }
+            }     
         })
     })
 })
