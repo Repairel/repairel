@@ -9,16 +9,3 @@ describe ('The Edit Details Page',() => {
         cy.url().should('include','/login')
     })
 })
-
-describe ('The Edit Form',() => {
-    //check form displayed correctly
-    it('All text labels shown', () => {
-        cy.visit('/edit')
-        cy.contains('First Name')
-        cy.contains('Second Name')
-        cy.contains('Phone Number')
-        cy.contains('Email Address')
-        cy.contains('Old Password *')
-        cy.contains('New Password')
-    })
-})
