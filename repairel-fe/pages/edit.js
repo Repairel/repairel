@@ -11,18 +11,17 @@ import Cookie from "js-cookie";
 export default function Edit() {
   const appContext = useContext(AppContext);
   const { user, setUser } = useContext(AppContext);
-  const [data, setData] = useState({ forename: (user) ? user.first_name : "", surname: (user) ? user.second_name : "",  phone: (user) ? user.phone_number : "", email: (user) ? user.email : "", old_password: "", new_password: "" });
+  const [data, setData] = useState({ first_name: (user) ? user.first_name : "", second_name: (user) ? user.second_name : "",
+    phone_number: (user) ? user.phone_number : "", email: (user) ? user.email : "" });
   const [error, setError] = useState({});
   const router = useRouter();
 
-  // checks if the site is being redendered client side
-  // if it is check if the user is logged in, if not then redirect to login page
+  // once the user has finished with the form we send them
+  // back to the index page
   if (process.browser && !appContext.isAuthenticated) {
-    router.push("/login");
+    console.log("hey");
+    router.push("/", "/?redirect=edit");
   }
-
-  // could return a 404 to avoid errors when the form is
-  // rendered server side
 
   return (
     <div>
@@ -54,10 +53,10 @@ export default function Edit() {
             <Column style={{ textAlign: 'left' }}>
               <StyledInput
                 required
-                onChange={(e) => setData({ ...data, forename: e.target.value })}
-                value={data.forename}
+                onChange={(e) => setData({ ...data, first_name: e.target.value })}
+                value={data.first_name}
                 type="text"
-                name="forename"
+                name="first_name"
               />
             </Column>
           </Row>
@@ -66,10 +65,10 @@ export default function Edit() {
             <Column style={{ textAlign: 'left' }}>
               <StyledInput
                 required
-                onChange={(e) => setData({ ...data, surname: e.target.value })}
-                value={data.surname}
+                onChange={(e) => setData({ ...data, second_name: e.target.value })}
+                value={data.second_name}
                 type="text"
-                name="surname"
+                name="second_name"
               />
             </Column>
           </Row>
@@ -78,10 +77,10 @@ export default function Edit() {
             <Column style={{ textAlign: 'left' }}>
               <StyledInput
                 required
-                onChange={(e) => setData({ ...data, phone: e.target.value })}
-                value={data.phone}
+                onChange={(e) => setData({ ...data, phone_number: e.target.value })}
+                value={data.phone_number}
                 type="text"
-                name="phone"
+                name="phone_number"
               />
             </Column>
           </Row>
@@ -97,34 +96,9 @@ export default function Edit() {
               />
             </Column>
           </Row>
-          <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Old Password *</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
-                required
-                onChange={(e) => setData({ ...data, old_password: e.target.value })}
-                value={data.old_password}
-                type="password"
-                name="old_password"
-              />
-            </Column>
-          </Row>
-          <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>New Password</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
-                required
-                onChange={(e) => setData({ ...data, new_password: e.target.value })}
-                value={data.new_password}
-                type="password"
-                name="new_password"
-              />
-            </Column>
-          </Row>
-          <p>* required fields</p>
           <StyledButton
             onClick={() => {
-              edit_details(data)
+              edit_details(data, user)
               .then((res) => {
                 console.log(res);
                 appContext.setUser(res.data.user);

@@ -3,6 +3,7 @@ import Router from "next/router";
 import Cookie from "js-cookie";
 import axios from "axios";
 
+
 export const register = (forename, surname, email, password, phone) => {
   return new Promise((resolve, reject) => {
     axios
@@ -52,9 +53,17 @@ export const logout = () => {
 }
 
 
-export const edit_details = (items) => {
+export const edit_details = (items, user) => {
   return new Promise((resolve, reject) => {
     axios
-      .put(`${process.env.NEXT_PUBLIC_API_URL}/users/`)
+      .put(`${process.env.NEXT_PUBLIC_API_URL}/users/${user.id}`, items, { headers: { Authorization: `Bearer ${Cookie.get("token")}` } })
+      .then((res) => {
+        console.log(res)
+        resolve(res)
+      })
+      .catch((error) => {
+        console.log(error)
+        reject(error)
+      })
   });
 }
