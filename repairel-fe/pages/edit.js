@@ -19,7 +19,6 @@ export default function Edit() {
   // once the user has finished with the form we send them
   // back to the index page
   if (process.browser && !appContext.isAuthenticated) {
-    console.log("hey");
     router.push("/", "/?redirect=edit");
   }
 

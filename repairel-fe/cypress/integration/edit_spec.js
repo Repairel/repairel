@@ -6,6 +6,6 @@ describe ('The Edit Details Page',() => {
 
     it ('Redirected to login page if user not logged in', () => {
         cy.visit('/edit')
-        cy.url().should('include','/login')
+        cy.url().should('include','/')
     })
 })
