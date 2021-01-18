@@ -2,20 +2,31 @@
 
 ## User Story
 
+| User Story(s) |
+| ------ |
+|  | 
+
 ## Time Estimation
+
+| Effort (in hours) |
+| ------ |
+|  | 
 
 ## Priority 
 
+| Priority | ------ | ------ |
+| ------ | ------ | ------ |
+| Low | Medium | High |
+|     |        |      |
+
 ## Acceptance Criteria
-
-## Sub-Tasks
-
 
 | Acceptance Criteria |
 | ------ |
 |  | 
 |  |
 
+## Tasks
 
 | Tasks | Completed |
 | ------ | ------- |
