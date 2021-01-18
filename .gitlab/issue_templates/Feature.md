@@ -14,7 +14,7 @@
 
 ## Priority 
 
-| Priority | ------ | ------ |
+| Priority |  |  |
 | ------ | ------ | ------ |
 | Low | Medium | High |
 |     |        |      |
