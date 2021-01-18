@@ -10,7 +10,7 @@ import Manufacturing from '../../public/manufacturing.svg';
 import Assembly from '../../public/assembly.svg';
 import Use from '../../public/use.svg';
 import Disposal from '../../public/disposal.svg';
-
+import Link from 'next/link'
 
 import {
   AddToCart,
@@ -65,6 +65,18 @@ const Product = ({ product, url }) => {
     });
   };
 
+  function referToForm() {
+    // Function to send product type, .. into the local storage so it 
+    // can be then transferred to the from on product request page
+    const name = document.getElementById(product.name).value;
+    // to set into local storage
+    /* localStorage.setItem("NAME", name);
+    localStorage.setItem("SURNAME", surname); */
+    sessionStorage.setItem("TYPE", name);
+    return;
+  };
+
+
   function hasStock() {
     if (product.stock) {
       return <span>{product.stock} currently in stock</span>
@@ -109,9 +121,10 @@ const Product = ({ product, url }) => {
             <SoldOut>Sold Out</SoldOut>
           )}
           {hasStock()}
-          <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
-          <Wishlist>Add to wishlist</Wishlist>
-          </a>
+          { // Option to request product only appears if the product is out of stock
+          product.stock ? ('') : (
+          <Link href="/wishlist"><Wishlist type= "submit" onclick="referToForm">Request product</Wishlist></Link>
+          )}
         </ButtonContainer>
         <ProductHeading>Description</ProductHeading>
         <p className='product__description'>{product.description}</p>

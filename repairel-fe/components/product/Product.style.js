@@ -86,6 +86,38 @@ const Wishlist = styled.button`
   }
 `;
 
+const ProductRequest = styled.button`
+  width: 4rem;
+  max-width: 100%;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  height: auto;
+  width: auto;
+  margin: 0.5rem;
+  margin-top: 30px;
+  padding: 0.6em 3em;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: 1px;
+  vertical-align: top;
+  border-radius: 0;
+  cursor: pointer;
+  transition: color 150ms, background-color 150ms;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  &:hover {
+    color: white;
+    background-color: black;
+  }
+  position: relative;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+`;
+
+
 const ButtonContainer = styled.div`
   margin-bottom: 2.5rem;
   display: flex;
@@ -154,5 +186,7 @@ export {
   ProductSize,
   ProductHeading,
   Wishlist,
-  ButtonContainer
+  ButtonContainer,
+  ProductRequest
+
 };
