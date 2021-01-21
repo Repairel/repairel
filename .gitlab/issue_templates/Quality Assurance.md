@@ -2,8 +2,6 @@
 
 ## Reason For Testing
 
-## Issue Related to Tests
-
 ## Tests To Be Written
 | Tests | Completed |
 | ------ | ------- |
@@ -19,8 +17,3 @@
 | ------ | ------ | ------ |
 | Low | Medium | High |
 |     |        |      |
-
-## Tests To Be Written
-| Tests | Completed |
-| ------ | ------- |
-|  |  |
