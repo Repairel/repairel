@@ -41,13 +41,7 @@ An MVP for Repairel CIC. An e-commerce site dedicated to selling refurbished sho
 | Jakob Oliver Reitzel | 2403648R@student.gla.ac.uk | SCRUM Master, Developer, Librarian |
 | Jack McKechnie       | 2319658M@student.gla.ac.uk | Chief Architect, Developer, Quality Assurance|
 
-### (**CSP5**)
-| Name                 | Contact Details            |Role                           |
-|----------------------|----------------------------|-------------------------------|
-| Barbara Bergant      | 2333274B@student.gla.ac.uk | Team Manager, Developer, UX Developer|
-| Gavin Lafferty       | 2386209L@student.gla.ac.uk | Product owner, Developer |
-| Jakob Oliver Reitzel | 2403648R@student.gla.ac.uk | SCRUM Master, Developer, Librarian |
-| Jack McKechnie       | 2319658M@student.gla.ac.uk | Chief Architect, Developer, Quality Assurance|
+
 
 ## Previous Developers
 Project has been forked on behalf of the client Repairel CIC from a [Code for Good](https://www.foundersandcoders.com/tech-for-better/) developer team. Original codebase completed by Code for Good developers is [here](https://github.com/Repairel).
