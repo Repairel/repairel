@@ -57,7 +57,7 @@ backend-prod-deploy:
         - cd repairel-be
         - dpl --provider=heroku --app=$HEROKU_BE_PROD --api-key=$HEROKU_API_KEY
     only:
-        - master
+        - master@tp3-2020-SE04/se04-main
 
 frontend-prod-deploy:
     stage: Deploy-Production
@@ -66,4 +66,4 @@ frontend-prod-deploy:
         - cd repairel-fe
         - dpl --provider=heroku --app=$HEROKU_FE_PROD --api-key=$HEROKU_API_KEY
     only:
-        - master
+        - master@tp3-2020-SE04/se04-main
