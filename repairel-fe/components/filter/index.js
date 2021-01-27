@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React from "react";
-
 import {
   FilterDiv,
   FilterWrapper,
@@ -11,17 +10,32 @@ import {
   ClearAll,
 } from "./Filter.style";
 
-const Filter = ({ list, setFilteredList }) => {
-  const [filters, setFilters] = React.useState({
-    price: "",
-    condition: "",
-    size: [],
-  });
-  const [noFilter, setNoFilter] = React.useState(false);
+const Filter = ({ content, list, setFilteredList }) => {
+    const [filters, setFilters] = React.useState({
+        price: "",
+        condition: "",
+        size: [],
+        brand: [],
 
-  const sizes = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  const condition = ["New", "Refurbished"];
-  const price = ["High to Low", "Low to High"];
+    });
+    const [noFilter, setNoFilter] = React.useState(false);
+    const sizes = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    const condition = ["New", "Refurbished"];
+    const price = ["High to Low", "Low to High"];
+    let brands2 = [];
+    let brands3 = [];
+    let b = []; 
+    const prodList = list;
+    for (b in prodList) {
+        if (prodList[b].brand != null) {
+            if (prodList[b].brand.Show_Filter_Option) {
+                brands2.push(prodList[b].brand.Brand_name);
+                brands3.push(prodList[b].brand.Brand_name.replace(/\s+/g, ''));
+            }
+        }
+    }
+    const brands = [...new Set(brands2.map(x => x))];
+    
 
   // if there is sessionStorage with filters the correct checkboxes are checked upon filter open
   React.useEffect(() => {
@@ -32,16 +46,19 @@ const Filter = ({ list, setFilteredList }) => {
       );
       let price = storedFilters[0];
       let condition = storedFilters[1];
-      let sizes = storedFilters[2];
+        let sizes = storedFilters[2];
+        let brands = storedFilters[3];
       Array.from(checkboxes, (checkbox) => {
-        let id = checkbox.id.split(" ").join("").toLowerCase();
+          let id = checkbox.id.split(" ").join("").toLowerCase();
         if (id === price) {
           checkbox.checked = true;
         } else if (id === condition) {
           checkbox.checked = true;
         } else if (sizes.includes(id)) {
-          checkbox.checked = true;
-        }
+            checkbox.checked = true;
+        } else if (brands.includes(id)) {
+              checkbox.checked = true;
+        } 
       });
     }
   }, []);
@@ -52,7 +69,7 @@ const Filter = ({ list, setFilteredList }) => {
   };
 
   const handleCheck = (event) => {
-    let item = event.target.id.toLowerCase().split(" ").join("");
+      let item = event.target.id.toLowerCase().split(" ").join("");
     if (item.includes("high")) {
       sessionStorage.setItem(
         "filters",
@@ -65,28 +82,42 @@ const Filter = ({ list, setFilteredList }) => {
         JSON.stringify({ ...filters, condition: item })
       );
       setFilters({ ...filters, condition: item });
+    }
+
+    else if (brands3.includes(item)) {
+        sessionStorage.setItem(
+            "filters",
+            JSON.stringify({ ...filters, brand: item })
+        );
+        setFilters({ ...filters, brand: item });
     } else {
       sessionStorage.setItem(
         "filters",
         JSON.stringify({ ...filters, size: filters.size.concat(item) })
       );
       setFilters({ ...filters, size: filters.size.concat(item) });
-    }
+      }
+
   };
 
   const handleUncheck = (event) => {
     let id = event.target.id;
     const sizes = [...filters.size];
-    const index = sizes.indexOf(id);
+      const index = sizes.indexOf(id);
+
     if (index > -1) {
       sizes.splice(index, 1);
-    }
+      }
+     
     sessionStorage.setItem(
-      "filters",
-      JSON.stringify({ ...filters, size: sizes })
-    );
-    setFilters({ ...filters, size: sizes });
-  };
+        "filters",
+        JSON.stringify({ ...filters, size: sizes,  })
+      );
+      setFilters({ ...filters, size: sizes, });
+    };
+   
+
+
 
   // when filters update i.e. filter inputs are clicked the filter function is triggered to render filtered products
   React.useEffect(() => {
@@ -98,7 +129,7 @@ const Filter = ({ list, setFilteredList }) => {
     let listCopy = [...list];
     let storageFilters = JSON.parse(sessionStorage.getItem("filters"));
     let filterObj = storageFilters === null ? filters : storageFilters;
-    let array = Object.keys(filterObj);
+      let array = Object.keys(filterObj);
     array.forEach((filter) => {
       if (filter === "price" && filterObj[filter] !== "") {
         filterObj[filter] === "lowtohigh"
@@ -120,6 +151,18 @@ const Filter = ({ list, setFilteredList }) => {
             sizeArray.push(product);
         });
         listCopy = sizeArray;
+        }
+
+      else if (filter === "brand" && filterObj[filter].length !== 0) {
+          const brandArray = [];
+          listCopy.map((product) => {
+
+              if (prodList[b].brand != null) {
+                  if (filterObj[filter].includes(product.brand.Brand_name.toString().replace(/\s+/g, '').toLowerCase()))
+                      brandArray.push(product);
+              }
+          });
+          listCopy = brandArray;
       }
       listCopy.length === 0 ? setNoFilter(true) : setNoFilter(false);
 
@@ -129,7 +172,7 @@ const Filter = ({ list, setFilteredList }) => {
 
   // resets all state and unchecks checkboxes
   const clearAll = () => {
-    setFilters({ price: "", condition: "", size: [] });
+    setFilters({ price: "", condition: "", size: [], brand: [], });
     setFilteredList([]);
     setNoFilter(false);
     sessionStorage.removeItem("filters");
@@ -166,12 +209,15 @@ const Filter = ({ list, setFilteredList }) => {
         <FilterHeadings>Price</FilterHeadings>
         <FilterDiv>{renderParams(price)}</FilterDiv>
       </>
-      <div>
+      <div >
         <FilterHeadings>Condition</FilterHeadings>
         <FilterDiv>{renderParams(condition)}</FilterDiv>
-      </div>
+          </div>
+
       <FilterHeadings>Size</FilterHeadings>
       <FilterDiv>{renderParams(sizes)}</FilterDiv>
+          <FilterHeadings>Brand</FilterHeadings>
+          <FilterDiv >{renderParams(brands)}</FilterDiv>
       {noFilter && (
         <FilterMessage>
           {"We're sorry, there are no products that match these filters"}
@@ -182,9 +228,17 @@ const Filter = ({ list, setFilteredList }) => {
   );
 };
 
+export async function getServerSideProps() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/brandc`);
+    const json = await res.json();
+    return { props: { list: json } };
+}
+
 Filter.propTypes = {
+
   list: PropTypes.array,
   setFilteredList: PropTypes.func,
+  
 };
 
 export default Filter;

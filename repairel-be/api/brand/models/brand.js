@@ -6,5 +6,9 @@
  */
 
 module.exports = {
-
+  lifecycles: {
+    async beforeCreate(data) {
+      data.Brand_name = data.Brand_name.toLowerCase();
+    },
+  },
 };

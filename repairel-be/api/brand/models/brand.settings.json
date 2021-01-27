@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "brandc",
+  "info": {
+    "name": "Brand"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Description": {
+      "type": "richtext",
+      "required": true
+    },
+    "Show_Filter_Option": {
+      "type": "boolean",
+      "default": true
+    },
+    "Brand_name": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 30
+    },
+    "products": {
+      "collection": "products",
+      "via": "brand"
+    }
+  }
+}
