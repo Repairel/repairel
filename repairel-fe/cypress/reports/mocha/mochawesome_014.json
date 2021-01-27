@@ -1,0 +1,126 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-01-16T19:19:20.376Z",
+    "end": "2021-01-16T19:19:49.757Z",
+    "duration": 29381,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e4608458-08d8-43e0-823d-41e6253b006d",
+      "title": "",
+      "fullFile": "cypress/integration/disable_score_feature_spec.js",
+      "file": "cypress/integration/disable_score_feature_spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8610c27c-5abc-41ff-9d5c-1130428c923b",
+          "title": "Testing the removal of the score feature",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Check no rating on shop page",
+              "fullTitle": "Testing the removal of the score feature Check no rating on shop page",
+              "timedOut": null,
+              "duration": 16223,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"http://localhost:3000\");\ncy.get('ProductInfostyle__Rating-sc-2djmjb-3 feCNmP').should('not.exist');",
+              "err": {},
+              "uuid": "4bd0b9c5-0f8a-4a6f-aaa7-b9fb1c674dda",
+              "parentUUID": "8610c27c-5abc-41ff-9d5c-1130428c923b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Check no rating on product page",
+              "fullTitle": "Testing the removal of the score feature Check no rating on product page",
+              "timedOut": null,
+              "duration": 12208,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"http://localhost:3000\");\ncy.get('.ProductListstyle__ProductImage-u9aoiu-1').click();\ncy.get('.ProductInfostyle__Rating-sc-2djmjb-3 feCNmP').should('not.exist');",
+              "err": {},
+              "uuid": "7d4a2514-8edb-4023-8034-0ebe5792db7c",
+              "parentUUID": "8610c27c-5abc-41ff-9d5c-1130428c923b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4bd0b9c5-0f8a-4a6f-aaa7-b9fb1c674dda",
+            "7d4a2514-8edb-4023-8034-0ebe5792db7c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 28431,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

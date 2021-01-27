@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-01-16T19:37:31.517Z",
+    "end": "2021-01-16T19:38:33.805Z",
+    "duration": 62288,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5f94d873-9d06-4fc2-b650-4dd46e0173e4",
+      "title": "",
+      "fullFile": "cypress/integration/jack_general_spec.js",
+      "file": "cypress/integration/jack_general_spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "faa9a745-fdf7-4d12-b960-908a869d19bc",
+          "title": "Testing the hamburger menu links",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Clicks the hamburger menu",
+              "fullTitle": "Testing the hamburger menu links Clicks the hamburger menu",
+              "timedOut": null,
+              "duration": 61777,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Visit the page\ncy.visit(\"http://localhost:3000\"); // Click burger menu\ncy.get('div[style=\"z-index:2;cursor:pointer\"] > div').click(); // Check it contains the links\ncy.contains('shop');\ncy.contains('about');\ncy.contains('faq'); // Test Shop goes back home \ncy.visit(\"http://localhost:3000\");\ncy.get('div[style=\"z-index:2;cursor:pointer\"] > div').click();\ncy.get(':nth-child(4) > .global__StyledLink-sc-15fomil-2').click();\ncy.url().should('include', '');\ncy.get('div[style=\"z-index:2;cursor:pointer\"] > div').click(); // Test About goes to about page \ncy.visit(\"http://localhost:3000\");\ncy.get('div[style=\"z-index:2;cursor:pointer\"] > div').click();\ncy.get(':nth-child(5) > .global__StyledLink-sc-15fomil-2').click().url().should('include', 'about'); // Test FAQ goes to FAQ page \ncy.visit(\"http://localhost:3000\");\ncy.get('div[style=\"z-index:2;cursor:pointer\"] > div').click();\ncy.get(':nth-child(6) > .global__StyledLink-sc-15fomil-2').click().url().should('include', 'faq');",
+              "err": {},
+              "uuid": "cbceacb2-cd5e-484e-b28a-a5bd02f2a0d3",
+              "parentUUID": "faa9a745-fdf7-4d12-b960-908a869d19bc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cbceacb2-cd5e-484e-b28a-a5bd02f2a0d3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 61777,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

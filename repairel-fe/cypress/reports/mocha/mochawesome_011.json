@@ -1,0 +1,260 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 8,
+    "passes": 8,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-01-16T18:53:13.201Z",
+    "end": "2021-01-16T18:55:01.155Z",
+    "duration": 107954,
+    "testsRegistered": 8,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ec5a5bdd-3ddf-4ea9-81e0-67d71a1161e9",
+      "title": "",
+      "fullFile": "cypress/integration/login_spec.js",
+      "file": "cypress/integration/login_spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e5486d1f-c5c5-47d3-bd2c-def39b323a80",
+          "title": "The Login Page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "The login page loads successfully",
+              "fullTitle": "The Login Page The login page loads successfully",
+              "timedOut": null,
+              "duration": 11247,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');",
+              "err": {},
+              "uuid": "2813f0be-544c-4b4e-9a32-63be479a4de8",
+              "parentUUID": "e5486d1f-c5c5-47d3-bd2c-def39b323a80",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Does not login with incorrect credentials",
+              "fullTitle": "The Login Page Does not login with incorrect credentials",
+              "timedOut": null,
+              "duration": 15864,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');\ncy.get('input[name=email]').type(email);\ncy.get('input[name=password]').type('123456');\ncy.get('button').click(); // should be on the same page after unsucessful login\ncy.url().should('include', '/login');",
+              "err": {},
+              "uuid": "4007dd23-3c09-4909-922e-70c2904cea1e",
+              "parentUUID": "e5486d1f-c5c5-47d3-bd2c-def39b323a80",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Displays error on incorrect login",
+              "fullTitle": "The Login Page Displays error on incorrect login",
+              "timedOut": null,
+              "duration": 14107,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');\ncy.get('input[name=email]').type(email);\ncy.get('input[name=password]').type('123456');\ncy.get('button').click();\ncy.url().should('include', '/login');\ncy.contains('Identifier or password invalid.');",
+              "err": {},
+              "uuid": "c9c552d7-f8be-490a-a1c0-d11f29fdad65",
+              "parentUUID": "e5486d1f-c5c5-47d3-bd2c-def39b323a80",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Does not login when password is not provided",
+              "fullTitle": "The Login Page Does not login when password is not provided",
+              "timedOut": null,
+              "duration": 11716,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');\ncy.get('input[name=email]').type(email);\ncy.get('button').click();\ncy.url().should('include', '/login');\ncy.contains('Please provide your password.');",
+              "err": {},
+              "uuid": "f0033b18-acd6-4a7b-94fb-5b90c521b5ce",
+              "parentUUID": "e5486d1f-c5c5-47d3-bd2c-def39b323a80",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Logins with correct credentials",
+              "fullTitle": "The Login Page Logins with correct credentials",
+              "timedOut": null,
+              "duration": 23079,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');\ncy.get('input[name=email]').type(email);\ncy.get('input[name=password]').type('1234');\ncy.get('button').click(); // should be redirected to dashboard\ncy.url().should('include', '/');",
+              "err": {},
+              "uuid": "1c883fde-d62f-4c64-b4cb-519966506606",
+              "parentUUID": "e5486d1f-c5c5-47d3-bd2c-def39b323a80",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Welcome Message displayed correctly",
+              "fullTitle": "The Login Page Welcome Message displayed correctly",
+              "timedOut": null,
+              "duration": 13131,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');\ncy.get('input[name=email]').type(email);\ncy.get('input[name=password]').type('1234');\ncy.get('button').click();\ncy.get('span').contains('Hey Bob!');",
+              "err": {},
+              "uuid": "00a285b7-d316-46b8-bcb1-6e9d07322a87",
+              "parentUUID": "e5486d1f-c5c5-47d3-bd2c-def39b323a80",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2813f0be-544c-4b4e-9a32-63be479a4de8",
+            "4007dd23-3c09-4909-922e-70c2904cea1e",
+            "c9c552d7-f8be-490a-a1c0-d11f29fdad65",
+            "f0033b18-acd6-4a7b-94fb-5b90c521b5ce",
+            "1c883fde-d62f-4c64-b4cb-519966506606",
+            "00a285b7-d316-46b8-bcb1-6e9d07322a87"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 89144,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "8e19ae74-1dba-49c6-8ac2-5a931601042c",
+          "title": "The Login Form looks OK",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "All text labels shown",
+              "fullTitle": "The Login Form looks OK All text labels shown",
+              "timedOut": null,
+              "duration": 8639,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');\ncy.contains('Email Address *');\ncy.contains('Password *');",
+              "err": {},
+              "uuid": "3a533349-5333-4c95-b74a-468c520103c6",
+              "parentUUID": "8e19ae74-1dba-49c6-8ac2-5a931601042c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login Button shows the right text",
+              "fullTitle": "The Login Form looks OK Login Button shows the right text",
+              "timedOut": null,
+              "duration": 8584,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/login');\ncy.get('button').should('contain', 'LOGIN');",
+              "err": {},
+              "uuid": "8cf35cee-e322-419c-ad75-37b9f19f32b5",
+              "parentUUID": "8e19ae74-1dba-49c6-8ac2-5a931601042c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "3a533349-5333-4c95-b74a-468c520103c6",
+            "8cf35cee-e322-419c-ad75-37b9f19f32b5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 17223,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}
