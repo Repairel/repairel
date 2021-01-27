@@ -1,0 +1,184 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-01-16T18:49:32.896Z",
+    "end": "2021-01-16T18:50:21.419Z",
+    "duration": 48523,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e1096724-c513-4ce9-b7f0-0d0c0892c467",
+      "title": "",
+      "fullFile": "cypress/integration/faqs_about_spec.js",
+      "file": "cypress/integration/faqs_about_spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a557350a-e11d-469e-83b9-93e36342214f",
+          "title": "The FAQs Page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully loads",
+              "fullTitle": "The FAQs Page Successfully loads",
+              "timedOut": null,
+              "duration": 14443,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/faq');",
+              "err": {},
+              "uuid": "2c01947f-07b2-4adf-8b75-fb53bcb7b790",
+              "parentUUID": "a557350a-e11d-469e-83b9-93e36342214f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Text displayed correctly",
+              "fullTitle": "The FAQs Page Text displayed correctly",
+              "timedOut": null,
+              "duration": 11094,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/faq');\ncy.get('h1').contains('FAQs');",
+              "err": {},
+              "uuid": "12cee673-b9cd-46c9-b2d9-c9c40220816b",
+              "parentUUID": "a557350a-e11d-469e-83b9-93e36342214f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2c01947f-07b2-4adf-8b75-fb53bcb7b790",
+            "12cee673-b9cd-46c9-b2d9-c9c40220816b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 25537,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "12f5b25f-f092-42a0-92b9-56b4faa7eb83",
+          "title": "The About Page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully loads",
+              "fullTitle": "The About Page Successfully loads",
+              "timedOut": null,
+              "duration": 11792,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/about');",
+              "err": {},
+              "uuid": "6c9bbd3b-fa73-45b6-ba7b-109f88030166",
+              "parentUUID": "12f5b25f-f092-42a0-92b9-56b4faa7eb83",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Text displayed correctly",
+              "fullTitle": "The About Page Text displayed correctly",
+              "timedOut": null,
+              "duration": 10288,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/about');\ncy.get('h1').contains('About us');",
+              "err": {},
+              "uuid": "5b6f8a86-b6cd-4431-b37c-41697d3cb846",
+              "parentUUID": "12f5b25f-f092-42a0-92b9-56b4faa7eb83",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6c9bbd3b-fa73-45b6-ba7b-109f88030166",
+            "5b6f8a86-b6cd-4431-b37c-41697d3cb846"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 22080,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

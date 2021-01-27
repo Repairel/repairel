@@ -1,0 +1,145 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-01-16T19:48:42.114Z",
+    "end": "2021-01-16T19:49:46.974Z",
+    "duration": 64860,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9395cf56-355d-4324-ab28-0805f2d53fcd",
+      "title": "",
+      "fullFile": "cypress/integration/stock_counter_spec.js",
+      "file": "cypress/integration/stock_counter_spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "704f691f-d951-4a5a-ac08-3b3a6d5ea0b7",
+          "title": "The Stock Counter",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "There is at least one product on the homepage",
+              "fullTitle": "The Stock Counter There is at least one product on the homepage",
+              "timedOut": null,
+              "duration": 47743,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/product/1');",
+              "err": {},
+              "uuid": "8079853c-5949-450f-bd37-1b47ed54af83",
+              "parentUUID": "704f691f-d951-4a5a-ac08-3b3a6d5ea0b7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "If the product is in stock then the text showing how much stock is there is shown",
+              "fullTitle": "The Stock Counter If the product is in stock then the text showing how much stock is there is shown",
+              "timedOut": null,
+              "duration": 10536,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/product/1');\ncy.get('button').then(function ($btn) {\n  if ($btn.hasClass('active')) {\n    if ($btn.contains('ADD TO CART')) {\n      cy.contains('currently in stock');\n    }\n  }\n});",
+              "err": {},
+              "uuid": "ddb4e106-f449-4392-9073-0d5fd9ed3c25",
+              "parentUUID": "704f691f-d951-4a5a-ac08-3b3a6d5ea0b7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "If the product is not in stock then the text asking the user to submit a product request is shown",
+              "fullTitle": "The Stock Counter If the product is not in stock then the text asking the user to submit a product request is shown",
+              "timedOut": null,
+              "duration": 6107,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/product/1');\ncy.get('button').then(function ($btn) {\n  if ($btn.hasClass('active')) {\n    if ($btn.contains('ADD TO CART')) {\n      cy.contains('currently in stock');\n    } else {\n      cy.contains('Fill in this form and be the first to know when we have stock here');\n    }\n  }\n});",
+              "err": {},
+              "uuid": "1367b55f-1e3b-4001-8adb-6f288f6d306a",
+              "parentUUID": "704f691f-d951-4a5a-ac08-3b3a6d5ea0b7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8079853c-5949-450f-bd37-1b47ed54af83",
+            "ddb4e106-f449-4392-9073-0d5fd9ed3c25",
+            "1367b55f-1e3b-4001-8adb-6f288f6d306a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 64386,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}
