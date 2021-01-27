@@ -14,13 +14,15 @@ const Filter = ({ content, list, setFilteredList }) => {
     const [filters, setFilters] = React.useState({
         price: "",
         condition: "",
+        AffiliateProduct:"",
         size: [],
         brand: [],
 
     });
-    const [noFilter, setNoFilter] = React.useState(false);
+    const [noFilter, setNoFilter] = React.useState(false);;
     const sizes = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     const condition = ["New", "Refurbished"];
+    const AffiliateProduct = ["Yes", "No"];
     const price = ["High to Low", "Low to High"];
     let brands2 = [];
     let brands3 = [];
@@ -48,6 +50,7 @@ const Filter = ({ content, list, setFilteredList }) => {
       let condition = storedFilters[1];
         let sizes = storedFilters[2];
         let brands = storedFilters[3];
+        let AffiliateProduct = storedFilters[4];
       Array.from(checkboxes, (checkbox) => {
           let id = checkbox.id.split(" ").join("").toLowerCase();
         if (id === price) {
@@ -58,7 +61,9 @@ const Filter = ({ content, list, setFilteredList }) => {
             checkbox.checked = true;
         } else if (brands.includes(id)) {
               checkbox.checked = true;
-        } 
+        } else if (id === AffiliateProduct) {
+              checkbox.checked = true;
+          } 
       });
     }
   }, []);
@@ -82,6 +87,12 @@ const Filter = ({ content, list, setFilteredList }) => {
         JSON.stringify({ ...filters, condition: item })
       );
       setFilters({ ...filters, condition: item });
+    } else if (item.includes("yes") || item.includes("no")) {
+        sessionStorage.setItem(
+            "filters",
+            JSON.stringify({ ...filters, AffiliateProduct: item })
+        );
+        setFilters({ ...filters, AffiliateProduct: item });
     }
 
     else if (brands3.includes(item)) {
@@ -136,15 +147,27 @@ const Filter = ({ content, list, setFilteredList }) => {
           ? (listCopy = [...list].sort((a, b) => (a.price > b.price ? 1 : -1)))
           : (listCopy = [...list].sort((a, b) => (a.price > b.price ? -1 : 1)));
       } else if (filter === "condition" && filterObj[filter] !== "") {
-        const newList = [];
-        const refurbishedList = [];
-        listCopy.map((product) => {
-          product.new ? newList.push(product) : refurbishedList.push(product);
-        });
-        filterObj[filter] === "new"
-          ? (listCopy = newList)
-          : (listCopy = refurbishedList);
-      } else if (filter === "size" && filterObj[filter].length !== 0) {
+          const newList = [];
+          const refurbishedList = [];
+          listCopy.map((product) => {
+              product.new ? newList.push(product) : refurbishedList.push(product);
+          });
+          filterObj[filter] === "new"
+              ? (listCopy = newList)
+              : (listCopy = refurbishedList);
+      }
+
+      else if (filter === "AffiliateProduct" && filterObj[filter] !== "") {
+          const AFList = [];
+          const ALLList = [];
+          listCopy.map((product) => {
+              product.affiliateProduct ? AFList.push(product) : ALLList.push(product);
+          });
+          filterObj[filter] === "yes"
+              ? (listCopy = AFList)
+              : (listCopy = ALLList);
+      }
+      else if (filter === "size" && filterObj[filter].length !== 0) {
         let sizeArray = [];
         listCopy.map((product) => {
           if (filterObj[filter].includes(product.Size.toString()))
@@ -172,7 +195,7 @@ const Filter = ({ content, list, setFilteredList }) => {
 
   // resets all state and unchecks checkboxes
   const clearAll = () => {
-    setFilters({ price: "", condition: "", size: [], brand: [], });
+      setFilters({ price: "", condition: "", size: [], brand: [], AffiliateProduct: "", });
     setFilteredList([]);
     setNoFilter(false);
     sessionStorage.removeItem("filters");
@@ -213,17 +236,25 @@ const Filter = ({ content, list, setFilteredList }) => {
         <FilterHeadings>Condition</FilterHeadings>
         <FilterDiv>{renderParams(condition)}</FilterDiv>
           </div>
-
+          <div >
       <FilterHeadings>Size</FilterHeadings>
-      <FilterDiv>{renderParams(sizes)}</FilterDiv>
+              <FilterDiv>{renderParams(sizes)}</FilterDiv>
+          </div>
+          <div >
           <FilterHeadings>Brand</FilterHeadings>
-          <FilterDiv >{renderParams(brands)}</FilterDiv>
+              <FilterDiv >{renderParams(brands)}</FilterDiv>
+          </div>
+          <div >
+          <FilterHeadings>Affiliate Product</FilterHeadings>
+              <FilterDiv >{renderParams(AffiliateProduct)}</FilterDiv>
+              </div>
       {noFilter && (
         <FilterMessage>
-          {"We're sorry, there are no products that match these filters"}
+          {"We're sorry, there are no products that match these filters. Don't worry we have many more shoes to choose from."}
         </FilterMessage>
       )}
-      <ClearAll onClick={() => clearAll()}>Clear all</ClearAll>
+          <ClearAll onClick={() => clearAll()}>Clear all</ClearAll>
+
     </FilterWrapper>
   );
 };
