@@ -35,6 +35,7 @@ const Product = ({ product, url }) => {
     assembly: Assembly,
     use: Use,
     disposal: Disposal,
+    footwear_manufacturing: Leaf,
   };
 
   const categories = Object.keys(product.ethics_and_sustainability);

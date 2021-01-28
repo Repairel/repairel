@@ -64,6 +64,7 @@ const Compare = ({ product1, product2 }) => {
     assembly: Assembly,
     use: Use,
     disposal: Disposal,
+    footwear_manufacturing: Leaf,
   };
   // list of categories
   const categories = Object.keys(product1.ethics_and_sustainability);
