@@ -25,6 +25,12 @@
       "max": 5,
       "min": 1
     },
+    "footwear_manufacturing": {
+      "type": "integer",
+      "required": true,
+      "max": 5,
+      "min": 1
+    },
     "assembly": {
       "type": "integer",
       "required": true,
@@ -38,12 +44,6 @@
       "min": 1
     },
     "disposal": {
-      "type": "integer",
-      "required": true,
-      "max": 5,
-      "min": 1
-    },
-    "footwear_manufacturing": {
       "type": "integer",
       "required": true,
       "max": 5,

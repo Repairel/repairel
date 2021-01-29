@@ -61,10 +61,10 @@ const Compare = ({ product1, product2 }) => {
     material: Material,
     material_processing: materialProcessing,
     manufacturing: Manufacturing,
+    footwear_manufacturing: Leaf,
     assembly: Assembly,
     use: Use,
     disposal: Disposal,
-    footwear_manufacturing: Leaf,
   };
   // list of categories
   const categories = Object.keys(product1.ethics_and_sustainability);
