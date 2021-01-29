@@ -1,8 +1,8 @@
 import Header from "@components/header";
 import Head from "next/head";
 import Markdown from "markdown-to-jsx";
-import PropTypes from "prop-types";
-import Logo from "../public/eco_feet.svg"
+//import PropTypes from "prop-types";
+import Logo from "../public/eco_feet .svg";
 
 import Socials from "@components/socials";
 
@@ -48,13 +48,20 @@ const Engage = ({ content }) => {
   );
 };
 
+/*
 export async function getServerSideProps() {
-    const res = await fetch(`http://35.178.141.40:1337/abouts`);
-    const json = await res.json();
-    return { props: { content: json } };
-  }
+//    const res = await fetch(`http://35.178.141.40:1337/abouts`);
+//    const json = await res.json();
+//    return { props: { content: json } };
+//  }
   
   Engage.propTypes = {
     content: PropTypes.array,
   };
-  export default Engage;
+//  export default Engage;
+
+}
+*/
+
+export default Engage;
+
