@@ -24,12 +24,7 @@ const Engage = ({ content }) => {
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
         <LinedHeading>Engage</LinedHeading>
-        <Markdown>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Malesuada amet pulvinar nec fermentum tincidunt pulvinar. 
-            Non nunc diam augue nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Malesuada amet pulvinar nec fermentum tincidunt pulvinar. Non nunc diam augue nulla. 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Markdown>  
+        <Markdown>{content[0].text}</Markdown> 
       </section>
       <section style = {{margin:"5rem", display: "flex", justifyContent: "center"}}>
             <Markdown>
@@ -49,7 +44,7 @@ const Engage = ({ content }) => {
 };
 
 export async function getServerSideProps() {
-    const res = await fetch(`http://35.178.141.40:1337/abouts`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/engages`);
     const json = await res.json();
     return { props: { content: json } };
   }
@@ -58,3 +53,4 @@ export async function getServerSideProps() {
     content: PropTypes.array,
   };
   export default Engage;
+
