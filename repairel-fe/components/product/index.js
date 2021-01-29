@@ -3,13 +3,13 @@ import _ from 'lodash';
 import { Rating } from '@components/productInfo/ProductInfo.style';
 import { Circle, CircleDiv } from '@components/compare/Compare.style';
 import Slider from './Slider';
-import Leaf from '../../public/leaf.svg';
-import Material from '../../public/material.svg';
-import materialProcessing from '../../public/material-processing.svg';
-import Manufacturing from '../../public/manufacturing.svg';
-import Assembly from '../../public/assembly.svg';
-import Use from '../../public/use.svg';
-import Disposal from '../../public/disposal.svg';
+import Design from "../../public/assembly.svg";
+import rawMaterials from "../../public/material.svg";
+import materialManufacturing from "../../public/leaf.svg";
+import Retail from "../../public/material-processing.svg";
+import footwearManufacturing from "../../public/manufacturing.svg";
+import Use from "../../public/use.svg";
+import Disposal from "../../public/disposal.svg";
 
 
 import {
@@ -29,11 +29,11 @@ import {
 
 const Product = ({ product, url }) => {
   const icons = {
-    material: Material,
-    material_processing: materialProcessing,
-    manufacturing: Manufacturing,
-    footwear_manufacturing: Leaf,
-    assembly: Assembly,
+    design: Design,
+    raw_materials: rawMaterials,
+    material_manufacturing: materialManufacturing,
+    footwear_manufacturing: footwearManufacturing,
+    retail: Retail,
     use: Use,
     disposal: Disposal,
   };
