@@ -14,11 +14,11 @@ import {
 } from "@components/compare/Compare.style";
 import { Rating } from "@components/productInfo/ProductInfo.style";
 
-import Leaf from "../../public/leaf.svg";
-import Material from "../../public/material.svg";
-import materialProcessing from "../../public/material-processing.svg";
-import Manufacturing from "../../public/manufacturing.svg";
-import Assembly from "../../public/assembly.svg";
+import Design from "../../public/assembly.svg";
+import rawMaterials from "../../public/material.svg";
+import materialManufacturing from "../../public/leaf.svg";
+import Retail from "../../public/material-processing.svg";
+import footwearManufacturing from "../../public/manufacturing.svg";
 import Use from "../../public/use.svg";
 import Disposal from "../../public/disposal.svg";
 import Arrow from "../../public/arrow.svg";
@@ -58,10 +58,11 @@ const Compare = ({ product1, product2 }) => {
     );
   };
   const icons = {
-    material: Material,
-    material_processing: materialProcessing,
-    manufacturing: Manufacturing,
-    assembly: Assembly,
+    design: Design,
+    raw_materials: rawMaterials,
+    material_manufacturing: materialManufacturing,
+    footwear_manufacturing: footwearManufacturing,
+    retail: Retail,
     use: Use,
     disposal: Disposal,
   };

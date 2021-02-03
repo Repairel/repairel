@@ -112,7 +112,7 @@ const EthicsList = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, max-content);
   @media (min-width: 750px) {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: max-content;
   }
   @media (max-width: 350px) {
