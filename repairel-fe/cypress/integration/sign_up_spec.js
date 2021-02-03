@@ -10,7 +10,7 @@ describe ('The Registration Page',() => {
         cy.get('input[name=surname]').type('Alice') 
         cy.get('input[name=email]').type('user@test.com')
         cy.get('input[name=password]').type('1234')
-        cy.get('button').click()
+        cy.get('button').contains('REGISTER').click({force: true}) //force: true is necessary to avoid failure by non-visibility if cookie popup has not been dismissed
     })
 
     it('User not created if email already exists', () => {
@@ -19,7 +19,7 @@ describe ('The Registration Page',() => {
         cy.get('input[name=surname]').type('Test') 
         cy.get('input[name=email]').type('user@test.com')
         cy.get('input[name=password]').type('1234')
-        cy.get('button').click()
+        cy.get('button').contains('REGISTER').click({force: true})
         cy.url().should('include', '/register')
     })
 
@@ -29,7 +29,7 @@ describe ('The Registration Page',() => {
         cy.get('input[name=surname]').type('Test') 
         cy.get('input[name=email]').type('user@test.com')
         cy.get('input[name=password]').type('1234')
-        cy.get('button').click()
+        cy.get('button').contains('REGISTER').click({force: true})
         cy.contains('Email is already taken.')
     })
 
@@ -37,7 +37,7 @@ describe ('The Registration Page',() => {
         cy.visit('/register')
         cy.get('input[name=forename]').type('Bob')
         cy.get('input[name=password]').type('1234')
-        cy.get('button').click()
+        cy.get('button').contains('REGISTER').click({force: true})
         cy.url().should('include', '/register')
     })
 
@@ -46,7 +46,7 @@ describe ('The Registration Page',() => {
         cy.get('input[name=forename]').type('Bob')
         cy.get('input[name=surname]').type('Alice')
         cy.get('input[name=password]').type('1234')
-        cy.get('button').click()
+        cy.get('button').contains('REGISTER').click({force: true})
         cy.url().should('include', '/register')
         cy.contains('Please provide your email.')
     })
