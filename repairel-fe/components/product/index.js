@@ -44,7 +44,7 @@ const Product = ({ product, url }) => {
     ethics.push([
       category,
       product.ethics_and_sustainability[category],
-      icons[category] || Leaf,
+      icons[category] || materialManufacturing,
     ]);
   }
   const handleCircles = (int) => {
