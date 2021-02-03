@@ -57,6 +57,14 @@
       "default": 0,
       "required": true,
       "min": 0
+    },
+    "brand": {
+      "via": "products",
+      "model": "brand"
+    },
+    "affiliateProduct": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
