@@ -66,7 +66,10 @@ const StyledButton = styled.button`
   border-radius: 0.0em;
   background-color: white;
   border: 2px solid grey;
-  
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const StyledInput = styled.input`
