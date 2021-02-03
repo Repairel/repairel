@@ -45,7 +45,7 @@ describe ('The Login Page',() => {
         cy.get('input[name=email]').type(email)
         cy.get('input[name=password]').type('1234')
         cy.get('button').click()
-        cy.get('span').contains('Hey Bob!')
+        cy.get('span').contains('Hey Another!')
     })
 })
 
