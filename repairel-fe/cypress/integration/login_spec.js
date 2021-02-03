@@ -9,7 +9,7 @@ describe ('The Login Page',() => {
         cy.visit('/login')
         cy.get('input[name=email]').type(email)
         cy.get('input[name=password]').type('123456')
-        cy.get('button').click()
+        cy.get('button').contains('LOGIN').click()
         // should be on the same page after unsucessful login
         cy.url().should('include', '/login')
     })
@@ -18,7 +18,7 @@ describe ('The Login Page',() => {
         cy.visit('/login')
         cy.get('input[name=email]').type(email)
         cy.get('input[name=password]').type('123456')
-        cy.get('button').click()
+        cy.get('button').contains('LOGIN').click()
         cy.url().should('include', '/login')
         cy.contains('Identifier or password invalid.')
     })
@@ -26,7 +26,7 @@ describe ('The Login Page',() => {
     it('Does not login when password is not provided', () => {
         cy.visit('/login')
         cy.get('input[name=email]').type(email)
-        cy.get('button').click()
+        cy.get('button').contains('LOGIN').click()
         cy.url().should('include', '/login')
         cy.contains('Please provide your password.')
     })
@@ -35,7 +35,7 @@ describe ('The Login Page',() => {
         cy.visit('/login')
         cy.get('input[name=email]').type(email)
         cy.get('input[name=password]').type('1234')
-        cy.get('button').click()
+        cy.get('button').contains('LOGIN').click()
         // should be redirected to dashboard
         cy.url().should('include', '/')
     })

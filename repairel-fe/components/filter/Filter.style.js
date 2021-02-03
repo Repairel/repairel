@@ -13,9 +13,10 @@ const FilterWrapper = styled.div`
 `;
 
 const FilterDiv = styled.div`
-  display: flex;
-  flex-direction: row;
+  padding-bottom:1em;
   margin: 0.5rem 0 0 0;
+  text-transform: capitalize;
+
 `;
 
 const FilterLabel = styled.label`
@@ -79,6 +80,7 @@ const ClearAll = styled.button`
     background-color: black;
   }
 `;
+
 
 export {
   FilterWrapper,
