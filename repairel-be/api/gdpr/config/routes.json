@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gdprs",
+      "handler": "gdpr.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gdprs/count",
+      "handler": "gdpr.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gdprs/:id",
+      "handler": "gdpr.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gdprs",
+      "handler": "gdpr.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gdprs/:id",
+      "handler": "gdpr.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gdprs/:id",
+      "handler": "gdpr.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
