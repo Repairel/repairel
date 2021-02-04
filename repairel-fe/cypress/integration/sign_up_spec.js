@@ -50,25 +50,15 @@ describe ('The Registration Page',() => {
         cy.url().should('include', '/register')
         cy.contains('Please provide your email.')
     })
-    /**
+    
     it('Form not submitted when First Name is not provided', () => {
         cy.visit('/register')
         cy.get('input[name=surname]').type('Alice')
         cy.get('input[name=password]').type('1234')
         cy.get('input[name=email]').type('user@test.com')
-        cy.get('button').click()
+        cy.get('button').contains('REGISTER').click()
         cy.url().should('include', '/register')
     })
-    
-    it('Form not submitted when Surname is not provided', () => {
-        cy.visit('/register')
-        cy.get('input[name=forename]').type('Bob')
-        cy.get('input[name=password]').type('1234')
-        cy.get('input[name=email]').type('user@test.com')
-        cy.get('button').click()
-        cy.url().should('include', '/register')
-    })
-    */
 })
 
 describe ('Registration Form Looks OK',() => {
