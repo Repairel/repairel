@@ -25,7 +25,7 @@ export default function Register() {
       <main>
         <Header />
         <div style={{ textAlign: 'left', padding: '0 5em 0 5em'}}>
-          <StyledTitle>Registration</StyledTitle>
+          <StyledTitle>REGISTRATION</StyledTitle>
           <hr />
 
           {Object.entries(error).length !== 0 &&
@@ -60,11 +60,10 @@ export default function Register() {
               />
 			</Row>
 			<Row>
-			<StyledFormLabel style={{ marginLeft: -145 }}>Surname <b>*</b></StyledFormLabel>
+			<StyledFormLabel style={{ marginLeft: -162 }}>Surname </StyledFormLabel>
 			</Row>
 			<Row>
 			<StyledInput
-                required
                 onChange={(e) => setData({ ...data, surname: e.target.value })}
                 value={data.surname}
                 type="text"
@@ -126,7 +125,8 @@ export default function Register() {
               REGISTER  
           </StyledButton>
 		  <div>
-		   Already have an account?  <StyledLink><a  href='/login'>Log In </a></StyledLink>
+      <br></br>
+		   Already have an account?  <StyledLink><a  href='/login' style={{paddingBottom: 100}}>Log In </a></StyledLink>
 		  </div>
 		  </center>
         </div>
