@@ -60,11 +60,10 @@ export default function Register() {
               />
 			</Row>
 			<Row>
-			<StyledFormLabel style={{ marginLeft: -145 }}>Surname <b>*</b></StyledFormLabel>
+			<StyledFormLabel style={{ marginLeft: -162 }}>Surname </StyledFormLabel>
 			</Row>
 			<Row>
 			<StyledInput
-                required
                 onChange={(e) => setData({ ...data, surname: e.target.value })}
                 value={data.surname}
                 type="text"
