@@ -76,7 +76,7 @@ describe ('Registration Form Looks OK',() => {
     it('All text labels shown', () => {
         cy.visit('/register')
         cy.contains('First Name *')
-        cy.contains('Surname *')
+        cy.contains('Surname')
         cy.contains('Email Address *')
         cy.contains('Password *')
     })
