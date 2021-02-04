@@ -25,7 +25,7 @@ export default function Register() {
       <main>
         <Header />
         <div style={{ textAlign: 'left', padding: '0 5em 0 5em'}}>
-          <StyledTitle>Registration</StyledTitle>
+          <StyledTitle>REGISTRATION</StyledTitle>
           <hr />
 
           {Object.entries(error).length !== 0 &&
@@ -126,7 +126,8 @@ export default function Register() {
               REGISTER  
           </StyledButton>
 		  <div>
-		   Already have an account?  <StyledLink><a  href='/login'>Log In </a></StyledLink>
+      <br></br>
+		   Already have an account?  <StyledLink><a  href='/login' style={{paddingBottom: 100}}>Log In </a></StyledLink>
 		  </div>
 		  </center>
         </div>
