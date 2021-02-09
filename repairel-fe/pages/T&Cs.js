@@ -25,12 +25,7 @@ const Terms = ({ content }) => {
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
         <LinedHeading>Terms and Conditions of use</LinedHeading>
-        <Markdown>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Malesuada amet pulvinar nec fermentum tincidunt pulvinar. 
-            Non nunc diam augue nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Malesuada amet pulvinar nec fermentum tincidunt pulvinar. Non nunc diam augue nulla. 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Markdown>  
+        <Markdown>{content[0].info}</Markdown>  
       </section>
      
       <Socials></Socials>
@@ -40,8 +35,7 @@ const Terms = ({ content }) => {
 
 
 export async function getServerSideProps() {
-    // const res = await fetch(`http://35.178.141.40:1337/faqs`);
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/terms`);
     const json = await res.json();
     return { props: { content: json } };
     }
