@@ -2,7 +2,7 @@ import Header from "@components/header";
 import Head from "next/head";
 import Markdown from "markdown-to-jsx";
 import PropTypes from "prop-types";
-import Logo from '../../public/repairel-logo.svg';
+import Logo from '../public/repairel-logo.svg';
 
 import Socials from "@components/socials";
 
