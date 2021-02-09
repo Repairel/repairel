@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "engages",
+  "info": {
+    "name": "Engage"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "engage": {
+      "type": "richtext",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla hendrerit congue risus non vulputate. Aliquam in congue orci. Quisque eleifend sit amet leo sit amet condimentum. Quisque eu tellus sit amet velit dictum pulvinar nec eu mi. Donec venenatis magna ac nisl congue, ut iaculis arcu sodales. Sed egestas velit orci, vitae interdum ante bibendum et. Nam eu lacinia massa."
+    }
+  }
+}
