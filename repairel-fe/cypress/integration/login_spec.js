@@ -48,8 +48,9 @@ describe ('The Login Page',() => {
         cy.get('button').click()
         cy.get('span').contains('Hey Bob!')
     })
-})
 */
+})
+
 describe ('The Login Form looks OK',() => {
     //check form displayed correctly
     it('All text labels shown', () => {
