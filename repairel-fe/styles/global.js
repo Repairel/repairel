@@ -80,9 +80,6 @@ const StyledInput = styled.input`
 const StyledFormLabel = styled.span`
   font-size: 1.25em;
   marginLeft: -125;
-  
-  
- 
 `;
 
 export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel };

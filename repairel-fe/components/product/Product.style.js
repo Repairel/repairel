@@ -110,11 +110,6 @@ const ProductRequest = styled.button`
     color: white;
     background-color: black;
   }
-  position: relative;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
 `;
 
 
