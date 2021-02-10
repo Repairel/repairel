@@ -81,19 +81,19 @@ const ProductReq = ({ content }) => {
       
       <form> 
           
-          <Row><label className='Name' for="Name">Name*</label></Row>
+          <Row><label className='Name' htmlFor="Name">Name*</label></Row>
           <Row><input type="text" className="Name" onChange={e => setName(e.target.value) } value={Name}/></Row>
           
-          <Row><label className='Email' for="Email">Email*</label></Row>
+          <Row><label className='Email' htmlFor="Email">Email*</label></Row>
           <Row><input type="email" className='Email' onChange={e => setEmail(e.target.value) } value={Email}/></Row>
 
           <div className = "both_col">
           <div className="col1">
-          <Row><label className="Brand" for="Brand" id="parent">Brand</label></Row>
+          <Row><label className="Brand" htmlFor="Brand" id="parent">Brand</label></Row>
           <Row><input type="text" className="Brand" onChange={e => setBrand(e.target.value) } value={Brand}/></Row>
           </div>
           <div className="col2">
-          <Row><label className='Size' for="Size" id="parent">Size*</label></Row>
+          <Row><label className='Size' htmlFor="Size" id="parent">Size*</label></Row>
           <Row><select type="text" className='Size' onChange={e => setSize(e.target.value) } value={Size} placeholder='Choose...'>
             <option value="First Choice">Choose...</option>
             <option value="Second Choice">10.5</option>
@@ -101,11 +101,11 @@ const ProductReq = ({ content }) => {
           </div>
           </div>
 
-          <Row><label className="Type" for="Type">Type*</label></Row>
+          <Row><label className="Type" htmlFor="Type">Type*</label></Row>
           <Row><input type="text" className="Type" onChange={e => setType(e.target.value) } value={Type}/></Row>
         
           
-          <Row><label className = "OtherSpecifications" for="OtherSpecifications">Other specifications</label></Row>
+          <Row><label className = "OtherSpecifications" htmlFor="OtherSpecifications">Other specifications</label></Row>
           <Row><input type="text" className="OtherSpecifications" onChange={e => setOtherSpecifications(e.target.value) } value={OtherSpecifications}/></Row>
           
           

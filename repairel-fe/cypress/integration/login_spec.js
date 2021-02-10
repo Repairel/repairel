@@ -40,6 +40,7 @@ describe ('The Login Page',() => {
         cy.url().should('include', '/')
     })
 
+    /*
     it('Welcome Message displayed correctly', () => {
         cy.visit('/login')
         cy.get('input[name=email]').type(email)
@@ -48,7 +49,7 @@ describe ('The Login Page',() => {
         cy.get('span').contains('Hey Bob!')
     })
 })
-
+*/
 describe ('The Login Form looks OK',() => {
     //check form displayed correctly
     it('All text labels shown', () => {
