@@ -48,7 +48,6 @@ describe ('The Login Page',() => {
         cy.get('div[style="z-index:2;cursor:pointer"] > div').click()
         cy.get('span').contains('Hey Another!')
     })
-
 })
 
 describe ('The Login Form looks OK',() => {
