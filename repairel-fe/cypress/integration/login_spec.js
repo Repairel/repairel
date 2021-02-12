@@ -40,13 +40,16 @@ describe ('The Login Page',() => {
         cy.url().should('include', '/')
     })
 
+
     it('Welcome Message displayed correctly', () => {
         cy.visit('/login')
         cy.get('input[name=email]').type(email)
         cy.get('input[name=password]').type('1234')
         cy.get('button').click()
-        cy.get('span').contains('Hey Bob!')
+        cy.get('div[style="z-index:2;cursor:pointer"] > div').click()
+        cy.get('span').contains('Hey Another!')
     })
+
 })
 
 describe ('The Login Form looks OK',() => {
