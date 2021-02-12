@@ -7,18 +7,15 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "clean": "rm -rf node_modules",
+    "clean": "rm -rf node_modules", 
     "strapi": "strapi"
   },
   "devDependencies": {},
   "dependencies": {
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
-    "fast-glob": "^3.2.4",
     "knex": "<0.20.0",
-    "npm-install-peers": "^1.2.1",
     "pg": "^8.5.0",
-    "sharp": "^0.26.0",
     "sqlite3": "^5.0.0",
     "strapi": "3.1.6",
     "strapi-admin": "3.1.6",
@@ -38,8 +35,8 @@
     "uuid": "05b17e50-63f0-4dff-b5e3-e5cfc910cbca"
   },
   "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
+    "node": ">=10.16.0 <=14.x.x",
+    "npm": "6.14.9"
   },
   "license": "MIT"
 }
