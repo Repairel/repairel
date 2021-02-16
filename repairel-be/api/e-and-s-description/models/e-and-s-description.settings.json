@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Description",
+  "info": {
+    "name": "ESDescription"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "icon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "esname": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

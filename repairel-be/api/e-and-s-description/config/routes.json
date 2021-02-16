@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/e-and-s-descriptions",
+      "handler": "e-and-s-description.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/e-and-s-descriptions/count",
+      "handler": "e-and-s-description.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/e-and-s-descriptions/:id",
+      "handler": "e-and-s-description.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/e-and-s-descriptions",
+      "handler": "e-and-s-description.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/e-and-s-descriptions/:id",
+      "handler": "e-and-s-description.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/e-and-s-descriptions/:id",
+      "handler": "e-and-s-description.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

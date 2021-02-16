@@ -10,7 +10,7 @@ import Retail from "../../public/material-processing.svg";
 import footwearManufacturing from "../../public/manufacturing.svg";
 import Use from "../../public/use.svg";
 import Disposal from "../../public/disposal.svg";
-
+import Head from "next/head";
 
 import {
   AddToCart,
@@ -27,7 +27,7 @@ import {
   ButtonContainer
 } from './Product.style';
 
-const Product = ({ product, url }) => {
+const Product = ({ product, url, esdes }) => {
   const icons = {
     design: Design,
     raw_materials: rawMaterials,
@@ -54,14 +54,27 @@ const Product = ({ product, url }) => {
     });
     return array;
   };
+
+  // function changeDescription(dsc) {
+  //   document.getElementById("info").innerHTML = dsc;
+  // }
+
   const ethicsRender = (ethics) => {
+    let counter = 0;
     return ethics.map((ethic) => {
+      console.log(counter);
+      // onClick={changeDescription(esdes[counter].description)}
       return (
-        <EthicsListItem key={ethic[0]}>
+        <>
+          <EthicsListItem id={esdes[counter++].esname}  key={ethic[0]}>
           <EthicsImage src={ethic[2]} />
           <EthicsCaption>{ethic[0].split('_').join(' ')}</EthicsCaption>
           <CircleDiv int={ethic[1]}>{handleCircles(ethic[1])}</CircleDiv>
         </EthicsListItem>
+
+        {/* <span>{esdes[counter++].esname}</span> */}
+        
+        </>
       );
     });
   };
@@ -118,7 +131,11 @@ const Product = ({ product, url }) => {
         <p className='product__description'>{product.description}</p>
         <ProductHeading>Ethics and Sustainability</ProductHeading>
         <EthicsList>{ethicsRender(ethics)}</EthicsList>
+        <div id="info">
+            {esdes[0].description}
+        </div>
       </div>
+      {/* <button>{esdes[0].description}</button> */}
     </>
   );
 };

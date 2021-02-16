@@ -19,7 +19,7 @@ import ProductInfo from "@components/productInfo";
 import Filter from "@components/filter";
 import CompareInstructions from "@components/compareInstructions";
 
-const ProductList = ({ list }) => {
+const ProductList = ({ list, esdes }) => {
   // the list comes from the fetch request in '../../pages/index' 
   //and contains all of the products
   const router = useRouter();
