@@ -5,11 +5,13 @@ import getConfig from 'next/config'
 import { useState } from 'react'
 import { LinedHeading } from "../styles/global";
 import {ProductRequest} from '@components/product/Product.style.js';
-const { publicRuntimeConfig } = getConfig();
 import React from "react";
 import {Row} from '../styles/global';
+//import { parseCookies  } from 'nookies'
 
-const ProductReq = ({ content }) => {
+const { publicRuntimeConfig } = getConfig();
+
+function ProductReq () {
   // Get the user input from the fields
   const [Name, setName] = useState('')
   const [Email, setEmail] = useState('')
@@ -47,24 +49,6 @@ const ProductReq = ({ content }) => {
     
   }
 
-  //const form = document.querySelector('Container.form');
-
-  //form.addEventListener('load', () => {
-
-    // Via Query parameters - GET
-    /* const params = (new URL(document.location)).searchParams;
-    const name = params.get('name');
-    const surname = params.get('surname'); */
-  
-    // Via local Storage
-    /* const name = localStorage.getItem('NAME');
-    const surname = localStorage.getItem('SURNAME'); */
-    
-  //  const name = sessionStorage.getItem('TYPE');
-    
-  //  form.getElementById('name').innerHTML = Type;
-  //}) 
-
   return (
     <>
       <Head>
@@ -94,10 +78,7 @@ const ProductReq = ({ content }) => {
           </div>
           <div className="col2">
           <Row><label className='Size' htmlFor="Size" id="parent">Size*</label></Row>
-          <Row><select type="text" className='Size' onChange={e => setSize(e.target.value) } value={Size} placeholder='Choose...'>
-            <option value="First Choice">Choose...</option>
-            <option value="Second Choice">10.5</option>
-          </select></Row>
+          <Row><input type="text" className='Size' onChange={e => setSize(e.target.value) } value={Size} /></Row>
           </div>
           </div>
 
