@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { LinedHeading } from "../styles/global";
 import {ProductRequest} from '@components/product/Product.style.js';
 import React from "react";
-import {Row} from '../styles/global';
+import {Row, Wishlist_Row} from '../styles/global';
 //import { parseCookies  } from 'nookies'
 
 const { publicRuntimeConfig } = getConfig();
@@ -65,11 +65,11 @@ function ProductReq () {
       
       <form> 
           
-          <Row><label className='Name' htmlFor="Name">Name*</label></Row>
-          <Row><input type="text" className="Name" onChange={e => setName(e.target.value) } value={Name}/></Row>
+          <Wishlist_Row><label className='Name' htmlFor="Name" id="wishlist">Name*</label></Wishlist_Row>
+          <Wishlist_Row><input type="text" className="Name" onChange={e => setName(e.target.value) } value={Name}/></Wishlist_Row>
           
-          <Row><label className='Email' htmlFor="Email">Email*</label></Row>
-          <Row><input type="email" className='Email' onChange={e => setEmail(e.target.value) } value={Email}/></Row>
+          <Wishlist_Row><label className='Email' htmlFor="Email">Email*</label></Wishlist_Row>
+          <Wishlist_Row><input type="email" className='Email' onChange={e => setEmail(e.target.value) } value={Email}/></Wishlist_Row>
 
           <div className = "both_col">
           <div className="col1">
@@ -82,12 +82,12 @@ function ProductReq () {
           </div>
           </div>
 
-          <Row><label className="Type" htmlFor="Type">Type*</label></Row>
-          <Row><input type="text" className="Type" onChange={e => setType(e.target.value) } value={Type}/></Row>
+          <Wishlist_Row><label className="Type" htmlFor="Type">Type*</label></Wishlist_Row>
+          <Wishlist_Row><input type="text" className="Type" onChange={e => setType(e.target.value) } value={Type}/></Wishlist_Row>
         
           
-          <Row><label className = "OtherSpecifications" htmlFor="OtherSpecifications">Other specifications</label></Row>
-          <Row><input type="text" className="OtherSpecifications" onChange={e => setOtherSpecifications(e.target.value) } value={OtherSpecifications}/></Row>
+          <Wishlist_Row><label className = "OtherSpecifications" htmlFor="OtherSpecifications">Other specifications</label></Wishlist_Row>
+          <Wishlist_Row><input type="text" className="OtherSpecifications" onChange={e => setOtherSpecifications(e.target.value) } value={OtherSpecifications}/></Wishlist_Row>
           
           
           <Row><ProductRequest className="submitRequest" onClick={() => addRequest()}>SUBMIT REQUEST</ProductRequest></Row>
