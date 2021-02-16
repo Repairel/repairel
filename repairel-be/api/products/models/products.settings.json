@@ -59,12 +59,11 @@
       "min": 0
     },
     "brand": {
-      "via": "products",
-      "model": "brand"
+      "model": "brand",
+      "via": "products"
     },
-    "affiliateProduct": {
-      "type": "boolean",
-      "default": false
+    "affiliate_link": {
+      "type": "string"
     }
   }
 }
