@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-
+import css from 'styled-jsx/css'
 
 
 
@@ -54,16 +54,6 @@ const Row = styled.div`
   
 `;
 
-const Wishlist_Row = styled.div`
-  display: flex;
-	justify-content: center;
-  display: flexbox;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 30vw;
-`;
-
 const Column = styled.div`
   flex: 50%;
   padding: 0 0.5em 0 0.5em;
@@ -92,4 +82,4 @@ const StyledFormLabel = styled.span`
   marginLeft: -125;
 `;
 
-export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, Wishlist_Row };
+export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel};

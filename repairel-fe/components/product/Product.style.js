@@ -105,7 +105,7 @@ const ProductRequest = styled.button`
   cursor: pointer;
   transition: color 150ms, background-color 150ms;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 1rem;
   &:hover {
     color: white;
     background-color: black;
