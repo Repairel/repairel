@@ -24,7 +24,7 @@ cypress-testing:
         - cd repairel-fe
         - npm --quiet i
         - npm install cypress --save-dev
-        - export NEXT_PUBLIC_API_URL=https://dev-repairel.herokuapp.com
+        - export NEXT_PUBLIC_API_URL=https://rocky-earth-77368.herokuapp.com
         - npm run dev & ./node_modules/.bin/cypress run --quiet
 
 
