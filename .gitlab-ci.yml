@@ -35,4 +35,6 @@ backend-dev-deploy:
     script:
         - cd repairel-be
         - dpl --provider=heroku --app=$HEROKU_BE_DEV --api-key=$HEROKU_API_KEY
+    only:
+        - develop
 
