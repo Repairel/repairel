@@ -20,6 +20,7 @@ module.exports = (on, config) => {
     if (browser.family === 'chrome') {
       console.log('Adding --disable-dev-shm-usage...')
       args.push('--disable-dev-shm-usage')
+      args.push('--ipc=host')
     }
 
     return args
