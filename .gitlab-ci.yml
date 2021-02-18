@@ -20,6 +20,7 @@ stages:
 cypress-testing:
     stage: Integration-Testing
     image: cypress/base:10
+    docker_run_flags: run_flags = "--ipc=host"
     script:
         - cd repairel-fe
         - npm --quiet i
