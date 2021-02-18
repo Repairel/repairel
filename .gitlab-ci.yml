@@ -19,7 +19,7 @@ stages:
 # testing will run every time there is a change to the codebase (ie a push to the repo)
 cypress-testing:
     stage: Integration-Testing
-    image: cypress/base:10 --ipc=host
+    image: cypress/base:10
     script:
         - cd repairel-fe
         - npm --quiet i
