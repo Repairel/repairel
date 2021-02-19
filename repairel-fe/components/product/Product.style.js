@@ -140,6 +140,34 @@ const ProductHeading = styled.h3`
   margin-top: 2.5rem;
 `;
 
+const RefLink = styled.a`
+  font: 400 13.3333px Arial;
+  text-decoration: none;
+  width: 4rem;
+  max-width: 100%;
+  display: inline-block;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  height: auto;
+  width: auto;
+  margin: 0.5rem;
+  padding: 0.6em 3em;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: 1px;
+  vertical-align: top;
+  border-radius: 0;
+  cursor: pointer;
+  transition: color 150ms, background-color 150ms;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  &:hover {
+    color: white;
+    background-color: black;
+  }
+`;
+
 export {
   AddToCart,
   SliderImage,
@@ -154,5 +182,6 @@ export {
   ProductSize,
   ProductHeading,
   Wishlist,
-  ButtonContainer
+  ButtonContainer,
+  RefLink
 };
