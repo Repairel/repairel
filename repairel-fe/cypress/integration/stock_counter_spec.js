@@ -1,4 +1,3 @@
-/*
 describe ('The Stock Counter',() => {
     it ('There is at least one product on the homepage', () => {
         cy.visit('/product/1')
@@ -29,4 +28,3 @@ describe ('The Stock Counter',() => {
         })
     })
 })
-*/

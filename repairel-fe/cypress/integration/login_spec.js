@@ -1,4 +1,3 @@
-/*
 describe ('The Login Page',() => {
     const email = "user@test.com"
 
@@ -46,10 +45,8 @@ describe ('The Login Page',() => {
         cy.get('input[name=email]').type(email)
         cy.get('input[name=password]').type('1234')
         cy.get('button').click()
-        cy.get('div[style="z-index:2;cursor:pointer"] > div').click()
-        cy.get('span').contains('Hey Another!')
+        cy.get('span').contains('Hey Bob!')
     })
-
 })
 
 describe ('The Login Form looks OK',() => {
@@ -65,4 +62,3 @@ describe ('The Login Form looks OK',() => {
         cy.get('button').should('contain','LOGIN')
     })
 })
-*/

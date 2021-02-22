@@ -1,4 +1,4 @@
-/*
+
 describe ('The FAQs Page',() => {
     it ('Successfully loads', () => {
         cy.visit('/faq')
@@ -20,4 +20,3 @@ describe ('The About Page',() => {
         cy.get('h1').contains('About us')
     })
 }) 
-*/
