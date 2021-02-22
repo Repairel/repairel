@@ -1,3 +1,5 @@
+
+/*
 describe ('The Registration Page',() => {
 
     it ('Successfully loads', () => {
@@ -50,7 +52,9 @@ describe ('The Registration Page',() => {
         cy.url().should('include', '/register')
         cy.contains('Please provide your email.')
     })
-    /**
+    /*
+    // Below was already commented out
+    /*
     it('Form not submitted when First Name is not provided', () => {
         cy.visit('/register')
         cy.get('input[name=surname]').type('Alice')
@@ -69,6 +73,7 @@ describe ('The Registration Page',() => {
         cy.url().should('include', '/register')
     })
     */
+/*
 })
 
 describe ('Registration Form Looks OK',() => {
@@ -86,3 +91,4 @@ describe ('Registration Form Looks OK',() => {
         cy.get('button').should('contain','REGISTER')
     })
 })
+*/

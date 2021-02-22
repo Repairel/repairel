@@ -1,3 +1,4 @@
+/* 
 describe ('Test The Engage Page Loads Correctly', () => {
 
     // Check that the repairelhub logo is therer
@@ -13,7 +14,7 @@ describe ('Test The Engage Page Loads Correctly', () => {
 
     // Check that there is text in the correct section. .* is regex and matches any character 
     it('Test The T&Cs Page Includes Text', () => {
-        cy.contains('section > span', /.*/)
-    })
+        cy.contains('section > span', /.*///)
+    //})
 
-})
+//})

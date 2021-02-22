@@ -1,3 +1,4 @@
+/*
 describe ('The Login Page',() => {
     const email = "user@test.com"
 
@@ -64,3 +65,4 @@ describe ('The Login Form looks OK',() => {
         cy.get('button').should('contain','LOGIN')
     })
 })
+*/

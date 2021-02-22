@@ -1,3 +1,4 @@
+/*
 describe ('The Edit Details Page',() => {
 
     it ('Successfully loads', () => {
@@ -9,3 +10,4 @@ describe ('The Edit Details Page',() => {
         cy.url().should('include','/login')
     })
 })
+*/
