@@ -211,3 +211,4 @@ packages/strapi-generate-new/files/public/
 
 # Visual Studio Code
 front-workspace.code-workspace
+.vs/
