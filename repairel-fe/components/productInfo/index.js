@@ -8,14 +8,23 @@ import {
 } from './ProductInfo.style';
 import { ProductSize } from '@components/product/Product.style';
 
-const ProductInfo = ({ price, name, rating, size }) => {
+function isAffiliate(link) {
+  if (link) {
+    if (link.length > 0) {
+      return <span>(affiliate product)</span>
+    }
+  }
+  return <span></span>;
+}
+
+const ProductInfo = ({ price, name, rating, size, ref_link }) => {
   return (
     <>
       <ProductInfoList>
         <ProductInfoListItem>
           {name} <ProductSize>/ size {size}</ProductSize>
         </ProductInfoListItem>
-        <ProductPrice>£ {price}</ProductPrice>
+        <ProductPrice>£ {price} {isAffiliate(ref_link)}</ProductPrice>
       </ProductInfoList>
       <Rating rating={rating}>{rating}</Rating>
     </>

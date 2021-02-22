@@ -20,7 +20,7 @@ import Filter from "@components/filter";
 import CompareInstructions from "@components/compareInstructions";
 
 const ProductList = ({ list }) => {
-  // the list comes from the fetch request in '../../pages/index' 
+  // the list comes from the fetch request in '../../pages/index'
   //and contains all of the products
   const router = useRouter();
 
@@ -125,6 +125,7 @@ const ProductList = ({ list }) => {
                     name={product.name}
                     rating={product.rating}
                     size={product.Size}
+                    ref_link={product.affiliate_link}
                   />
                 </ProductInfoWrapper>
               </div>
@@ -166,6 +167,7 @@ const ProductList = ({ list }) => {
                   name={product.name}
                   rating={product.rating}
                   size={product.Size}
+                  ref_link={product.affiliate_link}
                 />
               </ProductInfoWrapper>
             </ProductCard>
