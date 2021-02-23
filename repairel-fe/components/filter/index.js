@@ -69,7 +69,7 @@ const Filter = ({ content, list, setFilteredList }) => {
   };
 
   const handleCheck = (event) => {
-      let item = event.target.id.toLowerCase().split(" ").join("").replace("shoes","");
+      let item = event.target.id.toLowerCase().split(" ").join("");
     if (item.includes("high")) {
       sessionStorage.setItem(
         "filters",
@@ -128,15 +128,13 @@ const Filter = ({ content, list, setFilteredList }) => {
     let storageFilters = JSON.parse(sessionStorage.getItem("filters"));
     let filterObj = storageFilters === null ? filters : storageFilters;
       let array = Object.keys(filterObj);
-      console.log(filterObj);
     array.forEach((filter) => {
         
       if (filter === "price" && filterObj[filter] !== "") {
         filterObj[filter] === "lowtohigh"
           ? (listCopy = [...list].sort((a, b) => (a.price > b.price ? 1 : -1)))
           : (listCopy = [...list].sort((a, b) => (a.price > b.price ? -1 : 1)));
-      }
-      else if (filter === "condition" && filterObj[filter] !== "") {
+      } else if (filter === "condition" && filterObj[filter] !== "") {
           const newList = [];
           const refurbishedList = [];
           listCopy.map((product) => {
@@ -144,9 +142,8 @@ const Filter = ({ content, list, setFilteredList }) => {
           });
           filterObj[filter] === "new"
               ? (listCopy = newList)
-              : (listCopy = refurbishedList);}
-      
-      else if (filter === "size" && filterObj[filter].length !== 0) {
+              : (listCopy = refurbishedList);
+      } else if (filter === "size" && filterObj[filter].length !== 0) {
         let sizeArray = [];
         listCopy.map((product) => {
           if (filterObj[filter].includes(product.Size.toString()))
@@ -154,6 +151,19 @@ const Filter = ({ content, list, setFilteredList }) => {
         });
         listCopy = sizeArray;
         }
+
+      else if (filter === "brand" && filterObj[filter].length !== 0) {
+          const brandArray = [];
+          listCopy.map((product) => {
+
+              if (prodList[b].brand != null) {
+                  if (filterObj[filter].includes(product.brand.Brand_name.toString().replace(/\s+/g, '').toLowerCase()))
+                      brandArray.push(product);
+              }
+          });
+          listCopy = brandArray;
+      }
+      listCopy.length === 0 ? setNoFilter(true) : setNoFilter(false);
 
       else if (filter === "brand" && filterObj[filter].length !== 0) {
           const brandArray = [];
