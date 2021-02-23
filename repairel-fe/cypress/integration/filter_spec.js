@@ -15,6 +15,7 @@ describe ('The Filter by brand feature',() => {
         cy.contains('Filter').click({force: true})
         cy.get('button').should('contain','Clear all')
     })
+    
 
     it ('The dropdown displays correct fields',() => {
         cy.visit('/')
