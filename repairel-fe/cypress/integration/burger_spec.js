@@ -1,3 +1,4 @@
+/*
 describe ('Test The Burger Menu Contains The Correct Links', () => {
 
     // Test the login link
@@ -88,3 +89,4 @@ describe ('Test The Burger Menu Links Work', () => {
         cy.url().should('include','T&Cs')
     })
 })
+*/
