@@ -2,6 +2,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import App from "next/app";
 import AppContext from "../context/AppContext";
 import Cookie from "js-cookie";
+import CookiePopup from "@components/cookiePopup";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -71,6 +72,7 @@ class MyApp extends App {
             <Component {...pageProps} />
           </ThemeProvider>
         </>
+		<CookiePopup />
       </AppContext.Provider>
     );
   }
