@@ -1,0 +1,16 @@
+{
+  "kind": "collectionType",
+  "collectionName": "localhost_test_collections",
+  "info": {
+    "name": "Localhost Test Collection"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Localhost": {
+      "type": "string"
+    }
+  }
+}

@@ -104,13 +104,13 @@ const Compare = ({ product1, product2 }) => {
           <p>
             {product1.name} / size {product1.Size}
           </p>
-          <Rating rating={product1.rating} title="Overall ethics rating">{product1.rating}</Rating>
+         
         </ProductInfo>
         <ProductInfo>
           <p>
             {product2.name} / size {product2.Size}
           </p>
-          <Rating rating={product2.rating} title="Overall ethics rating">{product2.rating}</Rating>
+         
         </ProductInfo>
       </ComparisonHeader>
       {length !== 0 && (

@@ -15,16 +15,16 @@ const Filter = ({ content, list, setFilteredList }) => {
         price: "",
         condition: "",
         size: [],
-        brand: [],
+        brand: "",
 
     });
     const [noFilter, setNoFilter] = React.useState(false);;
     const sizes = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    const condition = ["New", "Refurbished"];
+    const condition = ["New Shoes", "Refurbished Shoes"];
     const price = ["High to Low", "Low to High"];
     let brands2 = [];
     let brands3 = [];
-    let b = [];
+    let b = []; 
     const prodList = list;
     for (b in prodList) {
         if (prodList[b].brand != null) {
@@ -35,7 +35,7 @@ const Filter = ({ content, list, setFilteredList }) => {
         }
     }
     const brands = [...new Set(brands2.map(x => x))];
-
+    
 
   // if there is sessionStorage with filters the correct checkboxes are checked upon filter open
   React.useEffect(() => {
@@ -56,9 +56,9 @@ const Filter = ({ content, list, setFilteredList }) => {
           checkbox.checked = true;
         } else if (sizes.includes(id)) {
             checkbox.checked = true;
-        } else if (brands.includes(id)) {
+        } else if (id === brands) {
               checkbox.checked = true;
-        }
+        } 
       });
     }
   }, []);
@@ -79,7 +79,7 @@ const Filter = ({ content, list, setFilteredList }) => {
     } else if (item.includes("new") || item.includes("refurbished")) {
       sessionStorage.setItem(
         "filters",
-        JSON.stringify({ ...filters, condition: item })
+        JSON.stringify({ ...filters, condition: item.replace("shoes","") })
       );
       setFilters({ ...filters, condition: item });
     } else if (brands3.includes(item)) {
@@ -106,14 +106,14 @@ const Filter = ({ content, list, setFilteredList }) => {
     if (index > -1) {
       sizes.splice(index, 1);
       }
-
+     
     sessionStorage.setItem(
         "filters",
         JSON.stringify({ ...filters, size: sizes,  })
       );
       setFilters({ ...filters, size: sizes, });
     };
-
+   
 
 
 
@@ -129,6 +129,7 @@ const Filter = ({ content, list, setFilteredList }) => {
     let filterObj = storageFilters === null ? filters : storageFilters;
       let array = Object.keys(filterObj);
     array.forEach((filter) => {
+        
       if (filter === "price" && filterObj[filter] !== "") {
         filterObj[filter] === "lowtohigh"
           ? (listCopy = [...list].sort((a, b) => (a.price > b.price ? 1 : -1)))
@@ -164,13 +165,26 @@ const Filter = ({ content, list, setFilteredList }) => {
       }
       listCopy.length === 0 ? setNoFilter(true) : setNoFilter(false);
 
-      setFilteredList(listCopy);
+      else if (filter === "brand" && filterObj[filter].length !== 0) {
+          const brandArray = [];
+          listCopy.map((product) => {
+              if (prodList[b].brand != null) {
+                  if (filterObj[filter].includes(product.brand.Brand_name.toString().replace(/\s+/g, '').toLowerCase()))
+                      brandArray.push(product);
+              }
+          });
+          listCopy = brandArray;
+      }
+        
+        listCopy.length === 0 ? setNoFilter(true) : setNoFilter(false);
+        setFilteredList(listCopy);
     });
+      
   };
 
   // resets all state and unchecks checkboxes
   const clearAll = () => {
-      setFilters({ price: "", condition: "", size: [], brand: [], AffiliateProduct: "", });
+      setFilters({ price: "", condition: "", size: [], brand: "", });
     setFilteredList([]);
     setNoFilter(false);
     sessionStorage.removeItem("filters");
@@ -185,13 +199,20 @@ const Filter = ({ content, list, setFilteredList }) => {
       return (
         <React.Fragment key={(item, index)}>
           <FilterInput
+              
             type={typeof item === "number" ? "checkbox" : "radio"}
             name={
+
               typeof item === "number"
+          
                 ? item
                 : item.includes("to")
                 ? "price"
-                : "condition"
+                : item.includes("Shoes")
+                ? "condition"
+                : "brand"
+                
+
             }
             id={item}
             onChange={(event) => handleChange(event)}
@@ -240,7 +261,7 @@ Filter.propTypes = {
 
   list: PropTypes.array,
   setFilteredList: PropTypes.func,
-
+  
 };
 
 export default Filter;

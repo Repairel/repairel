@@ -104,7 +104,7 @@ const Product = ({ product, url }) => {
             </ProductTitle>
             <p className='product__price'>£ {product.price}</p>
           </div>
-          <Rating title={'Overall ethics rating'} rating={product.rating}>{product.rating}</Rating>
+         
         </MainInfo>
         <ButtonContainer className='product__price-button-container'>
           {cartButton()}
