@@ -140,6 +140,27 @@ const ProductHeading = styled.h3`
   margin-top: 2.5rem;
 `;
 
+const EthicsDescList = styled.div`
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, max-content);
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const EthicsDesc = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.7rem;
+  border: 1px solid black;
+  margin: 1em 0.25em 1em 0.25em;
+`;
+
 export {
   AddToCart,
   SliderImage,
@@ -154,5 +175,7 @@ export {
   ProductSize,
   ProductHeading,
   Wishlist,
-  ButtonContainer
+  ButtonContainer,
+  EthicsDescList,
+  EthicsDesc
 };

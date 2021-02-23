@@ -24,7 +24,9 @@ import {
   ProductSize,
   ProductHeading,
   Wishlist,
-  ButtonContainer
+  ButtonContainer,
+  EthicsDescList,
+  EthicsDesc
 } from './Product.style';
 
 const Product = ({ product, url, esdes }) => {
@@ -55,29 +57,25 @@ const Product = ({ product, url, esdes }) => {
     return array;
   };
 
-  // function changeDescription(dsc) {
-  //   document.getElementById("info").innerHTML = dsc;
-  // }
-
   const ethicsRender = (ethics) => {
-    let counter = 0;
     return ethics.map((ethic) => {
-      console.log(counter);
-      // onClick={changeDescription(esdes[counter].description)}
       return (
-        <>
-          <EthicsListItem id={esdes[counter++].esname}  key={ethic[0]}>
+        <EthicsListItem id={esdes[counter++].esname}  key={ethic[0]}>
           <EthicsImage src={ethic[2]} />
           <EthicsCaption>{ethic[0].split('_').join(' ')}</EthicsCaption>
           <CircleDiv int={ethic[1]}>{handleCircles(ethic[1])}</CircleDiv>
         </EthicsListItem>
-
-        {/* <span>{esdes[counter++].esname}</span> */}
-        
-        </>
       );
     });
   };
+
+  const ethicsDescList = (esdes) => {
+    return esdes.map((es) => {
+      return (
+        <EthicsDesc><b>{es.esname.split('_').join(' ').toUpperCase()}</b> {es.description}</EthicsDesc>
+      )
+    })
+  }
 
   function hasStock() {
     if (product.stock) {
@@ -89,12 +87,7 @@ const Product = ({ product, url, esdes }) => {
   return (
     <>
       <Slider images={product.images} />
-      <div
-        className='product'
-        style={{
-          padding: '1rem',
-        }}
-      >
+      <div className='product' style={{ padding: '1rem' }}>
         <MainInfo>
           <div>
             <ProductTitle className='product__title'>
@@ -131,11 +124,8 @@ const Product = ({ product, url, esdes }) => {
         <p className='product__description'>{product.description}</p>
         <ProductHeading>Ethics and Sustainability</ProductHeading>
         <EthicsList>{ethicsRender(ethics)}</EthicsList>
-        <div id="info">
-            {esdes[0].description}
-        </div>
+        <EthicsDescList>{ethicsDescList(esdes)}</EthicsDescList>
       </div>
-      {/* <button>{esdes[0].description}</button> */}
     </>
   );
 };
