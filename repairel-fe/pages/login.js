@@ -24,8 +24,8 @@ export default function Login() {
       </Head>
       <main>
         <Header />
-        <div style={{ textAlign: 'center', padding: '0 5em 0 5em'}}>
-          <StyledTitle>Login</StyledTitle>
+        <div style={{ textAlign: 'left', padding: '0 5em 0 5em'}}>
+          <StyledTitle>LOGIN</StyledTitle>
           <hr />
 
           {Object.entries(error).length !== 0 &&
@@ -72,7 +72,7 @@ export default function Login() {
 			</Row>
 			
 			
-			
+			<Row>
           <StyledButton 
             onClick={() => {
               login(data.email, data.password)
@@ -87,9 +87,12 @@ export default function Login() {
             }}>
             LOGIN
           </StyledButton>
+      </Row>
+      <Row>
 		  <div>
 		   Don't have an account?  <StyledLink><a  href='/register'>Register </a></StyledLink>
 		  </div>
+      </Row>
         </div>
       </main>
     </div>

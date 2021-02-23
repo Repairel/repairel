@@ -3,13 +3,13 @@ import _ from 'lodash';
 import { Rating } from '@components/productInfo/ProductInfo.style';
 import { Circle, CircleDiv } from '@components/compare/Compare.style';
 import Slider from './Slider';
-import Leaf from '../../public/leaf.svg';
-import Material from '../../public/material.svg';
-import materialProcessing from '../../public/material-processing.svg';
-import Manufacturing from '../../public/manufacturing.svg';
-import Assembly from '../../public/assembly.svg';
-import Use from '../../public/use.svg';
-import Disposal from '../../public/disposal.svg';
+import Design from "../../public/assembly.svg";
+import rawMaterials from "../../public/material.svg";
+import materialManufacturing from "../../public/leaf.svg";
+import Retail from "../../public/material-processing.svg";
+import footwearManufacturing from "../../public/manufacturing.svg";
+import Use from "../../public/use.svg";
+import Disposal from "../../public/disposal.svg";
 
 
 import {
@@ -24,15 +24,17 @@ import {
   ProductSize,
   ProductHeading,
   Wishlist,
-  ButtonContainer
+  ButtonContainer,
+  RefLink,
 } from './Product.style';
 
 const Product = ({ product, url }) => {
   const icons = {
-    material: Material,
-    material_processing: materialProcessing,
-    manufacturing: Manufacturing,
-    assembly: Assembly,
+    design: Design,
+    raw_materials: rawMaterials,
+    material_manufacturing: materialManufacturing,
+    footwear_manufacturing: footwearManufacturing,
+    retail: Retail,
     use: Use,
     disposal: Disposal,
   };
@@ -43,7 +45,7 @@ const Product = ({ product, url }) => {
     ethics.push([
       category,
       product.ethics_and_sustainability[category],
-      icons[category] || Leaf,
+      icons[category] || materialManufacturing,
     ]);
   }
   const handleCircles = (int) => {
@@ -67,9 +69,23 @@ const Product = ({ product, url }) => {
 
   function hasStock() {
     if (product.stock) {
+      if (product.stock == -1) {
+        return <span></span>
+      }
       return <span>{product.stock} currently in stock</span>
     }
     return <span>Fill in this form and be the first to know when we have stock <a href="#">here</a></span>;
+  }
+
+  function cartButton() {
+    if (product.stock) {
+      if (product.stock == -1 ) {
+        return <RefLink href={product.affiliate_link} target="_blank">affiliate link</RefLink>
+      }
+      return <AddToCart className='snipcart-add-item product__button' data-item-id={product.id} data-item-name={product.name} data-item-price={product.price} data-item-url={`https://84b827bf9943.ngrok.io${url}`} data-item-image={product.images[0].url} data-item-custom1-name='Size' data-item-custom1-options={product.Size}>Add to cart</AddToCart>
+    } else {
+      return <SoldOut>Sold Out</SoldOut>
+    }
   }
 
   return (
@@ -91,23 +107,7 @@ const Product = ({ product, url }) => {
          
         </MainInfo>
         <ButtonContainer className='product__price-button-container'>
-          {product.stock ? (
-            <AddToCart
-              className='snipcart-add-item product__button'
-              data-item-id={product.id}
-              data-item-name={product.name}
-              data-item-price={product.price}
-              data-item-url={`https://84b827bf9943.ngrok.io${url}`}
-              data-item-image={product.images[0].url}
-              data-item-custom1-name='Size'
-              data-item-custom1-options={product.Size}
-            >
-              Add to cart
-            </AddToCart>
-
-          ) : (
-            <SoldOut>Sold Out</SoldOut>
-          )}
+          {cartButton()}
           {hasStock()}
           <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
           <Wishlist>Add to wishlist</Wishlist>
