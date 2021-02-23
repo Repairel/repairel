@@ -29,23 +29,18 @@ describe ('The Filter by brand feature',() => {
     it ('The Condition filter works as expected', () => {
         cy.visit('/')
         cy.contains('Filter').click({force: true})
-        cy.contains('Refurbished').click()
-        cy.contains("We're sorry, there are no products that match these filters.")
+        cy.contains('New').click()
+        cy.contains("shoe1")
+        cy.get('button').contains('Clear all').click()
     })
 
     it ('The Size filter works as expected', () => {
         cy.visit('/')
         cy.contains('Filter').click({force: true})
+        cy.get('button').contains('Clear all').click()
         cy.contains('7').click()
         cy.contains('shoe2')
         cy.should('not.contain.text','shoe1')
-    })
-
-    it ('The Brand filter works as expected', () => {
-        cy.visit('/')
-        cy.contains('Filter').click({force: true})
-        cy.contains('Doc Martens').click()
-        cy.contains('shoe1')
-        cy.should('not.contain.text','shoe2')
+        cy.get('button').contains('Clear all').click()
     })
 })
