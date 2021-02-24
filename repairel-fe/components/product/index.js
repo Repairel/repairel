@@ -115,9 +115,9 @@ const Product = ({ product, url, esdes }) => {
         <ButtonContainer className='product__price-button-container'>
           {cartButton()}
           {hasStock()}
-          <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
+          {/* <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
           <Wishlist>Add to wishlist</Wishlist>
-          </a>
+          </a> */}
         </ButtonContainer>
         <ProductHeading>Description</ProductHeading>
         <p className='product__description'>{product.description}</p>
