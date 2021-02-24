@@ -10,7 +10,7 @@ import Retail from "../../public/material-processing.svg";
 import footwearManufacturing from "../../public/manufacturing.svg";
 import Use from "../../public/use.svg";
 import Disposal from "../../public/disposal.svg";
-
+import Head from "next/head";
 
 import {
   AddToCart,
@@ -25,10 +25,12 @@ import {
   ProductHeading,
   Wishlist,
   ButtonContainer,
-  RefLink,
+  EthicsDescList,
+  EthicsDesc,
+  RefLink
 } from './Product.style';
 
-const Product = ({ product, url }) => {
+const Product = ({ product, url, esdes }) => {
   const icons = {
     design: Design,
     raw_materials: rawMaterials,
@@ -55,6 +57,7 @@ const Product = ({ product, url }) => {
     });
     return array;
   };
+
   const ethicsRender = (ethics) => {
     return ethics.map((ethic) => {
       return (
@@ -66,6 +69,14 @@ const Product = ({ product, url }) => {
       );
     });
   };
+
+  const ethicsDescList = (esdes) => {
+    return esdes.map((es) => {
+      return (
+        <EthicsDesc><b>{es.esname.split('_').join(' ').toUpperCase()}</b> {es.description}</EthicsDesc>
+      )
+    })
+  }
 
   function hasStock() {
     if (product.stock) {
@@ -91,12 +102,7 @@ const Product = ({ product, url }) => {
   return (
     <>
       <Slider images={product.images} />
-      <div
-        className='product'
-        style={{
-          padding: '1rem',
-        }}
-      >
+      <div className='product' style={{ padding: '1rem' }}>
         <MainInfo>
           <div>
             <ProductTitle className='product__title'>
@@ -117,6 +123,7 @@ const Product = ({ product, url }) => {
         <p className='product__description'>{product.description}</p>
         <ProductHeading>Ethics and Sustainability</ProductHeading>
         <EthicsList>{ethicsRender(ethics)}</EthicsList>
+        <EthicsDescList>{ethicsDescList(esdes)}</EthicsDescList>
       </div>
     </>
   );
