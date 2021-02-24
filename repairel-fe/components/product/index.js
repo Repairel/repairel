@@ -60,7 +60,7 @@ const Product = ({ product, url, esdes }) => {
   const ethicsRender = (ethics) => {
     return ethics.map((ethic) => {
       return (
-        <EthicsListItem id={esdes[counter++].esname}  key={ethic[0]}>
+        <EthicsListItem key={ethic[0]}>
           <EthicsImage src={ethic[2]} />
           <EthicsCaption>{ethic[0].split('_').join(' ')}</EthicsCaption>
           <CircleDiv int={ethic[1]}>{handleCircles(ethic[1])}</CircleDiv>
