@@ -1,15 +1,15 @@
 {
   "kind": "collectionType",
-  "collectionName": "engages",
+  "collectionName": "terms",
   "info": {
-    "name": "Engage"
+    "name": "Terms"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "description": {
+    "info": {
       "type": "richtext"
     }
   }
