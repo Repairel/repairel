@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_requests",
+  "info": {
+    "name": "Product-request"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Email": {
+      "type": "email",
+      "required": true
+    },
+    "Brand": {
+      "type": "string"
+    },
+    "Size": {
+      "type": "string",
+      "required": true
+    },
+    "OtherSpecifications": {
+      "type": "string"
+    },
+    "Type": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

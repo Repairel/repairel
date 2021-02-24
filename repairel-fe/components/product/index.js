@@ -80,9 +80,23 @@ const Product = ({ product, url, esdes }) => {
 
   function hasStock() {
     if (product.stock) {
+      if (product.stock == -1) {
+        return <span></span>
+      }
       return <span>{product.stock} currently in stock</span>
     }
     return <span>Fill in this form and be the first to know when we have stock <a href="#">here</a></span>;
+  }
+
+  function cartButton() {
+    if (product.stock) {
+      if (product.stock == -1 ) {
+        return <RefLink href={product.affiliate_link} target="_blank">affiliate link</RefLink>
+      }
+      return <AddToCart className='snipcart-add-item product__button' data-item-id={product.id} data-item-name={product.name} data-item-price={product.price} data-item-url={`https://84b827bf9943.ngrok.io${url}`} data-item-image={product.images[0].url} data-item-custom1-name='Size' data-item-custom1-options={product.Size}>Add to cart</AddToCart>
+    } else {
+      return <SoldOut>Sold Out</SoldOut>
+    }
   }
 
   return (
@@ -96,26 +110,10 @@ const Product = ({ product, url, esdes }) => {
             </ProductTitle>
             <p className='product__price'>£ {product.price}</p>
           </div>
-          <Rating title={'Overall ethics rating'} rating={product.rating}>{product.rating}</Rating>
+         
         </MainInfo>
         <ButtonContainer className='product__price-button-container'>
-          {product.stock ? (
-            <AddToCart
-              className='snipcart-add-item product__button'
-              data-item-id={product.id}
-              data-item-name={product.name}
-              data-item-price={product.price}
-              data-item-url={`https://84b827bf9943.ngrok.io${url}`}
-              data-item-image={product.images[0].url}
-              data-item-custom1-name='Size'
-              data-item-custom1-options={product.Size}
-            >
-              Add to cart
-            </AddToCart>
-
-          ) : (
-            <SoldOut>Sold Out</SoldOut>
-          )}
+          {cartButton()}
           {hasStock()}
           <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
           <Wishlist>Add to wishlist</Wishlist>

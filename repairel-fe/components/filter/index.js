@@ -14,15 +14,13 @@ const Filter = ({ content, list, setFilteredList }) => {
     const [filters, setFilters] = React.useState({
         price: "",
         condition: "",
-        AffiliateProduct:"",
         size: [],
-        brand: [],
+        brand: "",
 
     });
     const [noFilter, setNoFilter] = React.useState(false);;
     const sizes = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    const condition = ["New", "Refurbished"];
-    const AffiliateProduct = ["Yes", "No"];
+    const condition = ["New Shoes", "Refurbished Shoes"];
     const price = ["High to Low", "Low to High"];
     let brands2 = [];
     let brands3 = [];
@@ -50,7 +48,6 @@ const Filter = ({ content, list, setFilteredList }) => {
       let condition = storedFilters[1];
         let sizes = storedFilters[2];
         let brands = storedFilters[3];
-        let AffiliateProduct = storedFilters[4];
       Array.from(checkboxes, (checkbox) => {
           let id = checkbox.id.split(" ").join("").toLowerCase();
         if (id === price) {
@@ -59,11 +56,9 @@ const Filter = ({ content, list, setFilteredList }) => {
           checkbox.checked = true;
         } else if (sizes.includes(id)) {
             checkbox.checked = true;
-        } else if (brands.includes(id)) {
+        } else if (id === brands) {
               checkbox.checked = true;
-        } else if (id === AffiliateProduct) {
-              checkbox.checked = true;
-          } 
+        } 
       });
     }
   }, []);
@@ -74,7 +69,7 @@ const Filter = ({ content, list, setFilteredList }) => {
   };
 
   const handleCheck = (event) => {
-      let item = event.target.id.toLowerCase().split(" ").join("");
+      let item = event.target.id.toLowerCase().split(" ").join("").replace("shoes","");
     if (item.includes("high")) {
       sessionStorage.setItem(
         "filters",
@@ -84,18 +79,10 @@ const Filter = ({ content, list, setFilteredList }) => {
     } else if (item.includes("new") || item.includes("refurbished")) {
       sessionStorage.setItem(
         "filters",
-        JSON.stringify({ ...filters, condition: item })
+        JSON.stringify({ ...filters, condition: item.replace("shoes","") })
       );
       setFilters({ ...filters, condition: item });
-    } else if (item.includes("yes") || item.includes("no")) {
-        sessionStorage.setItem(
-            "filters",
-            JSON.stringify({ ...filters, AffiliateProduct: item })
-        );
-        setFilters({ ...filters, AffiliateProduct: item });
-    }
-
-    else if (brands3.includes(item)) {
+    } else if (brands3.includes(item)) {
         sessionStorage.setItem(
             "filters",
             JSON.stringify({ ...filters, brand: item })
@@ -141,12 +128,15 @@ const Filter = ({ content, list, setFilteredList }) => {
     let storageFilters = JSON.parse(sessionStorage.getItem("filters"));
     let filterObj = storageFilters === null ? filters : storageFilters;
       let array = Object.keys(filterObj);
+      console.log(filterObj);
     array.forEach((filter) => {
+        
       if (filter === "price" && filterObj[filter] !== "") {
         filterObj[filter] === "lowtohigh"
           ? (listCopy = [...list].sort((a, b) => (a.price > b.price ? 1 : -1)))
           : (listCopy = [...list].sort((a, b) => (a.price > b.price ? -1 : 1)));
-      } else if (filter === "condition" && filterObj[filter] !== "") {
+      }
+      else if (filter === "condition" && filterObj[filter] !== "") {
           const newList = [];
           const refurbishedList = [];
           listCopy.map((product) => {
@@ -154,19 +144,8 @@ const Filter = ({ content, list, setFilteredList }) => {
           });
           filterObj[filter] === "new"
               ? (listCopy = newList)
-              : (listCopy = refurbishedList);
-      }
-
-      else if (filter === "AffiliateProduct" && filterObj[filter] !== "") {
-          const AFList = [];
-          const ALLList = [];
-          listCopy.map((product) => {
-              product.affiliateProduct ? AFList.push(product) : ALLList.push(product);
-          });
-          filterObj[filter] === "yes"
-              ? (listCopy = AFList)
-              : (listCopy = ALLList);
-      }
+              : (listCopy = refurbishedList);}
+      
       else if (filter === "size" && filterObj[filter].length !== 0) {
         let sizeArray = [];
         listCopy.map((product) => {
@@ -179,7 +158,6 @@ const Filter = ({ content, list, setFilteredList }) => {
       else if (filter === "brand" && filterObj[filter].length !== 0) {
           const brandArray = [];
           listCopy.map((product) => {
-
               if (prodList[b].brand != null) {
                   if (filterObj[filter].includes(product.brand.Brand_name.toString().replace(/\s+/g, '').toLowerCase()))
                       brandArray.push(product);
@@ -187,15 +165,16 @@ const Filter = ({ content, list, setFilteredList }) => {
           });
           listCopy = brandArray;
       }
-      listCopy.length === 0 ? setNoFilter(true) : setNoFilter(false);
-
-      setFilteredList(listCopy);
+        
+        listCopy.length === 0 ? setNoFilter(true) : setNoFilter(false);
+        setFilteredList(listCopy);
     });
+      
   };
 
   // resets all state and unchecks checkboxes
   const clearAll = () => {
-      setFilters({ price: "", condition: "", size: [], brand: [], AffiliateProduct: "", });
+      setFilters({ price: "", condition: "", size: [], brand: "", });
     setFilteredList([]);
     setNoFilter(false);
     sessionStorage.removeItem("filters");
@@ -210,13 +189,20 @@ const Filter = ({ content, list, setFilteredList }) => {
       return (
         <React.Fragment key={(item, index)}>
           <FilterInput
+              
             type={typeof item === "number" ? "checkbox" : "radio"}
             name={
+
               typeof item === "number"
+          
                 ? item
                 : item.includes("to")
                 ? "price"
-                : "condition"
+                : item.includes("Shoes")
+                ? "condition"
+                : "brand"
+                
+
             }
             id={item}
             onChange={(event) => handleChange(event)}
@@ -244,10 +230,6 @@ const Filter = ({ content, list, setFilteredList }) => {
           <FilterHeadings>Brand</FilterHeadings>
               <FilterDiv >{renderParams(brands)}</FilterDiv>
           </div>
-          <div >
-          <FilterHeadings>Affiliate Product</FilterHeadings>
-              <FilterDiv >{renderParams(AffiliateProduct)}</FilterDiv>
-              </div>
       {noFilter && (
         <FilterMessage>
           {"We're sorry, there are no products that match these filters. Don't worry we have many more shoes to choose from."}
