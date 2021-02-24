@@ -16,10 +16,10 @@ const Engage = ({content}) => {
         <title id="title">REPAIREL | Engage</title>
       </Head>
       <Header />
-      <img
-        style={{ width: "50%", height: "50%" }}
+      <center><img
+        style={{ width: "25%", height: "25" }}
         src= {Logo}
-      ></img>
+      ></img></center>
       <section
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
