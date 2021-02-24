@@ -123,7 +123,6 @@ const ProductList = ({ list }) => {
                     key={product.id}
                     price={product.price}
                     name={product.name}
-                    rating={product.rating}
                     size={product.Size}
                   />
                 </ProductInfoWrapper>
@@ -164,7 +163,6 @@ const ProductList = ({ list }) => {
                   key={product.id}
                   price={product.price}
                   name={product.name}
-                  rating={product.rating}
                   size={product.Size}
                 />
               </ProductInfoWrapper>
