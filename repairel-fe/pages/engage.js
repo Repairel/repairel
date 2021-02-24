@@ -9,7 +9,8 @@ import Socials from "@components/socials";
 import { LinedHeading, StyledLink } from "../styles/global";
 import {Wishlist} from "@components/product/Product.style.js";
 
-const Engage = ({ content }) => {
+// This is the correct engage page
+const Engage = ({content}) => {
   return (
     <>
       <Head>
