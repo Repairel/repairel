@@ -13,8 +13,7 @@ stages:
     - Integration-Testing
     # Development Deployment
     - Deploy-Development
-    # Production Deployment
-    - Deploy-Production
+   
 
 
 # testing will run every time there is a change to the codebase (ie a push to the repo)
@@ -25,7 +24,7 @@ cypress-testing:
         - cd repairel-fe
         - npm --quiet i
         - npm install cypress --save-dev
-        - export NEXT_PUBLIC_API_URL=https://dev-repairel.herokuapp.com
+        - export NEXT_PUBLIC_API_URL=https://rocky-earth-77368.herokuapp.com
         - npm run dev & ./node_modules/.bin/cypress run --quiet
 
 
@@ -39,31 +38,3 @@ backend-dev-deploy:
     only:
         - develop
 
-frontend-dev-deploy:
-    stage: Deploy-Development
-    image: ruby:latest
-    script:
-        - cd repairel-fe
-        - dpl --provider=heroku --app=$HEROKU_FE_DEV --api-key=$HEROKU_API_KEY
-    only:
-        - develop
-
-
-# will basically be identical to the dev jobs but will deploy to the production servers
-backend-prod-deploy:
-    stage: Deploy-Production
-    image: ruby:latest
-    script:
-        - cd repairel-be
-        - dpl --provider=heroku --app=$HEROKU_BE_PROD --api-key=$HEROKU_API_KEY
-    only:
-        - master
-
-frontend-prod-deploy:
-    stage: Deploy-Production
-    image: ruby:latest
-    script:
-        - cd repairel-fe
-        - dpl --provider=heroku --app=$HEROKU_FE_PROD --api-key=$HEROKU_API_KEY
-    only:
-        - master
