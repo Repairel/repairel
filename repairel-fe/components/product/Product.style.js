@@ -155,7 +155,6 @@ const EthicsDescList = styled.div`
 const EthicsDesc = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 0.7rem;
   border: 1px solid black;
   margin: 1em 0.25em 1em 0.25em;
