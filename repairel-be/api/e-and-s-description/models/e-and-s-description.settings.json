@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Description",
+  "info": {
+    "name": "ESDescription"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "esname": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

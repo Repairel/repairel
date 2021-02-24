@@ -140,6 +140,55 @@ const ProductHeading = styled.h3`
   margin-top: 2.5rem;
 `;
 
+const EthicsDescList = styled.div`
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, max-content);
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const EthicsDesc = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0.7rem;
+  border: 1px solid black;
+  margin: 1em 0.25em 1em 0.25em;
+`;
+
+const RefLink = styled.a`
+  font: 400 13.3333px Arial;
+  text-decoration: none;
+  width: 4rem;
+  max-width: 100%;
+  display: inline-block;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  height: auto;
+  width: auto;
+  margin: 0.5rem;
+  padding: 0.6em 3em;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: 1px;
+  vertical-align: top;
+  border-radius: 0;
+  cursor: pointer;
+  transition: color 150ms, background-color 150ms;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  &:hover {
+    color: white;
+    background-color: black;
+  }
+`;
+
+
 export {
   AddToCart,
   SliderImage,
@@ -154,5 +203,8 @@ export {
   ProductSize,
   ProductHeading,
   Wishlist,
-  ButtonContainer
+  ButtonContainer,
+  EthicsDescList,
+  EthicsDesc,
+  RefLink
 };

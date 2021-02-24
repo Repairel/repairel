@@ -10,7 +10,7 @@ import Retail from "../../public/material-processing.svg";
 import footwearManufacturing from "../../public/manufacturing.svg";
 import Use from "../../public/use.svg";
 import Disposal from "../../public/disposal.svg";
-
+import Head from "next/head";
 
 import {
   AddToCart,
@@ -24,10 +24,13 @@ import {
   ProductSize,
   ProductHeading,
   Wishlist,
-  ButtonContainer
+  ButtonContainer,
+  EthicsDescList,
+  EthicsDesc,
+  RefLink
 } from './Product.style';
 
-const Product = ({ product, url }) => {
+const Product = ({ product, url, esdes }) => {
   const icons = {
     design: Design,
     raw_materials: rawMaterials,
@@ -54,6 +57,7 @@ const Product = ({ product, url }) => {
     });
     return array;
   };
+
   const ethicsRender = (ethics) => {
     return ethics.map((ethic) => {
       return (
@@ -66,22 +70,39 @@ const Product = ({ product, url }) => {
     });
   };
 
+  const ethicsDescList = (esdes) => {
+    return esdes.map((es) => {
+      return (
+        <EthicsDesc><b>{es.esname.split('_').join(' ').toUpperCase()}</b> {es.description}</EthicsDesc>
+      )
+    })
+  }
+
   function hasStock() {
     if (product.stock) {
+      if (product.stock == -1) {
+        return <span></span>
+      }
       return <span>{product.stock} currently in stock</span>
     }
     return <span>Fill in this form and be the first to know when we have stock <a href="#">here</a></span>;
   }
 
+  function cartButton() {
+    if (product.stock) {
+      if (product.stock == -1 ) {
+        return <RefLink href={product.affiliate_link} target="_blank">affiliate link</RefLink>
+      }
+      return <AddToCart className='snipcart-add-item product__button' data-item-id={product.id} data-item-name={product.name} data-item-price={product.price} data-item-url={`https://84b827bf9943.ngrok.io${url}`} data-item-image={product.images[0].url} data-item-custom1-name='Size' data-item-custom1-options={product.Size}>Add to cart</AddToCart>
+    } else {
+      return <SoldOut>Sold Out</SoldOut>
+    }
+  }
+
   return (
     <>
       <Slider images={product.images} />
-      <div
-        className='product'
-        style={{
-          padding: '1rem',
-        }}
-      >
+      <div className='product' style={{ padding: '1rem' }}>
         <MainInfo>
           <div>
             <ProductTitle className='product__title'>
@@ -89,35 +110,20 @@ const Product = ({ product, url }) => {
             </ProductTitle>
             <p className='product__price'>£ {product.price}</p>
           </div>
-          <Rating title={'Overall ethics rating'} rating={product.rating}>{product.rating}</Rating>
+         
         </MainInfo>
         <ButtonContainer className='product__price-button-container'>
-          {product.stock ? (
-            <AddToCart
-              className='snipcart-add-item product__button'
-              data-item-id={product.id}
-              data-item-name={product.name}
-              data-item-price={product.price}
-              data-item-url={`https://84b827bf9943.ngrok.io${url}`}
-              data-item-image={product.images[0].url}
-              data-item-custom1-name='Size'
-              data-item-custom1-options={product.Size}
-            >
-              Add to cart
-            </AddToCart>
-
-          ) : (
-            <SoldOut>Sold Out</SoldOut>
-          )}
+          {cartButton()}
           {hasStock()}
-          <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
+          {/* <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
           <Wishlist>Add to wishlist</Wishlist>
-          </a>
+          </a> */}
         </ButtonContainer>
         <ProductHeading>Description</ProductHeading>
         <p className='product__description'>{product.description}</p>
         <ProductHeading>Ethics and Sustainability</ProductHeading>
         <EthicsList>{ethicsRender(ethics)}</EthicsList>
+        <EthicsDescList>{ethicsDescList(esdes)}</EthicsDescList>
       </div>
     </>
   );

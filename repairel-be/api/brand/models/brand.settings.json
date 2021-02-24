@@ -24,8 +24,8 @@
       "maxLength": 30
     },
     "products": {
-      "collection": "products",
-      "via": "brand"
+      "via": "brand",
+      "collection": "products"
     }
   }
 }

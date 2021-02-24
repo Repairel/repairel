@@ -19,7 +19,7 @@ import ProductInfo from "@components/productInfo";
 import Filter from "@components/filter";
 import CompareInstructions from "@components/compareInstructions";
 
-const ProductList = ({ list }) => {
+const ProductList = ({ list, esdes }) => {
   // the list comes from the fetch request in '../../pages/index' 
   //and contains all of the products
   const router = useRouter();
@@ -123,8 +123,8 @@ const ProductList = ({ list }) => {
                     key={product.id}
                     price={product.price}
                     name={product.name}
-                    rating={product.rating}
                     size={product.Size}
+                    ref_link={product.affiliate_link}
                   />
                 </ProductInfoWrapper>
               </div>
@@ -164,8 +164,8 @@ const ProductList = ({ list }) => {
                   key={product.id}
                   price={product.price}
                   name={product.name}
-                  rating={product.rating}
                   size={product.Size}
+                  ref_link={product.affiliate_link}
                 />
               </ProductInfoWrapper>
             </ProductCard>

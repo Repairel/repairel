@@ -8,6 +8,8 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+.vs/
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
@@ -211,3 +213,8 @@ packages/strapi-generate-new/files/public/
 
 # Visual Studio Code
 front-workspace.code-workspace
+
+
+# test reports
+mochawesome-report/
+reports/
