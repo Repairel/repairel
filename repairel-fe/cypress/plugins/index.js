@@ -16,13 +16,6 @@
  * @type {Cypress.PluginConfig}
  */
 module.exports = (on, config) => {
-  on('before:browser:launch', (browser = {}, args) => {
-    if (browser.family === 'chrome') {
-      console.log('Adding --disable-dev-shm-usage...')
-      args.push('--disable-dev-shm-usage')
-      args.push('--ipc=host')
-    }
-
-    return args
-  })
+  // `on` is used to hook into various events Cypress emits
+  // `config` is the resolved Cypress config
 }

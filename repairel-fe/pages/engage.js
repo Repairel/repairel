@@ -1,8 +1,8 @@
 import Header from "@components/header";
 import Head from "next/head";
 import Markdown from "markdown-to-jsx";
-import PropTypes from "prop-types";
-import Logo from "../public/repairel-logo.svg"
+//import PropTypes from "prop-types";
+import Logo from "../public/eco_feet .svg";
 
 import Socials from "@components/socials";
 
@@ -25,13 +25,14 @@ const Engage = ({content}) => {
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
         <LinedHeading>Engage</LinedHeading>
-        <p>
-          <Markdown>{content[0].description}</Markdown>
-        </p>
-        
+        <Markdown>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Malesuada amet pulvinar nec fermentum tincidunt pulvinar. 
+            Non nunc diam augue nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Malesuada amet pulvinar nec fermentum tincidunt pulvinar. Non nunc diam augue nulla. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Markdown>  
       </section>
       <section style = {{margin:"5rem", display: "flex", justifyContent: "center"}}>
-            
             <Markdown>
                 This button will take you to the Just Giving homepage as a place holder
             </Markdown> 
@@ -48,14 +49,20 @@ const Engage = ({content}) => {
   );
 };
 
+/*
 export async function getServerSideProps() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/engages`);
-    const json = await res.json();
-    return { props: {content: json} };
-  }
+//    const res = await fetch(`http://35.178.141.40:1337/abouts`);
+//    const json = await res.json();
+//    return { props: { content: json } };
+//  }
   
-Engage.propTypes = {
-  content: PropTypes.array,
-};
+  Engage.propTypes = {
+    content: PropTypes.array,
+  };
+//  export default Engage;
+
+}
+*/
+
 export default Engage;
 
