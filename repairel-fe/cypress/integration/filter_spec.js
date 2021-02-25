@@ -29,8 +29,8 @@ describe ('The Filter by brand feature',() => {
     it ('The Condition filter works as expected', () => {
         cy.visit('/')
         cy.contains('Filter').click({force: true})
-        cy.contains('New').click()
-        cy.contains("shoe1")
+        cy.contains('New Shoes').click()
+        cy.contains("White Nike Shoes")
         cy.get('button').contains('Clear all').click()
     })
 
@@ -39,8 +39,18 @@ describe ('The Filter by brand feature',() => {
         cy.contains('Filter').click({force: true})
         cy.get('button').contains('Clear all').click()
         cy.contains('7').click()
-        cy.contains('shoe2')
-        cy.should('not.contain.text','shoe1')
+        cy.contains('Blue Nikes')
+        cy.should('not.contain.text','White Nike Shoes')
+        cy.get('button').contains('Clear all').click()
+    })
+
+    it ('The Brand filter works as expected', () => {
+        cy.visit('/')
+        cy.contains('Filter').click({force: true})
+        cy.get('button').contains('Clear all').click()
+        cy.contains('Nike').click()
+        cy.contains('Blue Nikes')
+        cy.should('not.contain.text','Timberland Boots')
         cy.get('button').contains('Clear all').click()
     })
 })

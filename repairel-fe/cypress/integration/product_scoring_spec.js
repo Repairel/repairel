@@ -4,4 +4,5 @@ describe ('The Product Scoring Categories',() => {
         cy.visit('/product/1')
         cy.get('p').contains('material manufacturing')
     })
+    
 })
