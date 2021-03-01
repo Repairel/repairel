@@ -26,12 +26,21 @@ form label, form input {
 textarea.OtherSpecifications {
   height: 5em;
   font-size: 1.25em;
+  font-family: Arial;
 }
 
 input.Size {
     width: 14vw;
     margin-left: 1vw;
   }
+
+button.submitRequest {
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 0.0em;
+  background-color: white;
+  border: 2px solid grey;
+}
 
 input.Brand {
     width: 14vw;
