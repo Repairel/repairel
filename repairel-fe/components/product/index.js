@@ -93,7 +93,7 @@ const Product = ({ product, url, esdes }) => {
       if (product.stock == -1 ) {
         return <RefLink href={product.affiliate_link} target="_blank">affiliate link</RefLink>
       }
-      return <AddToCart className='snipcart-add-item product__button' data-item-id={product.id} data-item-name={product.name} data-item-price={product.price} data-item-url={`https://84b827bf9943.ngrok.io${url}`} data-item-image={product.images[0].url} data-item-custom1-name='Size' data-item-custom1-options={product.Size}>Add to cart</AddToCart>
+      return <AddToCart className='snipcart-add-item product__button' data-item-id={product.id} data-item-name={product.name} data-item-price={product.price} data-item-url={`https://dev-repairel-fe.herokuapp.com${url}`} data-item-image={product.images[0].url} data-item-custom1-name='Size' data-item-custom1-options={product.Size}>Add to cart</AddToCart>
     } else {
       return <SoldOut>Sold Out</SoldOut>
     }
