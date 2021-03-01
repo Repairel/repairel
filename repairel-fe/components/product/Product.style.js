@@ -157,7 +157,6 @@ const EthicsDesc = styled.div`
   flex-direction: column;
   padding: 0.7rem;
   border: 1px solid black;
-  margin: 1em 0.25em 1em 0.25em;
 `;
 
 const RefLink = styled.a`
