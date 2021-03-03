@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
+import AppContext from "../../context/AppContext";
 import _ from 'lodash';
+import { useContext } from "react";
 import { Rating } from '@components/productInfo/ProductInfo.style';
 import { Circle, CircleDiv } from '@components/compare/Compare.style';
 import Slider from './Slider';
@@ -31,6 +33,7 @@ import {
 } from './Product.style';
 
 const Product = ({ product, url, esdes }) => {
+  const appContext = useContext(AppContext);
   const icons = {
     design: Design,
     raw_materials: rawMaterials,
@@ -99,6 +102,12 @@ const Product = ({ product, url, esdes }) => {
     }
   }
 
+  function hasLogin() {
+    if (appContext.isAuthenticated) {
+      return <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}><Wishlist>Add to wishlist</Wishlist></a>
+    }
+  }
+
   return (
     <>
       <Slider images={product.images} />
@@ -115,9 +124,10 @@ const Product = ({ product, url, esdes }) => {
         <ButtonContainer className='product__price-button-container'>
           {cartButton()}
           {hasStock()}
-          {/* <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
-          <Wishlist>Add to wishlist</Wishlist>
-          </a> */}
+          {hasLogin()}
+            {/* <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
+            <Wishlist>Add to wishlist</Wishlist>
+            </a>      */}
         </ButtonContainer>
         <ProductHeading>Description</ProductHeading>
         <p className='product__description'>{product.description}</p>
