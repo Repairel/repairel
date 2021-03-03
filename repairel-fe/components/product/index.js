@@ -28,9 +28,7 @@ import {
   ProductHeading,
   Wishlist,
   ButtonContainer,
-  EthicsDescList,
-  EthicsDesc,
-  RefLink
+  RefLink,
 } from './Product.style';
 
 const Product = ({ product, url, esdes }) => {
@@ -113,7 +111,12 @@ const Product = ({ product, url, esdes }) => {
   return (
     <>
       <Slider images={product.images} />
-      <div className='product' style={{ padding: '1rem' }}>
+      <div
+        className='product'
+        style={{
+          padding: '1rem',
+        }}
+      >
         <MainInfo>
           <div>
             <ProductTitle className='product__title'>
@@ -126,9 +129,9 @@ const Product = ({ product, url, esdes }) => {
         <ButtonContainer className='product__price-button-container'>
           {cartButton()}
           {hasStock()}
-          {/* <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
+          <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
           <Wishlist>Add to wishlist</Wishlist>
-          </a> */}
+          </a>
         </ButtonContainer>
         <ProductHeading>Description</ProductHeading>
         <p className='product__description'>{product.description}</p>
