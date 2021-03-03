@@ -63,6 +63,10 @@
     },
     "phone_number": {
       "type": "string"
+    },
+    "wishlist": {
+      "via": "users",
+      "model": "wishlist"
     }
   }
 }

@@ -102,9 +102,14 @@ const Product = ({ product, url, esdes }) => {
     }
   }
 
+  function addWishlist() {
+    
+  }
+
   function hasLogin() {
     if (appContext.isAuthenticated) {
-      return <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}><Wishlist>Add to wishlist</Wishlist></a>
+      return <Wishlist>Add to wishlist</Wishlist>
+      // onClick={() => }
     }
   }
 
