@@ -12,6 +12,7 @@ import Use from "../../public/use.svg";
 import Disposal from "../../public/disposal.svg";
 import Head from "next/head";
 import React, { useState, useEffect, useContext } from "react";
+import Markdown from "markdown-to-jsx";
 
 import {
   AddToCart,
@@ -131,7 +132,7 @@ const Product = ({ product, url, esdes }) => {
         <p className='product__description'>{product.description}</p>
         <ProductHeading>Ethics and Sustainability</ProductHeading>
         <EthicsList>{ethicsRender(ethics)}</EthicsList>
-        <EthicsDesc><b>{desc.name}</b> {desc.text}</EthicsDesc>
+        <EthicsDesc><b>{desc.name}</b> <Markdown>{desc.text}</Markdown></EthicsDesc>
       </div>
     </>
   );
