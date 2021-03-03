@@ -13,6 +13,7 @@ import Disposal from "../../public/disposal.svg";
 import Head from "next/head";
 import React, { useState, useEffect, useContext } from "react";
 import Markdown from "markdown-to-jsx";
+import styles from "./Product.module.css";
 
 import {
   AddToCart,
@@ -33,8 +34,8 @@ import {
 } from './Product.style';
 
 const Product = ({ product, url, esdes }) => {
-  const [desc, setDesc] = useState({ name: esdes[0].esname.split('_').join(' ').toUpperCase(), text: esdes[0].description });
-
+  const [desc, setDesc] = useState({ name: "",text: "", image: ""});
+  let [active, setActive] = useState(-1)
   const icons = {
     design: Design,
     raw_materials: rawMaterials,
@@ -54,23 +55,24 @@ const Product = ({ product, url, esdes }) => {
       icons[category] || materialManufacturing,
     ]);
   }
-  const handleCircles = (int, name, text) => {
+  const handleCircles = (int, name, text, id) => {
     let array = [];
     _.times(int, (i) => {
-      array.push(<Circle data-name={name} data-text={text} int={int} key={i} />);
+      array.push(<Circle className={id==active? styles.circle : ""} data-name={name} data-text={text} int={int} key={i} />);
     });
     return array;
   };
 
-  let [active, setActive] = useState(0)
 
-  function changeDesc(id, name, desc) {
-    setDesc({ name: name, text: desc });
+  function changeDesc(id, name, desc, image) {
+    setDesc({ name: name, text: desc, image:image });
     setActive(id);
   }
 
+
+
   const activeStyle = {
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#FFFFFF',
   }
 
   const ethicsRender = (ethics) => {
@@ -78,10 +80,10 @@ const Product = ({ product, url, esdes }) => {
     return ethics.map((ethic) => {
       let curName = esdes[counter].esname.split('_').join(' ').toUpperCase();
       return (
-        <EthicsListItem style={counter == active ? activeStyle : {}} id={counter} data-name={curName} data-text={esdes[counter].description} key={ethic[0]} onClick={(e) => changeDesc(e.target.id, e.target.dataset.name, e.target.dataset.text)}>
-          <EthicsImage id={counter} data-name={curName} data-text={esdes[counter].description} src={ethic[2]} />
+        <EthicsListItem className={counter == active ? styles.active: styles.default} style={counter == active ? activeStyle : {}} id={counter} data-name={curName} data-text={esdes[counter].description} key={ethic[0]} onClick={(e) => changeDesc(e.target.id, e.target.dataset.name, e.target.dataset.text, ethic[2])}>
+          <EthicsImage className={styles.esimage} id={counter} data-name={curName} data-text={esdes[counter].description} src={ethic[2]} />
           <EthicsCaption id={counter} data-name={curName} data-text={esdes[counter].description}>{ethic[0].split('_').join(' ')}</EthicsCaption>
-          <CircleDiv id={counter} data-name={curName} data-text={esdes[counter].description} int={ethic[1]}>{handleCircles(ethic[1], curName, esdes[counter++].description)}</CircleDiv>
+          <CircleDiv id={counter} data-name={curName} data-text={esdes[counter].description} int={ethic[1]}>{handleCircles(ethic[1], curName, esdes[counter].description, counter++)}</CircleDiv>
         </EthicsListItem>
       );
     });
@@ -132,7 +134,7 @@ const Product = ({ product, url, esdes }) => {
         <p className='product__description'>{product.description}</p>
         <ProductHeading>Ethics and Sustainability</ProductHeading>
         <EthicsList>{ethicsRender(ethics)}</EthicsList>
-        <EthicsDesc><b>{desc.name}</b> <Markdown>{desc.text}</Markdown></EthicsDesc>
+        <EthicsDesc><div><img style={{height:20, marginRight:5}} src={desc.image}></img><b>{desc.name}</b></div><div><Markdown>{desc.text}</Markdown></div></EthicsDesc>
       </div>
     </>
   );
