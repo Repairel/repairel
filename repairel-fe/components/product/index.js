@@ -29,6 +29,7 @@ import {
   Wishlist,
   ButtonContainer,
   RefLink,
+  EthicsDesc
 } from './Product.style';
 
 const Product = ({ product, url, esdes }) => {
