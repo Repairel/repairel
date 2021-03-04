@@ -65,8 +65,13 @@ const StyledButton = styled.button`
   font-size: 1em;
   border-radius: 0.0em;
   background-color: white;
-  border: 2px solid grey;
-  
+  border: 1px solid black;
+  transition: color 150ms, background-color 150ms;
+  cursor: pointer;
+  &:hover {
+    color: white;
+    background-color: black;
+  }
 `;
 
 const StyledInput = styled.input`

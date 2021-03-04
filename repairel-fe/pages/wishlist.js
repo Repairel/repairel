@@ -1,6 +1,5 @@
 import Header from "@components/header";
 import Head from "next/head";
-//import getConfig from 'next/config'
 import { useState } from 'react'
 import { LinedHeading} from "../styles/global";
 import React from "react";
@@ -15,31 +14,36 @@ export default function ProductReq () {
   const [Type, setType] = useState('')
   const [OtherSpecifications, setOtherSpecifications] = useState('')
   
-  //Send the request on click of submit button
+  // Function to send the request on click of submit button
   async function addRequest() {
     const reqInfo = {
-        Name: Name,
-        Email: Email,
-        Brand: Brand,
-        OtherSpecifications: OtherSpecifications,
-        Type: Type,
-        Size: Size
-    }
-
-    // Hard coded link
-    const add = await fetch('https://rocky-earth-77368.herokuapp.com/product-requests', {
+      Name: Name,
+      Email: Email,
+      Brand: Brand,
+      OtherSpecifications: OtherSpecifications,
+      Type: Type,
+      Size: Size
+  }  
+  // The form will only get submitted if required fields are not empty.
+  if (document.getElementById("Name").value == ""  || document.getElementById("Email").value == "" || document.getElementById("Size").value == "" || document.getElementById("Type").value == "") {
+    document.getElementById("FormNonSuccessMessage").innerHTML = "Please make sure to fill in all of the required fields marked with an asterix(*)."
+   }
+   else {
+    const add = await fetch('https://rocky-earth-77368.herokuapp.com/product-requests', { // Hard coded link due to a bug otherwise
       method: "POST",
       headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
       },
       body: JSON.stringify(reqInfo),
-      
     })
     const addResponse = await add.json()
     console.log(addResponse)
+    document.getElementById("FormSuccessMessage").innerHTML = "Thank you for submitting your request. We will be in touch when the product you requested comes back into stock."
+    document.getElementById("Form").style.display="none";
   }
-   
+  }
+ 
   return (
     <>
       <Head>
@@ -49,15 +53,17 @@ export default function ProductReq () {
       <section
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
-        <LinedHeading>Product request</LinedHeading>
+        <LinedHeading>PRODUCT REQUEST</LinedHeading>
         
       </section>     
-      <form method="post" name="Form" action=""> 
-          <Row><label className="Name" htmlFor="Name">Name*</label></Row>
-          <Row><input type="text" className="Name" onChange={e => setName(e.target.value) } value={Name} required/></Row>
+      <p id="FormSuccessMessage"></p>
+      <p id="FormNonSuccessMessage"></p>
+      <form method="post" id="Form" name="Form" action=""> 
+          <Row><label className="Name" htmlFor="Name">Your name*</label></Row>
+          <Row><input type="text" className="Name" id="Name" onChange={e => setName(e.target.value) } value={Name}/></Row>
           
           <Row><label className='Email' htmlFor="Email">Email*</label></Row>
-          <Row><input type="email" className='Email' onChange={e => setEmail(e.target.value) } value={Email} required/></Row>
+          <Row><input type="email" id="Email" className='Email' onChange={e => setEmail(e.target.value) } value={Email}/></Row>
 
           <div className = "both_col">
           <div className="col1">
@@ -66,17 +72,17 @@ export default function ProductReq () {
           </div>
           <div className="col2">
           <Row><label className='Size' htmlFor="Size" id="parent">Size*</label></Row>
-          <Row><input type="text" className='Size' onChange={e => setSize(e.target.value) } value={Size} required/></Row>
+          <Row><input type="text" id="Size" className='Size' onChange={e => setSize(e.target.value) } value={Size}/></Row>
           </div>
           </div>
 
-          <Row><label className="Type" htmlFor="Type">Type*</label></Row>
-          <Row><input type="text" className="Type" onChange={e => setType(e.target.value) } value={Type} required/></Row>
+          <Row><label className="Type" htmlFor="Type">Style of shoe*</label></Row>
+          <Row><input type="text" id="Type" className="Type" onChange={e => setType(e.target.value) } value={Type} placeholder="Example: boot, sneaker, flap.."/></Row>
         
           <Row><label className = "OtherSpecifications" htmlFor="OtherSpecifications">Other specifications</label></Row>
           <Row><textarea type="text" className="OtherSpecifications" onChange={e => setOtherSpecifications(e.target.value) } value={OtherSpecifications}/></Row>
           
-          <Row><button type="submit" className="submitRequest" onClick={() => addRequest()}>SUBMIT REQUEST</button></Row>
+          <Row><button type="button" id="button" className="submitRequest" onClick={() => addRequest()}>SUBMIT REQUEST</button></Row>
         </form>
     </>
   );
