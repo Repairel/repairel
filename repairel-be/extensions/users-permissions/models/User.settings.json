@@ -63,6 +63,14 @@
     },
     "phone_number": {
       "type": "string"
+    },
+    "snipcart_personas": {
+      "collection": "snipcart-personas",
+      "via": "user"
+    },
+    "snipcart_update_needed": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
