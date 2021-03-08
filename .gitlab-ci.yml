@@ -26,7 +26,7 @@ cypress-testing:
         - npm --quiet i
         - npm install cypress --save-dev
         - export NEXT_PUBLIC_API_URL=$BACKEND_URL
-        - npm run test
+        - npm run dev & ./node_modules/.bin/cypress run --quiet
 
 
 # deploys the code to the development servers
