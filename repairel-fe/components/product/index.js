@@ -111,6 +111,9 @@ const Product = ({ product, url, esdes }) => {
       return <Wishlist>Add to wishlist</Wishlist>
       // onClick={() => }
     }
+    else {
+      return <span><a href="/login">Login</a>/<a href="/register">Register</a> to add this item to your wishlist!</span>
+    }
   }
 
   return (
