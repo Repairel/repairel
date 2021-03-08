@@ -9,19 +9,15 @@
     "timestamps": true
   },
   "attributes": {
-    "users": {
+    "user": {
       "plugin": "users-permissions",
       "collection": "user",
       "via": "wishlist"
     },
-    "products": {
+    "product": {
       "collection": "products",
       "via": "wishlists",
       "dominant": true
-    },
-    "id_wish": {
-      "type": "uid",
-      "required": true
     }
   }
 }

@@ -65,7 +65,7 @@
       "type": "string"
     },
     "wishlist": {
-      "via": "users",
+      "via": "user",
       "model": "wishlist"
     }
   }

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import AppContext from "../../context/AppContext";
 import _ from 'lodash';
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { Rating } from '@components/productInfo/ProductInfo.style';
 import { Circle, CircleDiv } from '@components/compare/Compare.style';
 import Slider from './Slider';
@@ -13,6 +13,7 @@ import footwearManufacturing from "../../public/manufacturing.svg";
 import Use from "../../public/use.svg";
 import Disposal from "../../public/disposal.svg";
 import Head from "next/head";
+import axios from "axios";
 
 import {
   AddToCart,
@@ -34,6 +35,32 @@ import {
 
 const Product = ({ product, url, esdes }) => {
   const appContext = useContext(AppContext);
+
+  let [ added, setAdded ] = useState(false);
+  let [ wishlistID, setWishlistID ] = useState(-1);
+  console.log(`1 ID ========== ${wishlistID}`);
+
+  async function checkAdded() {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/wishlists`, { params: { user: [appContext.user.id], product: [product.id] } })
+      // worked
+      .then(function (response) {
+        console.log(response);
+        if (response.data.length > 0) {
+          setAdded(true);
+          setWishlistID(response.data[0].id);
+          console.log(`2 ID ========== ${wishlistID}`);
+        }
+      })
+      // didn't work
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  if (appContext.isAuthenticated) {
+    checkAdded();
+  }
+
   const icons = {
     design: Design,
     raw_materials: rawMaterials,
@@ -102,16 +129,42 @@ const Product = ({ product, url, esdes }) => {
     }
   }
 
-  function addWishlist() {
-    
+  async function addWishlist() {
+    const userID = appContext.user.id;
+    const productID = product.id;
+
+    if (!added) {
+      axios.post(`${process.env.NEXT_PUBLIC_API_URL}/wishlists`, { user: [userID], product: [productID] })
+        // worked
+        .then(function (response) {
+          console.log(response);
+          setAdded(true);
+          setWishlistID(response.data[0].id);
+          console.log(`3 ID ========== ${wishlistID}`);
+        })
+        // didn't work
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/wishlists/${wishlistID}`)
+        // worked
+        .then(function (response) {
+          console.log(response);
+          setAdded(false);
+          setWishlistID(-1);
+        })
+        // didn't work
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
   }
 
   function hasLogin() {
     if (appContext.isAuthenticated) {
-      return <Wishlist>Add to wishlist</Wishlist>
-      // onClick={() => }
-    }
-    else {
+      return <Wishlist onClick={() => addWishlist()} style={added == true ? { backgroundColor: 'black', color: 'white'} : {}}>{added != true ? 'Add to' : 'Remove from'} wishlist</Wishlist>
+    } else {
       return <span><a href="/login">Login</a>/<a href="/register">Register</a> to add this item to your wishlist!</span>
     }
   }
@@ -127,7 +180,7 @@ const Product = ({ product, url, esdes }) => {
             </ProductTitle>
             <p className='product__price'>£ {product.price}</p>
           </div>
-         
+
         </MainInfo>
         <ButtonContainer className='product__price-button-container'>
           {cartButton()}
