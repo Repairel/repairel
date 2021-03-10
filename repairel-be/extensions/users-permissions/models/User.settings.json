@@ -71,6 +71,10 @@
     "snipcart_update_needed": {
       "type": "boolean",
       "default": true
+    },
+    "orders": {
+      "via": "user",
+      "collection": "orders"
     }
   }
 }

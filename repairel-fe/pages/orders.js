@@ -15,65 +15,129 @@ import axios from 'axios';
 import Cookie from "js-cookie";
 
 const Orders = ({ content }) => {
-    if(Object.keys(content).length == 0){
-      return(
-        <>
-        <Head>
-          <title id='title'>REPAIREL | Orders</title>
-        </Head>
-        <Header />
-        <StyledSection>
-          <main style={{ margin: '1rem' }}>
-            <LinedHeading>Orders</LinedHeading>
-            <Row>
-              <Column style={{ textAlign: 'right', marginLeft: -830}}>No orders found!</Column>
-            </Row>
-          </main>
-          <footer style={{marginBottom: '1rem'}}>
-            <Socials />
-          </footer>
-        </StyledSection>
-      </>
-      )
+
+  const orders = []; //Holds arrays of JSX for each order
+  for(var i = 0; i < Object.keys(content).length; i++){
+    const order = [];
+    const j = 0;
+
+    order[j] = <React.Fragment><LinedHeading>Order {content[i].invoice_no} on {new Date(content[i].date).toDateString()}</LinedHeading></React.Fragment> //Heading of the order
+
+    
+    const shipping_address = [];
+
+    Object.values(content[i].shipping_address).forEach(entry =>
+      {
+        if(entry !== null && entry !== ""){
+          shipping_address.push(entry+"\n");
+        }
+      }
+    );
+
+    const billing_address = [];
+
+    Object.values(content[i].billing_address).forEach(entry =>
+      {
+        if(entry !== null && entry !== ""){
+          billing_address.push(entry+"\n");
+        }
+      }
+    );
+
+    order[j+1] = <React.Fragment>
+      <Row>
+        <Column style={{ textAlign: 'left', whiteSpace: 'break-spaces' }}>
+          Shipped to:{"\n\n"}
+          {shipping_address}
+          {"\n\n"}
+        </Column>
+        <Column style={{ textAlign: 'right', whiteSpace: 'break-spaces' }}>
+          Billed to:{"\n\n"}
+          {billing_address}
+          {"\n\n"}
+        </Column>
+      </Row>
+    </React.Fragment>
+    
+    const products = []; //An array of JSX for each product in the order
+
+    for(var k = 0; k < Object.keys(content[i].products).length; k++){
+      products[k] = 
+      <React.Fragment>
+        <Row>
+          <Column style={{ textAlign: 'left'}}>Product {k + 1}: </Column>
+          <Column style={{ textAlign: 'left', marginLeft: -800 }}>{content[i].products[k].name} x{content[i].products[k].quantity}</Column>
+        </Row>
+      </React.Fragment>
     }
 
-    return (
+    order[j+2] = products; //Holds arrays of JSX for each product
+
+    order[j+3] = //Holds JSX of other order info
+
+      <React.Fragment>
+        <Row>
+            <Column style={{ textAlign: 'left'}}>Snipcart reference: </Column>
+            <Column style={{ textAlign: 'left', marginLeft: -800 }}>{content[i].order_no}</Column>
+        </Row>
+        <Row>
+            <Column style={{ textAlign: 'left'}}>Payment method: </Column>
+            <Column style={{ textAlign: 'left', marginLeft: -800 }}>{content[i].payment_method}</Column>
+        </Row>
+        <Row>
+            <Column style={{ textAlign: 'left'}}>Date: </Column>
+            <Column style={{ textAlign: 'left', marginLeft: -800 }}>{new Date(content[i].date).toDateString()}</Column>
+        </Row>
+        <Row>
+            <Column style={{ textAlign: 'left'}}>Total: </Column>
+            <Column style={{ textAlign: 'left', marginLeft: -800 }}>£{content[i].total}</Column>
+        </Row>
+      </React.Fragment>
+
+    orders[i] = order;
+    
+  }
+
+  if(Object.keys(content).length == 0){
+    //const address = ["Name", <br />, "10 Downing Street", <br />, "London", <br />, "England", <br />, "UK", <br />, "SW1A 2AB", <br />]
+    const address = ["Name\n", "10 Downing Street\n", "London\n", "England\n", "UK\n", "SW1A 2AB\n"]
+    return(
       <>
-        <Head>
-          <title id='title'>REPAIREL | Orders</title>
-        </Head>
-        <Header />
-        <StyledSection>
-          <main style={{ margin: '1rem' }}>
-            <LinedHeading>Orders</LinedHeading>
-            <Row>
-              <Column style={{ textAlign: 'right', marginLeft: -830}}>Order no: </Column>
-              <Column style={{ textAlign: 'left' }}>{content[0].order_no}</Column>
-            </Row>
-            <Row>
-              <Column style={{ textAlign: 'right', marginLeft: -830}}>Product: </Column>
-              <Column style={{ textAlign: 'left' }}>{content[0].products[0].name}</Column>
-            </Row>
-            <Row>
-              <Column style={{ textAlign: 'right', marginLeft: -830}}>Total: </Column>
-              <Column style={{ textAlign: 'left' }}>{content[0].total}</Column>
-            </Row>
-            {/*
-            <Row>
-              <Column style={{ textAlign: 'right', marginLeft: -830}}>Order no: </Column>
-              <Column style={{ textAlign: 'left' }}>{content[1].order_no}</Column>
-            </Row>
-            <Row>
-              {orders}
-            </Row>
-            */}
-          </main>
-          <footer style={{marginBottom: '1rem'}}>
-            <Socials />
-          </footer>
-        </StyledSection>
-      </>
-    );
+      <Head>
+        <title id='title'>REPAIREL | Orders</title>
+      </Head>
+      <Header />
+      <StyledSection>
+        <main style={{ margin: '1rem' }}>
+          <LinedHeading>Orders</LinedHeading>
+          <Row>
+            <Column style={{ textAlign: 'left'}}>No orders found!</Column>
+          </Row>
+        </main>
+        <footer style={{marginBottom: '1rem'}}>
+          <Socials />
+        </footer>
+      </StyledSection>
+    </>
+    )
+  }
+
+  return (
+    <>
+      <Head>
+        <title id='title'>REPAIREL | Orders</title>
+      </Head>
+      <Header />
+      <StyledSection>
+        <main style={{ margin: '1rem' }}>
+          {orders}
+        </main>
+        <footer style={{marginBottom: '1rem'}}>
+          <Socials />
+        </footer>
+      </StyledSection>
+    </>
+  );
 };
 
 export async function getServerSideProps(context) {
@@ -101,6 +165,7 @@ export async function getServerSideProps(context) {
           Cookie.remove("token");
         }
         const user = await res.json();
+        console.log(user);
         
         //First, we need to check if we need to update snipcart_personas, and if so do that
         if(user.snipcart_update_needed){
@@ -115,11 +180,9 @@ export async function getServerSideProps(context) {
           }
         }
 
-        //We potentially have a single user having multiple snipcart personas. For each persona, there can be multiple orders, and each order may have multiple products
-        
-        var response_json = {};
+        //We now need to check each persona's orders, to add unvisited orders to the databae
 
-        for(var i = 0; i < user.snipcart_personas.length; i++){ //Iterate through all personas
+        for(var i = user.snipcart_personas.length - 1; i >= 0; i--){ //Iterate through all personas BACKWARDS as most-recent personas are furthest down in the list
           //Get all the orders for a persona
           const res1 = await fetch(`https://app.snipcart.com/api/customers/${user.snipcart_personas[i].customer_id}/orders`, {headers: {
             'Authorization': 'Basic ' + Buffer.from("ST_MmI5YTU0MjUtZjA2ZS00ZTcwLTk5ZjYtNWZmOGQ5ZTIwYTc5NjM3NTAxMTY5MDI2NDA4NTY0:").toString('base64'), //API key currently hardcoded
@@ -128,51 +191,67 @@ export async function getServerSideProps(context) {
           const json1 = await res1.json(); //This may contain multiple orders
 
           for(var j = 0; j < json1.length; j++){ //For each order, add its order info to the response
-            var k = Object.keys(response_json).length;
-            response_json[k] = {  order_no: json1[j].token, 
-                                  shipping_address: { 
-                                    name: json1[j].shippingAddressName, 
-                                    line_1: json1[j].shippingAddressAddress1, 
-                                    line_2: json1[j].shippingAddressAddress2, 
-                                    city: json1[j].shippingAddressCity, 
-                                    county: json1[j].shippingAddressProvince, 
-                                    country: json1[j].shippingAddressCountry,
-                                    postcode: json1[j].shippingAddressPostalCode,
-                                    phone: json1[j].shippingAddressPhone
-                                  },
-                                  billing_address: { 
-                                    name: json1[j].billingAddressName, 
-                                    line_1: json1[j].billingAddressAddress1, 
-                                    line_2: json1[j].billingAddressAddress2, 
-                                    city: json1[j].billingAddressCity, 
-                                    county: json1[j].billingAddressProvince, 
-                                    country: json1[j].billingAddressCountry,
-                                    postcode: json1[j].billingAddressPostalCode,
-                                    phone: json1[j].billingAddressPhone
-                                  },
-                                  payment_method: json1[j].paymentMethod,
-                                  total: json1[j].finalGrandTotal,
-                                  date: json1[j].creationDate,
-                                  products: {} 
-                                };
+          
+            //Let's check the visited flag, which tells us if we're put the order into strapi. if it's true we do nothing; if it's false or doesn't exist (a new order), we put it into strapi and make it true
+            if(json1[j].metadata == null || json1[j].metadata.visited === undefined || json1[j].metadata.visited == 'false'){ //Hasn't been (successfully) visited, so we'll need to fetch the order data and put it into strapi
+              const order_info = {  order_no: json1[j].token, 
+                                    invoice_no: json1[j].invoiceNumber,
+                                    shipping_address: { 
+                                      name: json1[j].shippingAddressName, 
+                                      line_1: json1[j].shippingAddressAddress1, 
+                                      line_2: json1[j].shippingAddressAddress2, 
+                                      city: json1[j].shippingAddressCity, 
+                                      county: json1[j].shippingAddressProvince, 
+                                      country: json1[j].shippingAddressCountry,
+                                      postcode: json1[j].shippingAddressPostalCode,
+                                      phone: json1[j].shippingAddressPhone
+                                    },
+                                    billing_address: { 
+                                      name: json1[j].billingAddressName, 
+                                      line_1: json1[j].billingAddressAddress1, 
+                                      line_2: json1[j].billingAddressAddress2, 
+                                      city: json1[j].billingAddressCity, 
+                                      county: json1[j].billingAddressProvince, 
+                                      country: json1[j].billingAddressCountry,
+                                      postcode: json1[j].billingAddressPostalCode,
+                                      phone: json1[j].billingAddressPhone
+                                    },
+                                    payment_method: json1[j].paymentMethod,
+                                    total: json1[j].finalGrandTotal,
+                                    date: json1[j].creationDate, //Get a Date representation of date
+                                    products: {} 
+                                  };
+              
+              const res2 = await fetch(`https://app.snipcart.com/api/orders/${json1[j].token}`, {headers: {
+                'Authorization': 'Basic ' + Buffer.from("ST_MmI5YTU0MjUtZjA2ZS00ZTcwLTk5ZjYtNWZmOGQ5ZTIwYTc5NjM3NTAxMTY5MDI2NDA4NTY0:").toString('base64'), //API key currently hardcoded
+                'Accept': 'application/json'
+              }});
+              const json2 = await res2.json(); //This contains all products in the order
+              
+              //Iterate through each product, adding product info to the response
+              for(var l = 0; l < json2.items.length; l++){
+                order_info.products[l] = { name: json2.items[l].name, price: json2.items[l].price, quantity: json2.items[l].quantity };
+              }
+              
+              //now put it into strapi under the user's name
+              axios.post(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {user: user.id, order: order_info}, { headers: { Authorization: `Bearer ${token}` } }) //add snipcart customer ID to snipcart_personas
 
-            //Obtain the order info containing product info
-            const res2 = await fetch(`https://app.snipcart.com/api/orders/${json1[j].token}`, {headers: {
-              'Authorization': 'Basic ' + Buffer.from("ST_MmI5YTU0MjUtZjA2ZS00ZTcwLTk5ZjYtNWZmOGQ5ZTIwYTc5NjM3NTAxMTY5MDI2NDA4NTY0:").toString('base64'), //API key currently hardcoded
-              'Accept': 'application/json'
-            }});
-            const json2 = await res2.json(); //This contains all products in the order
-            
-            //Iterate through each product, adding product info to the response
-            for(var l = 0; l < json2.items.length; l++){
-              response_json[k].products[l] = { name: json2.items[l].name, price: json2.items[l].price };
-            }
-
-            
+              //finally update the order's visited flag to reflect addition to the database
+              const res3 = await fetch(`https://app.snipcart.com/api/orders/${json1[j].token}`, {headers: {
+                'Authorization': 'Basic ' + Buffer.from("ST_MmI5YTU0MjUtZjA2ZS00ZTcwLTk5ZjYtNWZmOGQ5ZTIwYTc5NjM3NTAxMTY5MDI2NDA4NTY0:").toString('base64'), //API key currently hardcoded
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'},
+                method: 'PUT',
+                body: "{ 'metadata' : { 'visited' : 'true' } }"});
+            }            
           }
         }
 
-        return_json = response_json;
+        const all_orders = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/orders?user=${user.id}`, { headers: { Authorization: `Bearer ${token}` } })
+        for(var z = all_orders.data.length - 1; z >= 0; z--){ 
+          return_json[(all_orders.data.length - 1) - z] = all_orders.data[z].order;
+        }
+
       });
     }
     else{
@@ -182,8 +261,6 @@ export async function getServerSideProps(context) {
     
     return { props: { content: return_json } };
 }
-
-
 
 Orders.propTypes = {
     content: PropTypes.object,
