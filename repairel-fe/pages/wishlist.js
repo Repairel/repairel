@@ -41,21 +41,23 @@ export default function ProductReq () {
     console.log(addResponse)
     document.getElementById("FormSuccessMessage").innerHTML = "Thank you for submitting your request. We will be in touch when the product you requested comes back into stock."
     document.getElementById("Form").style.display="none";
-  }
-  }
- 
+    document.getElementById("ExplanationText").innerHTML ="";
+    document.getElementById("FormNonSuccessMessage").innerHTML = "";
+  }  }
+
   return (
     <>
       <Head>
         <title id="title">REPAIREL | Product Request</title>
       </Head>
       <Header />
+      
       <section
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
         <LinedHeading>PRODUCT REQUEST</LinedHeading>
-        
       </section>     
+      <p id="ExplanationText">If there is a specific style, brand, size shoe that you would like that we currently don't have please request it by filling out this form and we will update you if it comes in stock.</p>
       <p id="FormSuccessMessage"></p>
       <p id="FormNonSuccessMessage"></p>
       <form method="post" id="Form" name="Form" action=""> 
