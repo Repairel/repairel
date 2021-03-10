@@ -45,11 +45,11 @@ export async function getServerSideProps(context) {
     for(var i = 0; i < wishlist.data.length; i++){
       return_json[i] = wishlist.data[i].product[0];
     }
-});
-}
-return{ props: { content: return_json }
+      });
+  }
+  return{ props: { content: return_json }
 
-}
+  }
 }
 
 WISHLIST.propTypes = {

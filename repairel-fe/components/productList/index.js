@@ -24,7 +24,6 @@ const ProductList = ({ list, esdes }) => {
   // the list comes from the fetch request in '../../pages/index' 
   //and contains all of the products
   const router = useRouter();
-  console.log(router.pathname);
   const [products, setProducts] = React.useState([]);
   const [hasMore, setHasMore] = React.useState(true);
   let [count, setCount] = React.useState(0);
