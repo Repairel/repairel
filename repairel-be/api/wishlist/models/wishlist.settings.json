@@ -11,8 +11,8 @@
   "attributes": {
     "user": {
       "plugin": "users-permissions",
-      "collection": "user",
-      "via": "wishlist"
+      "model": "user",
+      "via": "wishlists"
     },
     "product": {
       "collection": "products",

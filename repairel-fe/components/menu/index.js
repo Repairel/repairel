@@ -18,7 +18,7 @@ const Menu = ({ open, setOpen }) => {
   let menu = ['login', 'register', 'shop', 'about', 'faq', 'engage', 'T&Cs'];
   let welcomeMessage = '';
   if (user) {
-    menu = ['edit details', 'profile', 'shop', 'about', 'faq', 'engage', 'T&Cs'];
+    menu = ['edit details', 'wishlist', 'shop', 'about', 'faq', 'engage', 'T&Cs'];
     welcomeMessage = `Hey ${user.first_name}!`;
   }
 
@@ -27,9 +27,10 @@ const Menu = ({ open, setOpen }) => {
       return `/`;
     } else if (item === 'edit details') {
       return `/edit`;
-    } else if (item === 'profile') {
-      return `/wishlist`
-    }
+    } 
+    // else if (item === 'profile') {
+    //   return `/wishlist`
+    // }
     else {
       return `/${item}`
     }

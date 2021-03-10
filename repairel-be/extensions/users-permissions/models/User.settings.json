@@ -64,9 +64,9 @@
     "phone_number": {
       "type": "string"
     },
-    "wishlist": {
+    "wishlists": {
       "via": "user",
-      "model": "wishlist"
+      "collection": "wishlist"
     }
   }
 }

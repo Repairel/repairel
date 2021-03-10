@@ -180,14 +180,14 @@ const ProductList = ({ list, esdes }) => {
     products.length !== 0 && (
       <section>
         <OptionsList>
-          <OptionsItem
+           <OptionsItem
             onClick={() => handleFilterClick()}
             style={
               toggleFilter
                 ? { textDecoration: "underline", cursor: "pointer" }
                 : { textDecoration: "none", cursor: "pointer" }
             }
-          >
+          > 
             Filter
           </OptionsItem>
           <OptionsItem
