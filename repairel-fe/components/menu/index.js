@@ -18,7 +18,7 @@ const Menu = ({ open, setOpen }) => {
   let menu = ['login', 'register', 'shop', 'about', 'faq', 'engage', 'T&Cs'];
   let welcomeMessage = '';
   if (user) {
-    menu = ['edit details', 'shop', 'about', 'faq', 'engage', 'T&Cs'];
+    menu = ['profile', 'edit details', 'shop', 'about', 'faq', 'engage', 'T&Cs'];
     welcomeMessage = `Hey ${user.first_name}!`;
   }
 
