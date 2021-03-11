@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import AppContext from "../../context/AppContext";
 import _ from 'lodash';
-import { useState, useContext } from "react";
 import { Rating } from '@components/productInfo/ProductInfo.style';
 import { Circle, CircleDiv } from '@components/compare/Compare.style';
 import Slider from './Slider';
@@ -15,6 +14,9 @@ import Disposal from "../../public/disposal.svg";
 import Head from "next/head";
 import axios from "axios";
 import { useRouter } from "next/router";
+import React, { useState, useEffect, useContext } from "react";
+import Markdown from "markdown-to-jsx";
+import styles from "./Product.module.css";
 
 import {
   AddToCart,
@@ -40,6 +42,9 @@ const Product = ({ product, url, esdes }) => {
   let [ added, setAdded ] = useState(false);
   let [ wishlistID, setWishlistID ] = useState(-1);
   let [clicked, setClicked] = useState(false);
+
+  const [desc, setDesc] = useState({ name: "",text: "", image: ""});
+  let [active, setActive] = useState(-1)
 
   const router = useRouter();
 
