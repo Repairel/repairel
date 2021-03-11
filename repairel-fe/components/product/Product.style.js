@@ -156,8 +156,11 @@ const EthicsDesc = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0.7rem;
-  border: 1px solid black;
-  margin: 1em 0.25em 1em 0.25em;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, max-content);
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const RefLink = styled.a`

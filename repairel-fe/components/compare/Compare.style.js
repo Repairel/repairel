@@ -45,6 +45,7 @@ const Circle = styled.div`
       : int >= 2 && int <= 4
       ? theme.colors.medium
       : theme.colors.good};
+  filter: invert(0);
   margin: 2px;
 `;
 

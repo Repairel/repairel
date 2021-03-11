@@ -1,0 +1,24 @@
+.active {
+    filter: invert(100%);
+    font-weight: bold;
+    border:black;
+}
+
+.circle {
+    filter: invert(100%); 
+}
+
+.default {
+    transition: color 300ms, background-color 300ms;
+}
+.default:hover { 
+    font-weight: bold;
+    background-color:black;
+    color:white;
+    cursor: pointer;
+
+}
+
+.default:hover .esimage{
+    filter: invert(100%);
+}

@@ -10,7 +10,7 @@
   },
   "attributes": {
     "description": {
-      "type": "text",
+      "type": "richtext",
       "required": true
     },
     "esname": {
