@@ -14,6 +14,7 @@ import Use from "../../public/use.svg";
 import Disposal from "../../public/disposal.svg";
 import Head from "next/head";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 import {
   AddToCart,
@@ -38,7 +39,9 @@ const Product = ({ product, url, esdes }) => {
 
   let [ added, setAdded ] = useState(false);
   let [ wishlistID, setWishlistID ] = useState(-1);
-  console.log(`1 ID ========== ${wishlistID}`);
+  let [clicked, setClicked] = useState(false);
+
+  const router = useRouter();
 
   async function checkAdded() {
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/wishlists`, { params: { user: [appContext.user.id], product: [product.id] } })
@@ -48,7 +51,6 @@ const Product = ({ product, url, esdes }) => {
         if (response.data.length > 0) {
           setAdded(true);
           setWishlistID(response.data[0].id);
-          console.log(`2 ID ========== ${wishlistID}`);
         }
       })
       // didn't work
@@ -140,7 +142,6 @@ const Product = ({ product, url, esdes }) => {
           console.log(response);
           setAdded(true);
           setWishlistID(response.data[0].id);
-          console.log(`3 ID ========== ${wishlistID}`);
         })
         // didn't work
         .catch(function (error) {
@@ -161,11 +162,19 @@ const Product = ({ product, url, esdes }) => {
     }
   }
 
+  function handleClick() {
+    if (!clicked) {
+      setClicked(true);
+    } else {
+      router.push('/login');
+    }
+  }
+
   function hasLogin() {
     if (appContext.isAuthenticated) {
-      return <Wishlist onClick={() => addWishlist()} style={added == true ? { backgroundColor: 'black', color: 'white'} : {}}>{added != true ? 'Add to' : 'Remove from'} wishlist</Wishlist>
+      return <Wishlist onClick={() => addWishlist()} style={added == true ? { backgroundColor: 'black', color: 'white'} : {}}>{!added ? 'Add to' : 'Remove from'} wishlist</Wishlist>
     } else {
-      return <span><a href="/login">Login</a>/<a href="/register">Register</a> to add this item to your wishlist!</span>
+      return <Wishlist onClick={() => handleClick()}>{!clicked ? 'Add to wishlist' : 'Login to add to wishlist'}</Wishlist>
     }
   }
 
@@ -186,9 +195,6 @@ const Product = ({ product, url, esdes }) => {
           {cartButton()}
           {hasStock()}
           {hasLogin()}
-            {/* <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
-            <Wishlist>Add to wishlist</Wishlist>
-            </a>      */}
         </ButtonContainer>
         <ProductHeading>Description</ProductHeading>
         <p className='product__description'>{product.description}</p>
