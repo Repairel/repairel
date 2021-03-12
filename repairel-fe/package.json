@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "clean": "rm -rf node_modules",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "test": "npm run dev & wait-on http://localhost:3000 & ./node_modules/.bin/cypress run"
   },
   "dependencies": {
     "axios": "^0.21.0",
