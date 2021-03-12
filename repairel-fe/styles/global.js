@@ -50,7 +50,7 @@ const StyledTitle = styled.h2`
 const Row = styled.div`
   display: flex;
   padding-bottom: 1em;
-	justify-content: center;
+    justify-content: center;
   
 `;
 
@@ -71,7 +71,7 @@ const StyledButton = styled.button`
 
 const StyledInput = styled.input`
   font-size: 1.25em;
-  border-radius: 0em
+  border-radius: 0em;
   background-color: white;
   border: 0px solid grey;
   border-bottom: 2px solid grey;
@@ -79,10 +79,12 @@ const StyledInput = styled.input`
 
 const StyledFormLabel = styled.span`
   font-size: 1.25em;
-  marginLeft: -125;
-  
-  
- 
+  margin-left: -125;
 `;
 
-export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel };
+const ScoresDiv = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ScoresDiv};
