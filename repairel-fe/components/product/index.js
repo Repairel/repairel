@@ -77,12 +77,12 @@ const Product = ({ product, url }) => {
   };
 
 
-  function hasStock() {
+  /* function hasStock() {
     if (product.stock) {
       return <span>{product.stock} currently in stock</span>
     }
-    return <span>Fill in this form and be the first to know when we have stock <a href="/wishlist">here</a></span>;
-  }
+    return <span>Fill in this form and be the first to know when we have stock <a href="">here</a></span>;
+  }*/
 
   return (
     <>
@@ -120,13 +120,7 @@ const Product = ({ product, url }) => {
           ) : (
             <SoldOut>Sold Out</SoldOut>
           )}
-          {hasStock()}
-          { // Option to request product only appears if the product is out of stock
-          //product.stock ? ('') : (
-            // Legacy button for wishlist commented out
-          //<Link href="/wishlist"><Wishlist type= "submit" onclick="referToForm">Request product</Wishlist></Link>
-          //)
-        }
+
         </ButtonContainer>
         <ProductHeading>Description</ProductHeading>
         <p className='product__description'>{product.description}</p>

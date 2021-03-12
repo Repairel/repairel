@@ -39,7 +39,7 @@ export default function ProductReq () {
     })
     const addResponse = await add.json()
     console.log(addResponse)
-    document.getElementById("FormSuccessMessage").innerHTML = "Thank you for submitting your request. We will be in touch when the product you requested comes back into stock."
+    document.getElementById("FormSuccessMessage").innerHTML = "Thank you for submitting your request. We will be in touch if the product you requested comes in stock."
     document.getElementById("Form").style.display="none";
     document.getElementById("ExplanationText").innerHTML ="";
     document.getElementById("FormNonSuccessMessage").innerHTML = "";
@@ -57,7 +57,7 @@ export default function ProductReq () {
       >
         <LinedHeading>PRODUCT REQUEST</LinedHeading>
       </section>     
-      <p id="ExplanationText">If there is a specific style, brand, size shoe that you would like that we currently don't have please request it by filling out this form and we will update you if it comes in stock.</p>
+      <p id="ExplanationText">If there is a specific style, brand, size shoe that you would like that we currently don't have please request it by filling out this form and we will let you know if it comes in stock.</p>
       <p id="FormSuccessMessage"></p>
       <p id="FormNonSuccessMessage"></p>
       <form method="post" id="Form" name="Form" action=""> 
@@ -79,10 +79,10 @@ export default function ProductReq () {
           </div>
 
           <Row><label className="Type" htmlFor="Type">Style of shoe*</label></Row>
-          <Row><input type="text" id="Type" className="Type" onChange={e => setType(e.target.value) } value={Type} placeholder="Example: boot, sneaker, flap.."/></Row>
+          <Row><input type="text" id="Type" className="Type" onChange={e => setType(e.target.value) } value={Type} placeholder="Example: boot, sneaker, flat.."/></Row>
         
-          <Row><label className = "OtherSpecifications" htmlFor="OtherSpecifications">Other specifications</label></Row>
-          <Row><textarea type="text" className="OtherSpecifications" onChange={e => setOtherSpecifications(e.target.value) } value={OtherSpecifications}/></Row>
+          <Row><label className = "OtherSpecifications" htmlFor="OtherSpecifications">Comments</label></Row>
+          <Row><textarea type="text" id= "OtherSpecifications" className="OtherSpecifications" onChange={e => setOtherSpecifications(e.target.value) } value={OtherSpecifications} placeholder="Anything else you want us to know?"/></Row>
           
           <Row><button type="button" id="button" className="submitRequest" onClick={() => addRequest()}>SUBMIT REQUEST</button></Row>
         </form>

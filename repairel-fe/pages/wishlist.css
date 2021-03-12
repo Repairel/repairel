@@ -84,8 +84,8 @@ button.submitRequest:hover {
   color: white;
   background-color: black;
 }
-#Type::placeholder {
-  color: rgba(78, 78, 78, 0.863);
+#Type::placeholder, #OtherSpecifications::placeholder {
+  color: rgba(78, 78, 78, 0.664);
   font-family: 'Work Sans', sans-serif;
   font-size: 1.1rem;
 }
