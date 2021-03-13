@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
+import { LinedHeading, StyledLink } from "../../styles/global";
 import {
   ProductCard,
   ProductImage,
@@ -19,11 +20,10 @@ import ProductInfo from "@components/productInfo";
 import Filter from "@components/filter";
 import CompareInstructions from "@components/compareInstructions";
 
-const ProductList = ({ list, esdes }) => {
-  // the list comes from the fetch request in '../../pages/index' 
+const ProductList = ({ list }) => {
+  // the list comes from the fetch request in '../../pages/index'
   //and contains all of the products
   const router = useRouter();
-
   const [products, setProducts] = React.useState([]);
   const [hasMore, setHasMore] = React.useState(true);
   let [count, setCount] = React.useState(0);
@@ -31,7 +31,7 @@ const ProductList = ({ list, esdes }) => {
   const [toggleCompare, setToggleCompare] = React.useState(false);
   const [compareArray, setCompareArray] = React.useState([]);
   const [filteredList, setFilteredList] = React.useState([]);
-
+  const empty = [];
   //this useEffect checks session storage for filters and opens the filter if there is
   React.useEffect(() => {
     const filters = sessionStorage.getItem("filters");
@@ -46,7 +46,7 @@ const ProductList = ({ list, esdes }) => {
   // rendered for the infinte scroll
   React.useEffect(() => {
     let productArray = [];
-    if (filteredList.length === 0) {
+    if (filteredList.length === 0 && !toggleFilter ){
       for (var i = count; i < count + 50; i++) {
         if (i >= list.length) {
           setHasMore(false);
@@ -55,7 +55,11 @@ const ProductList = ({ list, esdes }) => {
           setProducts(productArray);
         }
       }
-    } else {
+    }
+    else if(filteredList.length === 0 && toggleFilter === true ){
+   	setProducts(empty)
+}
+ else {
       for (var j = count; j < count + 50; j++) {
         if (j >= filteredList.length) {
           setHasMore(false);
@@ -177,17 +181,18 @@ const ProductList = ({ list, esdes }) => {
 
   // Filter component contains more logic necessary for understanding this page
   return (
-    products.length !== 0 && (
+    products.length >= 0 && (
       <section>
+        {!router.pathname.toLowerCase().includes("wishlist") && 
         <OptionsList>
-          <OptionsItem
+           <OptionsItem
             onClick={() => handleFilterClick()}
             style={
               toggleFilter
                 ? { textDecoration: "underline", cursor: "pointer" }
                 : { textDecoration: "none", cursor: "pointer" }
             }
-          >
+          > 
             Filter
           </OptionsItem>
           <OptionsItem
@@ -201,6 +206,10 @@ const ProductList = ({ list, esdes }) => {
             Compare
           </OptionsItem>
         </OptionsList>
+        }
+        {router.pathname.toLowerCase().includes("wishlist") && 
+        <LinedHeading>WISHLIST</LinedHeading>
+        }
         {toggleFilter && (
           <Filter setFilteredList={setFilteredList} list={list} />
         )}

@@ -12,7 +12,7 @@ import {
 
 const Filter = ({ content, list, setFilteredList }) => {
     const [filters, setFilters] = React.useState({
-        price: "",
+        price: "", 
         condition: "",
         size: [],
         brand: "",
@@ -22,7 +22,7 @@ const Filter = ({ content, list, setFilteredList }) => {
     const sizes = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     const condition = ["New Shoes", "Refurbished Shoes"];
     const price = ["High to Low", "Low to High"];
-    let brands2 = [];
+    let brands2 = ["all"];
     let brands3 = [];
     let b = []; 
     const prodList = list;
@@ -39,6 +39,7 @@ const Filter = ({ content, list, setFilteredList }) => {
 
   // if there is sessionStorage with filters the correct checkboxes are checked upon filter open
   React.useEffect(() => {
+
     let checkboxes = document.querySelectorAll("input");
     if (sessionStorage.getItem("filters") !== null) {
       let storedFilters = Object.values(
@@ -63,7 +64,7 @@ const Filter = ({ content, list, setFilteredList }) => {
     }
   }, []);
 
-  //checkes whether input change is checking or unchecking and updates filters state accordingly
+  //checks whether input change is checking or unchecking and updates filters state accordingly
   const handleChange = (event) => {
     event.target.checked ? handleCheck(event) : handleUncheck(event);
   };
@@ -88,7 +89,18 @@ const Filter = ({ content, list, setFilteredList }) => {
             JSON.stringify({ ...filters, brand: item })
         );
         setFilters({ ...filters, brand: item });
-    } else {
+    } 
+
+    else if (item.includes("all"))  {
+	item="";
+      sessionStorage.setItem(
+        "filters",
+	
+        JSON.stringify({ ...filters, brand: item })
+      );
+      setFilters({ ...filters, brand: item });
+    }
+   else {
       sessionStorage.setItem(
         "filters",
         JSON.stringify({ ...filters, size: filters.size.concat(item) })
@@ -99,12 +111,13 @@ const Filter = ({ content, list, setFilteredList }) => {
   };
 
   const handleUncheck = (event) => {
+    
     let id = event.target.id;
     const sizes = [...filters.size];
       const index = sizes.indexOf(id);
-
     if (index > -1) {
       sizes.splice(index, 1);
+      
       }
      
     sessionStorage.setItem(
@@ -165,7 +178,7 @@ const Filter = ({ content, list, setFilteredList }) => {
           });
           listCopy = brandArray;
       }
-        
+        console.log(listCopy)
         listCopy.length === 0 ? setNoFilter(true) : setNoFilter(false);
         setFilteredList(listCopy);
     });
@@ -232,7 +245,7 @@ const Filter = ({ content, list, setFilteredList }) => {
           </div>
       {noFilter && (
         <FilterMessage>
-          {"We're sorry, there are no products that match these filters. Don't worry we have many more shoes to choose from."}
+          {"We're sorry, there are no products that match these filters. Please try again using different filters."}
         </FilterMessage>
       )}
           <ClearAll onClick={() => clearAll()}>Clear all</ClearAll>
