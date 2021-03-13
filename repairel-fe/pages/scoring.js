@@ -88,7 +88,7 @@ const initialiseCategories = (likert) => {
   for (let category of categories.slice(1)) {
     scores.push([
       category,
-      categories[category],
+      likert[category],
     ]);
   }
   return scores
