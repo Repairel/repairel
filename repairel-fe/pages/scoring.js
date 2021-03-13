@@ -4,12 +4,12 @@ import Markdown from 'markdown-to-jsx';
 import PropTypes from 'prop-types';
 import Socials from '@components/socials';
 import { Circle } from '@components/compare/Compare.style';
-import Material from '../../public/material.svg';
-import materialProcessing from '../../public/material-processing.svg';
-import Manufacturing from '../../public/manufacturing.svg';
-import Assembly from '../../public/assembly.svg';
-import Use from '../../public/use.svg';
-import Disposal from '../../public/disposal.svg';
+import Material from '../public/material.svg';
+import materialProcessing from '../public/material-processing.svg';
+import Manufacturing from '../public/manufacturing.svg';
+import Assembly from '../public/assembly.svg';
+import Use from '../public/use.svg';
+import Disposal from '../public/disposal.svg';
 
 import { LinedHeading, LinedSubHeading, StyledSection } from '../styles/global';
 import { ScoresDiv, ScoresListItem, ScoresCaption } from '../styles/scoringStyles';
@@ -22,15 +22,15 @@ const icons = {
   use: Use,
   disposal: Disposal,
 };
-
-const categories = Object.keys(Scorings.propTypes.likert); //likert will have to be changed to reflect the name of the categories from the strapi collection
+{/*}
+const categories = Object.keys(scoring.propTypes.likert); //likert will have to be changed to reflect the name of the categories from the strapi collection
 const scores = [];
 for (let category of categories) {
   scores.push([
     category,
     Scorings.propTypes.likert[category],
   ]);
-}
+}*/}
 
 const handleCircles = (numberOfCircles) => {
   let array = [];
@@ -66,11 +66,12 @@ const scoring = ({ content }) => {
         <main style={{ margin: '1rem' }}>
           <LinedHeading>Method</LinedHeading>
           {/* introduction text to the page*/}
+          <Markdown>{content[0].introduction}</Markdown>
           <LinedSubHeading>Scores</LinedSubHeading>
           {/* [OOOOO   Excellent
                OOOO    Very Good
                etc] */}
-            <div>{ethicsRender(ethics)}</div>
+            {/*<div>{ethicsRender(ethics)}</div>*/}
           <LinedSubHeading>Criteria</LinedSubHeading>
           {/* render rest of the page here */}
 
@@ -84,13 +85,13 @@ const scoring = ({ content }) => {
   );
 };
 
-// export async function getServerSideProps() {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scorings`);
-//   const json = await res.json();
-//   return { props: { content: json } };
-// }
+export async function getServerSideProps() {
+   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scorings`);
+   const json = await res.json();
+   return { props: { content: json } };
+ }
 
-Scoring.propTypes = {
+scoring.propTypes = {
   content: PropTypes.array,
 };
 export default scoring;
