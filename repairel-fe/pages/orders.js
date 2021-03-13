@@ -110,8 +110,6 @@ const Orders = ({ content }) => {
   }
 
   if(Object.keys(content).length == 0){
-    //const address = ["Name", <br />, "10 Downing Street", <br />, "London", <br />, "England", <br />, "UK", <br />, "SW1A 2AB", <br />]
-    const address = ["Name\n", "10 Downing Street\n", "London\n", "England\n", "UK\n", "SW1A 2AB\n"]
     return(
       <>
       <Head>
