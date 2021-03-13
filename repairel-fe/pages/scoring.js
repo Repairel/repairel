@@ -31,7 +31,6 @@ const scoresRender = (likert) => {
       <ScoresListItem key={scores[0]}>
         <ScoresDiv int={scores[1]}>{handleCircles(scores[1])}</ScoresDiv>
         <ScoresCaption>{scores[0].split('_').join(' ')}</ScoresCaption>
-        <br></br>
       </ScoresListItem>
     );
   });
@@ -81,7 +80,7 @@ const categoriesRender = (content) => {
       <CriteriaListItem>
         <CriteriaDiv>
           <CriteriaImage src={criteria[0]}></CriteriaImage>
-          <p>{criteria[1]}</p>
+          <p>{criteria[1].split("_").join(" ")}</p>
         </CriteriaDiv>
         <CriteriaText>{criteria[2]}</CriteriaText>
         <br></br>

@@ -11,26 +11,25 @@ const ScoresDiv = styled.div`
 const ScoresListItem = styled.li`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: 0.7rem;
-  margin: -0.5px;
+
+  padding: 1px;
+
 `;
 // scores category
 const ScoresCaption = styled.p`
   text-transform: capitalize;
-
+  margin: 5px;
 `;
 
 const CriteriaDiv = styled.div`
   display: flex;
   align-items: start;
-  width: 160px;
+  width: 260px;
 `;
 
 const CriteriaListItem = styled.li`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   padding: 0.7rem;
   margin: -0.5px;
 `;
@@ -38,11 +37,18 @@ const CriteriaListItem = styled.li`
 const CriteriaText = styled.p`
   display: flex;
   align-items: start;
-  width: 200px;
+  width: 700px;
 `;
 
 const CriteriaImage = styled.img`
   align-self: start;
+  padding-right: 15px;
 `;
 
-export {ScoresDiv, ScoresListItem, ScoresCaption, CriteriaDiv, CriteriaListItem, CriteriaText, CriteriaImage};
+const CriteriaLine = styled.hr`
+  width: 50%; 
+  text-align: left; 
+  margin-left: 0;
+`;
+
+export {ScoresDiv, ScoresListItem, ScoresCaption, CriteriaDiv, CriteriaListItem, CriteriaText, CriteriaImage, CriteriaLine};
