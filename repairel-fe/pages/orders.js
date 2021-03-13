@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 
 import { isLogged } from "../lib/auth"
 
-import { LinedHeading, StyledSection, Row, Column } from '../styles/global';
+import { LinedHeading, StyledSection, Row, Column, StyledTitle } from '../styles/global';
 
 import axios from 'axios';
 import Cookie from "js-cookie";
@@ -21,7 +21,7 @@ const Orders = ({ content }) => {
     const order = [];
     const j = 0;
 
-    order[j] = <React.Fragment><LinedHeading>Order {content[i].invoice_no} on {new Date(content[i].date).toDateString()}</LinedHeading></React.Fragment> //Heading of the order
+    order[j] = <React.Fragment><LinedHeading style={{ fontWeight: 500, fontSize: "1.3rem" }}>Order {content[i].invoice_no} on {new Date(content[i].date).toDateString()}</LinedHeading></React.Fragment> //Heading of the order
 
     
     const shipping_address = [];
@@ -65,8 +65,19 @@ const Orders = ({ content }) => {
       products[k] = 
       <React.Fragment>
         <Row>
-          <Column style={{ textAlign: 'left'}}>Product {k + 1}: </Column>
-          <Column style={{ textAlign: 'left', marginLeft: -800 }}>{content[i].products[k].name} x{content[i].products[k].quantity}</Column>
+          <Column style={{ textAlign: 'left'}}>Product {k + 1}: </Column>  
+        </Row>
+
+        <Row style={{ paddingBottom: 30}}>
+          <Column style={{ textAlign: 'left' }}><img src={content[i].products[k].image} style={{ height: 150, width: 150, objectFit: "contain" }}></img></Column>
+          <Column>
+            <Row style={{ paddingTop: 47 }}>
+              <Column style={{ textAlign: 'left', marginLeft: -410}}>{content[i].products[k].name} x{content[i].products[k].quantity}</Column>
+            </Row>
+            <Row>
+              <Column style={{ textAlign: 'left', marginLeft: -410}}>£{content[i].products[k].price}/ea, £{content[i].products[k].total_price} total</Column>
+            </Row>
+          </Column>
         </Row>
       </React.Fragment>
     }
@@ -76,7 +87,7 @@ const Orders = ({ content }) => {
     order[j+3] = //Holds JSX of other order info
 
       <React.Fragment>
-        <Row>
+        <Row style={{ paddingTop: 20 }}>
             <Column style={{ textAlign: 'left'}}>Snipcart reference: </Column>
             <Column style={{ textAlign: 'left', marginLeft: -800 }}>{content[i].order_no}</Column>
         </Row>
@@ -89,7 +100,7 @@ const Orders = ({ content }) => {
             <Column style={{ textAlign: 'left', marginLeft: -800 }}>{new Date(content[i].date).toDateString()}</Column>
         </Row>
         <Row>
-            <Column style={{ textAlign: 'left'}}>Total: </Column>
+            <Column style={{ textAlign: 'left'}}>Grand total: </Column>
             <Column style={{ textAlign: 'left', marginLeft: -800 }}>£{content[i].total}</Column>
         </Row>
       </React.Fragment>
@@ -109,7 +120,7 @@ const Orders = ({ content }) => {
       <Header />
       <StyledSection>
         <main style={{ margin: '1rem' }}>
-          <LinedHeading>Orders</LinedHeading>
+          <StyledTitle>ORDERS</StyledTitle>
           <Row>
             <Column style={{ textAlign: 'left'}}>No orders found!</Column>
           </Row>
@@ -130,6 +141,7 @@ const Orders = ({ content }) => {
       <Header />
       <StyledSection>
         <main style={{ margin: '1rem' }}>
+          <StyledTitle>ORDERS</StyledTitle>
           {orders}
         </main>
         <footer style={{marginBottom: '1rem'}}>
@@ -165,7 +177,7 @@ export async function getServerSideProps(context) {
           Cookie.remove("token");
         }
         const user = await res.json();
-        console.log(user);
+        //console.log(user);
         
         //First, we need to check if we need to update snipcart_personas, and if so do that
         if(user.snipcart_update_needed){
@@ -227,10 +239,12 @@ export async function getServerSideProps(context) {
                 'Accept': 'application/json'
               }});
               const json2 = await res2.json(); //This contains all products in the order
+
+              //console.log(json2.items[0].image); //We get the image url here, so we can just use that!
               
               //Iterate through each product, adding product info to the response
               for(var l = 0; l < json2.items.length; l++){
-                order_info.products[l] = { name: json2.items[l].name, price: json2.items[l].price, quantity: json2.items[l].quantity };
+                order_info.products[l] = { name: json2.items[l].name, price: json2.items[l].price, total_price: json2.items[l].totalPrice, quantity: json2.items[l].quantity, image: json2.items[l].image };
               }
               
               //now put it into strapi under the user's name
