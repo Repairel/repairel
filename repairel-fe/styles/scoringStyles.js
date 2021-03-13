@@ -41,4 +41,8 @@ const CriteriaText = styled.p`
   width: 200px;
 `;
 
-export {ScoresDiv, ScoresListItem, ScoresCaption, CriteriaDiv, CriteriaListItem, CriteriaText};
+const CriteriaImage = styled.img`
+  align-self: start;
+`;
+
+export {ScoresDiv, ScoresListItem, ScoresCaption, CriteriaDiv, CriteriaListItem, CriteriaText, CriteriaImage};

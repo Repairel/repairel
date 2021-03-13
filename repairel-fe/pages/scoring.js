@@ -13,7 +13,7 @@ import Disposal from '../public/disposal.svg';
 import _ from 'lodash';
 
 import { LinedHeading, LinedSubHeading, StyledSection } from '../styles/global';
-import {ScoresDiv, ScoresListItem, ScoresCaption, CriteriaDiv, CriteriaListItem, CriteriaText} from '../styles/scoringStyles';
+import {ScoresDiv, ScoresListItem, ScoresCaption, CriteriaDiv, CriteriaListItem, CriteriaText, CriteriaImage} from '../styles/scoringStyles';
 
 const icons = {
   Material: Material,
@@ -61,12 +61,15 @@ const handleCircles = (numberOfCircles) => {
 const initialiseCriteria = (content) => {
   const criteria = [];
   const categories = Object.keys(icons);
-  for (category in categories) {
+  const categoriesLength = categories.length;
+  for (var i = 0; i < categoriesLength; i++) {
+    let catName = categories[i];
     criteria.push([
-      icons[category],
-      category,
-      content[category]
+      icons[catName],
+      catName,
+      content[catName]
     ]);
+    console.log(catName);
   }
   return criteria;
 }
@@ -75,9 +78,12 @@ const categoriesRender = (content) => {
   let criteria = initialiseCriteria(content);
   return criteria.map((criteria) => {
     return (
-      <CriteriaListItem key={criteria[0]}>
-        <CriteriaDiv></CriteriaDiv>
-        <CriteriaText></CriteriaText>
+      <CriteriaListItem>
+        <CriteriaDiv>
+          <CriteriaImage src={criteria[0]}></CriteriaImage>
+          <p>{criteria[1]}</p>
+        </CriteriaDiv>
+        <CriteriaText>{criteria[2]}</CriteriaText>
         <br></br>
       </CriteriaListItem>
     );
@@ -101,7 +107,7 @@ const scoring = ({ content }) => {
           <div>{scoresRender(content[0].likert[0])}</div>
 
           <LinedSubHeading>Criteria</LinedSubHeading>
-          {/* render rest of the page here */}
+          <div>{categoriesRender(content[0])}</div>
 
         </main>
         <footer style={{ marginBottom: '1rem' }}>
