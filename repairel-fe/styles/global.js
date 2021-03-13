@@ -30,6 +30,21 @@ const LinedHeading = styled.h1`
   }
 `;
 
+const LinedSubHeading = styled.h2`
+  width: 100%;
+  padding-bottom: 1rem;
+  position: relative;
+  &::before {
+    content: '';
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid black;
+    animation: ${underline} 1s linear;
+  }
+`;
+
 const StyledLink = styled.a`
   text-decoration: none;
   color: black;
@@ -82,9 +97,4 @@ const StyledFormLabel = styled.span`
   margin-left: -125;
 `;
 
-const ScoresDiv = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ScoresDiv};
+export { LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel};

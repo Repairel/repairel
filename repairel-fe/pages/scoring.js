@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Markdown from 'markdown-to-jsx';
 import PropTypes from 'prop-types';
 import Socials from '@components/socials';
-import { Circle, CircleDiv } from '@components/compare/Compare.style';
+import { Circle } from '@components/compare/Compare.style';
 import Material from '../../public/material.svg';
 import materialProcessing from '../../public/material-processing.svg';
 import Manufacturing from '../../public/manufacturing.svg';
@@ -11,7 +11,8 @@ import Assembly from '../../public/assembly.svg';
 import Use from '../../public/use.svg';
 import Disposal from '../../public/disposal.svg';
 
-import { LinedHeading, StyledSection } from '../styles/global';
+import { LinedHeading, LinedSubHeading, StyledSection } from '../styles/global';
+import { ScoresDiv, ScoresListItem, ScoresCaption } from '../styles/scoringStyles';
 
 const icons = {
   material: Material,
@@ -39,16 +40,14 @@ const handleCircles = (numberOfCircles) => {
   return array;
 };
 
-const ethicsRender = (scores) => {
+const scoresRender = (scores) => {
   return scores.map((scores) => {
     return (
-      
-
-      <EthicsListItem key={scores[0]}>
-        <EthicsImage src={scores[2]} />
-        <EthicsCaption>{scores[0].split('_').join(' ')}</EthicsCaption>
-        <CircleDiv int={scores[1]}>{handleCircles(ethic[1])}</CircleDiv>
-      </EthicsListItem>
+      <ScoresListItem key={scores[0]}>
+        <ScoresDiv int={scores[1]}>{handleCircles(scores[1])}</ScoresDiv>
+        <ScoresCaption>{scores[0].split('_').join(' ')}</ScoresCaption>
+        <br></br>
+      </ScoresListItem>
     );
   });
 };
@@ -65,8 +64,14 @@ const scoring = ({ content }) => {
       <Header />
       <StyledSection>
         <main style={{ margin: '1rem' }}>
-          <LinedHeading>Scoring System</LinedHeading>
-          {/* <Markdown>{content[0].text}</Markdown> */}
+          <LinedHeading>Method</LinedHeading>
+          {/* introduction text to the page*/}
+          <LinedSubHeading>Scores</LinedSubHeading>
+          {/* [OOOOO   Excellent
+               OOOO    Very Good
+               etc] */}
+            <div>{ethicsRender(ethics)}</div>
+          <LinedSubHeading>Criteria</LinedSubHeading>
           {/* render rest of the page here */}
 
 
@@ -80,8 +85,7 @@ const scoring = ({ content }) => {
 };
 
 // export async function getServerSideProps() {
-//   // const res = await fetch(`http://35.178.141.40:1337/scorings`);
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scoring`);
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scorings`);
 //   const json = await res.json();
 //   return { props: { content: json } };
 // }
