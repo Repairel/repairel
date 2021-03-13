@@ -10,6 +10,7 @@ import Manufacturing from '../public/manufacturing.svg';
 import Assembly from '../public/assembly.svg';
 import Use from '../public/use.svg';
 import Disposal from '../public/disposal.svg';
+import _ from 'lodash';
 
 import { LinedHeading, LinedSubHeading, StyledSection } from '../styles/global';
 import { ScoresDiv, ScoresListItem, ScoresCaption } from '../styles/scoringStyles';
@@ -22,15 +23,8 @@ const icons = {
   use: Use,
   disposal: Disposal,
 };
-{/*}
-const categories = Object.keys(scoring.propTypes.likert); //likert will have to be changed to reflect the name of the categories from the strapi collection
-const scores = [];
-for (let category of categories) {
-  scores.push([
-    category,
-    Scorings.propTypes.likert[category],
-  ]);
-}*/}
+
+
 
 const handleCircles = (numberOfCircles) => {
   let array = [];
@@ -40,7 +34,8 @@ const handleCircles = (numberOfCircles) => {
   return array;
 };
 
-const scoresRender = (scores) => {
+const scoresRender = (likert) => {
+  let scores = initialiseCategories(likert);
   return scores.map((scores) => {
     return (
       <ScoresListItem key={scores[0]}>
@@ -71,7 +66,7 @@ const scoring = ({ content }) => {
           {/* [OOOOO   Excellent
                OOOO    Very Good
                etc] */}
-            {/*<div>{ethicsRender(ethics)}</div>*/}
+            <div>{scoresRender(content[0].likert[0])}</div>
           <LinedSubHeading>Criteria</LinedSubHeading>
           {/* render rest of the page here */}
 
@@ -84,6 +79,22 @@ const scoring = ({ content }) => {
     </>
   );
 };
+
+
+const initialiseCategories = (likert) => {
+  const categories = Object.keys(likert); //likert will have to be changed to reflect the name of the categories from the strapi collection
+  //console.log("please show this text")
+  const scores = [];
+  for (let category of categories.slice(1)) {
+    scores.push([
+      category,
+      categories[category],
+    ]);
+  }
+  return scores
+}
+
+
 
 export async function getServerSideProps() {
    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scorings`);

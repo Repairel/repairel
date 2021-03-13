@@ -18,6 +18,7 @@ const ScoresListItem = styled.li`
 
 const ScoresCaption = styled.p`
   text-transform: capitalize;
+
 `;
 
 export {ScoresDiv, ScoresListItem, ScoresCaption};
