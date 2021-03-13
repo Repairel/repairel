@@ -13,25 +13,15 @@ import Disposal from '../public/disposal.svg';
 import _ from 'lodash';
 
 import { LinedHeading, LinedSubHeading, StyledSection } from '../styles/global';
-import { ScoresDiv, ScoresListItem, ScoresCaption } from '../styles/scoringStyles';
+import {ScoresDiv, ScoresListItem, ScoresCaption, CriteriaDiv, CriteriaListItem, CriteriaText} from '../styles/scoringStyles';
 
 const icons = {
-  material: Material,
-  material_processing: materialProcessing,
-  manufacturing: Manufacturing,
-  assembly: Assembly,
-  use: Use,
-  disposal: Disposal,
-};
-
-
-
-const handleCircles = (numberOfCircles) => {
-  let array = [];
-  _.times(numberOfCircles, (i) => {
-    array.push(<Circle int={numberOfCircles} key={i} />);
-  });
-  return array;
+  Material: Material,
+  Material_Processing: materialProcessing,
+  Manufacturing: Manufacturing,
+  Assembly: Assembly,
+  Use: Use,
+  Disposal: Disposal,
 };
 
 const scoresRender = (likert) => {
@@ -47,40 +37,6 @@ const scoresRender = (likert) => {
   });
 };
 
-
-
-
-const scoring = ({ content }) => {
-  return (
-    <>
-      <Head>
-        <title id='title'>REPAIREL | Scoring System</title>
-      </Head>
-      <Header />
-      <StyledSection>
-        <main style={{ margin: '1rem' }}>
-          <LinedHeading>Method</LinedHeading>
-          {/* introduction text to the page*/}
-          <Markdown>{content[0].introduction}</Markdown>
-          <LinedSubHeading>Scores</LinedSubHeading>
-          {/* [OOOOO   Excellent
-               OOOO    Very Good
-               etc] */}
-            <div>{scoresRender(content[0].likert[0])}</div>
-          <LinedSubHeading>Criteria</LinedSubHeading>
-          {/* render rest of the page here */}
-
-
-        </main>
-        <footer style={{marginBottom: '1rem'}}>
-          <Socials />
-        </footer>
-      </StyledSection>
-    </>
-  );
-};
-
-
 const initialiseCategories = (likert) => {
   const categories = Object.keys(likert); //likert will have to be changed to reflect the name of the categories from the strapi collection
   //console.log("please show this text")
@@ -94,13 +50,73 @@ const initialiseCategories = (likert) => {
   return scores
 }
 
+const handleCircles = (numberOfCircles) => {
+  let array = [];
+  _.times(numberOfCircles, (i) => {
+    array.push(<Circle int={numberOfCircles} key={i} />);
+  });
+  return array;
+};
 
+const initialiseCriteria = (content) => {
+  const criteria = [];
+  const categories = Object.keys(icons);
+  for (category in categories) {
+    criteria.push([
+      icons[category],
+      category,
+      content[category]
+    ]);
+  }
+  return criteria;
+}
+
+const categoriesRender = (content) => {
+  let criteria = initialiseCriteria(content);
+  return criteria.map((criteria) => {
+    return (
+      <CriteriaListItem key={criteria[0]}>
+        <CriteriaDiv></CriteriaDiv>
+        <CriteriaText></CriteriaText>
+        <br></br>
+      </CriteriaListItem>
+    );
+  });
+};
+
+
+const scoring = ({ content }) => {
+  return (
+    <>
+      <Head>
+        <title id='title'>REPAIREL | Scoring System</title>
+      </Head>
+      <Header />
+      <StyledSection>
+        <main style={{ margin: '1rem' }}>
+          <LinedHeading>Method</LinedHeading>
+          <Markdown>{content[0].introduction}</Markdown>
+
+          <LinedSubHeading>Scores</LinedSubHeading>
+          <div>{scoresRender(content[0].likert[0])}</div>
+
+          <LinedSubHeading>Criteria</LinedSubHeading>
+          {/* render rest of the page here */}
+
+        </main>
+        <footer style={{ marginBottom: '1rem' }}>
+          <Socials />
+        </footer>
+      </StyledSection>
+    </>
+  );
+};
 
 export async function getServerSideProps() {
-   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scorings`);
-   const json = await res.json();
-   return { props: { content: json } };
- }
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scorings`);
+  const json = await res.json();
+  return { props: { content: json } };
+}
 
 scoring.propTypes = {
   content: PropTypes.array,

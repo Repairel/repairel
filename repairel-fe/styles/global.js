@@ -30,7 +30,7 @@ const LinedHeading = styled.h1`
   }
 `;
 
-const LinedSubHeading = styled.h2`
+const LinedSubHeading = styled.h3`
   width: 100%;
   padding-bottom: 1rem;
   position: relative;
