@@ -4,6 +4,30 @@ describe ('Test Product Request Page Loads',() => {
     })
 })
 
+describe('Test Product Request Form Posts Information',() => {
+    it('Correct Info Entered To Test POST Works', () => {
+        cy.intercept({
+            method: 'POST',
+            url: 'https://rocky-earth-77368.herokuapp.com/product-requests',
+          }).as('postCheck')
+
+        cy.visit('/wishlist')
+        cy.get('#Name').type("Alice")
+        cy.get('#Email').type("alice@bobmail.com")
+        cy.get(':nth-child(2) > .Brand').type("Alice in WonderBrand")
+        cy.get('#Size').type("5")
+        cy.get('#Type').type("Shoes")
+        cy.get('#OtherSpecifications').type("Good for running")
+        cy.get('button').click()
+        cy.contains('#OtherSpecifications')
+
+        cy.wait('@postCheck').then((interception) => {
+            assert.isNotNull(interception.response.body, 'POST has data')
+          })
+
+    })
+})
+
 describe('Test Product Request Form Works With Acceptable Input',() => {
     it('Correct Info Entered', () => {
         cy.visit('/wishlist')
