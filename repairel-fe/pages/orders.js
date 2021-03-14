@@ -21,7 +21,7 @@ const Orders = ({ content }) => {
     const order = [];
     const j = 0;
 
-    order[j] = <React.Fragment><LinedHeading style={{ fontWeight: 500, fontSize: "1.3rem" }}>Order {content[i].invoice_no} on {new Date(content[i].date).toDateString()}</LinedHeading></React.Fragment> //Heading of the order
+    order[j] = <React.Fragment><LinedHeading style={{ fontWeight: 500, fontSize: "1.3rem", paddingBottom: "0.5rem" }}>Order {content[i].invoice_no} on {new Date(content[i].date).toDateString()}</LinedHeading></React.Fragment> //Heading of the order
 
     
     const shipping_address = [];
