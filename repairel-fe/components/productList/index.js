@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
+import { LinedHeading, StyledLink } from "../../styles/global";
 import {
   ProductCard,
   ProductImage,
@@ -23,7 +24,6 @@ const ProductList = ({ list }) => {
   // the list comes from the fetch request in '../../pages/index'
   //and contains all of the products
   const router = useRouter();
-
   const [products, setProducts] = React.useState([]);
   const [hasMore, setHasMore] = React.useState(true);
   let [count, setCount] = React.useState(0);
@@ -183,15 +183,16 @@ const ProductList = ({ list }) => {
   return (
     products.length >= 0 && (
       <section>
+        {!router.pathname.toLowerCase().includes("wishlist") && 
         <OptionsList>
-          <OptionsItem
+           <OptionsItem
             onClick={() => handleFilterClick()}
             style={
               toggleFilter
                 ? { textDecoration: "underline", cursor: "pointer" }
                 : { textDecoration: "none", cursor: "pointer" }
             }
-          >
+          > 
             Filter
           </OptionsItem>
           <OptionsItem
@@ -205,6 +206,10 @@ const ProductList = ({ list }) => {
             Compare
           </OptionsItem>
         </OptionsList>
+        }
+        {router.pathname.toLowerCase().includes("wishlist") && 
+        <LinedHeading>WISHLIST</LinedHeading>
+        }
         {toggleFilter && (
           <Filter setFilteredList={setFilteredList} list={list} />
         )}

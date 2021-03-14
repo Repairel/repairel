@@ -75,6 +75,10 @@
     "orders": {
       "via": "user",
       "collection": "orders"
+    },
+    "wishlists": {
+      "via": "user",
+      "collection": "wishlist"
     }
   }
 }

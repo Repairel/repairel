@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import AppContext from "../../context/AppContext";
 import _ from 'lodash';
 import { Rating } from '@components/productInfo/ProductInfo.style';
 import { Circle, CircleDiv } from '@components/compare/Compare.style';
@@ -11,6 +12,8 @@ import footwearManufacturing from "../../public/manufacturing.svg";
 import Use from "../../public/use.svg";
 import Disposal from "../../public/disposal.svg";
 import Head from "next/head";
+import axios from "axios";
+import { useRouter } from "next/router";
 import React, { useState, useEffect, useContext } from "react";
 import Markdown from "markdown-to-jsx";
 import styles from "./Product.module.css";
@@ -33,8 +36,37 @@ import {
 } from './Product.style';
 
 const Product = ({ product, url, esdes }) => {
+  const appContext = useContext(AppContext);
+
+  let [ added, setAdded ] = useState(false);
+  let [ wishlistID, setWishlistID ] = useState(-1);
+  let [clicked, setClicked] = useState(false);
+
   const [desc, setDesc] = useState({ name: "",text: "", image: ""});
   let [active, setActive] = useState(-1)
+
+  const router = useRouter();
+
+  async function checkAdded() {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/wishlists`, { params: { user: [appContext.user.id], product: [product.id] } })
+      // worked
+      .then(function (response) {
+        console.log(response);
+        if (response.data.length > 0) {
+          setAdded(true);
+          setWishlistID(response.data[0].id);
+        }
+      })
+      // didn't work
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  if (appContext.isAuthenticated) {
+    checkAdded();
+  }
+
   const icons = {
     design: Design,
     raw_materials: rawMaterials,
@@ -109,6 +141,53 @@ const Product = ({ product, url, esdes }) => {
     }
   }
 
+  async function addWishlist() {
+    const userID = appContext.user.id;
+    const productID = product.id;
+
+    if (!added) {
+      axios.post(`${process.env.NEXT_PUBLIC_API_URL}/wishlists`, { user: [userID], product: [productID] })
+        // worked
+        .then(function (response) {
+          console.log(response);
+          setAdded(true);
+          setWishlistID(response.data[0].id);
+        })
+        // didn't work
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/wishlists/${wishlistID}`)
+        // worked
+        .then(function (response) {
+          console.log(response);
+          setAdded(false);
+          setWishlistID(-1);
+        })
+        // didn't work
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
+  }
+
+  function handleClick() {
+    if (!clicked) {
+      setClicked(true);
+    } else {
+      router.push('/login');
+    }
+  }
+
+  function hasLogin() {
+    if (appContext.isAuthenticated) {
+      return <Wishlist onClick={() => addWishlist()} style={added == true ? { backgroundColor: 'black', color: 'white'} : {}}>{!added ? 'Add to' : 'Remove from'} wishlist</Wishlist>
+    } else {
+      return <Wishlist onClick={() => handleClick()}>{!clicked ? 'Add to wishlist' : 'Login to add to wishlist'}</Wishlist>
+    }
+  }
+
   return (
     <>
       <Slider images={product.images} />
@@ -130,9 +209,7 @@ const Product = ({ product, url, esdes }) => {
         <ButtonContainer className='product__price-button-container'>
           {cartButton()}
           {hasStock()}
-          <a href={`mailto:repairelhub@gmail.com?subject=Wishlist&body=I would like to add ${product.name} to my wishlist`}>
-          <Wishlist>Add to wishlist</Wishlist>
-          </a>
+          {hasLogin()}
         </ButtonContainer>
         <ProductHeading>Description</ProductHeading>
         <p className='product__description'>{product.description}</p>

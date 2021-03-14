@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { isLogged } from "../lib/auth"
 
 export default function Home({ list }) {
+  // console.log(list);
   const { user, setUser } = useContext(AppContext);
   const router = useRouter();
 
