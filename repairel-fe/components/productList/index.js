@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
+import { LinedHeading, StyledLink } from "../../styles/global";
 import {
   ProductCard,
   ProductImage,
@@ -23,7 +24,6 @@ const ProductList = ({ list }) => {
   // the list comes from the fetch request in '../../pages/index'
   //and contains all of the products
   const router = useRouter();
-
   const [products, setProducts] = React.useState([]);
   const [hasMore, setHasMore] = React.useState(true);
   let [count, setCount] = React.useState(0);
@@ -31,7 +31,7 @@ const ProductList = ({ list }) => {
   const [toggleCompare, setToggleCompare] = React.useState(false);
   const [compareArray, setCompareArray] = React.useState([]);
   const [filteredList, setFilteredList] = React.useState([]);
-
+  const empty = [];
   //this useEffect checks session storage for filters and opens the filter if there is
   React.useEffect(() => {
     const filters = sessionStorage.getItem("filters");
@@ -46,7 +46,7 @@ const ProductList = ({ list }) => {
   // rendered for the infinte scroll
   React.useEffect(() => {
     let productArray = [];
-    if (filteredList.length === 0) {
+    if (filteredList.length === 0 && !toggleFilter ){
       for (var i = count; i < count + 50; i++) {
         if (i >= list.length) {
           setHasMore(false);
@@ -55,7 +55,11 @@ const ProductList = ({ list }) => {
           setProducts(productArray);
         }
       }
-    } else {
+    }
+    else if(filteredList.length === 0 && toggleFilter === true ){
+   	setProducts(empty)
+}
+ else {
       for (var j = count; j < count + 50; j++) {
         if (j >= filteredList.length) {
           setHasMore(false);
@@ -105,8 +109,11 @@ const ProductList = ({ list }) => {
   // renders a different product card depending on stock status
   const productRender = (products) => {
     return products.map((product) => {
+
+
       if (product.stock) {
         return (
+
           <ProductCard key={product.id}>
             <Link href={`/product/[id]`} as={`/product/${product.id}`}>
               <div style={{ cursor: "pointer", width: "100%" }}>
@@ -123,7 +130,9 @@ const ProductList = ({ list }) => {
                     key={product.id}
                     price={product.price}
                     name={product.name}
+
                     size={product.Size}
+                    kSize={product.kidsSize}
                     ref_link={product.affiliate_link}
                   />
                 </ProductInfoWrapper>
@@ -165,6 +174,7 @@ const ProductList = ({ list }) => {
                   price={product.price}
                   name={product.name}
                   size={product.Size}
+                  kidsSize={product.kidsSize}
                   ref_link={product.affiliate_link}
                 />
               </ProductInfoWrapper>
@@ -177,17 +187,18 @@ const ProductList = ({ list }) => {
 
   // Filter component contains more logic necessary for understanding this page
   return (
-    products.length !== 0 && (
+    products.length >= 0 && (
       <section>
+        {!router.pathname.toLowerCase().includes("wishlist") && 
         <OptionsList>
-          <OptionsItem
+           <OptionsItem
             onClick={() => handleFilterClick()}
             style={
               toggleFilter
                 ? { textDecoration: "underline", cursor: "pointer" }
                 : { textDecoration: "none", cursor: "pointer" }
             }
-          >
+          > 
             Filter
           </OptionsItem>
           <OptionsItem
@@ -201,6 +212,10 @@ const ProductList = ({ list }) => {
             Compare
           </OptionsItem>
         </OptionsList>
+        }
+        {router.pathname.toLowerCase().includes("wishlist") && 
+        <LinedHeading>WISHLIST</LinedHeading>
+        }
         {toggleFilter && (
           <Filter setFilteredList={setFilteredList} list={list} />
         )}

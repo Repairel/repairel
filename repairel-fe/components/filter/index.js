@@ -14,17 +14,17 @@ const Filter = ({ content, list, setFilteredList }) => {
     const [filters, setFilters] = React.useState({
         price: "",
         condition: "",
-        size: [],
+        size: "",
         brand: "",
 
     });
     const [noFilter, setNoFilter] = React.useState(false);;
-    const sizes = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    const condition = ["New Shoes", "Refurbished Shoes"];
+    const sizes = ['all sizes','kids', "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
+    const condition = ["all conditions", "New Shoes", "Refurbished Shoes"];
     const price = ["High to Low", "Low to High"];
-    let brands2 = [];
-    let brands3 = [];
-    let b = []; 
+    let brands2 = ["all brands"];
+    let brands3 = [""];
+    let b = [];
     const prodList = list;
     for (b in prodList) {
         if (prodList[b].brand != null) {
@@ -35,10 +35,11 @@ const Filter = ({ content, list, setFilteredList }) => {
         }
     }
     const brands = [...new Set(brands2.map(x => x))];
-    
+
 
   // if there is sessionStorage with filters the correct checkboxes are checked upon filter open
   React.useEffect(() => {
+
     let checkboxes = document.querySelectorAll("input");
     if (sessionStorage.getItem("filters") !== null) {
       let storedFilters = Object.values(
@@ -48,24 +49,29 @@ const Filter = ({ content, list, setFilteredList }) => {
       let condition = storedFilters[1];
         let sizes = storedFilters[2];
         let brands = storedFilters[3];
-      Array.from(checkboxes, (checkbox) => {
-          let id = checkbox.id.split(" ").join("").toLowerCase();
-        if (id === price) {
-          checkbox.checked = true;
-        } else if (id === condition) {
-          checkbox.checked = true;
-        } else if (sizes.includes(id)) {
-            checkbox.checked = true;
-        } else if (id === brands) {
+        Array.from(checkboxes, (checkbox) => {
+              let id = checkbox.id.split(" ").join("").toLowerCase();
+            if (id === price) {
               checkbox.checked = true;
-        } 
-      });
-    }
-  }, []);
+            } else if (id === condition) {
+              checkbox.checked = true;
 
-  //checkes whether input change is checking or unchecking and updates filters state accordingly
+            }
+
+            else if (sizes.includes(id)) {
+                checkbox.checked = true;
+            } else if (id === brands) {
+                  checkbox.checked = true;
+            }
+          });
+        }
+      }, []);
+
+
+  //checks whether input change is checking or unchecking and updates filters state accordingly
   const handleChange = (event) => {
     event.target.checked ? handleCheck(event) : handleUncheck(event);
+
   };
 
   const handleCheck = (event) => {
@@ -82,38 +88,78 @@ const Filter = ({ content, list, setFilteredList }) => {
         JSON.stringify({ ...filters, condition: item.replace("shoes","") })
       );
       setFilters({ ...filters, condition: item });
+    }else if (item.includes("kids")) {
+      item="0"
+      sessionStorage.setItem(
+        "filters",
+        JSON.stringify({ ...filters, size: item })
+      );
+      setFilters({ ...filters, size: item });
+
     } else if (brands3.includes(item)) {
         sessionStorage.setItem(
             "filters",
             JSON.stringify({ ...filters, brand: item })
         );
         setFilters({ ...filters, brand: item });
-    } else {
+}
+
+    else if (item.includes("allbrands"))  {
+	item="";
       sessionStorage.setItem(
         "filters",
-        JSON.stringify({ ...filters, size: filters.size.concat(item) })
+
+        JSON.stringify({ ...filters, brand: item })
       );
-      setFilters({ ...filters, size: filters.size.concat(item) });
+      setFilters({ ...filters, brand: item });
+    }
+
+    else if (item.includes("allconditions"))  {
+  item="";
+      sessionStorage.setItem(
+        "filters",
+
+        JSON.stringify({ ...filters, condition: item })
+      );
+      setFilters({ ...filters, condition: item });
+    }
+    else if (item.includes("allsizes"))  {
+  item="";
+      sessionStorage.setItem(
+        "filters",
+
+        JSON.stringify({ ...filters, size: item })
+      );
+      setFilters({ ...filters, size: item });
+    }
+   else {
+
+      sessionStorage.setItem(
+        "filters",
+        JSON.stringify({ ...filters, size: item })
+      );
+      setFilters({ ...filters, size: item });
       }
 
   };
 
   const handleUncheck = (event) => {
+
     let id = event.target.id;
     const sizes = [...filters.size];
       const index = sizes.indexOf(id);
-
     if (index > -1) {
       sizes.splice(index, 1);
+
       }
-     
+
     sessionStorage.setItem(
         "filters",
         JSON.stringify({ ...filters, size: sizes,  })
       );
       setFilters({ ...filters, size: sizes, });
     };
-   
+
 
 
 
@@ -128,9 +174,9 @@ const Filter = ({ content, list, setFilteredList }) => {
     let storageFilters = JSON.parse(sessionStorage.getItem("filters"));
     let filterObj = storageFilters === null ? filters : storageFilters;
       let array = Object.keys(filterObj);
-      console.log(filterObj);
+
     array.forEach((filter) => {
-        
+
       if (filter === "price" && filterObj[filter] !== "") {
         filterObj[filter] === "lowtohigh"
           ? (listCopy = [...list].sort((a, b) => (a.price > b.price ? 1 : -1)))
@@ -145,8 +191,11 @@ const Filter = ({ content, list, setFilteredList }) => {
           filterObj[filter] === "new"
               ? (listCopy = newList)
               : (listCopy = refurbishedList);}
-      
+
       else if (filter === "size" && filterObj[filter].length !== 0) {
+
+
+
         let sizeArray = [];
         listCopy.map((product) => {
           if (filterObj[filter].includes(product.Size.toString()))
@@ -155,21 +204,25 @@ const Filter = ({ content, list, setFilteredList }) => {
         listCopy = sizeArray;
         }
 
-      else if (filter === "brand" && filterObj[filter].length !== 0) {
-          const brandArray = [];
-          listCopy.map((product) => {
-              if (prodList[b].brand != null) {
-                  if (filterObj[filter].includes(product.brand.Brand_name.toString().replace(/\s+/g, '').toLowerCase()))
-                      brandArray.push(product);
-              }
-          });
-          listCopy = brandArray;
-      }
-        
+
+        else if (filter === "brand" && filterObj[filter].length !== 0) {
+            const brandArray = [];
+            listCopy.map((product) => {
+                if (prodList[b].brand != null) {
+                    if (filterObj[filter].includes(product.brand.Brand_name.toString().replace(/\s+/g, '').toLowerCase()))
+                        brandArray.push(product);
+                }
+            });
+            listCopy = brandArray;
+        }
+
+
+
+
         listCopy.length === 0 ? setNoFilter(true) : setNoFilter(false);
         setFilteredList(listCopy);
     });
-      
+
   };
 
   // resets all state and unchecks checkboxes
@@ -185,25 +238,38 @@ const Filter = ({ content, list, setFilteredList }) => {
   };
 
   const renderParams = (arr) => {
+    console.log(filters)
     return arr.map((item, index) => {
       return (
         <React.Fragment key={(item, index)}>
           <FilterInput
-              
+
             type={typeof item === "number" ? "checkbox" : "radio"}
+
             name={
 
               typeof item === "number"
-          
+
                 ? item
                 : item.includes("to")
                 ? "price"
                 : item.includes("Shoes")
                 ? "condition"
+                : item.includes("kids")
+                ? "size"
+                : item.includes("all brands")
+                ? "brand"
+                : item.includes("all conditions")
+                ? "condition"
+                : item.includes("all sizes")
+                ? "size"
+                : item.length <= 2
+                ? "size"
                 : "brand"
-                
+
 
             }
+
             id={item}
             onChange={(event) => handleChange(event)}
           ></FilterInput>
@@ -212,6 +278,7 @@ const Filter = ({ content, list, setFilteredList }) => {
       );
     });
   };
+
   return (
     <FilterWrapper>
       <>
@@ -232,7 +299,7 @@ const Filter = ({ content, list, setFilteredList }) => {
           </div>
       {noFilter && (
         <FilterMessage>
-          {"We're sorry, there are no products that match these filters. Don't worry we have many more shoes to choose from."}
+          {"We're sorry, there are no products that match these filters. Please try again using different filters."}
         </FilterMessage>
       )}
           <ClearAll onClick={() => clearAll()}>Clear all</ClearAll>
@@ -251,7 +318,7 @@ Filter.propTypes = {
 
   list: PropTypes.array,
   setFilteredList: PropTypes.func,
-  
+
 };
 
 export default Filter;

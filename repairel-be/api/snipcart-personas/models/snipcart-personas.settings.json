@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "snipcart_personas",
+  "info": {
+    "name": "snipcart_personas"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "user": {
+      "via": "snipcart_personas",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "customer_id": {
+      "type": "string",
+      "unique": true
+    }
+  }
+}
