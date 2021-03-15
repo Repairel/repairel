@@ -37,4 +37,31 @@ backend-dev-deploy:
     only:
         - develop
 
+frontend-dev-deploy:
+    stage: Deploy-Development
+    image: ruby:latest
+    script:
+        - cd repairel-fe
+        - dpl --provider=heroku --app=$HEROKU_FE_DEV --api-key=$HEROKU_API_KEY
+    only:
+        - develop
 
+
+# will basically be identical to the dev jobs but will deploy to the production servers
+backend-prod-deploy:
+    stage: Deploy-Production
+    image: ruby:latest
+    script:
+        - cd repairel-be
+        - dpl --provider=heroku --app=$HEROKU_BE_PROD --api-key=$HEROKU_API_KEY
+    only:
+        - master@tp3-2020-SE04/se04-main
+
+frontend-prod-deploy:
+    stage: Deploy-Production
+    image: ruby:latest
+    script:
+        - cd repairel-fe
+        - dpl --provider=heroku --app=$HEROKU_FE_PROD --api-key=$HEROKU_API_KEY
+    only:
+        - master@tp3-2020-SE04/se04-main

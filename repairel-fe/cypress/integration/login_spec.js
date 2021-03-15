@@ -39,14 +39,13 @@ describe ('The Login Page',() => {
         // should be redirected to dashboard
         cy.url().should('include', '/')
     })
-    
+
     it('Welcome Message displayed correctly', () => {
         cy.visit('/login')
         cy.get('input[name=email]').type(email)
         cy.get('input[name=password]').type('1234')
         cy.get('button').click()
-        cy.get('div[style="z-index:2;cursor:pointer"] > div').click()
-        cy.get('span').contains('Hey Another!')
+        cy.get('span').contains('Hey Bob!')
     })
 })
 

@@ -29,6 +29,7 @@ const About = ({ content }) => {
   );
 };
 
+
 export async function getServerSideProps() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/abouts`);
   const json = await res.json();
