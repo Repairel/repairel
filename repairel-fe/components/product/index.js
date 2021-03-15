@@ -76,7 +76,10 @@ const Product = ({ product, url, esdes }) => {
     use: Use,
     disposal: Disposal,
   };
-
+var Size=0
+if (product.Size===0 && product.kidsSize) {Size=("Kids "+product.kidsSize)}
+else if (product.Size===0 && !product.kidsSize) {Size=("Kids Shoe")}
+else{Size=product.Size}
   const categories = Object.keys(product.ethics_and_sustainability);
   const ethics = [];
   for (let category of categories.slice(1)) {
@@ -189,6 +192,7 @@ const Product = ({ product, url, esdes }) => {
   }
 
   return (
+
     <>
       <Slider images={product.images} />
       <div
@@ -200,7 +204,8 @@ const Product = ({ product, url, esdes }) => {
         <MainInfo>
           <div>
             <ProductTitle className='product__title'>
-              {product.name} <ProductSize>/ size {product.Size}</ProductSize>
+
+              {product.name} <ProductSize>/ Size: {Size}</ProductSize>
             </ProductTitle>
             <p className='product__price'>£ {product.price}</p>
           </div>
