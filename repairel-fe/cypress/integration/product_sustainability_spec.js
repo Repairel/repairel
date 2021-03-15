@@ -1,4 +1,4 @@
-describe ('The Product sustainability explanation',() => {
+/*describe ('The Product sustainability explanation',() => {
     it ('The explanation is displayed', () => {
         cy.visit('/product/1')
         cy.contains('Design')
@@ -10,3 +10,4 @@ describe ('The Product sustainability explanation',() => {
         cy.contains('Disposal')
     })
 })
+*/
