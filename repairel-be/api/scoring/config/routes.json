@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/scorings",
+      "handler": "scoring.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/scorings/count",
+      "handler": "scoring.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/scorings/:id",
+      "handler": "scoring.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/scorings",
+      "handler": "scoring.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/scorings/:id",
+      "handler": "scoring.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/scorings/:id",
+      "handler": "scoring.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
