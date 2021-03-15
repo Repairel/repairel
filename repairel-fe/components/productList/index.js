@@ -109,8 +109,11 @@ const ProductList = ({ list }) => {
   // renders a different product card depending on stock status
   const productRender = (products) => {
     return products.map((product) => {
+
+
       if (product.stock) {
         return (
+
           <ProductCard key={product.id}>
             <Link href={`/product/[id]`} as={`/product/${product.id}`}>
               <div style={{ cursor: "pointer", width: "100%" }}>
@@ -127,7 +130,9 @@ const ProductList = ({ list }) => {
                     key={product.id}
                     price={product.price}
                     name={product.name}
+
                     size={product.Size}
+                    kSize={product.kidsSize}
                     ref_link={product.affiliate_link}
                   />
                 </ProductInfoWrapper>
@@ -169,6 +174,7 @@ const ProductList = ({ list }) => {
                   price={product.price}
                   name={product.name}
                   size={product.Size}
+                  kidsSize={product.kidsSize}
                   ref_link={product.affiliate_link}
                 />
               </ProductInfoWrapper>
