@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/snipcart-personas",
+      "handler": "snipcart-personas.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/snipcart-personas/count",
+      "handler": "snipcart-personas.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/snipcart-personas/:id",
+      "handler": "snipcart-personas.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/snipcart-personas",
+      "handler": "snipcart-personas.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/snipcart-personas/:id",
+      "handler": "snipcart-personas.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/snipcart-personas/:id",
+      "handler": "snipcart-personas.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

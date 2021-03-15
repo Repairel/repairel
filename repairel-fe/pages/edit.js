@@ -12,7 +12,7 @@ export default function Edit() {
   const appContext = useContext(AppContext);
   const { user, setUser } = useContext(AppContext);
   const [data, setData] = useState({ first_name: (user) ? user.first_name : "", second_name: (user) ? user.second_name : "",
-    phone_number: (user) ? user.phone_number : "", email: (user) ? user.email : "" });
+    phone_number: (user) ? user.phone_number : "", email: (user) ? user.email : "", snipcart_update_needed: (user) ? user.snipcart_update_needed : "" });
   const [error, setError] = useState({});
   const router = useRouter();
 
@@ -88,11 +88,12 @@ export default function Edit() {
             <Column style={{ textAlign: 'left' }}>
               <StyledInput
                 required
-                onChange={(e) => setData({ ...data, email: e.target.value })}
+                onChange={(e) => setData({ ...data, email: e.target.value, snipcart_update_needed: true })}
                 value={data.email}
                 type="email"
                 name="email"
               />
+              {console.log(data.snipcart_update_needed)}
             </Column>
           </Row>
           <StyledButton
