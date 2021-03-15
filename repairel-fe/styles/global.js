@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-
+import css from 'styled-jsx/css'
 
 
 
@@ -76,12 +76,27 @@ const Column = styled.div`
 `;
 
 const StyledButton = styled.button`
-  padding: 0.5em;
-  font-size: 1em;
-  border-radius: 0.0em;
-  background-color: white;
-  border: 2px solid grey;
-  
+  max-width: 100%;
+  display: inline-block;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  letter-spacing: 1px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: color 150ms, background-color 150ms;
+  text-transform: uppercase;
+  font-size: 1rem;
+  height: 2rem;
+  line-height: 1rem;
+  padding-bottom: auto;
+  padding-top: auto;
+  &:hover {
+    color: white;
+    background-color: black;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -94,7 +109,7 @@ const StyledInput = styled.input`
 
 const StyledFormLabel = styled.span`
   font-size: 1.25em;
-  margin-left: -125;
+  marginLeft: -125;
 `;
 
-export { LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel};
+export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel};
