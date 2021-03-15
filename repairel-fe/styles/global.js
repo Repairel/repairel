@@ -30,6 +30,21 @@ const LinedHeading = styled.h1`
   }
 `;
 
+const LinedSubHeading = styled.h3`
+  width: 100%;
+  padding-bottom: 1rem;
+  position: relative;
+  &::before {
+    content: '';
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid black;
+    animation: ${underline} 1s linear;
+  }
+`;
+
 const StyledLink = styled.a`
   text-decoration: none;
   color: black;
@@ -50,7 +65,7 @@ const StyledTitle = styled.h2`
 const Row = styled.div`
   display: flex;
   padding-bottom: 1em;
-	justify-content: center;
+    justify-content: center;
   
 `;
 
@@ -71,7 +86,7 @@ const StyledButton = styled.button`
 
 const StyledInput = styled.input`
   font-size: 1.25em;
-  border-radius: 0em
+  border-radius: 0em;
   background-color: white;
   border: 0px solid grey;
   border-bottom: 2px solid grey;
@@ -79,10 +94,7 @@ const StyledInput = styled.input`
 
 const StyledFormLabel = styled.span`
   font-size: 1.25em;
-  marginLeft: -125;
-  
-  
- 
+  margin-left: -125;
 `;
 
-export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel };
+export { LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel};

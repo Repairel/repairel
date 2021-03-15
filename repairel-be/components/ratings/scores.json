@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_ratings_scores",
+  "info": {
+    "name": "scores",
+    "icon": "allergies"
+  },
+  "options": {},
+  "attributes": {
+    "Excellent": {
+      "type": "integer",
+      "default": 5
+    },
+    "Very_Good": {
+      "type": "integer",
+      "default": 4
+    },
+    "Good": {
+      "type": "integer",
+      "default": 3
+    },
+    "Satisfactory": {
+      "type": "integer",
+      "default": 2
+    },
+    "Unsatisfactory": {
+      "type": "integer",
+      "default": 1
+    }
+  }
+}

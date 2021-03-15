@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "scorings",
+  "info": {
+    "name": "scoring"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "introduction": {
+      "type": "richtext"
+    },
+    "Material": {
+      "type": "richtext"
+    },
+    "Material_Processing": {
+      "type": "richtext"
+    },
+    "Manufacturing": {
+      "type": "richtext"
+    },
+    "Assembly": {
+      "type": "richtext"
+    },
+    "Use": {
+      "type": "richtext"
+    },
+    "Disposal": {
+      "type": "richtext"
+    },
+    "likert": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ratings.scores"
+    }
+  }
+}
