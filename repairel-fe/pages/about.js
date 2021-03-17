@@ -15,7 +15,7 @@ const About = ({ content }) => {
       </Head>
       <Header />
       <img
-        style={{ width: "100%", height: "auto" }}
+        style={{ width: "100%", height: "auto", padding:"1em" }}
         src={content[0].image.url}
       ></img>
       <section
@@ -23,7 +23,7 @@ const About = ({ content }) => {
       >
         <LinedHeading>About us</LinedHeading>
         <Markdown>{content[0].about}</Markdown>
-        
+
       </section>
     </>
   );

@@ -120,7 +120,7 @@ const Orders = ({ content }) => {
         <main style={{ margin: '1rem' }}>
           <StyledTitle>ORDERS</StyledTitle>
           <Row>
-            <Column style={{ textAlign: 'left'}}>No orders found!</Column>
+            <Column style={{ textAlign: 'left',paddingLeft:0}}>No orders found!</Column>
           </Row>
         </main>
 
