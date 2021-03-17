@@ -9,22 +9,24 @@ import { useRouter } from "next/router";
 import Cookie from "js-cookie";
 
 export default function Edit(user) {
+  const router = useRouter();
+
   if (user) {
     user = user.user;
+  } else {
+    router.push("/");
   }
-  // const appContext = useContext(AppContext);
-  // const { user, setUser } = useContext(AppContext);
-  const [data, setData] = useState({ first_name: (user) ? user.first_name : "", second_name: (user) ? user.second_name : "",
+
+  const appContext = useContext(AppContext);
+  if (process.browser && !appContext.isAuthenticated) {
+    router.push("/"); // redirect if you're already logged in
+  }
+
+  const [data, setData] = useState({ username: (user) ? user.email : "", first_name: (user) ? user.first_name : "", second_name: (user) ? user.second_name : "",
     phone_number: (user) ? user.phone_number : "", email: (user) ? user.email : "", snipcart_update_needed: (user) ? user.snipcart_update_needed : "" });
   const [error, setError] = useState({});
-  const router = useRouter();
-  // once the user has finished with the form we send them
-  // back to the index page
+  const [confirmed, setConfirmed] = useState(false);
 
-  // if (!user) {
-  //   router.push("/", "/?redirect=edit");
-  // }
-  console.log("gi");
   return (
     <div>
       <Head>
@@ -49,70 +51,85 @@ export default function Edit(user) {
                   </small>
                 </div>
               );
-            })}
-          <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>First Name</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
-                required
-                onChange={(e) => setData({ ...data, first_name: e.target.value })}
-                value={data.first_name}
-                type="text"
-                name="first_name"
-              />
+            })
+          }
+
+          <Row style={{ paddingTop: '5em'}}>
+      			<Column style={{ textAlign: 'right'}}>
+              <StyledFormLabel>First Name</StyledFormLabel>
             </Column>
-          </Row>
+            <Column style={{ textAlign: 'left'}}>
+      			   <StyledInput
+                      required
+                      onChange={(e) => setData({ ...data, first_name: e.target.value })}
+                      value={data.first_name}
+                      type="text"
+                      name="first_name" />
+      			</Column>
+    			</Row>
+          <br/>
           <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Second Name</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
-                required
-                onChange={(e) => setData({ ...data, second_name: e.target.value })}
-                value={data.second_name}
-                type="text"
-                name="second_name"
-              />
+            <Column style={{ textAlign: 'right'}}>
+              <StyledFormLabel>Second Name</StyledFormLabel>
             </Column>
-          </Row>
+            <Column style={{ textAlign: 'left'}}>
+              <StyledInput
+               required
+               onChange={(e) => setData({ ...data, second_name: e.target.value })}
+               value={data.second_name}
+               type="text"
+               name="second_name"
+              />
+      			</Column>
+    			</Row>
+          <br/>
           <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Phone Number</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
-                required
-                onChange={(e) => setData({ ...data, phone_number: e.target.value })}
-                value={data.phone_number}
-                type="text"
-                name="phone_number"
-              />
+      		  <Column style={{ textAlign: 'right'}}>
+              <StyledFormLabel>Phone Number</StyledFormLabel>
             </Column>
-          </Row>
+            <Column style={{ textAlign: 'left'}}>
+      			   <StyledInput
+                      required
+                      onChange={(e) => setData({ ...data, phone_number: e.target.value })}
+                      value={data.phone_number}
+                      type="text"
+                      name="phone_number" />
+      			</Column>
+    			</Row>
+          <br/>
           <Row>
-            <Column style={{ textAlign: 'right' }}><StyledFormLabel>Email Address</StyledFormLabel></Column>
-            <Column style={{ textAlign: 'left' }}>
-              <StyledInput
-                required
-                onChange={(e) => setData({ ...data, email: e.target.value, snipcart_update_needed: true })}
-                value={data.email}
-                type="email"
-                name="email"
-              />
-              {console.log(data.snipcart_update_needed)}
+      			<Column style={{ textAlign: 'right'}}>
+              <StyledFormLabel>Email Address</StyledFormLabel>
             </Column>
-          </Row>
+            <Column style={{ textAlign: 'left'}}>
+      			   <StyledInput
+                      required
+                      onChange={(e) => setData({ ...data, email: e.target.value, snipcart_update_needed: true })}
+                      value={data.email}
+                      type="email"
+                      name="email" />
+      			</Column>
+    			</Row>
+          <br/>
           <StyledButton
             onClick={() => {
+              setData({ ...data, username: data.email })
               edit_details(data, user)
               .then((res) => {
                 console.log(res);
                 appContext.setUser(res.data.user);
+                setConfirmed(true);
+                setError({});
               })
               .catch((error) => {
                 console.log(error);
                 setError(error.response.data);
+                setConfirmed(false);
               });
             }}>
             Submit updated details!
           </StyledButton>
+          <p style={{ color: 'green', display: confirmed ? '' : 'none' }}>Your information has been updated!</p>
         </div>
       </main>
     </div>
@@ -122,6 +139,7 @@ export default function Edit(user) {
 export async function getServerSideProps(context) {
   const parsedItems = {};
   let return_user = null;
+
   if (context.req.headers.cookie) {
     const cookiesItems = context.req.headers.cookie.split('; ');
     cookiesItems.forEach(cookies => {
@@ -129,7 +147,9 @@ export async function getServerSideProps(context) {
       parsedItems[parsedItem[0]] = decodeURI(parsedItem[1]);
     });
   }
+
   const token = parsedItems['token']
+
   if (token) {
     await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
       headers: {
@@ -137,13 +157,12 @@ export async function getServerSideProps(context) {
       }
     }).then(async (res) => {
       if (!res.ok) {
-      Cookie.remove("token");
-    }
-    const user = await res.json();
-    return_user = user;
-     });
+        Cookie.remove("token");
+      } else {
+        const user = await res.json();
+        return_user = user;
+      }
+    });
   }
-  return{ props: { user: return_user }
-
-  }
+  return { props: { user: return_user } }
 }
