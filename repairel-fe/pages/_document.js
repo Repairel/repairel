@@ -29,6 +29,7 @@ export default class MyDocument extends Document {
     }
   }
 
+
   render() {
     return (
       <Html>
@@ -58,7 +59,7 @@ export default class MyDocument extends Document {
           <NextScript />
 
           <Footer></Footer>
-          
+
         </body>
       </Html>
     );
