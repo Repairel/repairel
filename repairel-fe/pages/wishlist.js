@@ -15,11 +15,12 @@ const WISHLIST = ({ content }) => {
         <title id='title'>REPAIREL | WISHLIST</title>
       </Head>
       <Header />
-      <LinedHeading>WISHLIST</LinedHeading>
-      {content.length > 0 ? <ProductList list={content} /> : <span>You don't have any wish list items.</span>}
+      <LinedHeading style={{marginLeft: ".6em"}}>WISHLIST</LinedHeading>
+      {content.length > 0 ? <ProductList    list={content} style={{marginLeft: "1em"}} /> : <div style={{marginLeft: "1em"}}><span>You don't have any wish list items.</span></div>}
     </>
   );
 };
+
 
 export async function getServerSideProps(context) {
   const parsedItems = {};

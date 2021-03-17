@@ -7,7 +7,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { edit_details } from "../lib/auth";
 import { useRouter } from "next/router";
 import Cookie from "js-cookie";
-
+import { LinedHeading } from "../styles/global";
 export default function Edit(user) {
   const router = useRouter();
 
@@ -35,8 +35,9 @@ export default function Edit(user) {
       <main>
         <Header />
         <div style={{ textAlign: 'center', padding: '0 1em 0 1em'}}>
-          <StyledTitle style={{textAlign: 'left'}}>EDIT DETAILS</StyledTitle>
-          <hr />
+          <LinedHeading style={{textAlign: 'left'}}>EDIT DETAILS</LinedHeading>
+
+          
 
           {Object.entries(error).length !== 0 &&
             error.constructor === Object &&
