@@ -24,7 +24,7 @@ export default function Register() {
       </Head>
       <main>
         <Header />
-        <div style={{ textAlign: 'left', padding: '0 5em 0 5em'}}>
+        <div style={{ textAlign: 'left', padding: '0 1em 0 1em'}}>
           <StyledTitle>REGISTRATION</StyledTitle>
           <hr />
 
@@ -43,12 +43,12 @@ export default function Register() {
               );
             })}
 			<center>
-			
-			
+
+
 			<Row style={{ textAlign: 'center', paddingTop:'5em' }}>
-			
+
 			<Column style={{ marginLeft: -125 }}><StyledFormLabel  >First Name <b>*</b></StyledFormLabel></Column>
-			
+
 			</Row>
 			<Row>
 			<StyledInput
@@ -67,7 +67,7 @@ export default function Register() {
                 onChange={(e) => setData({ ...data, surname: e.target.value })}
                 value={data.surname}
                 type="text"
-                name="surname" 
+                name="surname"
            />
 			</Row>
 			<Row>
@@ -106,10 +106,10 @@ export default function Register() {
 				name="password"
 			  />
 		    </Row>
-			
-		  
+
+
           <p>* required fields</p>
-		  
+
           <StyledButton
             onClick={() => {
               register(data.forename, data.surname, data.email, data.password, data.phone)
@@ -122,7 +122,7 @@ export default function Register() {
                 setError(error.response.data);
               });
             }}>
-              REGISTER  
+              REGISTER
           </StyledButton>
 		  <div>
       <br></br>

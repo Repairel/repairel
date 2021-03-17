@@ -27,7 +27,11 @@ const Menu = ({ open, setOpen }) => {
       return `/`;
     } else if (item === 'edit details') {
       return `/edit`;
-    } else {
+    } 
+    // else if (item === 'profile') {
+    //   return `/wishlist`
+    // }
+    else {
       return `/${item}`
     }
   }

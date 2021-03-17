@@ -18,9 +18,7 @@ const FAQ = ({ content }) => {
           <LinedHeading>FAQs</LinedHeading>
           <Markdown>{content[0].text}</Markdown>
         </main>
-        <footer style={{marginBottom: '1rem'}}>
-          <Socials />
-        </footer>
+
       </StyledSection>
     </>
   );

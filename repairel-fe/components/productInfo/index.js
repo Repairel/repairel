@@ -17,12 +17,18 @@ function isAffiliate(link) {
   return <span></span>;
 }
 
-const ProductInfo = ({ price, name, rating, size, ref_link }) => {
+const ProductInfo = ({ price, name, rating, size,kSize, ref_link }) => {
+  if (size===0.00 && kSize){
+    size="Kids "+kSize}
+  else if (size===0.00 && !kSize) {
+    size="Kids"
+  }
+
   return (
     <>
       <ProductInfoList>
         <ProductInfoListItem>
-          {name} <ProductSize>/ size {size}</ProductSize>
+          {name} <ProductSize>/ size: {size}</ProductSize>
         </ProductInfoListItem>
         <ProductPrice>£ {price} {isAffiliate(ref_link)}</ProductPrice>
       </ProductInfoList>
