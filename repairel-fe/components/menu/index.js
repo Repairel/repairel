@@ -15,10 +15,10 @@ const Menu = ({ open, setOpen }) => {
   };
 
   const { user, setUser } = useContext(AppContext);
-  let menu = ['login', 'register', 'shop', 'about', 'faq', 'engage', 'T&Cs'];
+  let menu = ['shop','about','engage', 'faq', 'login'];
   let welcomeMessage = '';
   if (user) {
-    menu = ['profile', 'edit details', 'shop', 'about', 'faq', 'engage', 'T&Cs'];
+    menu = [ 'shop','about','engage', 'faq', 'profile' ];
     welcomeMessage = `Hey ${user.first_name}!`;
   }
 
@@ -27,7 +27,7 @@ const Menu = ({ open, setOpen }) => {
       return `/`;
     } else if (item === 'edit details') {
       return `/edit`;
-    } 
+    }
     // else if (item === 'profile') {
     //   return `/wishlist`
     // }
