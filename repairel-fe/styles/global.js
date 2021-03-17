@@ -91,10 +91,6 @@ const StyledInput = styled.input`
 
 const StyledFormLabel = styled.span`
   font-size: 1.25em;
-  marginLeft: -125;
-
-
-
 `;
 
 const ProfileListItem = styled.li`
