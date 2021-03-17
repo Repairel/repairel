@@ -7,6 +7,7 @@ import Twitter from "../../public/twitter.svg";
 import LinkedIn from "../../public/linkedin.svg";
 import { FooterSection,FooterSplit,Headerfooter,Item,Row,Line} from "./Footer.style";
 
+
 const Footer = () => {
   return (
     <Item style={{textAlign:"left", width:"100%"}}>
