@@ -78,6 +78,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   &:hover {
     filter: invert(100%);
+    border: 2px solid white;
   }
 `;
 
