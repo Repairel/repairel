@@ -97,6 +97,7 @@ const SliderImage = styled.img`
   max-width: 400px;
   margin-right: 0.5rem;
   max-height: 400px;
+  padding: 0.6em 1em;
 `;
 
 const SliderContainer = styled.div`

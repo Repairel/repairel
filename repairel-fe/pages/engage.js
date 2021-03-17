@@ -16,10 +16,6 @@ const Engage = ({ content }) => {
         <title id="title">REPAIREL | Engage</title>
       </Head>
       <Header />
-      <img
-        style={{ width: "100%", height: "auto" }}
-        src= {Logo}
-      ></img>
       <section
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
@@ -43,7 +39,7 @@ const Engage = ({ content }) => {
           </a>
         </section>
       <br></br>
-      
+
     </>
   );
 };
