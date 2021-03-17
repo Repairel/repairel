@@ -23,7 +23,7 @@ const Orders = ({ content }) => {
 
     order[j] = <React.Fragment><LinedHeading style={{ fontWeight: 500, fontSize: "1.3rem", paddingBottom: "0.5rem" }}>Order {content[i].invoice_no} on {new Date(content[i].date).toDateString()}</LinedHeading></React.Fragment> //Heading of the order
 
-    
+
     const shipping_address = [];
 
     Object.values(content[i].shipping_address).forEach(entry =>
@@ -58,14 +58,14 @@ const Orders = ({ content }) => {
         </Column>
       </Row>
     </React.Fragment>
-    
+
     const products = []; //An array of JSX for each product in the order
 
     for(var k = 0; k < Object.keys(content[i].products).length; k++){
-      products[k] = 
+      products[k] =
       <React.Fragment>
         <Row>
-          <Column style={{ textAlign: 'left'}}>Product {k + 1}: </Column>  
+          <Column style={{ textAlign: 'left'}}>Product {k + 1}: </Column>
         </Row>
 
         <Row style={{ paddingBottom: 30}}>
@@ -106,7 +106,7 @@ const Orders = ({ content }) => {
       </React.Fragment>
 
     orders[i] = order;
-    
+
   }
 
   if(Object.keys(content).length == 0){
@@ -123,9 +123,7 @@ const Orders = ({ content }) => {
             <Column style={{ textAlign: 'left'}}>No orders found!</Column>
           </Row>
         </main>
-        <footer style={{marginBottom: '1rem'}}>
-          <Socials />
-        </footer>
+
       </StyledSection>
     </>
     )
@@ -142,16 +140,14 @@ const Orders = ({ content }) => {
           <StyledTitle>ORDERS</StyledTitle>
           {orders}
         </main>
-        <footer style={{marginBottom: '1rem'}}>
-          <Socials />
-        </footer>
+
       </StyledSection>
     </>
   );
 };
 
 export async function getServerSideProps(context) {
-    
+
     const parsedItems = {};
     var return_json = {};
 
@@ -175,7 +171,7 @@ export async function getServerSideProps(context) {
           Cookie.remove("token");
         }
         const user = await res.json();
-        
+
         //First, we need to check if we need to update snipcart_personas, and if so do that
         if(user.snipcart_update_needed){
           const res = await fetch(`https://app.snipcart.com/api/customers?email=${user.email}`, {headers: {
@@ -200,27 +196,27 @@ export async function getServerSideProps(context) {
           const json1 = await res1.json(); //This may contain multiple orders
 
           for(var j = 0; j < json1.length; j++){ //For each order, add its order info to the response
-          
+
             //Let's check the visited flag, which tells us if we're put the order into strapi. if it's true we do nothing; if it's false or doesn't exist (a new order), we put it into strapi and make it true
             if(json1[j].metadata == null || json1[j].metadata.visited === undefined || json1[j].metadata.visited == 'false'){ //Hasn't been (successfully) visited, so we'll need to fetch the order data and put it into strapi
-              const order_info = {  order_no: json1[j].token, 
+              const order_info = {  order_no: json1[j].token,
                                     invoice_no: json1[j].invoiceNumber,
-                                    shipping_address: { 
-                                      name: json1[j].shippingAddressName, 
-                                      line_1: json1[j].shippingAddressAddress1, 
-                                      line_2: json1[j].shippingAddressAddress2, 
-                                      city: json1[j].shippingAddressCity, 
-                                      county: json1[j].shippingAddressProvince, 
+                                    shipping_address: {
+                                      name: json1[j].shippingAddressName,
+                                      line_1: json1[j].shippingAddressAddress1,
+                                      line_2: json1[j].shippingAddressAddress2,
+                                      city: json1[j].shippingAddressCity,
+                                      county: json1[j].shippingAddressProvince,
                                       country: json1[j].shippingAddressCountry,
                                       postcode: json1[j].shippingAddressPostalCode,
                                       phone: json1[j].shippingAddressPhone
                                     },
-                                    billing_address: { 
-                                      name: json1[j].billingAddressName, 
-                                      line_1: json1[j].billingAddressAddress1, 
-                                      line_2: json1[j].billingAddressAddress2, 
-                                      city: json1[j].billingAddressCity, 
-                                      county: json1[j].billingAddressProvince, 
+                                    billing_address: {
+                                      name: json1[j].billingAddressName,
+                                      line_1: json1[j].billingAddressAddress1,
+                                      line_2: json1[j].billingAddressAddress2,
+                                      city: json1[j].billingAddressCity,
+                                      county: json1[j].billingAddressProvince,
                                       country: json1[j].billingAddressCountry,
                                       postcode: json1[j].billingAddressPostalCode,
                                       phone: json1[j].billingAddressPhone
@@ -228,20 +224,20 @@ export async function getServerSideProps(context) {
                                     payment_method: json1[j].paymentMethod,
                                     total: json1[j].finalGrandTotal,
                                     date: json1[j].creationDate, //Get a Date representation of date
-                                    products: {} 
+                                    products: {}
                                   };
-              
+
               const res2 = await fetch(`https://app.snipcart.com/api/orders/${json1[j].token}`, {headers: {
                 'Authorization': 'Basic ' + Buffer.from(process.env.SNIPCART_TEST_API_KEY).toString('base64'),
                 'Accept': 'application/json'
               }});
               const json2 = await res2.json(); //This contains all products in the order
-              
+
               //Iterate through each product, adding product info to the response
               for(var l = 0; l < json2.items.length; l++){
                 order_info.products[l] = { name: json2.items[l].name, price: json2.items[l].price, total_price: json2.items[l].totalPrice, quantity: json2.items[l].quantity, image: json2.items[l].image };
               }
-              
+
               //now put it into strapi under the user's name
               axios.post(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {user: user.id, order: order_info}, { headers: { Authorization: `Bearer ${token}` } }) //add snipcart customer ID to snipcart_personas
 
@@ -252,12 +248,12 @@ export async function getServerSideProps(context) {
                 'Content-Type': 'application/json'},
                 method: 'PUT',
                 body: "{ 'metadata' : { 'visited' : 'true' } }"});
-            }            
+            }
           }
         }
 
         const all_orders = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/orders?user=${user.id}`, { headers: { Authorization: `Bearer ${token}` } })
-        for(var z = all_orders.data.length - 1; z >= 0; z--){ 
+        for(var z = all_orders.data.length - 1; z >= 0; z--){
           return_json[(all_orders.data.length - 1) - z] = all_orders.data[z].order;
         }
 
@@ -267,7 +263,7 @@ export async function getServerSideProps(context) {
       context.res.writeHead(302, { Location: '/login' }); //Redirect to index page
       context.res.end();
     }
-    
+
     return { props: { content: return_json } };
 }
 
@@ -275,4 +271,3 @@ Orders.propTypes = {
     content: PropTypes.object,
 };
 export default Orders;
-  

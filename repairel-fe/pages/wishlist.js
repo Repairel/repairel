@@ -15,6 +15,7 @@ const WISHLIST = ({ content }) => {
         <title id='title'>REPAIREL | WISHLIST</title>
       </Head>
       <Header />
+      <LinedHeading>WISHLIST</LinedHeading>
       {content.length > 0 ? <ProductList list={content} /> : <span>You don't have any wish list items.</span>}
     </>
   );
