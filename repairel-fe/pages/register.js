@@ -24,7 +24,7 @@ export default function Register() {
       </Head>
       <main>
         <Header />
-        <div style={{ textAlign: 'left', padding: '0 5em 0 5em'}}>
+        <div style={{ textAlign: 'left', padding: '0 1em 0 1em'}}>
           <StyledTitle>REGISTRATION</StyledTitle>
           <hr />
 

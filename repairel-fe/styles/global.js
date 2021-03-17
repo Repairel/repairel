@@ -40,6 +40,16 @@ const StyledLink = styled.a`
   }
 `;
 
+const StyledLinkFooter = styled.a`
+  text-decoration: none;
+  color: gray;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+`;
+
 const StyledTitle = styled.h2`
   color: black;
   text-transform: sentence;
@@ -51,7 +61,7 @@ const Row = styled.div`
   display: flex;
   padding-bottom: 1em;
 	justify-content: center;
-  
+
 `;
 
 const Column = styled.div`
@@ -83,9 +93,9 @@ const StyledInput = styled.input`
 const StyledFormLabel = styled.span`
   font-size: 1.25em;
   marginLeft: -125;
-  
-  
- 
+
+
+
 `;
 
-export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel };
+export { LinedHeading, StyledSection, StyledLink, StyledLinkFooter, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel };
