@@ -18,9 +18,6 @@ const GDPR = ({ content }) => {
           <LinedHeading>GDPR - How we store and use your information</LinedHeading>
           <Markdown>{content[0].text}</Markdown>
         </main>
-        <footer style={{marginBottom: '1rem'}}>
-          <Socials />
-        </footer>
       </StyledSection>
     </>
   );

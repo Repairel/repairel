@@ -24,17 +24,17 @@ const Engage = ({ content }) => {
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
         <LinedHeading>ENGAGE</LinedHeading>
-        <Markdown>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Malesuada amet pulvinar nec fermentum tincidunt pulvinar. 
-            Non nunc diam augue nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Malesuada amet pulvinar nec fermentum tincidunt pulvinar. Non nunc diam augue nulla. 
+        <Markdown>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Malesuada amet pulvinar nec fermentum tincidunt pulvinar.
+            Non nunc diam augue nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Malesuada amet pulvinar nec fermentum tincidunt pulvinar. Non nunc diam augue nulla.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Markdown>  
+            </Markdown>
       </section>
       <section style = {{margin:"5rem", display: "flex", justifyContent: "center"}}>
             <Markdown>
                 This button will take you to the Just Giving homepage as a place holder
-            </Markdown> 
+            </Markdown>
       </section>
 
       <section style = {{margin:"5rem", display: "flex", justifyContent: "center"}}>
@@ -43,7 +43,7 @@ const Engage = ({ content }) => {
           </a>
         </section>
       <br></br>
-      <Socials></Socials>
+      
     </>
   );
 };
@@ -54,7 +54,7 @@ export async function getServerSideProps() {
 //    const json = await res.json();
 //    return { props: { content: json } };
 //  }
-  
+
   Engage.propTypes = {
     content: PropTypes.array,
   };
@@ -64,4 +64,3 @@ export async function getServerSideProps() {
 */
 
 export default Engage;
-
