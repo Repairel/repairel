@@ -74,10 +74,11 @@ const StyledButton = styled.button`
   font-size: 1em;
   border-radius: 0.0em;
   background-color: white;
-  border: 2px solid grey;
+  border: 2px solid black;
   cursor: pointer;
   &:hover {
-    opacity: 0.8;
+    filter: invert(100%);
+    border: 2px solid white;
   }
 `;
 
@@ -104,12 +105,12 @@ const ProfileListItem = styled.li`
 `;
 const ProfileImage = styled.img`
   align-self: start;
-  height: 200px;
+  height: 150px;
   width: auto;
 `;
 const ProfileCaption = styled.p`
   text-transform: capitalize;
-  font-size: 2em;
+  font-size: 1.5em;
 `;
 
 const ProfileList = styled.ul`
@@ -131,4 +132,28 @@ const ProfileList = styled.ul`
   }
 `;
 
-export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList };
+const Login = styled.a`
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+`;
+
+const Register = styled.a`
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+`;
+
+export { Register, LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login };

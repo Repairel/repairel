@@ -2,7 +2,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
 import AppContext from "../context/AppContext";
-import { StyledTitle,StyledLink, Row, Column, StyledButton, StyledInput, StyledFormLabel } from '../styles/global';
+import { StyledTitle,StyledLink, Row, Column, StyledButton, StyledInput, StyledFormLabel, Register } from '../styles/global';
 import React, { useState, useEffect, useContext } from "react";
 import { login } from "../lib/auth"
 import { useRouter } from "next/router";
@@ -92,7 +92,7 @@ export default function Login() {
       </Row>
       <Row>
 		  <div>
-		   Don't have an account?  <StyledLink><a  href='/register'>Register </a></StyledLink>
+		   Don't have an account?  <Register><a  style={{paddingBottom: 100, color: 'black', textDecoration: 'none'}} href='/register'>Register </a></Register>
 		  </div>
       </Row>
         </div>
