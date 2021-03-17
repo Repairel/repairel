@@ -25,9 +25,9 @@ An MVP for Repairel CIC. An e-commerce site dedicated to selling refurbished sho
     - Inside of file specify the API URL: `NEXT_PUBLIC_API_URL={url}`
         - `{url}` is the url of your API in our case for develop branch it is `https://dev-repairel.herokuapp.com/`
         - `{url}` will be `http://localhost:1337` if developing a new feature which requires updates to backend
-    - Specify the Snipcart API key: `SNIPCART_TEST_API_KEY="{key}:"`
+    - Specify the **secret** Snipcart API key: `SNIPCART_TEST_API_KEY="{key}:"`
         - It's crucial to include the quotation marks and semicolon
-        - API key is available on the API keys section of the Snipcart dashboard
+        - {key} is available on the **secret** API keys section of the Snipcart dashboard
   * Run the server `npm run dev`
 
 ## Technology Used
