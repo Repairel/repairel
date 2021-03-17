@@ -1,39 +1,32 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
-import AppContext from "../context/AppContext";
-import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel } from '../styles/global';
+import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel } from '../../styles/global';
 import React, { useState, useEffect, useContext } from "react";
-import { edit_details } from "../lib/auth";
+import { edit_details } from "../../lib/auth";
 import { useRouter } from "next/router";
 import Cookie from "js-cookie";
+import AppContext from "../../context/AppContext";
 
-export default function Edit(user) {
-  if (user) {
-    user = user.user;
-  }
-  // const appContext = useContext(AppContext);
-  // const { user, setUser } = useContext(AppContext);
+const Edit = ({user}) => {
+
+  const appContext = useContext(AppContext);
+//   const { tempUser, setTempUser } = useContext(AppContext);
   const [data, setData] = useState({ first_name: (user) ? user.first_name : "", second_name: (user) ? user.second_name : "",
-    phone_number: (user) ? user.phone_number : "", email: (user) ? user.email : "", snipcart_update_needed: (user) ? user.snipcart_update_needed : "" });
+    phone_number: (user) ? user.phone_number : "", email: (user) ? user.email : "" });
   const [error, setError] = useState({});
   const router = useRouter();
   // once the user has finished with the form we send them
   // back to the index page
+//   if (!user) {
+//     router.push("/", "/?redirect=edit");
+//   }
 
-  // if (!user) {
-  //   router.push("/", "/?redirect=edit");
-  // }
-  console.log("gi");
   return (
     <div>
-      <Head>
-        <title id='title'>REPAIREL | Edit Details</title>
-      </Head>
       <main>
-        <Header />
         <div style={{ textAlign: 'center', padding: '0 5em 0 5em'}}>
-          <StyledTitle style={{textAlign: 'left'}}>Edit Details</StyledTitle>
+          <StyledTitle>Edit Details</StyledTitle>
           <hr />
 
           {Object.entries(error).length !== 0 &&
@@ -91,12 +84,11 @@ export default function Edit(user) {
             <Column style={{ textAlign: 'left' }}>
               <StyledInput
                 required
-                onChange={(e) => setData({ ...data, email: e.target.value, snipcart_update_needed: true })}
+                onChange={(e) => setData({ ...data, email: e.target.value })}
                 value={data.email}
                 type="email"
                 name="email"
               />
-              {console.log(data.snipcart_update_needed)}
             </Column>
           </Row>
           <StyledButton
@@ -119,31 +111,8 @@ export default function Edit(user) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const parsedItems = {};
-  let return_user = null;
-  if (context.req.headers.cookie) {
-    const cookiesItems = context.req.headers.cookie.split('; ');
-    cookiesItems.forEach(cookies => {
-      const parsedItem = cookies.split('=');
-      parsedItems[parsedItem[0]] = decodeURI(parsedItem[1]);
-    });
-  }
-  const token = parsedItems['token']
-  if (token) {
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }
-    }).then(async (res) => {
-      if (!res.ok) {
-      Cookie.remove("token");
-    }
-    const user = await res.json();
-    return_user = user;
-     });
-  }
-  return{ props: { user: return_user }
+Edit.propTypes = {
+    user: PropTypes.object,
+  };
 
-  }
-}
+export default Edit;
