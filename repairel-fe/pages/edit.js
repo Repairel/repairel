@@ -33,7 +33,7 @@ export default function Edit(user) {
       <main>
         <Header />
         <div style={{ textAlign: 'center', padding: '0 5em 0 5em'}}>
-          <StyledTitle>Edit Details</StyledTitle>
+          <StyledTitle style={{textAlign: 'left'}}>Edit Details</StyledTitle>
           <hr />
 
           {Object.entries(error).length !== 0 &&

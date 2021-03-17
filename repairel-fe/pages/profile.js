@@ -59,10 +59,6 @@ const PROFILE = ({ user }) => {
           </ProfileListItem>
         </ProfileList>
         </main>
-
-        <footer style={{marginBottom: '1rem'}}>
-          <Socials />
-        </footer>
       </StyledSection>
     </>
   );
