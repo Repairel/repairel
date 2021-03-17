@@ -8,15 +8,6 @@ import {
 } from './ProductInfo.style';
 import { ProductSize } from '@components/product/Product.style';
 
-function isAffiliate(link) {
-  if (link) {
-    if (link.length > 0) {
-      return <span>(affiliate product)</span>
-    }
-  }
-  return <span></span>;
-}
-
 const ProductInfo = ({ price, name, rating, size,kSize, ref_link }) => {
   if (size===0.00 && kSize){
     size="Kids "+kSize}
@@ -30,7 +21,7 @@ const ProductInfo = ({ price, name, rating, size,kSize, ref_link }) => {
         <ProductInfoListItem>
           {name} <ProductSize>/ size: {size}</ProductSize>
         </ProductInfoListItem>
-        <ProductPrice>£ {price} {isAffiliate(ref_link)}</ProductPrice>
+        <ProductPrice>£ {price}</ProductPrice>
       </ProductInfoList>
       <Rating rating={rating}>{rating}</Rating>
     </>
