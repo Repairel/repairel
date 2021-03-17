@@ -149,7 +149,7 @@ else{Size=product.Size}
     const productID = product.id;
 
     if (!added) {
-      axios.post(`${process.env.NEXT_PUBLIC_API_URL}/wishlists`, { user: [userID], product: [productID] })
+      axios.post(`${process.env.NEXT_PUBLIC_API_URL}/wishlists`, { user: userID, product: productID })
         // worked
         .then(function (response) {
           console.log(response);
