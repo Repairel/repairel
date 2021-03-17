@@ -21,6 +21,7 @@ const WISHLIST = ({ content }) => {
   );
 };
 
+
 export async function getServerSideProps(context) {
   const parsedItems = {};
   const return_json = []

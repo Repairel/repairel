@@ -44,6 +44,7 @@ export default function Register() {
 			<center>
 
 
+
 			<Row style={{ textAlign: 'center', paddingTop:'5em' }}>
 
 			<Column style={{ marginLeft: -125 }}><StyledFormLabel  >First Name <b>*</b></StyledFormLabel></Column>

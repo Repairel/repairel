@@ -93,6 +93,7 @@ const ButtonContainer = styled.div`
   align-items: center;
 `
 
+
 const SliderImage = styled.img`
   max-width: 400px;
   margin-right: 0.5rem;

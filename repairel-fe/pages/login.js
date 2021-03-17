@@ -27,7 +27,7 @@ export default function Login() {
         <Header />
         <div style={{ textAlign: 'left', padding: '0 1em 0 1em'}}>
           <LinedHeading>LOGIN</LinedHeading>
-        
+
 
           {Object.entries(error).length !== 0 &&
             error.constructor === Object &&
@@ -43,6 +43,7 @@ export default function Login() {
                 </div>
               );
             })}
+
 
 			<Row style={{ textAlign: 'center', paddingTop:'5em' }}>
 

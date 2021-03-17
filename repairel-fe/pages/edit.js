@@ -36,6 +36,7 @@ export default function Edit(user) {
         <Header />
         <div style={{ textAlign: 'center', padding: '0 1em 0 1em'}}>
           <LinedHeading style={{textAlign: 'left'}}>EDIT DETAILS</LinedHeading>
+
           
 
           {Object.entries(error).length !== 0 &&
