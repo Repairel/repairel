@@ -15,10 +15,10 @@ const Menu = ({ open, setOpen }) => {
   };
 
   const { user, setUser } = useContext(AppContext);
-  let menu = ['shop','about','engage', 'faq', 'login'];
+  let menu = ['shop','engage','about', 'faq', 'login'];
   let welcomeMessage = '';
   if (user) {
-    menu = [ 'shop','about','engage', 'faq', 'profile' ];
+    menu = [ 'shop','engage','about', 'faq', 'profile' ];
     welcomeMessage = `Hey ${user.first_name}!`;
   }
 
