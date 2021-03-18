@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
-import css from 'styled-jsx/css'
 
+// This version has linedsubheading
 
 
 const StyledSection = styled.section`
@@ -109,7 +109,7 @@ const StyledInput = styled.input`
 
 const StyledFormLabel = styled.span`
   font-size: 1.25em;
-  marginLeft: -125;
+  margin-left: -125;
 `;
 
-export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel};
+export { LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel};
