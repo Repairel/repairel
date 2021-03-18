@@ -2,6 +2,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import App from "next/app";
 import AppContext from "../context/AppContext";
 import Cookie from "js-cookie";
+import './wishlist.css';
 
 const GlobalStyle = createGlobalStyle`
   body {

@@ -8,4 +8,4 @@ describe ('The Edit Details Page',() => {
         cy.visit('/edit')
         cy.url().should('include','/')
     })
-})
+})
