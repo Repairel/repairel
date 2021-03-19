@@ -21,4 +21,22 @@ const Instructions = styled.p`
   text-align: center;
 `;
 
-export { CompareWrapper, Instructions };
+const StyledInput = styled.input`
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+`;
+
+const Checkbox = styled.div`
+  display: ${({ toggleCompare }) => (toggleCompare ? 'flex' : 'none')};
+  width: 100%;
+  padding: 1rem 0;
+  align-items: center;
+`;
+
+const StyledLabel = styled.label`
+  cursor: pointer;
+`;
+
+export { CompareWrapper, Instructions, StyledInput, Checkbox, StyledLabel };
