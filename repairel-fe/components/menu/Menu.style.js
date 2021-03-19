@@ -34,7 +34,7 @@ const WelcomeUser = styled.span`
 `;
 
 const MenuLogo = styled.img`
-  /* cursor: pointer; */
+  cursor: pointer;
 `;
 
 const Logout = styled.a`

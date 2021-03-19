@@ -15,23 +15,19 @@ const Menu = ({ open, setOpen }) => {
   };
 
   const { user, setUser } = useContext(AppContext);
-  let menu = ['shop','engage','about', 'faq', 'login'];
+  let menu = ['shop','engage','method', 'faq', 'login'];
   let welcomeMessage = '';
   if (user) {
-    menu = [ 'shop','engage','about', 'faq', 'profile' ];
+    menu = [ 'shop','engage','method', 'faq', 'profile' ];
     welcomeMessage = `Hey ${user.first_name}!`;
   }
 
   function linkDecider(item) {
     if (item === 'shop') {
       return `/`;
-    } else if (item === 'edit details') {
-      return `/edit`;
-    }
-    // else if (item === 'profile') {
-    //   return `/wishlist`
-    // }
-    else {
+    } else if (item === 'method') {
+      return '/scoring'
+    } else {
       return `/${item}`
     }
   }
@@ -61,7 +57,7 @@ const Menu = ({ open, setOpen }) => {
 
   return (
     <Wrapper open={open}>
-      <MenuLogo src={Logo}></MenuLogo>
+      <Link href="/about"><MenuLogo src={Logo}></MenuLogo></Link>
       <MenuList>
         <WelcomeUser>{welcomeMessage}</WelcomeUser>
         {hasDivider()}
