@@ -16,7 +16,7 @@ const WISHLIST = ({ content }) => {
       </Head>
       <Header />
       <LinedHeading style={{marginLeft: ".6em"}}>WISHLIST</LinedHeading>
-      {content.length > 0 ? <ProductList    list={content} style={{marginLeft: "1em"}} /> : <div style={{marginLeft: "1em"}}><span>You don't have any wish list items.</span></div>}
+      {content.length > 0 ? <ProductList    list={content} style={{marginLeft: "1em"}} /> : <div style={{marginLeft: "1em"}}><span>You don't have any items on your wishlist.</span></div>}
     </>
   );
 };
