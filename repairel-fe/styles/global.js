@@ -16,6 +16,7 @@ const underline = keyframes`
 
 const LinedHeading = styled.h1`
   width: 100%;
+  font-size: 1.5em;
   padding-bottom: 1rem;
   position: relative;
   text-transform: uppercase;
