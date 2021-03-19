@@ -195,7 +195,9 @@ else{Size=product.Size}
   return (
 
     <>
-      <Slider images={product.images} />
+      <div style={{ marginLeft: "1em", marginRight: "1em" }}>
+        <Slider images={product.images} />
+      </div>
       <div
         className='product'
         style={{
