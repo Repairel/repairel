@@ -13,7 +13,7 @@ export default function ProductReq () {
   const [Size, setSize] = useState('')
   const [Type, setType] = useState('')
   const [OtherSpecifications, setOtherSpecifications] = useState('')
-  
+
   // Function to send the request on click of submit button
   async function addRequest() {
     const reqInfo = {
@@ -23,13 +23,23 @@ export default function ProductReq () {
       OtherSpecifications: OtherSpecifications,
       Type: Type,
       Size: Size
-  }  
+  }
+
+  // function to verify email
+  function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
   // The form will only get submitted if required fields are not empty.
   if (document.getElementById("Name").value == ""  || document.getElementById("Email").value == "" || document.getElementById("Size").value == "" || document.getElementById("Type").value == "") {
-    document.getElementById("FormNonSuccessMessage").innerHTML = "Please make sure to fill in all of the required fields marked with an asterix(*)."
-   }
-   else {
-    const add = await fetch('https://rocky-earth-77368.herokuapp.com/product-requests', { // Hard coded link due to a bug otherwise
+    document.getElementById("FormNonSuccessMessage").innerHTML = "Please make sure to fill in all of the required fields marked with an asterix(*).";
+  } else if (isNaN(document.getElementById("Size").value)) {
+    document.getElementById("FormNonSuccessMessage").innerHTML = "Size can only be an integer."
+  } else if (!validateEmail(document.getElementById("Email").value)) {
+    document.getElementById("FormNonSuccessMessage").innerHTML = "Make sure to use a valid email address."
+  } else {
+    const add = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/product-requests`, { // Hard coded link due to a bug otherwise
       method: "POST",
       headers: {
           'Accept': 'application/json',
@@ -51,19 +61,19 @@ export default function ProductReq () {
         <title id="title">REPAIREL | Product Request</title>
       </Head>
       <Header />
-      
+
       <section
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
         <LinedHeading>PRODUCT REQUEST</LinedHeading>
-      </section>     
+      </section>
       <p id="ExplanationText">If there is a specific style, brand, size shoe that you would like that we currently don't have please request it by filling out this form and we will let you know if it comes in stock.</p>
       <p id="FormSuccessMessage"></p>
       <p id="FormNonSuccessMessage"></p>
-      <form method="post" id="Form" name="Form" action=""> 
+      <form method="post" id="Form" name="Form" action="">
           <Row><label className="Name" htmlFor="Name">Your name*</label></Row>
           <Row><input type="text" className="Name" id="Name" onChange={e => setName(e.target.value) } value={Name}/></Row>
-          
+
           <Row><label className='Email' htmlFor="Email">Email*</label></Row>
           <Row><input type="email" id="Email" className='Email' onChange={e => setEmail(e.target.value) } value={Email}/></Row>
 
@@ -80,10 +90,10 @@ export default function ProductReq () {
 
           <Row><label className="Type" htmlFor="Type">Style of shoe*</label></Row>
           <Row><input type="text" id="Type" className="Type" onChange={e => setType(e.target.value) } value={Type} placeholder="Example: boot, sneaker, flat.."/></Row>
-        
+
           <Row><label className = "OtherSpecifications" htmlFor="OtherSpecifications">Comments</label></Row>
           <Row><textarea type="text" id= "OtherSpecifications" className="OtherSpecifications" onChange={e => setOtherSpecifications(e.target.value) } value={OtherSpecifications} placeholder="Anything else you want us to know?"/></Row>
-          
+
           <Row><button type="button" id="button" className="submitRequest" onClick={() => addRequest()}>SUBMIT REQUEST</button></Row>
         </form>
     </>
