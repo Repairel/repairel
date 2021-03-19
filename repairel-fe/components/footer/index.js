@@ -29,7 +29,7 @@ const Footer = () => {
             <StyledLink style={{ fontWeight: 400, fontSize:"12px", align:"left", textAlign: "left"}} href={`/about`}>About</StyledLink>
             </Item><Line></Line>
     <Item>
-            <StyledLink style={{ fontWeight: 400, fontSize:"12px", align:"left", textAlign: "left"}} href={`/T&Cs`}>Terms and Conditions</StyledLink>
+            <StyledLink style={{ fontWeight: 400, fontSize:"12px", align:"left", textAlign: "left"}} href={`/T&Cs`}>Terms & Conditions</StyledLink>
             </Item><Line></Line>
             <Item>
             <StyledLink style={{ fontWeight: 400, fontSize:"12px", align:"left", textAlign: "left"}} href={'/gdpr' }>GDPR</StyledLink>

@@ -18,6 +18,7 @@ const LinedHeading = styled.h1`
   width: 100%;
   padding-bottom: 1rem;
   position: relative;
+  text-transform: uppercase;
   &::before {
     content: '';
     width: 100%;
