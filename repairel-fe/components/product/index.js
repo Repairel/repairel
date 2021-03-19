@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import React, { useState, useEffect, useContext } from "react";
 import Markdown from "markdown-to-jsx";
 import styles from "./Product.module.css";
+import { StyledLink } from "../../styles/global";
 
 import {
   AddToCart,
@@ -218,7 +219,8 @@ else{Size=product.Size}
         </ButtonContainer>
         <ProductHeading>Description</ProductHeading>
         <p className='product__description'>{product.description}</p>
-        <ProductHeading>Ethics and Sustainability</ProductHeading>
+        <br/>
+        <StyledLink href="/scoring" style={{ fontSize: "1.05rem", fontWeight: 500, margiTop: "2.5rem" }}>Ethics and Sustainability</StyledLink>
         <EthicsList>{ethicsRender(ethics)}</EthicsList>
         <EthicsDesc><div><img style={{height:20, marginRight:5}} src={desc.image}></img><b>{desc.name}</b></div><div><Markdown>{desc.text}</Markdown></div></EthicsDesc>
       </div>
