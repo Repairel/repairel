@@ -75,7 +75,7 @@ const Footer = () => {
     </Row>
   </FooterSplit>
 <Line></Line>
-      <Headerfooter style={{paddingLeft: "1rem",paddingRight: "3rem", fontSize:"12px", textAlign:"left", fontWeight: 400}}>©2021 REPAIREL All Rights Reserved</Headerfooter>
+      <Headerfooter style={{paddingLeft: "1rem",paddingRight: "3rem", fontSize:"12px", textAlign:"left", fontWeight: 400}}>©2021 REPAIREL. All Rights Reserved</Headerfooter>
   <Line></Line>
     <Line></Line>
     <Line></Line>
