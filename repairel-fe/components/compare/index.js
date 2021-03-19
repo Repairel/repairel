@@ -45,7 +45,9 @@ const Compare = ({ product1, product2 }) => {
       <React.Fragment key={Math.random()}>
         <CircleDiv int={product1}>{handleCircles(product1)}</CircleDiv>
         <div>
-          <EthicsIcon title={iconName} src={icon} />
+          <Link href="/scoring">
+            <EthicsIcon style={{ cursor: "pointer" }} title={iconName} src={icon} />
+          </Link>
           {arrow && <ArrowIcon src={Arrow} />}
         </div>
         <CircleDiv
