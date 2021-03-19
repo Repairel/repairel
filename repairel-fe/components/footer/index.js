@@ -19,7 +19,7 @@ const Footer = () => {
     <FooterSection>
     </FooterSection>
     <FooterSection>
-    <Headerfooter style={{paddingRight: "3rem", fontSize:"14px", textAlign:"left"}}>CONNECT WITH US</Headerfooter>
+    <Headerfooter style={{paddingRight: "0.5rem", fontSize:"14px", textAlign:"left"}}>CONNECT WITH US</Headerfooter>
     </FooterSection>
 
     </Row>
