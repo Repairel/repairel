@@ -15,7 +15,7 @@ const About = ({ content }) => {
       </Head>
       <Header />
       <img
-        style={{ width: "100%", height: "auto", padding:"1em" }}
+        style={{ width: "100%", height: "auto" }}
         src={content[0].image.url}
       ></img>
       <section

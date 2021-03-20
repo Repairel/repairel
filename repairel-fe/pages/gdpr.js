@@ -15,7 +15,7 @@ const GDPR = ({ content }) => {
       <Header />
       <StyledSection>
         <main style={{ margin: '1rem' }}>
-          <LinedHeading>GDPR - How we store and use your information</LinedHeading>
+          <LinedHeading>GDPR</LinedHeading>
           <Markdown>{content[0].text}</Markdown>
         </main>
       </StyledSection>

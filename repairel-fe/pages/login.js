@@ -28,7 +28,6 @@ export default function Login() {
         <div style={{ textAlign: 'left', padding: '0 1em 0 1em'}}>
           <LinedHeading>LOGIN</LinedHeading>
 
-
           {Object.entries(error).length !== 0 &&
             error.constructor === Object &&
             error.message.map((error) => {

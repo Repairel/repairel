@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import React, { useState, useEffect, useContext } from "react";
 import Markdown from "markdown-to-jsx";
 import styles from "./Product.module.css";
+import { StyledLink } from "../../styles/global";
 
 import {
   AddToCart,
@@ -136,7 +137,7 @@ else{Size=product.Size}
   function cartButton() {
     if (product.stock) {
       if (product.stock == -1 ) {
-        return <RefLink href={product.affiliate_link} target="_blank">affiliate link</RefLink>
+        return <RefLink href={product.affiliate_link} target="_blank">shop this brand</RefLink>
       }
       return <AddToCart className='snipcart-add-item product__button' data-item-id={product.id} data-item-name={product.name} data-item-price={product.price} data-item-url={`https://dev-repairel-fe.herokuapp.com${url}`} data-item-image={product.images[0].url} data-item-custom1-name='Size' data-item-custom1-options={product.Size}>Add to cart</AddToCart>
     } else {
@@ -194,7 +195,9 @@ else{Size=product.Size}
   return (
 
     <>
-      <Slider images={product.images} />
+      <div style={{ marginLeft: "1em", marginRight: "1em" }}>
+        <Slider images={product.images} />
+      </div>
       <div
         className='product'
         style={{
@@ -218,7 +221,8 @@ else{Size=product.Size}
         </ButtonContainer>
         <ProductHeading>Description</ProductHeading>
         <p className='product__description'>{product.description}</p>
-        <ProductHeading>Ethics and Sustainability</ProductHeading>
+        <br/>
+        <StyledLink href="/scoring" style={{ fontSize: "1.05rem", fontWeight: 500, margiTop: "2.5rem" }}>Ethics and Sustainability</StyledLink>
         <EthicsList>{ethicsRender(ethics)}</EthicsList>
         <EthicsDesc><div><img style={{height:20, marginRight:5}} src={desc.image}></img><b>{desc.name}</b></div><div><Markdown>{desc.text}</Markdown></div></EthicsDesc>
       </div>

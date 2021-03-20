@@ -19,7 +19,7 @@ const Footer = () => {
     <FooterSection>
     </FooterSection>
     <FooterSection>
-    <Headerfooter style={{paddingRight: "3rem", fontSize:"14px", textAlign:"left"}}>CONNECT WITH US</Headerfooter>
+    <Headerfooter style={{paddingRight: "0.5rem", fontSize:"14px", textAlign:"left"}}>CONNECT WITH US</Headerfooter>
     </FooterSection>
 
     </Row>
@@ -29,7 +29,7 @@ const Footer = () => {
             <StyledLink style={{ fontWeight: 400, fontSize:"12px", align:"left", textAlign: "left"}} href={`/about`}>About</StyledLink>
             </Item><Line></Line>
     <Item>
-            <StyledLink style={{ fontWeight: 400, fontSize:"12px", align:"left", textAlign: "left"}} href={`/T&Cs`}>Terms and Conditions</StyledLink>
+            <StyledLink style={{ fontWeight: 400, fontSize:"12px", align:"left", textAlign: "left"}} href={`/T&Cs`}>Terms & Conditions</StyledLink>
             </Item><Line></Line>
             <Item>
             <StyledLink style={{ fontWeight: 400, fontSize:"12px", align:"left", textAlign: "left"}} href={'/gdpr' }>GDPR</StyledLink>
@@ -75,7 +75,7 @@ const Footer = () => {
     </Row>
   </FooterSplit>
 <Line></Line>
-      <Headerfooter style={{paddingLeft: "1rem",paddingRight: "3rem", fontSize:"12px", textAlign:"left", fontWeight: 400}}>©2021 REPAIREL All Rights Reserved</Headerfooter>
+      <Headerfooter style={{paddingLeft: "1rem",paddingRight: "3rem", fontSize:"12px", textAlign:"left", fontWeight: 400}}>©2021 REPAIREL. All Rights Reserved</Headerfooter>
   <Line></Line>
     <Line></Line>
     <Line></Line>

@@ -5,6 +5,6 @@ describe ('The GDPR Page',() => {
 
     it ('Text displayed correctly', () => {
         cy.visit('/gdpr')
-        cy.get('h1').contains('GDPR - How we store and use your information')
+        cy.get('h1').contains('GDPR')
     })
 })

@@ -24,7 +24,7 @@ const Terms = ({ content }) => {
       <section
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
-        <LinedHeading>Terms and Conditions of use</LinedHeading>
+        <LinedHeading>Terms & Conditions</LinedHeading>
         <Markdown>{content[0].info}</Markdown>
       </section>
 
