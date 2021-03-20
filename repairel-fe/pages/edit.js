@@ -2,7 +2,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
 import AppContext from "../context/AppContext";
-import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel } from '../styles/global';
+import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, StyledAnimatedButton } from '../styles/global';
 import React, { useState, useEffect, useContext } from "react";
 import { edit_details } from "../lib/auth";
 import { useRouter } from "next/router";
@@ -72,7 +72,7 @@ export default function Edit(user) {
           <br/>
           <Row>
             <Column style={{ textAlign: 'right'}}>
-              <StyledFormLabel>Second Name</StyledFormLabel>
+              <StyledFormLabel>Surname</StyledFormLabel>
             </Column>
             <Column style={{ textAlign: 'left'}}>
               <StyledInput
@@ -113,7 +113,7 @@ export default function Edit(user) {
       			</Column>
     			</Row>
           <br/>
-          <StyledButton
+          <StyledAnimatedButton
             onClick={() => {
               setData({ ...data, username: data.email })
               edit_details(data, user)
@@ -128,8 +128,8 @@ export default function Edit(user) {
                 setConfirmed(false);
               });
             }}>
-            Submit updated details!
-          </StyledButton>
+            Submit
+          </StyledAnimatedButton>
           <p style={{ color: 'green', display: confirmed ? '' : 'none' }}>Your information has been updated!</p>
         </div>
       </main>
