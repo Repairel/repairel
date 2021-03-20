@@ -17,9 +17,10 @@ export default function Edit(user) {
     router.push("/");
   }
 
+  // redirect user if they're not logged in
   const appContext = useContext(AppContext);
   if (process.browser && !appContext.isAuthenticated) {
-    router.push("/"); // redirect if you're already logged in
+    router.push("/");
   }
 
   const [data, setData] = useState({ username: (user) ? user.email : "", first_name: (user) ? user.first_name : "", second_name: (user) ? user.second_name : "",
@@ -37,7 +38,7 @@ export default function Edit(user) {
         <div style={{ textAlign: 'center', padding: '0 1em 0 1em'}}>
           <LinedHeading style={{textAlign: 'left'}}>EDIT DETAILS</LinedHeading>
 
-          
+
 
           {Object.entries(error).length !== 0 &&
             error.constructor === Object &&
@@ -118,7 +119,6 @@ export default function Edit(user) {
               edit_details(data, user)
               .then((res) => {
                 console.log(res);
-                appContext.setUser(res.data.user);
                 setConfirmed(true);
                 setError({});
               })
