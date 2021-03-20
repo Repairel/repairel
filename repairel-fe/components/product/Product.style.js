@@ -39,6 +39,9 @@ const AddToCart = styled.button`
     color: white;
     background-color: black;
   }
+  @media (max-width: 425px) {
+    height: 60px;
+  }
 `;
 
 const SoldOut = styled.button`
@@ -83,6 +86,9 @@ const Wishlist = styled.button`
   &:hover {
     color: white;
     background-color: black;
+  }
+  @media (max-width: 425px) {
+    height: 60px;
   }
 `;
 
