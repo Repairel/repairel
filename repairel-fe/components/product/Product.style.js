@@ -39,6 +39,9 @@ const AddToCart = styled.button`
     color: white;
     background-color: black;
   }
+  @media (max-width: 425px) {
+    height: 60px;
+  }
 `;
 
 const SoldOut = styled.button`
@@ -84,6 +87,9 @@ const Wishlist = styled.button`
     color: white;
     background-color: black;
   }
+  @media (max-width: 425px) {
+    height: 60px;
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -117,7 +123,7 @@ const EthicsList = styled.ul`
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: max-content;
   }
-  @media (max-width: 350px) {
+  @media (max-width: 425px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
