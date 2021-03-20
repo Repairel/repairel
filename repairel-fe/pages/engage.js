@@ -18,7 +18,7 @@ const Engage = ({ content }) => {
       <Header />
       <div style={{ margin: "1rem" }}>
         <LinedHeading>ENGAGE</LinedHeading>
-        <div style={{ marginBottom: "2.5em;"}}>
+        <div style={{ marginBottom: "2.5em" }}>
           <Markdown>{content[0].text}</Markdown>
         </div>
         <div style={{ textAlign: 'center' }}>
