@@ -2,7 +2,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
 import AppContext from "../context/AppContext";
-import { StyledTitle,StyledLink, Row, Column, StyledButton, StyledInput, StyledFormLabel, Register } from '../styles/global';
+import { StyledTitle,StyledLink, Row, Column, StyledButton, StyledInput, StyledFormLabel, Register, StyledAnimatedButton } from '../styles/global';
 import React, { useState, useEffect, useContext } from "react";
 import { login } from "../lib/auth"
 import { useRouter } from "next/router";
@@ -27,21 +27,6 @@ export default function Login() {
         <Header />
         <div style={{ textAlign: 'left', padding: '0 1em 0 1em'}}>
           <LinedHeading>LOGIN</LinedHeading>
-
-          {Object.entries(error).length !== 0 &&
-            error.constructor === Object &&
-            error.message.map((error) => {
-              return (
-                <div
-                  key={error.messages[0].id}
-                  style={{ marginBottom: 10 }}
-                >
-                  <small style={{ color: "red" }}>
-                    {error.messages[0].message}
-                  </small>
-                </div>
-              );
-            })}
 
 
 			<Row style={{ textAlign: 'center', paddingTop:'5em' }}>
@@ -74,7 +59,7 @@ export default function Login() {
 
 
 			<Row>
-          <StyledButton
+          <StyledAnimatedButton
             onClick={() => {
               login(data.email, data.password)
               .then((res) => {
@@ -87,7 +72,22 @@ export default function Login() {
               });
             }}>
             LOGIN
-          </StyledButton>
+          </StyledAnimatedButton>
+      </Row>
+      <Row style={{textAlign: "center"}}>{Object.entries(error).length !== 0 &&
+            error.constructor === Object &&
+            error.message.map((error) => {
+              return (
+                <div
+                  key={error.messages[0].id}
+                  style={{ marginBottom: 10 }}
+                >
+                  <small style={{ color: "red" }}>
+                    {error.messages[0].message.replace("Identifier", "Email")}
+                  </small>
+                </div>
+              );
+            })}
       </Row>
       <Row>
 		  <div>

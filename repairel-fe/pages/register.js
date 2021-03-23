@@ -2,7 +2,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
 import AppContext from "../context/AppContext";
-import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel,StyledSection,StyledLink, Login } from '../styles/global';
+import { StyledTitle, Row, Column, StyledAnimatedButton, StyledInput, StyledFormLabel,StyledSection,StyledLink, Login } from '../styles/global';
 import React, { useState, useEffect, useContext } from "react";
 import { register } from "../lib/auth"
 import { useRouter } from "next/router";
@@ -27,20 +27,6 @@ export default function Register() {
         <div style={{ textAlign: 'left', padding: '0 1em 0 1em'}}>
           <LinedHeading>REGISTRATION</LinedHeading>
 
-          {Object.entries(error).length !== 0 &&
-            error.constructor === Object &&
-            error.message.map((error) => {
-              return (
-                <div
-                  key={error.messages[0].id}
-                  style={{ marginBottom: 10 }}
-                >
-                  <small style={{ color: "red" }}>
-                    {error.messages[0].message}
-                  </small>
-                </div>
-              );
-            })}
 			<center>
 
 
@@ -116,7 +102,7 @@ export default function Register() {
                   style={{ marginBottom: 10 }}
                 >
                   <small style={{ color: "red" }}>
-                    {error.messages[0].message}
+                    {error.messages[0].message.replace("Username", "Email")}
                   </small>
                 </div>
               );
@@ -124,7 +110,7 @@ export default function Register() {
 
           <p>* required fields</p>
 
-          <StyledButton
+          <StyledAnimatedButton
             onClick={() => {
               register(data.forename, data.surname, data.email, data.password, data.phone)
               .then((res) => {
@@ -137,7 +123,7 @@ export default function Register() {
               });
             }}>
               REGISTER
-          </StyledButton>
+          </StyledAnimatedButton>
 		  <div>
       <br></br>
 		   Already have an account?  <Login><a  href='/login' style={{paddingBottom: 100, color: 'black', textDecoration: 'none'}}>Log In </a></Login>
