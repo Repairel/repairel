@@ -20,7 +20,7 @@ describe ('The Login Page',() => {
         cy.get('input[name=password]').type('123456')
         cy.get('button').contains('LOGIN').click()
         cy.url().should('include', '/login')
-        cy.contains('Identifier or password invalid.')
+        cy.contains('Email or password invalid.')
     })
 
     it('Does not login when password is not provided', () => {

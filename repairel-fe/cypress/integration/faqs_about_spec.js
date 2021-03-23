@@ -6,7 +6,7 @@ describe ('The FAQs Page',() => {
 
     it ('Text displayed correctly', () => {
         cy.visit('/faq')
-        cy.get('h1').contains('FAQs')
+        cy.get('h1').contains('FAQ')
     })
 })
 
