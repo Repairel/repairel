@@ -20,7 +20,7 @@ const Filter = ({ content, list, setFilteredList }) => {
     });
     const [noFilter, setNoFilter] = React.useState(false);;
     const sizes = ['all sizes','kids', "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
-    const condition = ["all conditions", "New Shoes", "Refurbished Shoes"];
+    const condition = ["all conditions", "New", "Refurbished"];
     const price = ["High to Low", "Low to High"];
     let brands2 = ["all brands"];
     let brands3 = [""];
@@ -85,7 +85,7 @@ const Filter = ({ content, list, setFilteredList }) => {
     } else if (item.includes("new") || item.includes("refurbished")) {
       sessionStorage.setItem(
         "filters",
-        JSON.stringify({ ...filters, condition: item.replace("shoes","") })
+        JSON.stringify({ ...filters, condition: item })
       );
       setFilters({ ...filters, condition: item });
     }else if (item.includes("kids")) {
@@ -254,6 +254,10 @@ const Filter = ({ content, list, setFilteredList }) => {
                 : item.includes("to")
                 ? "price"
                 : item.includes("Shoes")
+                ? "condition"
+                : item.includes("New")
+                ? "condition"
+                : item.includes("Refurbished")
                 ? "condition"
                 : item.includes("kids")
                 ? "size"
