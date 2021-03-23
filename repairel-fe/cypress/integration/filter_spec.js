@@ -2,7 +2,7 @@ describe ('The Filter by brand feature',() => {
 
     it ('The Filter option is displayed',() => {
         cy.visit('/')
-        cy.contains('Filter') 
+        cy.contains('Filter')
     })
 
     it ('The filter button is clickable',() => {
@@ -15,7 +15,7 @@ describe ('The Filter by brand feature',() => {
         cy.contains('Filter').click({force: true})
         cy.get('button').should('contain','Clear all')
     })
-    
+
 
     it ('The dropdown displays correct fields',() => {
         cy.visit('/')
@@ -29,7 +29,7 @@ describe ('The Filter by brand feature',() => {
     it ('The Condition filter works as expected', () => {
         cy.visit('/')
         cy.contains('Filter').click({force: true})
-        cy.contains('New Shoes').click()
+        cy.contains('New').click()
         cy.contains("White Nike Shoes")
         cy.get('button').contains('Clear all').click()
     })
