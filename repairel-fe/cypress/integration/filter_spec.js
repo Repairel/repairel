@@ -29,7 +29,7 @@ describe ('The Filter by brand feature',() => {
     it ('The Condition filter works as expected', () => {
         cy.visit('/')
         cy.contains('Filter').click({force: true})
-        cy.contains('New Shoes').click()
+        cy.contains('New').click()
         cy.contains("White Nike Shoes")
         cy.get('button').contains('Clear all').click()
     })
