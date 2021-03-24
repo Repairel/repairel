@@ -136,7 +136,7 @@ else{Size=product.Size}
   };
 
 
-  /* function hasStock() {
+  function hasStock() {
     if (product.stock) {
       if (product.stock == -1) {
         return <span></span>
@@ -144,7 +144,7 @@ else{Size=product.Size}
       return <span>{product.stock} currently in stock</span>
     }
     return <span>Fill in this form and be the first to know when we have stock <a href="">here</a></span>;
-  }*/
+  }
 
   function cartButton() {
     if (product.stock) {
