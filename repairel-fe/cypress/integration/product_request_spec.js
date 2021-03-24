@@ -4,6 +4,7 @@ describe ('Test Product Request Page Loads',() => {
     })
 })
 
+/*
 describe('Test Product Request Form Posts Information',() => {
     it('Correct Info Entered To Test POST Works', () => {
         cy.intercept({
@@ -90,3 +91,4 @@ describe ('Test Product Request Form Stipulations Work',() => {
 
     })
 })
+*/
