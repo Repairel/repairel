@@ -17,13 +17,10 @@ const Engage = ({content}) => {
         <title id="title">REPAIREL | Engage</title>
       </Head>
       <Header />
-<<<<<<< HEAD
       <center><img
         style={{ width: "25%", height: "25" }}
         src= {Logo}
       ></img></center>
-=======
->>>>>>> 1934c03bd6e90cc957e04730ae6ffa823bf5fa72
       <section
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
