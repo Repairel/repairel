@@ -6,7 +6,7 @@ import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel,St
 import React, { useState, useEffect, useContext } from "react";
 import { register } from "../lib/auth"
 import { useRouter } from "next/router";
-
+import { LinedHeading } from "../styles/global";
 export default function Register() {
   const [data, setData] = useState({ email: "", password: "", forename: "", surname: "" , phone: ""});
   const [error, setError] = useState({});
@@ -24,9 +24,8 @@ export default function Register() {
       </Head>
       <main>
         <Header />
-        <div style={{ textAlign: 'left', padding: '0 5em 0 5em'}}>
-          <StyledTitle>REGISTRATION</StyledTitle>
-          <hr />
+        <div style={{ textAlign: 'left', padding: '0 1em 0 1em'}}>
+          <LinedHeading>REGISTRATION</LinedHeading>
 
           {Object.entries(error).length !== 0 &&
             error.constructor === Object &&

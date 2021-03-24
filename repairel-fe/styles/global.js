@@ -54,6 +54,16 @@ const StyledLink = styled.a`
   }
 `;
 
+const StyledLinkFooter = styled.a`
+  text-decoration: none;
+  color: gray;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+`;
+
 const StyledTitle = styled.h2`
   color: black;
   text-transform: sentence;
@@ -64,7 +74,11 @@ const StyledTitle = styled.h2`
 const Row = styled.div`
   display: flex;
   padding-bottom: 1em;
+<<<<<<< HEAD
     justify-content: center;
+=======
+	justify-content: center;
+>>>>>>> 1934c03bd6e90cc957e04730ae6ffa823bf5fa72
 
 `;
 
@@ -108,7 +122,51 @@ const StyledInput = styled.input`
 
 const StyledFormLabel = styled.span`
   font-size: 1.25em;
+<<<<<<< HEAD
   margin-left: -125;
 `;
 
 export { LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel};
+=======
+`;
+
+const ProfileListItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.7rem;
+
+  margin: -0.5px;
+  text-align: center;
+`;
+const ProfileImage = styled.img`
+  align-self: start;
+  height: 200px;
+  width: auto;
+`;
+const ProfileCaption = styled.p`
+  text-transform: capitalize;
+  font-size: 2em;
+`;
+
+const ProfileList = styled.ul`
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, max-content);
+  @media (min-width: 750px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: max-content;
+  }
+  @media (max-width: 350px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+export { LinedHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList };
+>>>>>>> 1934c03bd6e90cc957e04730ae6ffa823bf5fa72

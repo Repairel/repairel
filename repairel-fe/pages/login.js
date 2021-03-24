@@ -6,6 +6,7 @@ import { StyledTitle,StyledLink, Row, Column, StyledButton, StyledInput, StyledF
 import React, { useState, useEffect, useContext } from "react";
 import { login } from "../lib/auth"
 import { useRouter } from "next/router";
+import { LinedHeading } from "../styles/global";
 
 export default function Login() {
   const [data, setData] = useState({ email: "", password: "" });
@@ -24,9 +25,9 @@ export default function Login() {
       </Head>
       <main>
         <Header />
-        <div style={{ textAlign: 'left', padding: '0 5em 0 5em'}}>
-          <StyledTitle>LOGIN</StyledTitle>
-          <hr />
+        <div style={{ textAlign: 'left', padding: '0 1em 0 1em'}}>
+          <LinedHeading>LOGIN</LinedHeading>
+        
 
           {Object.entries(error).length !== 0 &&
             error.constructor === Object &&
@@ -42,11 +43,11 @@ export default function Login() {
                 </div>
               );
             })}
-			
+
 			<Row style={{ textAlign: 'center', paddingTop:'5em' }}>
-			
+
 			<Column style={{ marginLeft: -90 }}><StyledFormLabel  >Email Address <b>*</b></StyledFormLabel></Column>
-			
+
 			</Row>
 			<Row>
 			<StyledInput
@@ -67,13 +68,13 @@ export default function Login() {
                 value={data.password}
                 type="password"
                 name="password"
-				
+
               />
 			</Row>
-			
-			
+
+
 			<Row>
-          <StyledButton 
+          <StyledButton
             onClick={() => {
               login(data.email, data.password)
               .then((res) => {

@@ -213,9 +213,7 @@ const ProductList = ({ list }) => {
           </OptionsItem>
         </OptionsList>
         }
-        {router.pathname.toLowerCase().includes("wishlist") && 
-        <LinedHeading>WISHLIST</LinedHeading>
-        }
+
         {toggleFilter && (
           <Filter setFilteredList={setFilteredList} list={list} />
         )}
