@@ -9,7 +9,8 @@ import Socials from "@components/socials";
 
 import { LinedHeading, StyledAnimatedButton } from "../styles/global";
 
-const Engage = ({ content }) => {
+// This is the correct engage page
+const Engage = ({content}) => {
   return (
     <>
       <Head>

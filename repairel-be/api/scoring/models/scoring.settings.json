@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "scorings",
+  "info": {
+    "name": "scoring"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "introduction": {
+      "type": "richtext"
+    },
+    "Design": {
+      "type": "richtext"
+    },
+    "Raw_Materials": {
+      "type": "richtext"
+    },
+    "Material_Manufacturing": {
+      "type": "richtext"
+    },
+    "Footwear_Manufacturing": {
+      "type": "richtext"
+    },
+    "Retail": {
+      "type": "richtext"
+    },
+    "Use": {
+      "type": "richtext"
+    },
+    "Disposal": {
+      "type": "richtext"
+    },
+    "likert": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ratings.scores"
+    },
+    "blurb": {
+      "type": "richtext"
+    }
+  }
+}

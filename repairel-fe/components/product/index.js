@@ -124,15 +124,27 @@ else{Size=product.Size}
     });
   };
 
-  function hasStock() {
+  function referToForm() {
+    // Function to send product type, .. into the local storage so it
+    // can be then transferred to the from on product request page
+    const name = document.getElementById(product.name).value;
+    // to set into local storage
+    /* localStorage.setItem("NAME", name);
+    localStorage.setItem("SURNAME", surname); */
+    sessionStorage.setItem("TYPE", name);
+    return;
+  };
+
+
+  /* function hasStock() {
     if (product.stock) {
       if (product.stock == -1) {
         return <span></span>
       }
       return <span>{product.stock} currently in stock</span>
     }
-    return <span>Fill in this form and be the first to know when we have stock <a href="#">here</a></span>;
-  }
+    return <span>Fill in this form and be the first to know when we have stock <a href="">here</a></span>;
+  }*/
 
   function cartButton() {
     if (product.stock) {
