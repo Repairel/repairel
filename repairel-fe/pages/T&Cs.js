@@ -24,11 +24,11 @@ const Terms = ({ content }) => {
       <section
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
-        <LinedHeading>Terms and Conditions of use</LinedHeading>
-        <Markdown>{content[0].info}</Markdown>  
+        <LinedHeading>Terms & Conditions</LinedHeading>
+        <Markdown>{content[0].info}</Markdown>
       </section>
-     
-      <Socials></Socials>
+
+
     </>
   );
 };
@@ -39,7 +39,7 @@ export async function getServerSideProps() {
     const json = await res.json();
     return { props: { content: json } };
     }
-  
+
  Terms.propTypes = {
     content: PropTypes.array,
   };

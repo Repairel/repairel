@@ -14,11 +14,11 @@ import {
 } from "@components/compare/Compare.style";
 import { Rating } from "@components/productInfo/ProductInfo.style";
 
-import Leaf from "../../public/leaf.svg";
-import Material from "../../public/material.svg";
-import materialProcessing from "../../public/material-processing.svg";
-import Manufacturing from "../../public/manufacturing.svg";
-import Assembly from "../../public/assembly.svg";
+import Design from "../../public/assembly.svg";
+import rawMaterials from "../../public/material.svg";
+import materialManufacturing from "../../public/leaf.svg";
+import Retail from "../../public/material-processing.svg";
+import footwearManufacturing from "../../public/manufacturing.svg";
 import Use from "../../public/use.svg";
 import Disposal from "../../public/disposal.svg";
 import Arrow from "../../public/arrow.svg";
@@ -45,7 +45,9 @@ const Compare = ({ product1, product2 }) => {
       <React.Fragment key={Math.random()}>
         <CircleDiv int={product1}>{handleCircles(product1)}</CircleDiv>
         <div>
-          <EthicsIcon title={iconName} src={icon} />
+          <Link href="/scoring">
+            <EthicsIcon style={{ cursor: "pointer" }} title={iconName} src={icon} />
+          </Link>
           {arrow && <ArrowIcon src={Arrow} />}
         </div>
         <CircleDiv
@@ -58,10 +60,11 @@ const Compare = ({ product1, product2 }) => {
     );
   };
   const icons = {
-    material: Material,
-    material_processing: materialProcessing,
-    manufacturing: Manufacturing,
-    assembly: Assembly,
+    design: Design,
+    raw_materials: rawMaterials,
+    material_manufacturing: materialManufacturing,
+    footwear_manufacturing: footwearManufacturing,
+    retail: Retail,
     use: Use,
     disposal: Disposal,
   };
@@ -103,13 +106,13 @@ const Compare = ({ product1, product2 }) => {
           <p>
             {product1.name} / size {product1.Size}
           </p>
-         
+
         </ProductInfo>
         <ProductInfo>
           <p>
             {product2.name} / size {product2.Size}
           </p>
-         
+
         </ProductInfo>
       </ComparisonHeader>
       {length !== 0 && (

@@ -13,9 +13,10 @@ const FilterWrapper = styled.div`
 `;
 
 const FilterDiv = styled.div`
-  display: flex;
-  flex-direction: row;
+  padding-bottom:1em;
   margin: 0.5rem 0 0 0;
+  text-transform: capitalize;
+
 `;
 
 const FilterLabel = styled.label`
@@ -49,6 +50,7 @@ const FilterHeadings = styled.h5`
   margin: 0;
   font-size: 1rem;
   font-weight: 500;
+  
 `;
 
 const FilterMessage = styled.p`
@@ -79,6 +81,7 @@ const ClearAll = styled.button`
     background-color: black;
   }
 `;
+
 
 export {
   FilterWrapper,

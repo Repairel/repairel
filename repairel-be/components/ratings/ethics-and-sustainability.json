@@ -6,26 +6,32 @@
   },
   "options": {},
   "attributes": {
-    "material": {
+    "design": {
       "type": "integer",
       "required": true,
       "max": 5,
       "min": 1
     },
-    "material_processing": {
+    "raw_materials": {
       "type": "integer",
       "private": false,
       "required": true,
       "max": 5,
       "min": 1
     },
-    "manufacturing": {
+    "material_manufacturing": {
       "type": "integer",
       "required": true,
       "max": 5,
       "min": 1
     },
-    "assembly": {
+    "footwear_manufacturing": {
+      "type": "integer",
+      "required": true,
+      "max": 5,
+      "min": 1
+    },
+    "retail": {
       "type": "integer",
       "required": true,
       "max": 5,

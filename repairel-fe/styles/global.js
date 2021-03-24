@@ -7,7 +7,6 @@ const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 85vh;
 `;
 
 const underline = keyframes`
@@ -17,8 +16,10 @@ const underline = keyframes`
 
 const LinedHeading = styled.h1`
   width: 100%;
+  font-size: 1.5em;
   padding-bottom: 1rem;
   position: relative;
+  text-transform: uppercase;
   &::before {
     content: '';
     width: 100%;
@@ -55,6 +56,16 @@ const StyledLink = styled.a`
   }
 `;
 
+const StyledLinkFooter = styled.a`
+  text-decoration: none;
+  color: gray;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+`;
+
 const StyledTitle = styled.h2`
   color: black;
   text-transform: sentence;
@@ -65,8 +76,8 @@ const StyledTitle = styled.h2`
 const Row = styled.div`
   display: flex;
   padding-bottom: 1em;
-    justify-content: center;
-  
+  justify-content: center;
+
 `;
 
 const Column = styled.div`
@@ -94,6 +105,32 @@ const StyledButton = styled.button`
   padding-bottom: auto;
   padding-top: auto;
   &:hover {
+    filter: invert(100%);
+    border: 2px solid white;
+  }
+`;
+
+const StyledAnimatedButton = styled.button`
+  width: 4rem;
+  max-width: 100%;
+  display: inline-block;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  height: auto;
+  width: auto;
+  margin: 0.5rem;
+  padding: 0.6em 3em;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: 1px;
+  vertical-align: top;
+  border-radius: 0;
+  cursor: pointer;
+  transition: color 150ms, background-color 150ms;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  &:hover {
     color: white;
     background-color: black;
   }
@@ -112,4 +149,66 @@ const StyledFormLabel = styled.span`
   margin-left: -125;
 `;
 
-export { LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel};
+const ProfileListItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.7rem;
+
+  margin: -0.5px;
+  text-align: center;
+`;
+const ProfileImage = styled.img`
+  align-self: start;
+  height: 150px;
+  width: auto;
+`;
+const ProfileCaption = styled.p`
+  text-transform: capitalize;
+  font-size: 1.5em;
+`;
+
+const ProfileList = styled.ul`
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, max-content);
+  @media (min-width: 750px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: max-content;
+  }
+  @media (max-width: 350px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const Login = styled.a`
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+`;
+
+const Register = styled.a`
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+`;
+
+export { Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };

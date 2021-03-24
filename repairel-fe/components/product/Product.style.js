@@ -39,6 +39,9 @@ const AddToCart = styled.button`
     color: white;
     background-color: black;
   }
+  @media (max-width: 425px) {
+    height: 60px;
+  }
 `;
 
 const SoldOut = styled.button`
@@ -84,6 +87,9 @@ const Wishlist = styled.button`
     color: white;
     background-color: black;
   }
+  @media (max-width: 425px) {
+    height: 60px;
+  }
 `;
 
 const ProductRequest = styled.button`
@@ -120,10 +126,12 @@ const ButtonContainer = styled.div`
   align-items: center;
 `
 
+
 const SliderImage = styled.img`
   max-width: 400px;
   margin-right: 0.5rem;
   max-height: 400px;
+  padding: 0.6em 1em;
 `;
 
 const SliderContainer = styled.div`
@@ -139,10 +147,10 @@ const EthicsList = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, max-content);
   @media (min-width: 750px) {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: max-content;
   }
-  @media (max-width: 350px) {
+  @media (max-width: 425px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
@@ -167,6 +175,58 @@ const ProductHeading = styled.h3`
   margin-top: 2.5rem;
 `;
 
+const EthicsDescList = styled.div`
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, max-content);
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const EthicsDesc = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0.7rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, max-content);
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const RefLink = styled.a`
+  font: 400 13.3333px Arial;
+  text-decoration: none;
+  width: 4rem;
+  max-width: 100%;
+  display: inline-block;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  height: auto;
+  width: auto;
+  margin: 0.5rem;
+  padding: 0.6em 3em;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: 1px;
+  vertical-align: top;
+  border-radius: 0;
+  cursor: pointer;
+  transition: color 150ms, background-color 150ms;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  &:hover {
+    color: white;
+    background-color: black;
+  }
+`;
+
+
 export {
   AddToCart,
   SliderImage,
@@ -182,6 +242,8 @@ export {
   ProductHeading,
   Wishlist,
   ButtonContainer,
+  EthicsDescList,
+  EthicsDesc,
+  RefLink,
   ProductRequest
-
 };

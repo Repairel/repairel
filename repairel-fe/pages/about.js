@@ -23,7 +23,7 @@ const About = ({ content }) => {
       >
         <LinedHeading>About us</LinedHeading>
         <Markdown>{content[0].about}</Markdown>
-        <Socials />
+
       </section>
     </>
   );

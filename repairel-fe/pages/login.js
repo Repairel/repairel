@@ -2,10 +2,11 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
 import AppContext from "../context/AppContext";
-import { StyledTitle,StyledLink, Row, Column, StyledButton, StyledInput, StyledFormLabel } from '../styles/global';
+import { StyledTitle,StyledLink, Row, Column, StyledButton, StyledInput, StyledFormLabel, Register, StyledAnimatedButton } from '../styles/global';
 import React, { useState, useEffect, useContext } from "react";
 import { login } from "../lib/auth"
 import { useRouter } from "next/router";
+import { LinedHeading } from "../styles/global";
 
 export default function Login() {
   const [data, setData] = useState({ email: "", password: "" });
@@ -24,29 +25,14 @@ export default function Login() {
       </Head>
       <main>
         <Header />
-        <div style={{ textAlign: 'center', padding: '0 5em 0 5em'}}>
-          <StyledTitle>Login</StyledTitle>
-          <hr />
+        <div style={{ textAlign: 'left', padding: '0 1em 0 1em'}}>
+          <LinedHeading>LOGIN</LinedHeading>
 
-          {Object.entries(error).length !== 0 &&
-            error.constructor === Object &&
-            error.message.map((error) => {
-              return (
-                <div
-                  key={error.messages[0].id}
-                  style={{ marginBottom: 10 }}
-                >
-                  <small style={{ color: "red" }}>
-                    {error.messages[0].message}
-                  </small>
-                </div>
-              );
-            })}
-			
+
 			<Row style={{ textAlign: 'center', paddingTop:'5em' }}>
-			
+
 			<Column style={{ marginLeft: -90 }}><StyledFormLabel  >Email Address <b>*</b></StyledFormLabel></Column>
-			
+
 			</Row>
 			<Row>
 			<StyledInput
@@ -67,13 +53,13 @@ export default function Login() {
                 value={data.password}
                 type="password"
                 name="password"
-				
+
               />
 			</Row>
-			
-			
-			
-          <StyledButton 
+
+
+			<Row>
+          <StyledAnimatedButton
             onClick={() => {
               login(data.email, data.password)
               .then((res) => {
@@ -86,10 +72,28 @@ export default function Login() {
               });
             }}>
             LOGIN
-          </StyledButton>
+          </StyledAnimatedButton>
+      </Row>
+      <Row style={{textAlign: "center"}}>{Object.entries(error).length !== 0 &&
+            error.constructor === Object &&
+            error.message.map((error) => {
+              return (
+                <div
+                  key={error.messages[0].id}
+                  style={{ marginBottom: 10 }}
+                >
+                  <small style={{ color: "red" }}>
+                    {error.messages[0].message.replace("Identifier", "Email")}
+                  </small>
+                </div>
+              );
+            })}
+      </Row>
+      <Row>
 		  <div>
-		   Don't have an account?  <StyledLink><a  href='/register'>Register </a></StyledLink>
+		   Don't have an account?  <Register><a  style={{paddingBottom: 100, color: 'black', textDecoration: 'none'}} href='/register'>Register </a></Register>
 		  </div>
+      </Row>
         </div>
       </main>
     </div>

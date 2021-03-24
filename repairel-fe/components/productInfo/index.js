@@ -8,12 +8,18 @@ import {
 } from './ProductInfo.style';
 import { ProductSize } from '@components/product/Product.style';
 
-const ProductInfo = ({ price, name, rating, size }) => {
+const ProductInfo = ({ price, name, rating, size,kSize, ref_link }) => {
+  if (size===0.00 && kSize){
+    size="Kids "+kSize}
+  else if (size===0.00 && !kSize) {
+    size="Kids"
+  }
+
   return (
     <>
       <ProductInfoList>
         <ProductInfoListItem>
-          {name} <ProductSize>/ size {size}</ProductSize>
+          {name} <ProductSize>/ size: {size}</ProductSize>
         </ProductInfoListItem>
         <ProductPrice>£ {price}</ProductPrice>
       </ProductInfoList>

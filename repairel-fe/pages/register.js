@@ -2,11 +2,11 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '@components/header';
 import AppContext from "../context/AppContext";
-import { StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel,StyledSection,StyledLink } from '../styles/global';
+import { StyledTitle, Row, Column, StyledAnimatedButton, StyledInput, StyledFormLabel,StyledSection,StyledLink, Login } from '../styles/global';
 import React, { useState, useEffect, useContext } from "react";
 import { register } from "../lib/auth"
 import { useRouter } from "next/router";
-
+import { LinedHeading } from "../styles/global";
 export default function Register() {
   const [data, setData] = useState({ email: "", password: "", forename: "", surname: "" , phone: ""});
   const [error, setError] = useState({});
@@ -24,31 +24,17 @@ export default function Register() {
       </Head>
       <main>
         <Header />
-        <div style={{ textAlign: 'left', padding: '0 5em 0 5em'}}>
-          <StyledTitle>Registration</StyledTitle>
-          <hr />
+        <div style={{ textAlign: 'left', padding: '0 1em 0 1em'}}>
+          <LinedHeading>REGISTRATION</LinedHeading>
 
-          {Object.entries(error).length !== 0 &&
-            error.constructor === Object &&
-            error.message.map((error) => {
-              return (
-                <div
-                  key={error.messages[0].id}
-                  style={{ marginBottom: 10 }}
-                >
-                  <small style={{ color: "red" }}>
-                    {error.messages[0].message}
-                  </small>
-                </div>
-              );
-            })}
 			<center>
-			
-			
+
+
+
 			<Row style={{ textAlign: 'center', paddingTop:'5em' }}>
-			
+
 			<Column style={{ marginLeft: -125 }}><StyledFormLabel  >First Name <b>*</b></StyledFormLabel></Column>
-			
+
 			</Row>
 			<Row>
 			<StyledInput
@@ -60,15 +46,14 @@ export default function Register() {
               />
 			</Row>
 			<Row>
-			<StyledFormLabel style={{ marginLeft: -145 }}>Surname <b>*</b></StyledFormLabel>
+			<StyledFormLabel style={{ marginLeft: -162 }}>Surname </StyledFormLabel>
 			</Row>
 			<Row>
 			<StyledInput
-                required
                 onChange={(e) => setData({ ...data, surname: e.target.value })}
                 value={data.surname}
                 type="text"
-                name="surname" 
+                name="surname"
            />
 			</Row>
 			<Row>
@@ -107,11 +92,25 @@ export default function Register() {
 				name="password"
 			  />
 		    </Row>
-			
-		  
+
+        {Object.entries(error).length !== 0 &&
+            error.constructor === Object &&
+            error.message.map((error) => {
+              return (
+                <div
+                  key={error.messages[0].id}
+                  style={{ marginBottom: 10 }}
+                >
+                  <small style={{ color: "red" }}>
+                    {error.messages[0].message.replace("Username", "Email")}
+                  </small>
+                </div>
+              );
+            })}
+
           <p>* required fields</p>
-		  
-          <StyledButton
+
+          <StyledAnimatedButton
             onClick={() => {
               register(data.forename, data.surname, data.email, data.password, data.phone)
               .then((res) => {
@@ -123,10 +122,11 @@ export default function Register() {
                 setError(error.response.data);
               });
             }}>
-              REGISTER  
-          </StyledButton>
+              REGISTER
+          </StyledAnimatedButton>
 		  <div>
-		   Already have an account?  <StyledLink><a  href='/login'>Log In </a></StyledLink>
+      <br></br>
+		   Already have an account?  <Login><a  href='/login' style={{paddingBottom: 100, color: 'black', textDecoration: 'none'}}>Log In </a></Login>
 		  </div>
 		  </center>
         </div>
