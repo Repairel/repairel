@@ -15,10 +15,9 @@ const Menu = ({ open, setOpen }) => {
   };
 
   const { user, setUser } = useContext(AppContext);
-  let menu = ['shop','engage','method', 'faq', 'login'];
+  let menu = ['shop','engage','method', 'request', 'faq'];
   let welcomeMessage = '';
   if (user) {
-    menu = [ 'shop','engage','method', 'faq', 'profile' ];
     welcomeMessage = `Hey ${user.first_name}!`;
   }
 
@@ -27,6 +26,8 @@ const Menu = ({ open, setOpen }) => {
       return `/`;
     } else if (item === 'method') {
       return '/scoring'
+    } else if (item === 'request') {
+      return '/product_request'
     } else {
       return `/${item}`
     }
