@@ -5,21 +5,24 @@ import PropTypes from 'prop-types';
 import Socials from '@components/socials';
 import { Circle } from '@components/compare/Compare.style';
 import Material from '../public/material.svg';
-import materialProcessing from '../public/material-processing.svg';
+import MaterialProcessing from '../public/leaf.svg';
 import Manufacturing from '../public/manufacturing.svg';
-import Assembly from '../public/assembly.svg';
+import Assembly from '../public/material-processing.svg';
 import Use from '../public/use.svg';
 import Disposal from '../public/disposal.svg';
+import Design from '../public/assembly.svg';
+
 import _ from 'lodash';
 
 import { LinedHeading, LinedSubHeading, StyledSection } from '../styles/global';
 import {ScoresDiv, ScoresListItem, ScoresCaption, CriteriaDiv, CriteriaListItem, CriteriaText, CriteriaImage} from '../styles/scoringStyles';
 
 const icons = {
-  Material: Material,
-  Material_Processing: materialProcessing,
-  Manufacturing: Manufacturing,
-  Assembly: Assembly,
+  Design: Design,
+  Raw_Materials: Material,
+  Material_Manufacturing: MaterialProcessing,
+  Footwear_Manufacturing: Manufacturing,
+  Retail: Assembly,
   Use: Use,
   Disposal: Disposal,
 };
@@ -99,7 +102,7 @@ const scoring = ({ content }) => {
       <Header />
       <StyledSection>
         <main style={{ margin: '1rem' }}>
-          <LinedHeading>Method</LinedHeading>
+          <LinedHeading>METHOD</LinedHeading>
           <Markdown>{content[0].introduction}</Markdown>
 
           <LinedSubHeading>Scores</LinedSubHeading>
@@ -107,11 +110,10 @@ const scoring = ({ content }) => {
 
           <LinedSubHeading>Criteria</LinedSubHeading>
           <div>{categoriesRender(content[0])}</div>
-
+          <LinedSubHeading>Blurb</LinedSubHeading>
+          <div>{(content[0].blurb)}</div>
         </main>
-        <footer style={{ marginBottom: '1rem' }}>
-          <Socials />
-        </footer>
+
       </StyledSection>
     </>
   );

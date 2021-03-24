@@ -10,19 +10,19 @@
       "type": "integer",
       "default": 5
     },
-    "Very_Good": {
+    "Good": {
       "type": "integer",
       "default": 4
     },
-    "Good": {
+    "Average": {
       "type": "integer",
       "default": 3
     },
-    "Satisfactory": {
+    "Unsatisfactory": {
       "type": "integer",
       "default": 2
     },
-    "Unsatisfactory": {
+    "Very_Poor": {
       "type": "integer",
       "default": 1
     }

@@ -12,16 +12,19 @@
     "introduction": {
       "type": "richtext"
     },
-    "Material": {
+    "Design": {
       "type": "richtext"
     },
-    "Material_Processing": {
+    "Raw_Materials": {
       "type": "richtext"
     },
-    "Manufacturing": {
+    "Material_Manufacturing": {
       "type": "richtext"
     },
-    "Assembly": {
+    "Footwear_Manufacturing": {
+      "type": "richtext"
+    },
+    "Retail": {
       "type": "richtext"
     },
     "Use": {
@@ -34,6 +37,9 @@
       "type": "component",
       "repeatable": true,
       "component": "ratings.scores"
+    },
+    "blurb": {
+      "type": "richtext"
     }
   }
 }
