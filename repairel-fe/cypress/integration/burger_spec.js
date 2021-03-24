@@ -4,7 +4,7 @@ describe ('Test The Burger Menu Contains The Correct Links', () => {
     it('Test Burger Menu Contains The Login Page Link', () => {
         cy.visit('/')
         cy.get('div[style="z-index:2;cursor:pointer"] > div').click()
-        cy.contains('login')
+        cy.contains('request')
     })
 
     // Test the shop link
