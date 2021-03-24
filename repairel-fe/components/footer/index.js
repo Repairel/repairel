@@ -43,7 +43,7 @@ const Footer = () => {
 
           <a target="_blank">
             <Item>
-            <img style={{ height: "24px", paddingRight: "0.6rem" }} src={Facebook}></img>
+            <img style={{ height: "24px", paddingRight: "0.3rem" }} src={Facebook}></img>
             </Item>
           </a>
 
@@ -55,18 +55,18 @@ const Footer = () => {
           }
         >
           <a target="_blank">
-            <img style={{ height: "24px", paddingRight: "0.6rem" }} src={Instagram}></img>
+            <img style={{ height: "24px", paddingRight: "0.3rem" }} src={Instagram}></img>
           </a>
         </Link>
 
         <Link href={"https://twitter.com/repairelhub?lang=en"}>
           <a target="_blank">
-            <img style={{ height: "24px", paddingRight: "0.6rem" }} src={Twitter}></img>
+            <img style={{ height: "24px", paddingRight: "0.3rem" }} src={Twitter}></img>
           </a>
         </Link>
         <Link href={"https://www.linkedin.com/company/repairel-cic/"}>
           <a target="_blank">
-            <img style={{ height: "24px", paddingRight: "0.6rem" }} src={LinkedIn}></img>
+            <img style={{ height: "24px", paddingRight: "0rem" }} src={LinkedIn}></img>
           </a>
         </Link>
 
