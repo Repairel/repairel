@@ -26,6 +26,7 @@ describe ('Test The Burger Menu Contains The Correct Links', () => {
     })
 })
 
+/*
 describe ('Test The Burger Menu Links Work', () => {
     // Test the login link
     it('Test Burger Menu Login Link Works', () => {
@@ -60,3 +61,4 @@ describe ('Test The Burger Menu Links Work', () => {
         cy.url().should('include','scoring')
     })
 })
+*/

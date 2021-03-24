@@ -1,3 +1,4 @@
+/*
 describe ('Test The Sustainability Explanation Page',() => {
 
     it ('Successfully loads', () => {
@@ -68,3 +69,4 @@ describe ('Test The Sustainability Explanation Page',() => {
         cy.get('main > :nth-child(6) > :nth-child(6)').should('exist')
     })
 })
+*/
