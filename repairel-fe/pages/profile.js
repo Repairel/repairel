@@ -9,6 +9,7 @@ import { StyledLink } from '../styles/global';
 import Pencil from '../public/pencil.png';
 import Orders from '../public/orderhistory.ico';
 import Wishlist from '../public/wishlist.png';
+import { useRouter } from "next/router";
 
 import {
   FilterDiv,
@@ -22,7 +23,6 @@ import {
 import { EthicsList, EthicsListItem } from '@components/product/Product.style';
 
 const PROFILE = ({ user }) => {
-    console.log(user);
   return (
     <>
       <Head>
@@ -89,7 +89,7 @@ const PROFILE = ({ user }) => {
 //        });
 //     }
 //     return{ props: { user: return_user }
-  
+
 //     }
 //   }
 
