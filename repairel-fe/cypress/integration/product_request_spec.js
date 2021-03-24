@@ -1,6 +1,6 @@
 describe ('Test Product Request Page Loads',() => {
     it ('Test Product Request Page Loads Correctly', () => {
-        cy.visit('/wishlist')
+        cy.visit('/product_request')
     })
 })
 
@@ -11,7 +11,7 @@ describe('Test Product Request Form Posts Information',() => {
             url: 'https://rocky-earth-77368.herokuapp.com/',
           }).as('postCheck')
 
-        cy.visit('/wishlist')
+        cy.visit('/product_request')
         cy.get('#Name').type("Alice")
         cy.get('#Email').type("alice@bobmail.com")
         cy.get(':nth-child(2) > .Brand').type("Alice in WonderBrand")
@@ -30,7 +30,7 @@ describe('Test Product Request Form Posts Information',() => {
 
 describe('Test Product Request Form Works With Acceptable Input',() => {
     it('Correct Info Entered', () => {
-        cy.visit('/wishlist')
+        cy.visit('/product_request')
         cy.get('#Name').type("Alice")
         cy.get('#Email').type("alice@bobmail.com")
         cy.get(':nth-child(2) > .Brand').type("Alice in WonderBrand")
@@ -45,7 +45,7 @@ describe('Test Product Request Form Works With Acceptable Input',() => {
 
 describe ('Test Product Request Form Stipulations Work',() => {
     it ('Test Product Request Requires Name', () => {
-        cy.visit('/wishlist')
+        cy.visit('/product_request')
         cy.get('#Email').type("alice@bobmail.com")
         cy.get(':nth-child(2) > .Brand').type("Alice in WonderBrand")
         cy.get('#Size').type("5")
@@ -56,7 +56,7 @@ describe ('Test Product Request Form Stipulations Work',() => {
     })
 
     it ('Test Product Request Requires Email', () => {
-        cy.visit('/wishlist')
+        cy.visit('/product_request')
         cy.get('#Name').type("Alice")
         cy.get(':nth-child(2) > .Brand').type("Alice in WonderBrand")
         cy.get('#Size').type("5")
@@ -67,7 +67,7 @@ describe ('Test Product Request Form Stipulations Work',() => {
     })
 
     it('Test Product Request Requires Size', () => {
-        cy.visit('/wishlist')
+        cy.visit('/product_request')
         cy.get('#Name').type("Alice")
         cy.get(':nth-child(2) > .Brand').type("Alice in WonderBrand")
         cy.get('#Email').type("alice@bobmail.com")
@@ -79,7 +79,7 @@ describe ('Test Product Request Form Stipulations Work',() => {
     })
 
     it('Test Product Request Requires Style', () => {
-        cy.visit('/wishlist')
+        cy.visit('/product_request')
         cy.get('#Name').type("Alice")
         cy.get(':nth-child(2) > .Brand').type("Alice in WonderBrand")
         cy.get('#Email').type("alice@bobmail.com")
