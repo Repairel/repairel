@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/test-collection-2-s",
-      "handler": "test-collection2.find",
+      "path": "/scorings",
+      "handler": "scoring.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/test-collection-2-s/count",
-      "handler": "test-collection2.count",
+      "path": "/scorings/count",
+      "handler": "scoring.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/test-collection-2-s/:id",
-      "handler": "test-collection2.findOne",
+      "path": "/scorings/:id",
+      "handler": "scoring.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/test-collection-2-s",
-      "handler": "test-collection2.create",
+      "path": "/scorings",
+      "handler": "scoring.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/test-collection-2-s/:id",
-      "handler": "test-collection2.update",
+      "path": "/scorings/:id",
+      "handler": "scoring.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/test-collection-2-s/:id",
-      "handler": "test-collection2.delete",
+      "path": "/scorings/:id",
+      "handler": "scoring.delete",
       "config": {
         "policies": []
       }

@@ -9,17 +9,18 @@ import Socials from "@components/socials";
 import { LinedHeading, StyledLink } from "../styles/global";
 import {Wishlist} from "@components/product/Product.style.js";
 
-const Engage = ({ content }) => {
+// This is the correct engage page
+const Engage = ({content}) => {
   return (
     <>
       <Head>
         <title id="title">REPAIREL | Engage</title>
       </Head>
       <Header />
-      <img
-        style={{ width: "100%", height: "auto" }}
+      <center><img
+        style={{ width: "25%", height: "25" }}
         src= {Logo}
-      ></img>
+      ></img></center>
       <section
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
