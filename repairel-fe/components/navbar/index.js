@@ -1,13 +1,18 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import HamburgerMenu from 'react-hamburger-menu';
+import AppContext from "../../context/AppContext";
+import { useContext } from "react";
 
 import { StyledLink } from '../../styles/global';
 
 import Wrapper from '@components/navbar/Navbar.style';
 import Bag from '../../public/bag.svg';
+import Person from '../../public/person.png';
 
 const Navbar = ({ open, setOpen }) => {
+  const appContext = useContext(AppContext);
+  
   const handleClick = () => {
     setOpen(!open);
   };
@@ -33,15 +38,23 @@ const Navbar = ({ open, setOpen }) => {
       </div>
       <h1>
         <Link href='/'>
-          <StyledLink>REPAIREL</StyledLink>
+          <StyledLink style={{ paddingLeft: "2em" }}>REPAIREL</StyledLink>
         </Link>
       </h1>
-      <a
-        style={navStyles}
-        className='header__summary snipcart-checkout snipcart-summary'
-      >
-        <img src={Bag} style={{ display: 'block' }}></img>
-      </a>
+      <div stle={{ zIndex: '2' }}>
+        <a
+          href={appContext.isAuthenticated ? '/profile' : '/login'}
+          style={{ cursor: 'pointer', paddingRight: "1em" }}
+        >
+          <img src={Person} style={{ height: "32px", width: "32px" }}></img>
+        </a>
+        <a
+          className='header__summary snipcart-checkout snipcart-summary'
+          style={{ cursor: 'pointer' }}
+        >
+          <img src={Bag}></img>
+        </a>
+      </div>
     </Wrapper>
   );
 };
