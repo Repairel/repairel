@@ -177,7 +177,7 @@ export async function getServerSideProps(context) {
         //First, we need to check if we need to update snipcart_personas, and if so do that
         if(user.snipcart_update_needed){
           const res = await fetch(`https://app.snipcart.com/api/customers?email=${user.email}`, {headers: {
-            'Authorization': 'Basic ' + Buffer.from(process.env.SNIPCART_TEST_API_KEY).toString('base64'),
+            'Authorization': 'Basic ' + Buffer.from(process.env.SNIPCART_QUERY_API_KEY).toString('base64'),
             'Accept': 'application/json'
           }});
           const json = await res.json();
@@ -192,7 +192,7 @@ export async function getServerSideProps(context) {
         for(var i = user.snipcart_personas.length - 1; i >= 0; i--){ //Iterate through all personas BACKWARDS as most-recent personas are furthest down in the list
           //Get all the orders for a persona
           const res1 = await fetch(`https://app.snipcart.com/api/customers/${user.snipcart_personas[i].customer_id}/orders`, {headers: {
-            'Authorization': 'Basic ' + Buffer.from(process.env.SNIPCART_TEST_API_KEY).toString('base64'),
+            'Authorization': 'Basic ' + Buffer.from(process.env.SNIPCART_QUERY_API_KEY).toString('base64'),
             'Accept': 'application/json'
           }});
           const json1 = await res1.json(); //This may contain multiple orders
@@ -230,7 +230,7 @@ export async function getServerSideProps(context) {
                                   };
 
               const res2 = await fetch(`https://app.snipcart.com/api/orders/${json1[j].token}`, {headers: {
-                'Authorization': 'Basic ' + Buffer.from(process.env.SNIPCART_TEST_API_KEY).toString('base64'),
+                'Authorization': 'Basic ' + Buffer.from(process.env.SNIPCART_QUERY_API_KEY).toString('base64'),
                 'Accept': 'application/json'
               }});
               const json2 = await res2.json(); //This contains all products in the order
@@ -245,7 +245,7 @@ export async function getServerSideProps(context) {
 
               //finally update the order's visited flag to reflect addition to the database
               const res3 = await fetch(`https://app.snipcart.com/api/orders/${json1[j].token}`, {headers: {
-                'Authorization': 'Basic ' + Buffer.from(process.env.SNIPCART_TEST_API_KEY).toString('base64'),
+                'Authorization': 'Basic ' + Buffer.from(process.env.SNIPCART_QUERY_API_KEY).toString('base64'),
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'},
                 method: 'PUT',

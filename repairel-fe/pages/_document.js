@@ -49,7 +49,7 @@ export default class MyDocument extends Document {
           ></script>
           <div
             id='snipcart'
-            data-api-key='ZDk0NTdiYzEtMWM5MC00Nzk5LTg5YjMtZGYwZGFiNWZmYzc3NjM3MzcwNzEwNTE4MTg1ODIz'
+            data-api-key={process.env.SNIPCART_API_KEY}
             hidden
           ></div>
         </Head>
