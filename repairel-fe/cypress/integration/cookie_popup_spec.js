@@ -6,8 +6,8 @@ describe ('The Cookie Pop-up feature',() => {
     
     it ("The I understand button makes the popup disappear when clicked",() => {
         cy.visit('/')
-        cy.get('button').contains('I understand').click()
-        cy.contains('I understand').should('not.exist')
+        cy.get('button').contains('I UNDERSTAND').click()
+        cy.contains('I UNDERSTAND').should('not.exist')
     })
 
     it ("The I understand button is shown",() => {
