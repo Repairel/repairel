@@ -1,7 +1,7 @@
 describe ('The Affiliate Product feature',() => {
     it ('Affiliate product has affiliate link button', () => {
         cy.visit('/product/1')
-        cy.get('button').contains('I understand').click()
+        cy.get('button').contains('I UNDERSTAND').click()
         cy.contains('shop this brand')
     })
 

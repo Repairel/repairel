@@ -12,7 +12,7 @@ describe ('The Cookie Pop-up feature',() => {
 
     it ("The I understand button is shown",() => {
         cy.visit('/')
-        cy.contains('I understand')
+        cy.contains('I UNDERSTAND')
     })
     
     it ("The GDPR link takes to the right page",() => {
