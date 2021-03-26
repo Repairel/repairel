@@ -143,7 +143,7 @@ else{Size=product.Size}
       }
       return <span>{product.stock} currently in stock</span>
     }
-    return <span>Fill in this form and be the first to know when we have stock <a href="">here</a></span>;
+    return <span>Fill in this form and be the first to know when we have stock <a href="/product_request">here</a></span>;
   }
 
   function cartButton() {
