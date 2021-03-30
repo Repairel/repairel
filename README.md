@@ -6,7 +6,7 @@ An MVP for Repairel CIC. An e-commerce site dedicated to selling refurbished sho
 * Production website (most stable, based on master branch): [here](https://repairel-fe.herokuapp.com/)
 
 ## Installation
-- Clone the repository using `git clone https://stgit.dcs.gla.ac.uk/tp3-2020-SE04/se04-main.git`
+- Clone the repository using `git clone https://github.com/Repairel/repairel.git`
 - Navigate to the project folder using `cd`
 - Setup the backend:
   * Go to the backend folder `cd repairel-be`
