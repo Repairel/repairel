@@ -41,14 +41,14 @@ An MVP for Repairel CIC. An e-commerce site dedicated to selling refurbished sho
 
 ## Current Developer Teams
 ### (**SE04**)
-| Name     | Student #     | Email    | Customer Meeting Role    |   Scrum Roles     
-| :------------- | :----------: | -----------: |-----------: | -----------: |
-|  Declan Davidson | 2038796   | 2038796D@student.gla.ac.uk    | Contact    | Product Owner |
-|  Luke Holland  | 2342915   | 2342915H@student.gla.ac.uk    |Lead Demonstrator    | Developer |
-|  Wafa Khan Tareen | 2366702   | 2366702T@student.gla.ac.uk    |Checker    | Quality Assurance |
-|  Fraser Dempster  | 2331229   | 2331229D@student.gla.ac.uk    |Meeting Chair    | Scrum Master |
-|  Ewan Hempsey  | 2038796   | 2038796D@student.gla.ac.uk    |Note Taker    | Toolsmith |
-|  Ivo de Vero  | 2310555   | 2310555D@student.gla.ac.uk   |Team Coach    |               |\
+| Name     | Email     
+| :------------- | :----------: |
+|  Declan Davidson |  2038796D@student.gla.ac.uk    |
+|  Luke Holland  |  2342915H@student.gla.ac.uk     |
+|  Wafa Khan Tareen |  2366702T@student.gla.ac.uk     |
+|  Fraser Dempster  |  2331229D@student.gla.ac.uk     |
+|  Ewan Hempsey  |  2038796D@student.gla.ac.uk     |
+|  Ivo de Vero  |  2310555D@student.gla.ac.uk    |\
 
 
 
