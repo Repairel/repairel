@@ -1,5 +1,5 @@
 # Repairel
-An MVP for Repairel CIC. An e-commerce site dedicated to selling refurbished shoes, with a focus on the ethics and sustainability of the products.
+A MVP for Repairel CIC, an e-commerce site dedicated to selling refurbished shoes, with a focus on the ethics and sustainability of the products.
 
 ## Live Demo
 * Development website (most up to date, based on develop branch): [here](https://dev-repairel-fe.herokuapp.com/)
@@ -37,7 +37,7 @@ An MVP for Repairel CIC. An e-commerce site dedicated to selling refurbished sho
 - [NextJS](https://nextjs.org/) frontend deployed to [Heroku](https://heroku.com/)
 - [Strapi](https://strapi.io/) CMS backend deployed to [Heroku](https://heroku.com/)
   * [AWS S3](https://aws.amazon.com/s3/) bucket to host static content for [Strapi](https://strapi.io/)
-- [Snipcart](https://snipcart.com/) integration for checkout (_subject to change_)
+- [Snipcart](https://snipcart.com/) integration for checkout
 
 ## Current Developer Teams
 ### (**SE04**)
