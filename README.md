@@ -47,7 +47,7 @@ A MVP for Repairel CIC, an e-commerce site dedicated to selling refurbished shoe
 |  Luke Holland  |  2342915H@student.gla.ac.uk     |
 |  Wafa Khan Tareen |  2366702T@student.gla.ac.uk     |
 |  Fraser Dempster  |  2331229D@student.gla.ac.uk     |
-|  Ewan Hempsey  |  2038796D@student.gla.ac.uk      |\
+|  Ewan Hempsey  |  2314230H@student.gla.ac.uk      |\
 
 ### (**CSP5**)
 | Name     | Email     
