@@ -57,15 +57,15 @@ export default function ProductReq () {
   }  }
 
   return (
-    <>
+    <div>
       <Head>
         <title id="title">REPAIREL | Product Request</title>
       </Head>
-      <Header />
+      <main>
+        <Header />
 
-      <section
-        style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
-      >
+        <div style={{ textAlign: 'left', padding: '0 1em 0 1em'}}>
+
         <LinedHeading>PRODUCT REQUEST</LinedHeading>
         <p>If there is a specific style, brand, size shoe that you would like that we currently don't have please request it by filling out this form and we will let you know if it comes in stock.</p>
       <p id="FormSuccessMessage"></p>
@@ -97,8 +97,9 @@ export default function ProductReq () {
           <Row><StyledAnimatedButton id="button" onClick={() => addRequest()}>SUBMIT REQUEST</StyledAnimatedButton></Row>
         </form>
         <p id="FormNonSuccessMessage"></p>
-      </section>
+        </div>
+      </main>
 
-    </>
+    </div>
   );
 }
