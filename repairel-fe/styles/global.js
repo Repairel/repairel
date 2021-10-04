@@ -56,16 +56,6 @@ const StyledLink = styled.a`
   }
 `;
 
-const StyledLinkFooter = styled.a`
-  text-decoration: none;
-  color: gray;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-    opacity: 0.7;
-  }
-`;
-
 const StyledTitle = styled.h2`
   color: black;
   text-transform: sentence;
@@ -77,7 +67,6 @@ const Row = styled.div`
   display: flex;
   padding-bottom: 1em;
   justify-content: center;
-
 `;
 
 const Column = styled.div`

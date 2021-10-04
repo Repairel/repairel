@@ -2,6 +2,7 @@ import Header from "@components/header";
 import Head from "next/head";
 import { useState } from 'react'
 import { LinedHeading} from "../styles/global";
+import { StyledAnimatedButton } from "../styles/global";
 import React from "react";
 import {Row} from '../styles/global';
 
@@ -66,8 +67,7 @@ export default function ProductReq () {
         style={{ margin: "1rem", display: "flex", flexDirection: "column" }}
       >
         <LinedHeading>PRODUCT REQUEST</LinedHeading>
-      </section>
-      <p id="ExplanationText">If there is a specific style, brand, size shoe that you would like that we currently don't have please request it by filling out this form and we will let you know if it comes in stock.</p>
+        <p>If there is a specific style, brand, size shoe that you would like that we currently don't have please request it by filling out this form and we will let you know if it comes in stock.</p>
       <p id="FormSuccessMessage"></p>
 
       <form method="post" id="Form" name="Form" action="">
@@ -94,9 +94,11 @@ export default function ProductReq () {
           <Row><label className = "OtherSpecifications" htmlFor="OtherSpecifications">Comments</label></Row>
           <Row><textarea type="text" id= "OtherSpecifications" className="OtherSpecifications" onChange={e => setOtherSpecifications(e.target.value) } value={OtherSpecifications} placeholder="Anything else you want us to know?"/></Row>
 
-          <Row><button type="button" id="button" className="submitRequest" onClick={() => addRequest()}>SUBMIT REQUEST</button></Row>
+          <Row><StyledAnimatedButton id="button" onClick={() => addRequest()}>SUBMIT REQUEST</StyledAnimatedButton></Row>
         </form>
         <p id="FormNonSuccessMessage"></p>
+      </section>
+
     </>
   );
 }
