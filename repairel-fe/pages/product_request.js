@@ -69,7 +69,7 @@ export default function ProductReq () {
       </section>
       <p id="ExplanationText">If there is a specific style, brand, size shoe that you would like that we currently don't have please request it by filling out this form and we will let you know if it comes in stock.</p>
       <p id="FormSuccessMessage"></p>
-      <p id="FormNonSuccessMessage"></p>
+
       <form method="post" id="Form" name="Form" action="">
           <Row><label className="Name" htmlFor="Name">Your name*</label></Row>
           <Row><input type="text" className="Name" id="Name" onChange={e => setName(e.target.value) } value={Name}/></Row>
@@ -96,6 +96,7 @@ export default function ProductReq () {
 
           <Row><button type="button" id="button" className="submitRequest" onClick={() => addRequest()}>SUBMIT REQUEST</button></Row>
         </form>
+        <p id="FormNonSuccessMessage"></p>
     </>
   );
 }
