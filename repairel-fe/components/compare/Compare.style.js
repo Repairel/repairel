@@ -40,9 +40,9 @@ const Circle = styled.div`
   width: 15px;
   border-radius: 50%;
   background-color: ${({ int, theme }) =>
-    int < 4
+    int < 3
       ? theme.colors.bad
-      : int >= 2 && int <= 4
+      : int >= 2 && int < 4
       ? theme.colors.medium
       : theme.colors.good};
   filter: invert(0);
