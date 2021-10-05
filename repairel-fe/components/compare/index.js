@@ -87,6 +87,15 @@ const Compare = ({ product1, product2 }) => {
     icons[lastCategory] || Leaf,
     product2.ethics_and_sustainability[lastCategory],
   ]);
+  var Size1=0
+  if (product1.Size===0 && product1.kidsSize) {Size1=("Kids "+product1.kidsSize)}
+  else if (product1.Size===0 && !product1.kidsSize) {Size1=("Kids Shoe")}
+  else{Size1=product1.Size}
+
+  var Size2=0
+  if (product2.Size===0 && product2.kidsSize) {Size2=("Kids "+product2.kidsSize)}
+  else if (product2.Size===0 && !product2.kidsSize) {Size2=("Kids Shoe")}
+  else{Size2=product2.Size}
   return (
     <>
       <ComparisonHeader>
@@ -104,13 +113,13 @@ const Compare = ({ product1, product2 }) => {
         </Link>
         <ProductInfo>
           <p>
-            {product1.name} / size {product1.Size}
+            {product1.name} / size {Size1}
           </p>
 
         </ProductInfo>
         <ProductInfo>
           <p>
-            {product2.name} / size {product2.Size}
+            {product2.name} / size {Size2}
           </p>
 
         </ProductInfo>
