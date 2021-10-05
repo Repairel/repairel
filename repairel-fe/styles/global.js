@@ -56,6 +56,17 @@ const StyledLink = styled.a`
   }
 `;
 
+const StyledLinkHeader = styled.a`
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  &:hover {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: white;
+    transition: all ease 0.2s
+  }
+`;
+
 const StyledTitle = styled.h2`
   color: black;
   text-transform: sentence;
@@ -200,4 +211,4 @@ const Register = styled.a`
   }
 `;
 
-export { Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
+export { Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
