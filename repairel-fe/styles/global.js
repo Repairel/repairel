@@ -2,6 +2,9 @@ import styled, { keyframes } from 'styled-components';
 
 // This version has linedsubheading
 
+const Font = styled.html`
+  font-family: 'Vazir', sans-serif;
+`;
 
 const StyledSection = styled.section`
   display: flex;
@@ -211,4 +214,4 @@ const Register = styled.a`
   }
 `;
 
-export { Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
+export { Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
