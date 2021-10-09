@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import Socials from "@components/socials";
 
-import { LinedHeading, StyledAnimatedButton } from "../styles/global";
+import { LinedHeading, StyledAnimatedButton, font } from "../styles/global";
 
 // This is the correct engage page
 const Engage = ({content}) => {

@@ -2,6 +2,9 @@ import styled, { keyframes } from 'styled-components';
 
 // This version has linedsubheading
 
+const Font = styled.html`
+  font-family: 'Vazir', sans-serif;
+`;
 
 const StyledSection = styled.section`
   display: flex;
@@ -56,13 +59,14 @@ const StyledLink = styled.a`
   }
 `;
 
-const StyledLinkFooter = styled.a`
+const StyledLinkHeader = styled.a`
   text-decoration: none;
-  color: gray;
+  color: black;
   cursor: pointer;
   &:hover {
-    text-decoration: underline;
-    opacity: 0.7;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: white;
+    transition: all ease 0.2s
   }
 `;
 
@@ -77,7 +81,6 @@ const Row = styled.div`
   display: flex;
   padding-bottom: 1em;
   justify-content: center;
-
 `;
 
 const Column = styled.div`
@@ -211,4 +214,4 @@ const Register = styled.a`
   }
 `;
 
-export { Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
+export { Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };

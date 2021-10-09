@@ -7,6 +7,7 @@ const CompareWrapper = styled.div`
   background-color: white;
   border: 1px solid black;
   min-height: 150px;
+  margin-bottom: 1.5rem;
   @media (min-width: 750px) {
     width: 48.2%;
     margin-right: 1rem;
