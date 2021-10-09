@@ -4,7 +4,7 @@ import HamburgerMenu from 'react-hamburger-menu';
 import AppContext from "../../context/AppContext";
 import { useContext } from "react";
 
-import { StyledLinkHeader } from '../../styles/global';
+import { StyledButton, StyledLinkHeader } from '../../styles/global';
 
 import Wrapper from '@components/navbar/Navbar.style';
 import Bag from '../../public/bag.svg';
@@ -22,6 +22,7 @@ const Navbar = ({ open, setOpen }) => {
     cursor: 'pointer',
   };
 
+
   return (
     <Wrapper>
       <div style={navStyles}>
@@ -38,10 +39,16 @@ const Navbar = ({ open, setOpen }) => {
       </div>
       <h1>
         <Link href='/'>
-          <StyledLinkHeader style={{ paddingLeft: "2em" }}>REPAIREL</StyledLinkHeader>
+          <StyledLinkHeader style={{ marginLeft: "20em"}}>REPAIREL</StyledLinkHeader>
         </Link>
       </h1>
+      <div>
+        <a href={"https://www.instagram.com/"} target="_blank">
+          <StyledButton style={{ marginLeft: "16em" }}>Survey</StyledButton>
+        </a>
+      </div>
       <div stle={{ zIndex: '2' }}>
+
         <a
           href={appContext.isAuthenticated ? '/profile' : '/login'}
           style={{ cursor: 'pointer', paddingRight: "1em" }}
