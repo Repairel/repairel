@@ -39,12 +39,17 @@ const Navbar = ({ open, setOpen }) => {
       </div>
       <h1>
         <Link href='/'>
-          <StyledLinkHeader style={{ marginLeft: "20em"}}>REPAIREL</StyledLinkHeader>
+          <StyledLinkHeader style={{ marginLeft: "21em"}}>REPAIREL</StyledLinkHeader>
         </Link>
       </h1>
       <div>
         <a href={"https://www.instagram.com/"} target="_blank">
-          <StyledButton style={{ marginLeft: "16em" }}>Survey</StyledButton>
+          <StyledButton style={{ marginLeft: "10em" }}>Survey</StyledButton>
+        </a>
+      </div>
+      <div>
+        <a href={"/product_request"} target="_blank">
+          <StyledButton style={{ marginLeft: "1em"}}>Request</StyledButton>
         </a>
       </div>
       <div stle={{ zIndex: '2' }}>
