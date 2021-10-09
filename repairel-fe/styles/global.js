@@ -49,6 +49,21 @@ const LinedSubHeading = styled.h3`
   }
 `;
 
+const TempLinedSubHeading = styled.h4`
+  width: 100%;
+  position: relative;
+  &::before {
+    content: '';
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid black;
+    animation: ${underline} 1s linear;
+  }
+
+`;
+
 const StyledLink = styled.a`
   text-decoration: none;
   color: black;
@@ -214,4 +229,4 @@ const Register = styled.a`
   }
 `;
 
-export { Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
+export { TempLinedSubHeading, Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
