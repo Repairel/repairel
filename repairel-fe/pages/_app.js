@@ -4,6 +4,10 @@ import AppContext from "../context/AppContext";
 import Cookie from "js-cookie";
 import CookiePopup from "@components/cookiePopup";
 import './wishlist.css';
+import ReactGA from 'react-ga';
+
+const trackingId = "UA-209962114-1"; 
+ReactGA.initialize(trackingId);
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -34,6 +38,16 @@ class MyApp extends App {
   };
 
   componentDidMount() {
+    const pageViewsTracking = (props) => {
+      const pathname = props.match.path;
+
+      let pageView;
+      if (pathname === "*") pageView = '/not-found';
+      else pageView = pathname;
+
+      ReactGA.pageview(pageView);
+    }
+
     const token = Cookie.get("token");
 
     if (token) {
