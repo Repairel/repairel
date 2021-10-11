@@ -8,6 +8,9 @@ import { login } from "../lib/auth"
 import { useRouter } from "next/router";
 import { LinedHeading } from "../styles/global";
 
+import ReactGA from 'react-ga';
+ReactGA.pageview('/login');
+
 export default function Login() {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState({});

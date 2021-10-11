@@ -7,6 +7,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { register } from "../lib/auth"
 import { useRouter } from "next/router";
 import { LinedHeading } from "../styles/global";
+import ReactGA from 'react-ga';
+ReactGA.pageview('/register');
+
 export default function Register() {
   const [data, setData] = useState({ email: "", password: "", forename: "", surname: "" , phone: ""});
   const [error, setError] = useState({});

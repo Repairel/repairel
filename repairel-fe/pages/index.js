@@ -7,6 +7,8 @@ import { useContext } from "react";
 import { useRouter } from "next/router";
 
 import { isLogged } from "../lib/auth"
+import ReactGA from 'react-ga';
+ReactGA.pageview('/');
 
 export default function Home({ list }) {
   // console.log(list);

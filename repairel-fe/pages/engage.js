@@ -8,6 +8,8 @@ import Link from "next/link";
 import Socials from "@components/socials";
 
 import { LinedHeading, StyledAnimatedButton, font } from "../styles/global";
+import ReactGA from 'react-ga';
+ReactGA.pageview('/engage');
 
 // This is the correct engage page
 const Engage = ({content}) => {

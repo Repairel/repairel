@@ -38,15 +38,6 @@ class MyApp extends App {
   };
 
   componentDidMount() {
-    const pageViewsTracking = (props) => {
-      const pathname = props.match.path;
-
-      let pageView;
-      if (pathname === "*") pageView = '/not-found';
-      else pageView = pathname;
-
-      ReactGA.pageview(pageView);
-    }
 
     const token = Cookie.get("token");
 

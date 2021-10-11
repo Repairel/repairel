@@ -14,6 +14,9 @@ import { LinedHeading, StyledSection, Row, Column, StyledTitle } from '../styles
 import axios from 'axios';
 import Cookie from "js-cookie";
 
+import ReactGA from 'react-ga';
+ReactGA.pageview('/orders');
+
 const Orders = ({ content }) => {
 
   const orders = []; //Holds arrays of JSX for each order

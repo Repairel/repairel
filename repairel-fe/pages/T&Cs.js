@@ -9,6 +9,9 @@ import Socials from "@components/socials";
 import { LinedHeading, StyledLink } from "../styles/global";
 import {Wishlist} from "@components/product/Product.style.js";
 
+import ReactGA from 'react-ga';
+ReactGA.pageview('/T&Cs');
+
 const Terms = ({ content }) => {
   return (
     <>

@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import Socials from "@components/socials";
 
 import { LinedHeading } from "../styles/global";
+import ReactGA from 'react-ga';
+ReactGA.pageview('/about');
 
 const About = ({ content }) => {
   return (

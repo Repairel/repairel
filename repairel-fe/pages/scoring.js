@@ -17,6 +17,9 @@ import _ from 'lodash';
 import { LinedHeading, LinedSubHeading, StyledSection } from '../styles/global';
 import {ScoresDiv, ScoresListItem, ScoresCaption, CriteriaDiv, CriteriaListItem, CriteriaText, CriteriaImage} from '../styles/scoringStyles';
 
+import ReactGA from 'react-ga';
+ReactGA.pageview('/scoring');
+
 const icons = {
   Design: Design,
   Raw_Materials: Material,

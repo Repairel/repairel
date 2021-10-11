@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Socials from '@components/socials';
 
 import { LinedHeading, StyledSection } from '../styles/global';
+import ReactGA from 'react-ga';
+ReactGA.pageview('/gdpr');
 
 const GDPR = ({ content }) => {
   return (

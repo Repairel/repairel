@@ -8,6 +8,8 @@ import { edit_details } from "../lib/auth";
 import { useRouter } from "next/router";
 import Cookie from "js-cookie";
 import { LinedHeading } from "../styles/global";
+import ReactGA from 'react-ga';
+ReactGA.pageview('/edit');
 export default function Edit(user) {
   const router = useRouter();
 

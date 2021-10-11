@@ -6,6 +6,9 @@ import { StyledAnimatedButton } from "../styles/global";
 import React from "react";
 import {Row} from '../styles/global';
 
+import ReactGA from 'react-ga';
+ReactGA.pageview('/product_request');
+
 export default function ProductReq () {
   // Get the user input from the fields
   const [Name, setName] = useState('')

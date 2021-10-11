@@ -8,6 +8,9 @@ import ProductList from '@components/productList';
 import AppContext from "../context/AppContext";
 import { LinedHeading, StyledSection } from '../styles/global';
 
+import ReactGA from 'react-ga';
+ReactGA.pageview('/wishlist');
+
 const WISHLIST = ({ content }) => {
   return (
     <>

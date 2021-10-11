@@ -11,16 +11,8 @@ import Orders from '../public/orderhistory.ico';
 import Wishlist from '../public/wishlist.png';
 import { useRouter } from "next/router";
 
-import {
-  FilterDiv,
-  FilterWrapper,
-  FilterHeadings,
-  FilterInput,
-  FilterLabel,
-  FilterMessage,
-  ClearAll,
-} from "../components/filter/Filter.style";
-import { EthicsList, EthicsListItem } from '@components/product/Product.style';
+import ReactGA from 'react-ga';
+ReactGA.pageview('/profile');
 
 const PROFILE = ({ user }) => {
   return (
