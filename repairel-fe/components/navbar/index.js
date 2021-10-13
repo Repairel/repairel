@@ -4,7 +4,7 @@ import HamburgerMenu from 'react-hamburger-menu';
 import AppContext from "../../context/AppContext";
 import { useContext } from "react";
 
-import { StyledButton, StyledLinkHeader } from '../../styles/global';
+import { StyledButton, StyledLinkHeader, SurveyStyledButton } from '../../styles/global';
 
 import Wrapper from '@components/navbar/Navbar.style';
 import Bag from '../../public/bag.svg';
@@ -44,7 +44,7 @@ const Navbar = ({ open, setOpen }) => {
       </h1>
       <div>
         <a href={"https://www.instagram.com/"} target="_blank">
-          <StyledButton style={{ marginLeft: "10em" }}>Survey</StyledButton>
+          <SurveyStyledButton style={{ marginLeft: "10em" }}>Help Us!</SurveyStyledButton>
         </a>
       </div>
       <div>

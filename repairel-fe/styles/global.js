@@ -113,6 +113,30 @@ const StyledButton = styled.button`
   }
 `;
 
+const SurveyStyledButton = styled.button`
+  max-width: 100%;
+  display: inline-block;
+  background: #000000;
+  color: white;
+  border: 1px solid black;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: color 150ms, background-color 150ms;
+  text-transform: uppercase;
+  font-size: 1rem;
+  height: 2rem;
+  line-height: 1rem;
+  padding-bottom: auto;
+  padding-top: auto;
+  &:hover {
+    filter: invert(100%);
+    border: 2px solid white;
+  }
+`;
+
 const StyledAnimatedButton = styled.button`
   width: 4rem;
   max-width: 100%;
@@ -214,4 +238,4 @@ const Register = styled.a`
   }
 `;
 
-export { Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
+export { Font, Register, LinedHeading, LinedSubHeading, SurveyStyledButton, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
