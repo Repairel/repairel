@@ -50,18 +50,19 @@ const LinedSubHeading = styled.h3`
 `;
 
 const TempLinedSubHeading = styled.h4`
-  width: 100%;
+  max-width: 100%;
   position: relative;
-  &::before {
-    content: '';
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    border-bottom: 2px solid black;
-    animation: ${underline} 1s linear;
-  }
-
+  background: black;
+  color: white;
+  border: 1px solid black;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  height: 1rem;
+  line-height: 0.7rem;
+  padding-bottom: auto;
+  padding-top: auto;
 `;
 
 const StyledLink = styled.a`
