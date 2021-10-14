@@ -36,7 +36,7 @@ const Footer = () => {
             </Item>
             <Line></Line>
             <Item>
-              <StyledLink style={{ fontWeight: 400, fontSize:"12px", align:"left", textAlign: "left"}} href={'https://localgiving.org/charity/repairel'}>Donate</StyledLink>
+              <StyledLink target="_blank" style={{ fontWeight: 400, fontSize:"12px", align:"left", textAlign: "left"}} href={'https://localgiving.org/charity/repairel'}>Donate</StyledLink>
             </Item>
     </FooterSection>
     <FooterSection>
