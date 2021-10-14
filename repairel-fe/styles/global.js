@@ -20,6 +20,7 @@ const underline = keyframes`
 const LinedHeading = styled.h1`
   width: 100%;
   font-size: 1.5em;
+  text-align:center;
   padding-bottom: 1rem;
   position: relative;
   text-transform: uppercase;
@@ -50,18 +51,18 @@ const LinedSubHeading = styled.h3`
 `;
 
 const TempLinedSubHeading = styled.h4`
-  max-width: 100%;
+  max-width: 80%;
+  margin:auto;
+  vertical-align: middle;
   position: relative;
   background: black;
   color: white;
   border: 1px solid black;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
   letter-spacing: 1px;
   font-size: 1rem;
   height: 1rem;
-  line-height: 0.7rem;
-  padding-bottom: auto;
+  line-height: 1rem;
+  padding-bottom: 2rem;
   padding-top: auto;
 `;
 

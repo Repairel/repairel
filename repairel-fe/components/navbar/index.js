@@ -39,10 +39,10 @@ const Navbar = ({ open, setOpen }) => {
       <div>
       <h1>
         <Link href='/'>
-          <StyledLinkHeader style={{ paddingLeft: "6em" }}>REPAIREL</StyledLinkHeader>
+          <StyledLinkHeader style={{}}>REPAIREL</StyledLinkHeader>
         </Link>
       </h1>
-      <TempLinedSubHeading style={{ textAlign: "center"}}>The one stop shop for sustainable footwear</TempLinedSubHeading>
+      <TempLinedSubHeading style={{textAlign: "center"}}>The one stop shop for sustainable footwear</TempLinedSubHeading>
       </div>
       <div stle={{ zIndex: '2' }}>
         <a
