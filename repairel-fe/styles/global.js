@@ -52,7 +52,7 @@ const LinedSubHeading = styled.h3`
 
 const Subtitle = styled.p`
   max-width: 100%;
-  margin:auto;
+  margin-left: 20em;
   vertical-align: middle;
   position: relative;
   color: black;
@@ -62,6 +62,14 @@ const Subtitle = styled.p`
   line-height: 1rem;
   padding-top: auto;
   font-weight: 400;
+  @media (max-width: 767px) {
+    margin-left: 5em;
+}
+@media (max-width: 400px) {
+    margin-left: 0em;
+
+}
+
 `;
 
 const StyledLink = styled.a`
@@ -71,6 +79,25 @@ const StyledLink = styled.a`
   &:hover {
     text-decoration: underline;
     opacity: 0.7;
+  }
+`;
+
+const RepairelLinkHeader = styled.a`
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  margin-left: 13em;
+  &:hover {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: white;
+    transition: all ease 0.2s
+  }
+    @media (max-width: 767px) {
+      margin-left: 5em;
+  }
+  @media (max-width: 400px) {
+      margin-left: 0em;
+
   }
 `;
 
@@ -128,6 +155,37 @@ const StyledButton = styled.button`
   }
 `;
 
+const RequestStyledButton = styled.button`
+  max-width: 100%;
+  display: inline-block;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  letter-spacing: 1px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: color 150ms, background-color 150ms;
+  text-transform: uppercase;
+  font-size: 1rem;
+  height: 2rem;
+  line-height: 1rem;
+  padding-bottom: auto;
+  padding-top: auto;
+  &:hover {
+    filter: invert(100%);
+    border: 2px solid white;
+  }
+  @media (max-width: 767px) {
+    display:none;
+}
+  @media (max-width: 400px) {
+    display: none;
+}
+  
+`;
+
 const SurveyStyledButton = styled.button`
   max-width: 100%;
   display: inline-block;
@@ -150,6 +208,14 @@ const SurveyStyledButton = styled.button`
     filter: invert(100%);
     border: 2px solid white;
   }
+  @media (max-width: 767px) {
+    display:none;
+}
+  @media (max-width: 400px) {
+    display: none;
+}
+
+  
 `;
 
 const StyledAnimatedButton = styled.button`
@@ -253,4 +319,4 @@ const Register = styled.a`
   }
 `;
 
-export { SurveyStyledButton, Subtitle, Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
+export { RequestStyledButton, RepairelLinkHeader, SurveyStyledButton, Subtitle, Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
