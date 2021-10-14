@@ -4,7 +4,7 @@ import HamburgerMenu from 'react-hamburger-menu';
 import AppContext from "../../context/AppContext";
 import { useContext } from "react";
 
-import { Subtitle, StyledLinkHeader, StyledButton } from '../../styles/global';
+import { Subtitle, StyledLinkHeader, SurveyStyledButton ,StyledButton } from '../../styles/global';
 
 import Wrapper from '@components/navbar/Navbar.style';
 import Bag from '../../public/bag.svg';
@@ -39,10 +39,22 @@ const Navbar = ({ open, setOpen }) => {
       <div>
       <h1>
         <Link href='/'>
-          <StyledLinkHeader style={{}}>REPAIREL</StyledLinkHeader>
+          <StyledLinkHeader style={{marginLeft: "13em"}}>REPAIREL</StyledLinkHeader>
         </Link>
       </h1>
-      <Subtitle style={{textAlign: "center"}}>The one stop shop for sustainable footwear</Subtitle>
+      <Subtitle style={{marginLeft: "20em", textAlign: "center"}}>The one stop shop for sustainable footwear</Subtitle>
+      </div>
+      <div>
+        <a href={"https://www.instagram.com/"} target="_blank">
+          <SurveyStyledButton style={{  }}>Help Us!</SurveyStyledButton>
+        </a>
+      </div>
+      <div>
+        <a href={"/product_request"} target="_blank">
+          <StyledButton style={{} }>Request
+          {/* <img src={Person} style={{ height: "0.8em", width: "0.8em" }}></img> */}
+          </StyledButton>
+        </a>
       </div>
       <div stle={{ zIndex: '2' }}>
         <a
