@@ -5,7 +5,7 @@ import ProductList from '@components/productList';
 import AppContext from "../context/AppContext";
 import { useContext } from "react";
 import { useRouter } from "next/router";
-
+import { Banner } from '../styles/global';
 import { isLogged } from "../lib/auth"
 import ReactGA from 'react-ga';
 ReactGA.pageview('/');
@@ -28,6 +28,7 @@ export default function Home({ list }) {
 
   return (
     <div>
+      <Banner>The platform is live from the 12-22nd of Nov</Banner>
       <Head>
         <title id='title'>REPAIREL</title>
       </Head>

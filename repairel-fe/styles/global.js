@@ -49,6 +49,19 @@ const LinedSubHeading = styled.h3`
   }
 `;
 
+const Banner = styled.div`
+  height: 100%;
+  text-align: center;
+  background-color: #000000;
+  color: white;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+`;
+
 const StyledLink = styled.a`
   text-decoration: none;
   color: black;
@@ -214,4 +227,4 @@ const Register = styled.a`
   }
 `;
 
-export { Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
+export { Banner, Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
