@@ -50,20 +50,18 @@ const LinedSubHeading = styled.h3`
   }
 `;
 
-const TempLinedSubHeading = styled.h4`
-  max-width: 80%;
+const Subtitle = styled.p`
+  max-width: 100%;
   margin:auto;
   vertical-align: middle;
   position: relative;
-  background: black;
-  color: white;
-  border: 1px solid black;
+  color: black;
   letter-spacing: 1px;
   font-size: 1rem;
   height: 1rem;
   line-height: 1rem;
-  padding-bottom: 2rem;
   padding-top: auto;
+  font-weight: 400;
 `;
 
 const StyledLink = styled.a`
@@ -231,4 +229,4 @@ const Register = styled.a`
   }
 `;
 
-export { TempLinedSubHeading, Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
+export { Subtitle, Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };

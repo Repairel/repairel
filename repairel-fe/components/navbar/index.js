@@ -4,7 +4,7 @@ import HamburgerMenu from 'react-hamburger-menu';
 import AppContext from "../../context/AppContext";
 import { useContext } from "react";
 
-import { TempLinedSubHeading, StyledLinkHeader, StyledButton } from '../../styles/global';
+import { Subtitle, StyledLinkHeader, StyledButton } from '../../styles/global';
 
 import Wrapper from '@components/navbar/Navbar.style';
 import Bag from '../../public/bag.svg';
@@ -42,7 +42,7 @@ const Navbar = ({ open, setOpen }) => {
           <StyledLinkHeader style={{}}>REPAIREL</StyledLinkHeader>
         </Link>
       </h1>
-      <TempLinedSubHeading style={{textAlign: "center"}}>The one stop shop for sustainable footwear</TempLinedSubHeading>
+      <Subtitle style={{textAlign: "center"}}>The one stop shop for sustainable footwear</Subtitle>
       </div>
       <div stle={{ zIndex: '2' }}>
         <a
