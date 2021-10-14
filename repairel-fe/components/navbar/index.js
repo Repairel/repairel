@@ -4,7 +4,7 @@ import HamburgerMenu from 'react-hamburger-menu';
 import AppContext from "../../context/AppContext";
 import { useContext } from "react";
 
-import { StyledLinkHeader } from '../../styles/global';
+import { Subtitle, StyledLinkHeader, StyledButton } from '../../styles/global';
 
 import Wrapper from '@components/navbar/Navbar.style';
 import Bag from '../../public/bag.svg';
@@ -36,11 +36,14 @@ const Navbar = ({ open, setOpen }) => {
           borderRadius={0}
         />
       </div>
+      <div>
       <h1>
         <Link href='/'>
-          <StyledLinkHeader style={{ paddingLeft: "2em" }}>REPAIREL</StyledLinkHeader>
+          <StyledLinkHeader style={{}}>REPAIREL</StyledLinkHeader>
         </Link>
       </h1>
+      <Subtitle style={{textAlign: "center"}}>The one stop shop for sustainable footwear</Subtitle>
+      </div>
       <div stle={{ zIndex: '2' }}>
         <a
           href={appContext.isAuthenticated ? '/profile' : '/login'}
@@ -56,6 +59,7 @@ const Navbar = ({ open, setOpen }) => {
         </a>
       </div>
     </Wrapper>
+    
   );
 };
 Navbar.propTypes = {

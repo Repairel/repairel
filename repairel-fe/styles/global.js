@@ -20,6 +20,7 @@ const underline = keyframes`
 const LinedHeading = styled.h1`
   width: 100%;
   font-size: 1.5em;
+  text-align:center;
   padding-bottom: 1rem;
   position: relative;
   text-transform: uppercase;
@@ -47,6 +48,20 @@ const LinedSubHeading = styled.h3`
     border-bottom: 2px solid black;
     animation: ${underline} 1s linear;
   }
+`;
+
+const Subtitle = styled.p`
+  max-width: 100%;
+  margin:auto;
+  vertical-align: middle;
+  position: relative;
+  color: black;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  height: 1rem;
+  line-height: 1rem;
+  padding-top: auto;
+  font-weight: 400;
 `;
 
 const StyledLink = styled.a`
@@ -214,4 +229,4 @@ const Register = styled.a`
   }
 `;
 
-export { Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
+export { Subtitle, Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
