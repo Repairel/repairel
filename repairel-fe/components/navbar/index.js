@@ -49,7 +49,9 @@ const Navbar = ({ open, setOpen }) => {
       </div>
       <div>
         <a href={"/product_request"} target="_blank">
-          <StyledButton style={{ marginLeft: "1em"}}>Request</StyledButton>
+          <StyledButton style={{ marginLeft: "1em",  paddingRight: "1em"}}>Request
+          <img src={Person} style={{ height: "0.8em", width: "0.8em" }}></img>
+          </StyledButton>
         </a>
       </div>
       <div stle={{ zIndex: '2' }}>
