@@ -15,7 +15,7 @@ const Menu = ({ open, setOpen }) => {
   };
 
   const { user, setUser } = useContext(AppContext);
-  let menu = ['shop','engage','method', 'request', 'faq'];
+  let menu = ['shop','activism','sustainability', 'about', 'faq'];
   let welcomeMessage = '';
   if (user) {
     welcomeMessage = `Hey ${user.first_name}!`;
@@ -24,10 +24,12 @@ const Menu = ({ open, setOpen }) => {
   function linkDecider(item) {
     if (item === 'shop') {
       return `/`;
-    } else if (item === 'method') {
+    } else if (item === 'sustainability') {
       return '/scoring'
-    } else if (item === 'request') {
-      return '/product_request'
+    } else if (item === 'activism') {
+      return '/engage'
+    } else if (item === 'about') {
+      return '/about'
     } else {
       return `/${item}`
     }

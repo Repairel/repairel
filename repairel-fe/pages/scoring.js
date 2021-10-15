@@ -105,7 +105,7 @@ const scoring = ({ content }) => {
       <Header />
       <StyledSection>
         <main style={{ margin: '1rem' }}>
-          <LinedHeading>METHOD</LinedHeading>
+          <LinedHeading>Sustainability</LinedHeading>
           <Markdown>{content[0].introduction}</Markdown>
 
           <LinedSubHeading>Scores</LinedSubHeading>

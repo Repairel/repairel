@@ -16,11 +16,11 @@ const Engage = ({content}) => {
   return (
     <>
       <Head>
-        <title id="title">REPAIREL | Engage</title>
+        <title id="title">REPAIREL | Activism</title>
       </Head>
       <Header />
       <div style={{ margin: "1rem" }}>
-        <LinedHeading>ENGAGE</LinedHeading>
+        <LinedHeading>Activism</LinedHeading>
         <div style={{ marginBottom: "2.5em" }}>
           <Markdown>{content[0].text}</Markdown>
         </div>
