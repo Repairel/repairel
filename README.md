@@ -48,21 +48,21 @@ A MVP for Repairel CIC, an e-commerce site dedicated to selling refurbished shoe
 ### (**SE04**)
 
 | Name             |           Email            |
-| :--------------- | :------------------------: | --- |
+| :--------------- | :------------------------: | 
 | Declan Davidson  | 2038796D@student.gla.ac.uk |
 | Luke Holland     | 2342915H@student.gla.ac.uk |
 | Wafa Khan Tareen | 2366702T@student.gla.ac.uk |
 | Fraser Dempster  | 2331229D@student.gla.ac.uk |
-| Ewan Hempsey     | 2314230H@student.gla.ac.uk | \   |
+| Ewan Hempsey     | 2314230H@student.gla.ac.uk |
 
 ### (**CSP5**)
 
 | Name            |           Email            |
-| :-------------- | :------------------------: | --- |
+| :-------------- | :------------------------: |
 | Jack McKechnie  | 2319658M@student.gla.ac.uk |
 | Gavin Lafferty  | 2386209L@student.gla.ac.uk |
 | Barbara Bergant | 2333274B@student.gla.ac.uk |
-| Jakob Reitzel   | 2403648R@student.gla.ac.uk | \   |
+| Jakob Reitzel   | 2403648R@student.gla.ac.uk | 
 
 ## Previous Developers
 
