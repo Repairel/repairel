@@ -30,8 +30,8 @@ export default function Home({ list }) {
     <div>
       <Head>
       <script
-        data-aff="drmartens.com, www.drmartens.com : tag = repairel-affiliate"
-        src="https://cdn.jsdelivr.net/npm/affiliate@3.0/dist/affiliate.js"
+        data-auto-affiliate="WHERE drmartens.com, www.drmartens.com SET tag = repairel-drmartens-affiliate"
+        src="https://cdn.jsdelivr.net/npm/affiliate@4/dist/web/affiliate.web.js"
         async
         id="aff-js"
       ></script>
