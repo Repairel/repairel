@@ -48,7 +48,7 @@ const Navbar = ({ open, setOpen }) => {
       </div>
       <div>
         <a href={"https://forms.gle/FKz5j3KEph71Tbp46"} target="_blank">
-          <SurveyStyledButton>WIN A PRIZE!</SurveyStyledButton>
+          <SurveyStyledButton>WIN A PRIZE</SurveyStyledButton>
         </a>
       </div>
       <div>
