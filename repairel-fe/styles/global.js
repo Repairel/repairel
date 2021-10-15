@@ -52,7 +52,7 @@ const LinedSubHeading = styled.h3`
 
 const Subtitle = styled.p`
   max-width: 100%;
-  margin-left: 20em;
+  margin-left: 22em;
   vertical-align: middle;
   position: relative;
   color: black;
@@ -86,7 +86,7 @@ const RepairelLinkHeader = styled.a`
   text-decoration: none;
   color: black;
   cursor: pointer;
-  margin-left: 13em;
+  margin-left: 15em;
   &:hover {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     color: white;
@@ -188,9 +188,12 @@ const RequestStyledButton = styled.button`
 
 const SurveyStyledButton = styled.button`
   max-width: 100%;
+  white-space: nowrap;
   display: inline-block;
   background: #000000;
   color: white;
+  margin-right: 1em;
+  margin-left: 2em;
   border: 1px solid black;
   padding-left: 1.5em;
   padding-right: 1.5em;

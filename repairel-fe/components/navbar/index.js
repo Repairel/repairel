@@ -45,8 +45,8 @@ const Navbar = ({ open, setOpen }) => {
       <Subtitle style={{}}>The one stop shop for sustainable footwear</Subtitle>
       </div>
       <div>
-        <a href={"https://www.instagram.com/"} target="_blank">
-          <SurveyStyledButton style={{  }}>Help Us!</SurveyStyledButton>
+        <a href={"https://forms.gle/FKz5j3KEph71Tbp46"} target="_blank">
+          <SurveyStyledButton>WIN A PRIZE!</SurveyStyledButton>
         </a>
       </div>
       <div>
