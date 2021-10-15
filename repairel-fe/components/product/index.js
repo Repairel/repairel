@@ -216,10 +216,9 @@ else{Size=product.Size}
           padding: '1rem',
         }}
       >
-        <MainInfo>
+        <MainInfo >
           <div>
             <ProductTitle className='product__title'>
-
               {product.name} <ProductSize>/ Size: {Size}</ProductSize>
             </ProductTitle>
             <p className='product__price'>£ {product.price}</p>

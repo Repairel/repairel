@@ -4,7 +4,7 @@ import HamburgerMenu from 'react-hamburger-menu';
 import AppContext from "../../context/AppContext";
 import { useContext } from "react";
 
-import { RequestStyledButton, Subtitle, RepairelLinkHeader, SurveyStyledButton ,StyledButton } from '../../styles/global';
+import { Banner, RequestStyledButton, Subtitle, RepairelLinkHeader, SurveyStyledButton ,StyledButton } from '../../styles/global';
 
 import Wrapper from '@components/navbar/Navbar.style';
 import Bag from '../../public/bag.svg';
@@ -23,6 +23,8 @@ const Navbar = ({ open, setOpen }) => {
   };
 
   return (
+    <>
+    <Banner>The shop is live for a limited time (pilot) - 12-22nd Nov. Only shipping in the UK currently.</Banner>
     <Wrapper>
       <div style={navStyles}>
         <HamburgerMenu
@@ -71,6 +73,7 @@ const Navbar = ({ open, setOpen }) => {
         </a>
       </div>
     </Wrapper>
+    </>
     
   );
 };

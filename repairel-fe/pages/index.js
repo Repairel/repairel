@@ -28,8 +28,13 @@ export default function Home({ list }) {
 
   return (
     <div>
-      <Banner>The shop is live for a limited time (pilot) - 12-22nd Nov. Only shipping in the UK currently.</Banner>
       <Head>
+      <script
+        data-aff="drmartens.com, www.drmartens.com : tag = repairel-affiliate"
+        src="https://cdn.jsdelivr.net/npm/affiliate@3.0/dist/affiliate.js"
+        async
+        id="aff-js"
+      ></script>
         <title id='title'>REPAIREL</title>
       </Head>
       <main>
