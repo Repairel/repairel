@@ -5,6 +5,7 @@ import Cookie from "js-cookie";
 import CookiePopup from "@components/cookiePopup";
 import './wishlist.css';
 import ReactGA from 'react-ga';
+import HttpsRedirect from 'react-https-redirect';
 
 const trackingId = "UA-209962114-1"; 
 ReactGA.initialize(trackingId);
@@ -33,6 +34,8 @@ const theme = {
 };
 
 class MyApp extends App {
+
+
   state = {
     user: null
   };
@@ -65,6 +68,7 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
+      <HttpsRedirect>
       <AppContext.Provider
         value={{
           user: this.state.user,
@@ -80,6 +84,7 @@ class MyApp extends App {
         </>
 		<CookiePopup />
       </AppContext.Provider>
+      </HttpsRedirect>
     );
   }
 }
