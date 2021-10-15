@@ -28,7 +28,7 @@ export default function Home({ list }) {
 
   return (
     <div>
-      <Banner>The platform is live from the 12-22nd of Nov</Banner>
+      <Banner>The shop is live for a limited time (pilot) - 12-22nd Nov. Only shipping in the UK currently.</Banner>
       <Head>
         <title id='title'>REPAIREL</title>
       </Head>

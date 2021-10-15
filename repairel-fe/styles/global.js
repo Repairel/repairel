@@ -54,12 +54,8 @@ const Banner = styled.div`
   text-align: center;
   background-color: #000000;
   color: white;
-  width: 100vw;
+  width: 100%;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
 `;
 
 const StyledLink = styled.a`
