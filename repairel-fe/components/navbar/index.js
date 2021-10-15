@@ -59,7 +59,7 @@ const Navbar = ({ open, setOpen }) => {
       <div stle={{ zIndex: '2' }}>
         <a
           href={appContext.isAuthenticated ? '/profile' : '/login'}
-          style={{ cursor: 'pointer', paddingRight: "1em" }}
+          style={{ cursor: 'pointer', paddingRight: "0.5em", paddingLeft: "0.5em" }}
         >
           <img src={Person} style={{ height: "32px", width: "32px" }}></img>
         </a>
