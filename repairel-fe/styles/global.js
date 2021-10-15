@@ -69,7 +69,15 @@ const Subtitle = styled.p`
     margin-left: 0em;
 
 }
+`;
 
+const Banner = styled.div`
+  height: 100%;
+  text-align: center;
+  background-color: #000000;
+  color: white;
+  width: 100%;
+  position: relative;
 `;
 
 const StyledLink = styled.a`
@@ -322,4 +330,4 @@ const Register = styled.a`
   }
 `;
 
-export { RequestStyledButton, RepairelLinkHeader, SurveyStyledButton, Subtitle, Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
+export { Banner, RequestStyledButton, RepairelLinkHeader, SurveyStyledButton, Subtitle, Font, Register, LinedHeading, LinedSubHeading, StyledSection, StyledLink, StyledLinkHeader, StyledTitle, Row, Column, StyledButton, StyledInput, StyledFormLabel, ProfileCaption, ProfileListItem, ProfileImage, ProfileList, Login, StyledAnimatedButton };
