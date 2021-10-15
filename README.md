@@ -43,7 +43,7 @@ A MVP for Repairel CIC, an e-commerce site dedicated to selling refurbished shoe
   - [AWS S3](https://aws.amazon.com/s3/) bucket to host static content for [Strapi](https://strapi.io/)
 - [Snipcart](https://snipcart.com/) integration for checkout
 
-## Current Developer Teams
+## Previous Developer Teams
 
 ### (**SE04**)
 
