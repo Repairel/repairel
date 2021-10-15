@@ -9,6 +9,7 @@
     "start": "next start -p $PORT"
   },
   "dependencies": {
+    "react-https-redirect": "^1.1.0",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "cypress": "^6.6.0",
