@@ -47,12 +47,12 @@ const Navbar = ({ open, setOpen }) => {
       <Subtitle style={{}}>The one stop shop for sustainable footwear</Subtitle>
       </div>
       <div>
-        <a href={"https://forms.gle/FKz5j3KEph71Tbp46"} target="_blank">
+        <a href={"https://forms.gle/FKz5j3KEph71Tbp46"}>
           <SurveyStyledButton>WIN A PRIZE</SurveyStyledButton>
         </a>
       </div>
       <div>
-        <a href={"/product_request"} target="_blank">
+        <a href={"/product_request"}>
           <RequestStyledButton style={{} }>Request
           {/* <img src={Person} style={{ height: "0.8em", width: "0.8em" }}></img> */}
           </RequestStyledButton>

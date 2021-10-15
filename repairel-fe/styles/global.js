@@ -72,12 +72,12 @@ const Subtitle = styled.p`
 `;
 
 const Banner = styled.div`
-  height: 100%;
   text-align: center;
   background-color: #000000;
   color: white;
   width: 100%;
   position: relative;
+  padding-bottom: 0.2em;
 `;
 
 const StyledLink = styled.a`
