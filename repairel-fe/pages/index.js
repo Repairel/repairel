@@ -29,12 +29,30 @@ export default function Home({ list }) {
   return (
     <div>
       <Head>
-      <script
-        data-auto-affiliate="WHERE drmartens.com, www.drmartens.com SET tag = repairel-drmartens-affiliate"
-        src="https://cdn.jsdelivr.net/npm/affiliate@4/dist/web/affiliate.web.js"
-        async
-        id="aff-js"
-      ></script>
+        {/* This script below most likely only needs to exist in _document.js, which is where your <head> files are all clustered.
+        Thus, removing the below duplicate should be fine, though I simply leave this here out of paranoi to avoid things breaking.
+        In any case, all you need is this script below to implement MS Clarity analytics to your website. Currently, the value I have placed is 8z3d8a3ep2, which comes from my MS Clarity account.
+        You should replace the valuewhich will come with your own MS Clarity account so that you can monitor heatmaps and similar on your account.  */}
+        <script
+          dangerouslySetInnerHTML={
+            {
+              __html: `
+         (function(c,l,a,r,i,t,y){
+             c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+             t=l.createElement(r);
+             t.async=1;
+             t.src="https://www.clarity.ms/tag/"+i;
+             y=l.getElementsByTagName(r)[0];
+             y.parentNode.insertBefore(t,y);
+         })(window, document, "clarity", "script", "8z3d8a3ep2");`,
+            }}
+        />;
+        <script
+          data-auto-affiliate="WHERE drmartens.com, www.drmartens.com SET tag = repairel-drmartens-affiliate"
+          src="https://cdn.jsdelivr.net/npm/affiliate@4/dist/web/affiliate.web.js"
+          async
+          id="aff-js"
+        ></script>
         <title id='title'>REPAIREL</title>
       </Head>
       <main>
