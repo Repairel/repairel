@@ -8,44 +8,44 @@
   "attributes": {
     "design": {
       "type": "integer",
-      "required": true,
+      "required": false,
       "max": 5,
       "min": 0
     },
     "raw_materials": {
       "type": "integer",
       "private": false,
-      "required": true,
+      "required": false,
       "max": 5,
       "min": 0
     },
     "material_manufacturing": {
       "type": "integer",
-      "required": true,
+      "required": false,
       "max": 5,
       "min": 0
     },
     "footwear_manufacturing": {
       "type": "integer",
-      "required": true,
+      "required": false,
       "max": 5,
       "min": 0
     },
     "retail": {
       "type": "integer",
-      "required": true,
+      "required": false,
       "max": 5,
       "min": 0
     },
     "use": {
       "type": "integer",
-      "required": true,
+      "required": false,
       "max": 5,
       "min": 0
     },
     "disposal": {
       "type": "integer",
-      "required": true,
+      "required": false,
       "max": 5,
       "min": 0
     }
