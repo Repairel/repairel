@@ -114,7 +114,14 @@ const scoring = ({ content }) => {
           <LinedSubHeading>Criteria</LinedSubHeading>
           <div>{categoriesRender(content[0])}</div>
           <LinedSubHeading>Blurb</LinedSubHeading>
+          <p>
+          Note: For refurbished products (P1), their scores can be ignored for now as the current Sustainability Framework only supports scoring new products (P2).
+          </p>
           <div>{(content[0].blurb)}</div>
+          <LinedSubHeading>Notice</LinedSubHeading>
+          <p>
+          For refurbished products (P1), their scores can be ignored for now as the current Sustainability Framework only supports scoring new products (P2).
+          </p>
         </main>
 
       </StyledSection>
