@@ -24,7 +24,6 @@ const Navbar = ({ open, setOpen }) => {
 
   return (
     <>
-//     <Banner>The shop is live for a limited time (pilot) - 12-22nd Nov. Only shipping in the UK currently.</Banner>
     <Wrapper>
       <div style={navStyles}>
         <HamburgerMenu
